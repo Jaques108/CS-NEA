@@ -1,6 +1,8 @@
+import requests
+from bs4 import BeautifulSoup
+import json
 
 from tkinter import *
-
 
 
 app = Tk()
@@ -52,28 +54,70 @@ def login():
 
 def sudoku():
 
-    playWin = Tk()
-    playWin.title("Sudoku")
-    playWin.resizable(width=FALSE, height=FALSE)
+    playWinSudoku = Tk()
+    playWinSudoku.title("Sudoku")
+    playWinSudoku.resizable(width=FALSE, height=FALSE)
+    playWinSudoku.geometry("350x335")
 
     #way too hard
     """canvas = Canvas(playWin)
     canvas.create_line(15, 25, 200, 25,width=5)
     line1.grid(row = 3,column = 3)"""
 
-    valid = (playWin.register(validate_entry), '%P')
-    playWin.geometry("350x335")
+    valid = (playWinSudoku.register(validate_entry), '%P')
     for row in range(9):
         for col in range(9):
-            entry = Entry(playWin, width=2, validate='key', validatecommand=valid,justify = 'center')
+            entry = Entry(playWinSudoku, width=2, validate='key', validatecommand=valid,justify = 'center')
             entry.grid(row=row, column=col, padx=4, pady=4)
 
     playWin.mainloop()
 
 
 
-def crosswords():
-    pass
+
+def crossword():
+    playWinCrossword = Tk()
+    playWinCrossword.title("Crossword")
+    playWinCrossword.resizable(width=FALSE,height=FALSE)
+
+
+    for row in range(13):
+        for col in range(13):
+            cell = Label(playWinCrossword, text="*", justify='center')
+            cell.grid(row=row, column=col, padx=4, pady=4)
+    url = "https://www.theguardian.com/crosswords/quick/16962"
+    response = requests.get(url)
+
+    if (response.status_code) == 200:
+        print('success')
+    else:
+        print('cant find')
+
+    soup = BeautifulSoup(response.text, 'html.parser')
+
+    mydivs = soup.find_all("div", {"class": "js-crossword"})
+    test = (mydivs[0].get('data-crossword-data'))
+
+    jsonified = json.loads(test)
+    print(jsonified['entries'])
+
+    #Writes an S where we need to start !
+    for item in jsonified['entries']:
+        temp = item['position']
+        tempX = temp['x']
+        tempY = temp['y']
+        #print(f'x:{tempX}, y:{tempY}')
+        cell.config(row = [tempY],column = [tempX],text = 'S')
+
+        ##Make input cells different character  (-)!
+        # if item['direction'] == 'across':
+        #     Length = item['length']
+        #     for i in range(1,Length):
+        #         self.grid[tempY][tempX+i] = '-'
+        # elif item['direction'] == 'down':
+        #     Length = item['length']
+        #     for i in range(1,Length):
+        #         self.grid[tempY+i][tempX] = '|'
 
 
 
@@ -90,7 +134,7 @@ def choose():
     sudokuButton = Button(chooseWin,text = "Sudoku",command = sudoku, width=20,height=20)
     sudokuButton.place(relx = 0.25,rely = 0.5,anchor = CENTER)
 
-    crosswordsButton = Button(chooseWin, text="Crossword", width=20, height=20)
+    crosswordsButton = Button(chooseWin, text="Crossword", command = crossword, width=20, height=20)
     crosswordsButton.place(relx=0.75, rely=0.5, anchor=CENTER)
 
 

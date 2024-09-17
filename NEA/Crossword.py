@@ -1,8 +1,17 @@
 import requests
 from bs4 import BeautifulSoup
 import json
+
+from tkinter import *
+app = Tk()
+app.title("Crossword")
 class Game():
     def __init__(self):
+        for row in range(9):
+            for col in range(9):
+                cell = Label(app, text = "*",width=2, justify='center')
+                cell.grid(row=row, column=col, padx=4, pady=4)
+
         self.grid = [['*'for y in range(13)]for x in range(13)]
         self.clues = []
     def GetGame(self):
@@ -50,16 +59,10 @@ url = "https://www.theguardian.com/crosswords/quick/16955"
 NewGrid = Game()
 NewGrid.GetGame()
 NewGrid.PrettyPrint()
-#NewGrid.PrettyPrint()
 
 
+app.mainloop()
 
-
-
-
-
-pass
-pass
 
 
 #We want to obtain crosswords for our game
