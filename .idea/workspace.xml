@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fcc33587-880f-4a89-98b5-cef7062c96cd" name="Changes" comment="Crossword" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExportToHTMLSettings">
+    <option name="OPEN_IN_BROWSER" value="true" />
+    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/exportToHTML" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/NEA/Login.py" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2e8C4ZYvxaP7ssbgvwzDjOXErAz" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.2022 P1 Question.executor&quot;: &quot;Run&quot;,
+    &quot;Python.AS Mock Program Binary.executor&quot;: &quot;Run&quot;,
+    &quot;Python.AS Mock Program Stack.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ASCII Programming.executor&quot;: &quot;Run&quot;,
+    &quot;Python.BItwise Manipulation.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Binary Search Algorithm.executor&quot;: &quot;Run&quot;,
+    &quot;Python.BlackJack.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Calculator tkinter.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Calculator.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Crossword.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Hangman.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Home Coding 1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Login.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Messaging (Sockets).executor&quot;: &quot;Run&quot;,
+    &quot;Python.Mines Game.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Password Checker.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Password Generator.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Password.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Population Modelling.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Problem 10.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Problem 21.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Python Game.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Testing.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Year Programming.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/jake/6th Form/Computer Science/Python&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/NEA" />
+      <recent name="$PROJECT_DIR$/School Stuff" />
+      <recent name="$PROJECT_DIR$/Random Shit" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/tkinter" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-09665e90c3a7-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.15026.15" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fcc33587-880f-4a89-98b5-cef7062c96cd" name="Changes" comment="" />
+      <created>1711276629155</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1711276629155</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Crossword">
+      <option name="closed" value="true" />
+      <created>1726562093764</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1726562093764</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Crossword" />
+    <option name="LAST_COMMIT_MESSAGE" value="Crossword" />
+  </component>
+</project>

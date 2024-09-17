@@ -1,0 +1,1616 @@
+Index: README.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/README.md b/NEA/README.md
+rename from README.md
+rename to NEA/README.md
+--- a/README.md	(revision 5e97e907e20d5e449ddc32610ea8de46fccf815e)
++++ b/NEA/README.md	(date 1726042077370)
+@@ -1,3 +1,1 @@
+ # CS-NEA
+-# CS-NEA
+-# CS-NEA
+Index: NEA/Login.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\nfrom tkinter import *\n\n\n\napp = Tk()\napp.geometry(\"400x400\")\napp.title('Puzzle Games')\n\n\nlogin_button = Button(app, text = 'Log in')\nlogin_button.place(relx = 0.5,rely = 0.6, anchor = CENTER)\n\nguest_button = Button(app, text = 'Play as Guest')\nguest_button.place(relx = 0.5, rely = 0.8, anchor = CENTER)\n\n\nfor widget in app.winfo_children():\n    widget.config(font = ('Georgia', 30))\n\n\nwelcome_label = Label(app,text = 'Welcome',font = ('Georgia', 50))\nwelcome_label.place(relx = 0.5,rely = 0.2, anchor = CENTER)\n\n\n\n\n\n\ndef login():\n    pass\n\n\ndef contAsGuest():\n    pass\n\n\n\n\n\n\napp.mainloop()\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/NEA/Login.py b/NEA/Login.py
+--- a/NEA/Login.py	(revision 5e97e907e20d5e449ddc32610ea8de46fccf815e)
++++ b/NEA/Login.py	(date 1725999424368)
+@@ -7,11 +7,24 @@
+ app.geometry("400x400")
+ app.title('Puzzle Games')
+ 
++def login():
++    playWin = Toplevel(app)
++    label = Label(playWin,text = 'test')
++    label.pack()
++
++
++
++def contAsGuest():
++    playWin = Toplevel(app)
++    label = Label(playWin, text='test')
++    label.pack()
++
++
+ 
+ login_button = Button(app, text = 'Log in')
+ login_button.place(relx = 0.5,rely = 0.6, anchor = CENTER)
+ 
+-guest_button = Button(app, text = 'Play as Guest')
++guest_button = Button(app, text = 'Play as Guest',command = contAsGuest)
+ guest_button.place(relx = 0.5, rely = 0.8, anchor = CENTER)
+ 
+ 
+@@ -27,17 +40,6 @@
+ 
+ 
+ 
+-def login():
+-    pass
+-
+-
+-def contAsGuest():
+-    pass
+-
+-
+-
+-
+-
+ 
+ app.mainloop()
+ 
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1725978876123)
++++ b/.idea/vcs.xml	(date 1725978876123)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: Project Euler/Problem 21.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Project Euler/Problem 21.py b/Project Euler/Problem 21.py
+new file mode 100644
+--- /dev/null	(date 1711810390937)
++++ b/Project Euler/Problem 21.py	(date 1711810390937)
+@@ -0,0 +1,52 @@
++
++
++def properDivisors(n):
++    divs = []
++    halfN = (1 + int(n/2))
++
++    for i in range(1,halfN):
++        if n % i == 0:
++            divs.append(i)
++
++    return divs
++
++
++
++def sumPD(n):
++    divs = properDivisors(n)
++    total = 0
++
++    for x in range(len(divs)):
++        temp = divs[x]
++        total += temp
++
++    return total
++
++
++
++def checkIfAmicable(n):
++    PDNum1 = sumPD(n)
++    PDNum2 = sumPD(PDNum1)
++
++    if n == PDNum2 and PDNum1 != PDNum2:
++        return True
++
++    return False
++
++
++
++def sumOfAmicableNumbers(n):
++    total = 0
++
++    for j in range(1,n):
++        if checkIfAmicable(j):
++            total += j
++
++    return total
++
++
++
++print(sumOfAmicableNumbers(10000))
++
++
++
+Index: Project Euler/Problem 10.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Project Euler/Problem 10.py b/Project Euler/Problem 10.py
+new file mode 100644
+--- /dev/null	(date 1713862818800)
++++ b/Project Euler/Problem 10.py	(date 1713862818800)
+@@ -0,0 +1,21 @@
++
++#This is incredibly slow but I don't know how to optimize it so whatever for now
++def isPrime(n):
++    halfN = int(n / 2)
++
++    for i in range(2, halfN):
++        if n % i == 0:
++            return False
++
++    return True
++
++
++
++def summationPrimes(n):
++    total = 0
++
++    for i in range((n-1),1,-1):
++        if isPrime(i):
++            total += i
++
++print(summationPrimes(2000000))
+\ No newline at end of file
+Index: tkinter/Hangman.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/tkinter/Hangman.py b/tkinter/Hangman.py
+new file mode 100644
+--- /dev/null	(date 1712611507946)
++++ b/tkinter/Hangman.py	(date 1712611507946)
+@@ -0,0 +1,23 @@
++#gonna finish this later
++
++from tkinter import *
++
++
++
++app = Tk()
++canvas = Canvas()
++
++
++app.title('Hangman')
++app.geometry('400x400')
++
++canvas.create_oval(55,5,105,55)
++canvas.place(relx = 0.5,rely=0.5,anchor = CENTER)
++
++
++
++
++
++
++
++app.mainloop()
+\ No newline at end of file
+Index: Random Shit/BlackJack.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Random Shit/BlackJack.py b/Random Shit/BlackJack.py
+new file mode 100644
+--- /dev/null	(date 1715679616132)
++++ b/Random Shit/BlackJack.py	(date 1715679616132)
+@@ -0,0 +1,65 @@
++import random
++
++def dealCard():
++    cards = ['Ace','1','2','3','4','5','6','7','8','9','Jack','Queen','King']
++    suits = ['Clubs','Hearts','Diamonds','Spades']
++
++    name = cards[random.randint(0,12)]
++    suit = suits[random.randint(0,3)]
++
++
++    card = name + ' Of ' + suit
++
++    split = card.split()
++    number = split[0]
++
++    if number == 'Ace':
++        value = 11
++
++    elif number == 'Jack' or number == 'Queen' or number == 'King':
++        value = 10
++
++    else:
++        value = int(number)
++
++    hand.append(card)
++
++
++    return value
++
++
++
++
++hand = []
++total = 0
++
++
++
++while total < 21:
++    card = dealCard()
++    print(card)
++
++    split = card.split()
++    number = split[0]
++
++    if number == 'Ace':
++        value = 11
++
++    elif number == 'Jack' or number == 'Queen' or number == 'King':
++        value = 10
++
++    else:
++        value = int(number)
++
++    hand.append(card)
++
++    total += value
++    print(f'current total is {total}')
++
++
++
++
++
++
++
++
+Index: School Stuff/Bitwise Manipulation.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/School Stuff/Bitwise Manipulation.py b/School Stuff/Bitwise Manipulation.py
+new file mode 100644
+--- /dev/null	(date 1714464045108)
++++ b/School Stuff/Bitwise Manipulation.py	(date 1714464045108)
+@@ -0,0 +1,103 @@
++operations = ['Logical','Arithmetic','Circular']
++directions = ['Left','Right']
++
++
++operation = input('What shift do you want to do? Logical, Arithmetic or Circular? ').title()
++
++while operation not in operations:
++    print('Invalid input')
++    operation = input('What shift do you want to do? Logical, Arithmetic or Circular? ').title()
++
++
++
++direction = input('What direction, Left or Right? ').title()
++
++while direction not in directions:
++    print('Invalid input')
++    direction = input('What direction, Left or Right? ').title()
++
++
++biNumber = input('Enter your binary number')
++
++while len(biNumber) != 8:
++    print('Invalid - Number must be 8 digits long')
++    biNumber = input('Enter your binary number  ')
++
++
++
++
++
++def rightShift():
++    biNumList = []
++
++    for i in range(8):
++        temp = biNumber[i]
++        if temp != '0' and temp != '1':
++            return 'Invalid - Number must only contain 0s and 1s'
++
++        biNumList.append(temp)
++
++    if operation == 'Logical' or operation == 'Arithmetic':
++        size = len(biNumList)
++        msb = str(biNumList[0])
++
++        if operation == 'Arithmetic' and msb == '0':
++            biNumList.insert(0,'0')
++
++        elif operation == 'Arithmetic' and msb == '1':
++            biNumList.insert(0,'1')
++
++        carryBit = biNumList[size]
++
++        biNumListTemp = biNumList[::-1]
++
++        biNumListTemp.remove(carryBit)
++        biNumList = biNumListTemp[::-1]
++
++        changedNum = ''
++
++        for i in range(size):
++            changedNum += biNumList[i]
++
++        return changedNum,carryBit
++
++
++    else:
++        return 'Error'
++
++
++def leftShift():
++    biNumList = []
++
++    for i in range(8):
++        temp = biNumber[i]
++        if temp != '0' and temp != '1':
++            return 'Invalid - Number must only contain 0s and 1s'
++
++        biNumList.append(temp)
++
++    if operation == 'Logical' or operation == 'Arithmetic':
++        size = len(biNumList)
++
++        biNumList.insert(7,'0')
++
++        carryBit = biNumList[0]
++        biNumList.remove(carryBit)
++
++
++        changedNum = ''
++
++        for i in range(size):
++            changedNum += biNumList[i]
++
++        return carryBit,changedNum
++
++
++    else:
++        return 'Error'
++
++if direction == 'Right':
++    print(rightShift())
++
++if direction == 'Left':
++    print(leftShift())
+Index: Random Shit/Testing.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Random Shit/Testing.py b/Random Shit/Testing.py
+new file mode 100644
+--- /dev/null	(date 1719562234252)
++++ b/Random Shit/Testing.py	(date 1719562234252)
+@@ -0,0 +1,88 @@
++import math
++import sys
++
++'''import re
++
++alist = [[0,2],[2,1],[2,0],[2,1],[2,1],['0.5',6]]
++
++
++totals = []
++
++for i in range(len(alist)):
++    Sum = 0
++    for x in range(len(alist[i])):
++        temp = alist[i][x]
++        Sum += temp
++
++    totals.append(Sum)
++
++
++
++
++
++alist[1][0] = 3
++
++number = alist[0][0]
++number2 = alist[5][0]
++newNumber = number + 4
++print(newNumber)
++print(number2)
++
++
++print(alist)
++
++
++total = 0
++count = 1
++
++while total < 1:
++    print(total)
++    temp = 1/(2**count)
++    total += temp
++    count += 1
++
++
++
++
++print('stupid computer cant handle small numbers')
++
++
++string = '5g fg fr'
++
++newstring = string.split()
++
++print(newstring[0])
++
++
++
++def test():
++    var1 = 'Haii'
++    var2 = 5
++    return var1,var2
++
++
++var1and2 = test()
++
++var2 = var1and2[1]
++
++print(var2-5)
++
++
++
++var1 = '5'
++
++
++print(var1.isnumeric())
++
++num = int(input(''))
++
++
++def check(number):
++    return number.is_integer() and (1 <= number <= 999999)
++
++
++print(check(num))'''
++
++
++
++
+Index: School Stuff/Population Modelling.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/School Stuff/Population Modelling.py b/School Stuff/Population Modelling.py
+new file mode 100644
+--- /dev/null	(date 1714924973830)
++++ b/School Stuff/Population Modelling.py	(date 1714924973830)
+@@ -0,0 +1,157 @@
++import sys
++
++options = ['1','2','3','4','5']
++ages = ['Juveniles','Adults','Seniles']
++
++
++populationStats = []
++
++
++def setPop():
++    birthRateStr = 'x'
++
++    while birthRateStr.isalpha():
++        birthRateStr = input('What is the birth rate? ')
++
++    birthRate = float(birthRateStr)
++
++    while birthRate < 0:
++        birthRate = int(input('What is the birth rate? '))
++
++
++    populationStats.append([birthRate])
++
++
++    for i in range(3):
++        numbersStr = 'x'
++        survivalRateStr = 'x'
++
++
++        while numbersStr.isalpha() or survivalRateStr.isalpha():
++            numbersStr = input(f'Enter the number of {ages[i]} in the population ')
++            survivalRateStr = input(f'What is the survival rate for {ages[i]}? Enter a value from 0 to 1 ')
++
++
++        numbers = int(numbersStr)
++        survivalRate = float(survivalRateStr)
++
++
++        while numbers < 0 or (survivalRate < 0 or survivalRate > 1):
++            numbers = int(input(f'Enter the number of {ages[i]} in the population '))
++            survivalRate = float(input(f'What is the survival rate for {ages[i]}? Enter a value from 0 to 1 '))
++
++        survivalRateStr = str(survivalRate)
++
++        populationStats.append([numbers,ages[i],survivalRate,birthRate])
++
++    return populationStats
++
++
++
++def display():
++    if len(populationStats) == 0:
++        print('Model has not been created yet')
++
++    else:
++        print(populationStats)
++
++
++
++def run():#Shits about to get CRAZY
++
++    afile = open('Population Records.txt','a')
++
++    if len(populationStats) == 0:
++        print('Model has not been created yet')
++
++    else:
++        numGenerationsStr = 'x'
++
++        while numGenerationsStr.isalpha():
++            numGenerationsStr = input('How many generations do you want to model? The range is 5 - 25 : ')
++
++        numGenerations = int(numGenerationsStr)
++
++        while numGenerations < 5 or numGenerations > 25:
++            numGenerations = int(input('How many generations do you want to model? The range is 5 - 25 : '))
++
++
++        juveniles = populationStats[1][0]
++        adults = populationStats[2][0]
++        seniles = populationStats[3][0]
++
++        gen0 = f'Generation 0 : {juveniles} Juveniles, {adults} Adults, {seniles} Seniles.\n'
++        afile.write('\n-------------------------------------------------------------------------------------------------------\n' + gen0)
++        print(gen0)
++
++
++        juvenileSR = populationStats[0][0]
++        adultSR = populationStats[1][2]
++        senileSR = populationStats[3][2]
++
++
++
++        for x in range(numGenerations):
++            newNumJuveniles = int(round(adults * juvenileSR,0))
++            newNumAdults = int(round(juveniles * adultSR,0))
++            newNumSeniles = int(round((seniles * senileSR) + (adults * (populationStats[2][2])),0))
++
++            juveniles = newNumJuveniles
++            adults = newNumAdults
++            seniles = newNumSeniles
++
++
++            results = f'Generation {x + 1} : {juveniles} Juveniles, {adults} Adults, {seniles} Seniles.\n'
++            afile.write('\n' + results)
++            print(results)
++    afile.write('\n-------------------------------------------------------------------------------------------------------\n')
++    afile.close()
++
++
++
++
++print('''
++MAINMENU
++
++Welcome - Type the number of the option you would like to do
++
++1. Set the Generation 0 values
++2. Display the Generation 0 values
++3. Run the model
++4. Export data
++5. Quit.
++''')
++
++choice = -1
++
++while choice != '5':
++
++    choice = input('Enter Choice ')
++
++    if choice not in options:
++        print('Invalid input')
++
++
++    elif choice == '1':
++        setPop()
++
++
++    elif choice == '2':
++        display()
++
++    elif choice == '3':
++        run()
++
++    elif choice == '4':
++        print('Data Exported :)')
++
++
++    elif choice == '5':
++        check = input('Are you sure you want to Quit? Type "y" to confirm ').lower()
++
++        if check == 'y':
++            sys.exit()
++
++        else:
++            print('Okay, going back to Main Menu')
++            choice = -1
+Index: tkinter/Calculator.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/tkinter/Calculator.py b/tkinter/Calculator.py
+new file mode 100644
+--- /dev/null	(date 1713028946140)
++++ b/tkinter/Calculator.py	(date 1713028946140)
+@@ -0,0 +1,207 @@
++from tkinter import *
++import operator
++
++
++app = Tk()
++app.title('Calculator')
++app.resizable(width=FALSE, height=FALSE)
++
++
++
++
++#Widgets
++
++
++
++#Number Buttons
++
++button0 = Button(app,text='0',command = lambda:userInput('0'))
++button0.grid(row = 5,column = 0,columnspan = 2)
++
++buttonDecimal = Button(app,text = '.',command = lambda:userInput('.'))
++buttonDecimal.grid(row = 5,column = 2,columnspan = 1)
++
++
++button1 = Button(app, text='1',command = lambda:userInput('1'))
++button1.grid(row=4, column=0)
++
++button2 = Button(app, text='2',command = lambda:userInput('2'))
++button2.grid(row=4, column=1)
++
++button3 = Button(app, text='3',command = lambda:userInput('3'))
++button3.grid(row=4, column=2)
++
++button4 = Button(app, text='4',command = lambda:userInput('4'))
++button4.grid(row=3, column=0)
++
++button5 = Button(app, text='5',command = lambda:userInput('5'))
++button5.grid(row=3, column=1)
++
++button6 = Button(app, text='6',command = lambda:userInput('6'))
++button6.grid(row=3, column=2)
++
++button7 = Button(app, text='7',command = lambda:userInput('7'))
++button7.grid(row=2, column=0)
++
++button8 = Button(app, text='8',command = lambda:userInput('8'))
++button8.grid(row=2, column=1)
++
++button9 = Button(app, text='9',command = lambda:userInput('9'))
++button9.grid(row=2, column=2)
++
++
++
++#Option Buttons
++
++
++buttonDiv = Button(app,text = '÷',command = lambda:calculation('/'))
++buttonDiv.grid(row = 1,column = 3)
++
++buttonMult = Button(app,text = 'X',command = lambda:calculation('*'))
++buttonMult.grid(row = 2,column = 3)
++
++buttonSub = Button(app,text = '-',command = lambda:calculation('-'))
++buttonSub.grid(row = 3,column = 3)
++
++buttonAdd = Button(app,text = '+',command = lambda:calculation('+'))
++buttonAdd.grid(row = 4,column = 3)
++
++buttonEquals = Button(app,text='=',command = lambda:calculation('='))
++buttonEquals.grid(row = 5,column = 3)
++
++
++
++#Output Field
++
++outputLabel = Label(app,text = '0')
++outputLabel.grid(row=0,column = 0,columnspan = 4)
++
++
++
++#Give all buttons a set font size and padding
++
++for widget in app.winfo_children():
++    widget.configure(padx = 10,pady = 10,font = ('helvetica',50))
++    widget.grid(sticky = 'news')
++
++
++
++
++#Have to do a special size font for some or else it fucks up the formatting - therefore have to put it after the for loop
++
++buttonAC = Button(app,text = 'AC',font = ('helvetica',30),command = lambda:calculation('Clear'))
++buttonAC.grid(row = 1,column = 0,columnspan = 1,sticky = 'news')
++
++buttonChangeSign = Button(app,text = '+/-',font = ('helvetica',30),command = lambda:calculation('Flip'))
++buttonChangeSign.grid(row = 1,column=1,sticky = 'news')
++
++buttonPercentage = Button(app,text='%',font = ('helvetica',30),command = lambda:calculation('Percentage'))
++buttonPercentage.grid(row=1,column =2,sticky = 'news')
++
++
++
++
++#Funtionality
++
++#Cool thing I found on stack overflow that lets you use variables for mathematical operators - WOW!
++
++ops = {
++    "+": operator.add,
++    "-": operator.sub,
++    "*": operator.mul,
++    "/": operator.truediv
++}
++
++
++#Handles the numbers that are inputted
++def userInput(num):
++    currentNum = outputLabel.cget(key = 'text')
++
++    if currentNum == 'Error':
++        pass
++
++    elif currentNum == '0':
++        updatedNum = num
++        outputLabel.config(text = updatedNum)
++
++    else:
++        updatedNum = currentNum + num
++        outputLabel.config(text= updatedNum)
++
++
++#Handles the mathematical operators. This shit gets way too messy so try to just ignore it lol
++def calculation(operation):
++    currentNum = outputLabel.cget(key = 'text')
++
++    #Start with the easy shit
++
++    if currentNum == 'Error' and operation != 'Clear':
++        pass
++
++    elif operation == 'Clear':
++        currentNum = '0'
++
++    elif operation == 'Flip':
++        currentNumFloat = float(currentNum)
++        currentNum = str(currentNumFloat * -1)
++
++    elif operation == 'Percentage':
++        currentNumFloat = float(currentNum)
++        currentNum = str(currentNumFloat / 100)
++
++    #When you click '=' this whole thing runs - crazy right
++    elif operation == '=':
++        pos = -1
++        count = 0
++        for i in range(len(currentNum)):
++            temp = currentNum[i]
++
++            if not temp.isnumeric() and not temp == '.' and i != 0:
++                count += 1
++                pos = i
++
++                operation = temp
++
++
++        #Check if multiple operators exist - and if so, give the user an error for being so fucking stupid and thinking they can break MY CODE
++        if count > 1:
++            currentNum = 'Error'
++
++
++        #Make sure the user has inputted another number after the operator
++        if pos + 1 == len(currentNum):
++            currentNum = 'Error'
++
++
++        #Make sure an operator exists - so when you spam click '=' it doesn't try to evaluate it again as its just the number
++        #If the user hasn't done something stupid, run the code
++        if currentNum != 'Error' and pos != -1:
++
++            #Split the two numbers up depending on where the operator is. For example, '340*29' will split up into firstNum = 340 and secondNum = 29
++            firstNum = float(currentNum[:pos])
++            secondNum = float(currentNum[pos + 1:])
++
++            #If you're stupid enough to try and divide by 0, there is no hope for you.
++            if secondNum == 0 and operation == '/':
++                currentNum = 'Error'
++
++            else:
++                #For some reason it still gives an error if you spam click '=', but not as severe as before so just stop the thingy from evaluating again
++                if operation == '=':
++                    pass
++
++                else:
++                    op_func = ops[operation]
++                    currentNum = str(round(op_func(firstNum, secondNum),4))
++
++
++    else:
++        #Join the operator so you can see what operation you're doing
++        currentNum += operation
++
++    outputLabel.config(text=currentNum)
++
++
++
++
++app.mainloop()
+Index: School Stuff/Population Records.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/School Stuff/Population Records.txt b/School Stuff/Population Records.txt
+new file mode 100644
+--- /dev/null	(date 1715327758896)
++++ b/School Stuff/Population Records.txt	(date 1715327758896)
+@@ -0,0 +1,137 @@
++
++-------------------------------------------------------------------------------------------------------
++Generation 0 : 89 Juveniles, 145 Adults, 32 Seniles.
++
++Generation 1 : 334 Juveniles, 69 Adults, 91 Seniles.
++
++Generation 2 : 159 Juveniles, 261 Adults, 66 Seniles.
++
++Generation 3 : 600 Juveniles, 124 Adults, 166 Seniles.
++
++Generation 4 : 285 Juveniles, 468 Adults, 119 Seniles.
++
++Generation 5 : 1076 Juveniles, 222 Adults, 298 Seniles.
++
++Generation 6 : 511 Juveniles, 839 Adults, 214 Seniles.
++
++Generation 7 : 1930 Juveniles, 399 Adults, 534 Seniles.
++
++Generation 8 : 918 Juveniles, 1505 Adults, 384 Seniles.
++
++Generation 9 : 3461 Juveniles, 716 Adults, 958 Seniles.
++
++Generation 10 : 1647 Juveniles, 2700 Adults, 688 Seniles.
++
++Generation 11 : 6210 Juveniles, 1285 Adults, 1718 Seniles.
++
++Generation 12 : 2955 Juveniles, 4844 Adults, 1235 Seniles.
++
++Generation 13 : 11141 Juveniles, 2305 Adults, 3083 Seniles.
++
++Generation 14 : 5302 Juveniles, 8690 Adults, 2216 Seniles.
++
++Generation 15 : 19987 Juveniles, 4136 Adults, 5531 Seniles.
++
++Generation 16 : 9513 Juveniles, 15590 Adults, 3975 Seniles.
++
++Generation 17 : 35857 Juveniles, 7420 Adults, 9923 Seniles.
++
++Generation 18 : 17066 Juveniles, 27968 Adults, 7132 Seniles.
++
++Generation 19 : 64326 Juveniles, 13311 Adults, 17802 Seniles.
++
++Generation 20 : 30615 Juveniles, 50174 Adults, 12795 Seniles.
++
++Generation 21 : 115400 Juveniles, 23880 Adults, 31936 Seniles.
++
++-------------------------------------------------------------------------------------------------------
++
++-------------------------------------------------------------------------------------------------------
++Generation 0 : 5 Juveniles, 8 Adults, 100 Seniles.
++
++Generation 1 : 552 Juveniles, 4 Adults, 6 Seniles.
++
++Generation 2 : 276 Juveniles, 497 Adults, 3 Seniles.
++
++Generation 3 : 34293 Juveniles, 248 Adults, 388 Seniles.
++
++Generation 4 : 17112 Juveniles, 30864 Adults, 193 Seniles.
++
++Generation 5 : 2129616 Juveniles, 15401 Adults, 24074 Seniles.
++
++Generation 6 : 1062669 Juveniles, 1916654 Adults, 12013 Seniles.
++
++Generation 7 : 132249126 Juveniles, 956402 Adults, 1494990 Seniles.
++
++Generation 8 : 65991738 Juveniles, 119024213 Adults, 745994 Seniles.
++
++-------------------------------------------------------------------------------------------------------
++
++-------------------------------------------------------------------------------------------------------
++Generation 0 : 19 Juveniles, 12 Adults, 16 Seniles.
++
++Generation 1 : 144 Juveniles, 0 Adults, 23 Seniles.
++
++Generation 2 : 0 Juveniles, 0 Adults, 23 Seniles.
++
++Generation 3 : 0 Juveniles, 0 Adults, 23 Seniles.
++
++Generation 4 : 0 Juveniles, 0 Adults, 23 Seniles.
++
++Generation 5 : 0 Juveniles, 0 Adults, 23 Seniles.
++
++Generation 6 : 0 Juveniles, 0 Adults, 23 Seniles.
++
++Generation 7 : 0 Juveniles, 0 Adults, 23 Seniles.
++
++Generation 8 : 0 Juveniles, 0 Adults, 23 Seniles.
++
++Generation 9 : 0 Juveniles, 0 Adults, 23 Seniles.
++
++-------------------------------------------------------------------------------------------------------
++
++-------------------------------------------------------------------------------------------------------
++Generation 0 : 14 Juveniles, 15 Adults, 178 Seniles.
++
++Generation 1 : 180 Juveniles, 14 Adults, 22 Seniles.
++
++Generation 2 : 168 Juveniles, 180 Adults, 6 Seniles.
++
++Generation 3 : 2160 Juveniles, 168 Adults, 55 Seniles.
++
++Generation 4 : 2016 Juveniles, 2160 Adults, 56 Seniles.
++
++Generation 5 : 25920 Juveniles, 2016 Adults, 654 Seniles.
++
++Generation 6 : 24192 Juveniles, 25920 Adults, 670 Seniles.
++
++Generation 7 : 311040 Juveniles, 24192 Adults, 7843 Seniles.
++
++Generation 8 : 290304 Juveniles, 311040 Adults, 8042 Seniles.
++
++-------------------------------------------------------------------------------------------------------
++
++-------------------------------------------------------------------------------------------------------
++Generation 0 : 16 Juveniles, 7 Adults, 6 Seniles.
++
++Generation 1 : 21 Juveniles, 16 Adults, 7 Seniles.
++
++Generation 2 : 48 Juveniles, 21 Adults, 16 Seniles.
++
++Generation 3 : 63 Juveniles, 48 Adults, 21 Seniles.
++
++Generation 4 : 144 Juveniles, 63 Adults, 48 Seniles.
++
++Generation 5 : 189 Juveniles, 144 Adults, 63 Seniles.
++
++Generation 6 : 432 Juveniles, 189 Adults, 144 Seniles.
++
++Generation 7 : 567 Juveniles, 432 Adults, 189 Seniles.
++
++Generation 8 : 1296 Juveniles, 567 Adults, 432 Seniles.
++
++Generation 9 : 1701 Juveniles, 1296 Adults, 567 Seniles.
++
++Generation 10 : 3888 Juveniles, 1701 Adults, 1296 Seniles.
++
++-------------------------------------------------------------------------------------------------------
+Index: .idea/Python.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/Python.iml b/.idea/Python.iml
+new file mode 100644
+--- /dev/null	(date 1711277303614)
++++ b/.idea/Python.iml	(date 1711277303614)
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="PYTHON_MODULE" version="4">
++  <component name="NewModuleRootManager">
++    <content url="file://$MODULE_DIR$">
++      <excludeFolder url="file://$MODULE_DIR$/.venv" />
++    </content>
++    <orderEntry type="jdk" jdkName="Python 3.12 (Python)" jdkType="Python SDK" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: School Stuff/Password Generator.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/School Stuff/Password Generator.py b/School Stuff/Password Generator.py
+new file mode 100644
+--- /dev/null	(date 1715328203803)
++++ b/School Stuff/Password Generator.py	(date 1715328203803)
+@@ -0,0 +1,20 @@
++import string
++import random
++
++def generatePassword():
++    password = ''
++    for i in range(6):
++        numOrLetter = random.randint(0,1)
++        if numOrLetter == 0:
++            randomChar = str(random.randint(0,9))
++        elif numOrLetter == 1:
++            randomChar = random.choice(string.ascii_letters)
++
++        password += randomChar
++
++    return password
++
++
++print(generatePassword())
++
++
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+new file mode 100644
+--- /dev/null	(date 1711276719957)
++++ b/.idea/modules.xml	(date 1711276719957)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/.idea/Python.iml" filepath="$PROJECT_DIR$/.idea/Python.iml" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file
+Index: School Stuff/Password Checker.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/School Stuff/Password Checker.py b/School Stuff/Password Checker.py
+new file mode 100644
+--- /dev/null	(date 1715330513001)
++++ b/School Stuff/Password Checker.py	(date 1715330513001)
+@@ -0,0 +1,73 @@
++import re
++
++accepted = False
++
++
++def checkPassword(n):
++    password = str(n)
++    length = len(password)
++    specialChars = re.compile('[@_!#$%^&*"()<>?/|}{~:;§±£]')
++
++    if length < 8:
++        return 'Password is too short'
++
++    else:
++        cNum = False
++        cUp = False
++        cSpecial = False
++
++        if specialChars.search(password):
++            cSpecial = True
++
++        if not cSpecial:
++            return 'Password Needs a special character'
++
++        for i in range(length):
++            if cNum and cUp:
++                return 'Password accepted'
++
++            else:
++                char = password[i]
++                if char.isnumeric():
++                    cNum = True
++
++                elif char.isupper():
++                    cUp = True
++
++        return 'Password does not meet criteria'
++
++
++
++
++print('''
++Welcome to our register form
++''')
++
++username = input('Enter your username: ')
++
++
++
++print('''
++Password requirements are 
++1. Contains at least one number
++2. Contains at least one uppercase character
++3. Contains at least one special character
++4. Password needs to be at least 8 characters long
++''')
++
++
++
++while not accepted:
++    userPass = input('Enter your password: ')
++
++    check = checkPassword(userPass)
++    print(check)
++
++    if check == 'Password accepted':
++        accepted = True
++
++
++afile = open('Member details.txt','a')
++afile.write(f'\n\n Username : {username} \n Password : {userPass}')
++
++
+Index: School Stuff/Member details.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/School Stuff/Member details.txt b/School Stuff/Member details.txt
+new file mode 100644
+--- /dev/null	(date 1715331405263)
++++ b/School Stuff/Member details.txt	(date 1715331405263)
+@@ -0,0 +1,12 @@
++------USER DETAILS------
++
++ Username : Jaques
++ Password : BenchDogGecko69!
++
++ Username : igomes 
++ Password : 3Igome78*0
++
++
++
++ Username : jake 
++ Password : Anbgredbkk2@
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+new file mode 100644
+--- /dev/null	(date 1711277303615)
++++ b/.idea/misc.xml	(date 1711277303615)
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="Black">
++    <option name="sdkName" value="Python 3.12 (pythonProject)" />
++  </component>
++  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.12 (Python)" project-jdk-type="Python SDK" />
++</project>
+\ No newline at end of file
+Index: Random Shit/Messaging (Sockets).py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Random Shit/Messaging (Sockets).py b/Random Shit/Messaging (Sockets).py
+new file mode 100644
+--- /dev/null	(date 1715675954511)
++++ b/Random Shit/Messaging (Sockets).py	(date 1715675954511)
+@@ -0,0 +1,3 @@
++import socket
++import threading
++
+Index: School Stuff/ASCII Programming.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/School Stuff/ASCII Programming.py b/School Stuff/ASCII Programming.py
+new file mode 100644
+--- /dev/null	(date 1715934481708)
++++ b/School Stuff/ASCII Programming.py	(date 1715934481708)
+@@ -0,0 +1,69 @@
++
++def Ascii(string1,string2):
++    length1 = len(string1)
++    length2 = len(string2)
++
++
++    if length1 == 0 or length2 == 0:
++        return 'Invalid Input'
++
++    else:
++        nums1 = []
++        nums2 = []
++        for i in range(length1):
++            temp = string1[i]
++            nums1.append(ord(temp))
++
++        for i in range(length2):
++            temp = string2[i]
++            nums2.append(ord(temp))
++
++
++        lengthNums1 = len(nums1)
++        lengthNums2 = len(nums2)
++
++        removedNumbers = []
++
++        for x in range(lengthNums1):
++            temp1 = nums1[x]
++            for j in range(lengthNums2):
++                temp2 = nums2[j]
++
++                if temp1 == temp2:
++                    removedNumbers.append(temp1)
++
++
++        for g in range(len(removedNumbers)):
++            temp = removedNumbers[g]
++            nums1.remove(temp)
++            nums2.remove(temp)
++
++
++        for n in range(len(nums1)):
++            temp = nums1[n]
++            nums1[n] = chr(temp)
++
++        for n in range(len(nums2)):
++            temp = nums2[n]
++            nums2[n] = chr(temp)
++
++
++        newString1 = ''.join(nums1)
++        newString2 = ''.join(nums2)
++
++        return newString1 + ' ' + newString2
++
++
++string1 = input('Enter first string : ')
++string2 = input('Enter second string : ')
++
++
++newString = Ascii(string1,string2)
++
++
++print(f"New string is '{newString}'")
++
++
++
++
++
+Index: .idea/inspectionProfiles/profiles_settings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/inspectionProfiles/profiles_settings.xml b/.idea/inspectionProfiles/profiles_settings.xml
+new file mode 100644
+--- /dev/null	(date 1711276719962)
++++ b/.idea/inspectionProfiles/profiles_settings.xml	(date 1711276719962)
+@@ -0,0 +1,6 @@
++<component name="InspectionProjectProfileManager">
++  <settings>
++    <option name="USE_PROJECT_PROFILE" value="false" />
++    <version value="1.0" />
++  </settings>
++</component>
+\ No newline at end of file
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+--- /dev/null	(date 1711276719987)
++++ b/.idea/.gitignore	(date 1711276719987)
+@@ -0,0 +1,3 @@
++# Default ignored files
++/shelf/
++/workspace.xml
+Index: School Stuff/Year Programming.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/School Stuff/Year Programming.py b/School Stuff/Year Programming.py
+new file mode 100644
+--- /dev/null	(date 1715936736301)
++++ b/School Stuff/Year Programming.py	(date 1715936736301)
+@@ -0,0 +1,45 @@
++import random
++def convertYear(n):
++    total = 0
++    for i in range(len(n)):
++
++        temp = n[i]
++
++        if temp.isnumeric():
++            value = int(temp)
++            total += value
++
++
++
++    return total
++
++
++
++year = str(random.randint(1000,9999))
++value = convertYear(year)
++
++
++count = 0
++guesses = ['0','1']
++
++while count < 3:
++    guessStr = input(f'Guess {count + 1} : ')
++
++
++    while guessStr in guesses or not guessStr.isnumeric():
++        print('Already Guessed or invalid input')
++        guessStr = input(f'Guess {count + 1} : ')
++
++
++    guess = int(guessStr)
++    if value % guess == 0:
++        print(f'Yippie! Correct! {3 - count} guesse(s) left!')
++
++    else:
++        count += 1
++        print(f'WRONG! {3 - count} guesse(s) remaining...')
++
++
++
++
++print(f'Year : {year}, Value : {value}')
+Index: Random Shit/Binary Search Algorithm.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Random Shit/Binary Search Algorithm.py b/Random Shit/Binary Search Algorithm.py
+new file mode 100644
+--- /dev/null	(date 1717084237234)
++++ b/Random Shit/Binary Search Algorithm.py	(date 1717084237234)
+@@ -0,0 +1,57 @@
++#Don't know wtf is going on here
++
++
++
++import math
++import sys
++
++
++numbers = [4,7,8,21,46,47,51]
++
++
++def binarySearch(n):
++    length = len(numbers)
++    middle = int(length/2)
++    timeComplexity = round(math.log2(length))
++    count = 0
++
++    while count < timeComplexity:
++        if middle == 0:
++            if middle == n:
++                return True
++
++        number = numbers[middle]
++
++        if number < n:
++            middle = int(middle * 1.5)
++
++        elif number > n:
++            middle = int(middle * 0.5)
++
++        elif number == n:
++            return True
++
++        count += 1
++
++    return False
++
++
++stop = False
++
++while not stop:
++    item = input('enter a number you built this program ')
++
++    if item == 'quit':
++        stop = True
++
++    else:
++        number = int(item)
++        result = binarySearch(number)
++        if not result and number in numbers:
++            print(f'{result} This program fucked up')
++
++        else:
++            print(f'{result} Ok it worked this time')
++
++
++
+Index: School Stuff/2022 P1 Question.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/School Stuff/2022 P1 Question.py b/School Stuff/2022 P1 Question.py
+new file mode 100644
+--- /dev/null	(date 1718095226888)
++++ b/School Stuff/2022 P1 Question.py	(date 1718095226888)
+@@ -0,0 +1,34 @@
++
++
++def salesAnalysis():
++    total = 0
++    days = 0
++    afile = open('Sales.txt','r')
++
++    for item in afile:
++        temp = float(item)
++        total += temp
++        days += 1
++
++    average = round(total / days,2)
++
++    return f'Number of days: {days}, Total sales: {round(total,4)}, Average daily sales: {average}'
++
++print(salesAnalysis())
++
++
++
++data = [[1,5,7,12],[3,4,15,16],[0,0,1,3],[12,16,18,23]]
++
++
++
++lenData = len(data)
++
++for i in range(lenData):
++    total = 0
++    for x in range(len(data[i])):
++        temp = data[x][i]
++        total += temp
++
++    mean = total / lenData
++    print(f'Mean value of column {i + 1} is {mean}')
+Index: School Stuff/Sales.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/School Stuff/Sales.txt b/School Stuff/Sales.txt
+new file mode 100644
+--- /dev/null	(date 1717748230955)
++++ b/School Stuff/Sales.txt	(date 1717748230955)
+@@ -0,0 +1,7 @@
++2367.34
++1986.92
++2251.49
++1882.40
++2412.83
++3411.32
++2721.76
+\ No newline at end of file
+Index: School Stuff/AS Mock Program Stack.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/School Stuff/AS Mock Program Stack.py b/School Stuff/AS Mock Program Stack.py
+new file mode 100644
+--- /dev/null	(date 1720967191614)
++++ b/School Stuff/AS Mock Program Stack.py	(date 1720967191614)
+@@ -0,0 +1,28 @@
++
++stack = []
++
++def pop():
++    item = stack[0]
++    stack.remove(item)
++    return item
++
++def push(item):
++    stack.insert(0,item)
++
++
++def reverse(name):
++    for i in range(len(name)):
++        push(name[i])
++
++    reverseName = " "
++
++    for x in range(len(name)):
++        temp = pop()
++        reverseName += temp
++
++    return reverseName
++
++
++print(reverse('Jack'))
++
++
+Index: School Stuff/AS Mock Program Binary.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/School Stuff/AS Mock Program Binary.py b/School Stuff/AS Mock Program Binary.py
+new file mode 100644
+--- /dev/null	(date 1720967909853)
++++ b/School Stuff/AS Mock Program Binary.py	(date 1720967909853)
+@@ -0,0 +1,19 @@
++
++def toBinary(num):
++    binaryNum = " "
++    completed = False
++    while not completed:
++        digit = str(num % 2)
++        binaryNum += digit
++        num //= 2
++
++        if num == 1:
++            completed = True
++
++    return binaryNum[::-1]
++
++
++
++
++
++print(toBinary(25))
+\ No newline at end of file
+Index: Random Shit/Mines Game.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Random Shit/Mines Game.py b/Random Shit/Mines Game.py
+new file mode 100644
+--- /dev/null	(date 1723827457749)
++++ b/Random Shit/Mines Game.py	(date 1723827457749)
+@@ -0,0 +1,7 @@
++
++
++from tkinter import *
++
++app = Tk()
++app.geometry("800x800")
++app.mainloop()
+\ No newline at end of file
