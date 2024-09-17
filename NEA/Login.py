@@ -121,7 +121,7 @@ welcome_label.place(relx = 0.5,rely = 0.2, anchor = CENTER)
 
 
 
-
+#To make it so that the only thing a user can input is a number and only 1 number max
 
 def validate_entry(char_input):
     if len(char_input) <= 1 and char_input.isdigit() or char_input == "":
