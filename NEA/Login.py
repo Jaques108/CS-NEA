@@ -80,18 +80,19 @@ def crossword():
     playWinCrossword.title("Crossword")
     playWinCrossword.resizable(width=FALSE,height=FALSE)
 
+    cells = []
 
     for row in range(13):
         for col in range(13):
             cell = Label(playWinCrossword, text="*", justify='center')
             cell.grid(row=row, column=col, padx=4, pady=4)
+
+            cells.append([cell,[row,col]])
+
+
     url = "https://www.theguardian.com/crosswords/quick/16962"
     response = requests.get(url)
 
-    if (response.status_code) == 200:
-        print('success')
-    else:
-        print('cant find')
 
     soup = BeautifulSoup(response.text, 'html.parser')
 
@@ -106,10 +107,18 @@ def crossword():
         temp = item['position']
         tempX = temp['x']
         tempY = temp['y']
-        #print(f'x:{tempX}, y:{tempY}')
-        cell.config(row = [tempY],column = [tempX],text = 'S')
+        for i in range(len(cells)):
+            pos = cells[i][1]
+            posY = pos[0]
+            posX = pos[1]
 
-        ##Make input cells different character  (-)!
+            if (posX == tempX) and (posY == tempY):
+                cell = cells[i][0]
+                cell.config(text = "S")
+
+
+
+        #Make input cells different character  (-)!
         # if item['direction'] == 'across':
         #     Length = item['length']
         #     for i in range(1,Length):
