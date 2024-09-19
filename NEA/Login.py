@@ -90,7 +90,7 @@ def crossword():
             cells.append([cell,[row,col]])
 
 
-    url = "https://www.theguardian.com/crosswords/quick/16962"
+    url = "https://www.theguardian.com/crosswords/quick/16965"
     response = requests.get(url)
 
 
@@ -100,7 +100,7 @@ def crossword():
     test = (mydivs[0].get('data-crossword-data'))
 
     jsonified = json.loads(test)
-    print(jsonified['entries'])
+
 
     #Writes an S where we need to start !
     for item in jsonified['entries']:
@@ -115,6 +115,27 @@ def crossword():
             if (posX == tempX) and (posY == tempY):
                 cell = cells[i][0]
                 cell.config(text = "S")
+
+                if item['direction'] == 'across':
+                    Length = item['length']
+                    for x in range(1,Length):
+                        cell = cells[i+x][0]
+                        cell.config(text = "-")
+
+                if item['direction'] == 'down':
+                    Length = item['length']
+                    for n in range(Length,13):
+                        cell = cells[i+n][0]
+
+                        text = cell.cget(key = "text")
+                        if text == "-":
+                            cell.config(text = "□")
+                        else:
+                            cell.config(text = "|")
+
+
+
+
 
 
 
