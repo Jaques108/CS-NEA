@@ -174,8 +174,6 @@ def choose():
 
 
 
-
-
 login_button = Button(app, text = 'Log in',command = login)
 login_button.place(relx = 0.5,rely = 0.6, anchor = CENTER)
 
