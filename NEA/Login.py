@@ -137,7 +137,6 @@ def crossword():
 
 
 
-pass
 
         #Make input cells different character  (-)!
         # if item['direction'] == 'across':
