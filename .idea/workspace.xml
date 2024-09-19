@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcc33587-880f-4a89-98b5-cef7062c96cd" name="Changes" comment="Upload">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEA/Login.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Login.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEA/Test.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Test.py" afterDir="false" />
-    </list>
+    <list default="true" id="fcc33587-880f-4a89-98b5-cef7062c96cd" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,6 +20,9 @@
         <option value="Python Script" />
       </list>
     </option>
+  </component>
+  <component name="Git.Rebase.Settings">
+    <option name="NEW_BASE" value="origin/main" />
   </component>
   <component name="Git.Settings">
     <option name="PUSH_TAGS">
@@ -44,48 +43,48 @@
   &quot;associatedIndex&quot;: 1
 }</component>
   <component name="ProjectId" id="2e8C4ZYvxaP7ssbgvwzDjOXErAz" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.2022 P1 Question.executor&quot;: &quot;Run&quot;,
-    &quot;Python.AS Mock Program Binary.executor&quot;: &quot;Run&quot;,
-    &quot;Python.AS Mock Program Stack.executor&quot;: &quot;Run&quot;,
-    &quot;Python.ASCII Programming.executor&quot;: &quot;Run&quot;,
-    &quot;Python.BItwise Manipulation.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Binary Search Algorithm.executor&quot;: &quot;Run&quot;,
-    &quot;Python.BlackJack.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Calculator tkinter.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Calculator.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Crossword.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Hangman.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Home Coding 1.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Login.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Messaging (Sockets).executor&quot;: &quot;Run&quot;,
-    &quot;Python.Mines Game.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Password Checker.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Password Generator.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Password.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Population Modelling.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Problem 10.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Problem 21.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Python Game.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Test.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Testing.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Year Programming.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/jake/6th Form/Computer Science/Python&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.2022 P1 Question.executor": "Run",
+    "Python.AS Mock Program Binary.executor": "Run",
+    "Python.AS Mock Program Stack.executor": "Run",
+    "Python.ASCII Programming.executor": "Run",
+    "Python.BItwise Manipulation.executor": "Run",
+    "Python.Binary Search Algorithm.executor": "Run",
+    "Python.BlackJack.executor": "Run",
+    "Python.Calculator tkinter.executor": "Run",
+    "Python.Calculator.executor": "Run",
+    "Python.Crossword.executor": "Run",
+    "Python.Hangman.executor": "Run",
+    "Python.Home Coding 1.executor": "Run",
+    "Python.Login.executor": "Run",
+    "Python.Messaging (Sockets).executor": "Run",
+    "Python.Mines Game.executor": "Run",
+    "Python.Password Checker.executor": "Run",
+    "Python.Password Generator.executor": "Run",
+    "Python.Password.executor": "Run",
+    "Python.Population Modelling.executor": "Run",
+    "Python.Problem 10.executor": "Run",
+    "Python.Problem 21.executor": "Run",
+    "Python.Python Game.executor": "Run",
+    "Python.Test.executor": "Run",
+    "Python.Testing.executor": "Run",
+    "Python.Year Programming.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "deletionFromPopupRequiresConfirmation": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "/Users/jake/6th Form/Computer Science/Python",
+    "settings.editor.selected.configurable": "preferences.pathVariables"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/NEA" />
@@ -193,6 +192,6 @@
     <MESSAGE value="Crossword" />
     <MESSAGE value="Merge remote-tracking branch 'origin/main'" />
     <MESSAGE value="Upload" />
-    <option name="LAST_COMMIT_MESSAGE" value="Upload" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
 </project>
