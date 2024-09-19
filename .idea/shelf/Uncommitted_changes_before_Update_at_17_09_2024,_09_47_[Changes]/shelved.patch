@@ -1,0 +1,46 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"fcc33587-880f-4a89-98b5-cef7062c96cd\" name=\"Changes\" comment=\"Crossword\" />\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"ExportToHTMLSettings\">\n    <option name=\"OPEN_IN_BROWSER\" value=\"true\" />\n    <option name=\"OUTPUT_DIRECTORY\" value=\"$PROJECT_DIR$/exportToHTML\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Python Script\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"HighlightingSettingsPerFile\">\n    <setting file=\"file://$PROJECT_DIR$/NEA/Login.py\" root0=\"FORCE_HIGHLIGHTING\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 1\n}</component>\n  <component name=\"ProjectId\" id=\"2e8C4ZYvxaP7ssbgvwzDjOXErAz\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;Python.2022 P1 Question.executor&quot;: &quot;Run&quot;,\n    &quot;Python.AS Mock Program Binary.executor&quot;: &quot;Run&quot;,\n    &quot;Python.AS Mock Program Stack.executor&quot;: &quot;Run&quot;,\n    &quot;Python.ASCII Programming.executor&quot;: &quot;Run&quot;,\n    &quot;Python.BItwise Manipulation.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Binary Search Algorithm.executor&quot;: &quot;Run&quot;,\n    &quot;Python.BlackJack.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Calculator tkinter.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Calculator.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Crossword.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Hangman.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Home Coding 1.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Login.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Messaging (Sockets).executor&quot;: &quot;Run&quot;,\n    &quot;Python.Mines Game.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Password Checker.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Password Generator.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Password.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Population Modelling.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Problem 10.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Problem 21.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Python Game.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Test.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Testing.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Year Programming.executor&quot;: &quot;Run&quot;,\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,\n    &quot;git-widget-placeholder&quot;: &quot;main&quot;,\n    &quot;last_opened_file_path&quot;: &quot;/Users/jake/6th Form/Computer Science/Python&quot;,\n    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;\n  }\n}</component>\n  <component name=\"RecentsManager\">\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/NEA\" />\n      <recent name=\"$PROJECT_DIR$/School Stuff\" />\n      <recent name=\"$PROJECT_DIR$/Random Shit\" />\n      <recent name=\"$PROJECT_DIR$\" />\n      <recent name=\"$PROJECT_DIR$/tkinter\" />\n    </key>\n  </component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"bundled-python-sdk-09665e90c3a7-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.15026.15\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"fcc33587-880f-4a89-98b5-cef7062c96cd\" name=\"Changes\" comment=\"\" />\n      <created>1711276629155</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1711276629155</updated>\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"Crossword\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1726562093764</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1726562093764</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"2\" />\n    <servers />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Crossword\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Crossword\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision d1b88ea5b5258245a5fe7ebbd399203005977213)
++++ b/.idea/workspace.xml	(date 1726562703931)
+@@ -4,7 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="fcc33587-880f-4a89-98b5-cef7062c96cd" name="Changes" comment="Crossword" />
++    <list default="true" id="fcc33587-880f-4a89-98b5-cef7062c96cd" name="Changes" comment="Upload" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -106,7 +106,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1726562093764</updated>
+     </task>
+-    <option name="localTasksCounter" value="2" />
++    <task id="LOCAL-00002" summary="Upload">
++      <option name="closed" value="true" />
++      <created>1726562701290</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1726562701290</updated>
++    </task>
++    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -122,6 +130,7 @@
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="Crossword" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Crossword" />
++    <MESSAGE value="Upload" />
++    <option name="LAST_COMMIT_MESSAGE" value="Upload" />
+   </component>
+ </project>
+\ No newline at end of file
