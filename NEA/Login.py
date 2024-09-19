@@ -172,8 +172,6 @@ def choose():
 
 
 
-pass
-
 
 
 login_button = Button(app, text = 'Log in',command = login)
