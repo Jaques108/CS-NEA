@@ -59,10 +59,6 @@ def sudoku():
     playWinSudoku.resizable(width=FALSE, height=FALSE)
     playWinSudoku.geometry("350x335")
 
-    #way too hard
-    """canvas = Canvas(playWin)
-    canvas.create_line(15, 25, 200, 25,width=5)
-    line1.grid(row = 3,column = 3)"""
 
     valid = (playWinSudoku.register(validate_entry), '%P')
     for row in range(9):
@@ -84,13 +80,13 @@ def crossword():
 
     for row in range(13):
         for col in range(13):
-            cell = Label(playWinCrossword, text="*", justify='center')
+            cell = Label(playWinCrossword, text="⬛", justify='center')
             cell.grid(row=row, column=col, padx=4, pady=4)
 
             cells.append([cell,[row,col]])
 
 
-    url = "https://www.theguardian.com/crosswords/quick/16965"
+    url = "https://www.theguardian.com/crosswords/quick/16964"
     response = requests.get(url)
 
 
@@ -120,18 +116,28 @@ def crossword():
                     Length = item['length']
                     for x in range(1,Length):
                         cell = cells[i+x][0]
-                        cell.config(text = "-")
+                        cell.config(text = "--")
 
                 if item['direction'] == 'down':
                     Length = item['length']
-                    for n in range(Length,13):
-                        cell = cells[i+n][0]
+                    n = 13
+                    for _ in range(1,Length):
+                        cell = cells[i + n][0]
 
-                        text = cell.cget(key = "text")
-                        if text == "-":
-                            cell.config(text = "□")
+                        text = cell.cget(key="text")
+                        if text == "S":
+                            pass
+
+                        elif text == "--":
+                            cell.config(text="□")
+
                         else:
-                            cell.config(text = "|")
+                            cell.config(text="|")
+
+                        n += 13
+
+                break
+
 
 
 
