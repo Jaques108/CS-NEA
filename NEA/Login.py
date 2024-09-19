@@ -186,3 +186,26 @@ def validate_entry(char_input):
 
 
 app.mainloop()
+
+
+
+
+#We want to obtain crosswords for our game
+
+#Users like guardian crosswords
+
+#Because you did a survey and guardian was best
+
+#So to source their crosswords we can either manually input data into our applciation and use this however this is time consuming
+
+#Another option is to source this data from the guardian website via web-scraping.
+
+#This is quicker and allows to use a vast collection of crosswords.
+
+#DESIGN
+
+#A cross word is gridlike data and therefore can be presented using a 2D List,
+
+#Crosswords have grids where users can enter answers to clues as well as a display for clues.
+
+#Mockup design of crossword
