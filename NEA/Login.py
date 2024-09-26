@@ -83,34 +83,34 @@ def crossword():
 
     genericUrl = "https://www.theguardian.com/crosswords/quick/"
 
-    Label1 = Label(playWinCrossword, text="Enter crossword number #")
-    Label1.place(relx=0.5, rely=0.075, anchor=CENTER)
-
-    urlEntry = Entry(playWinCrossword)
-    urlEntry.place(relx = 0.5,rely = 0.25,anchor = CENTER)
-
-    submitButton = Button(playWinCrossword,text = "Submit",command = submit)
-    submitButton.place(relx = 0.5,rely = 0.45,anchor = CENTER)
-
-
-
-    Label2 = Label(playWinCrossword, text="----------------------------------")
-    Label2.place(relx=0.5, rely=0.575, anchor=CENTER)
-
-    randomButton = Button(playWinCrossword,text = "Random",command = random)
-    randomButton.place(relx= 0.5,rely = 0.80,anchor = CENTER)
+    # Label1 = Label(playWinCrossword, text="Enter crossword number #")
+    # Label1.place(relx=0.5, rely=0.075, anchor=CENTER)
+    #
+    # urlEntry = Entry(playWinCrossword)
+    # urlEntry.place(relx = 0.5,rely = 0.25,anchor = CENTER)
+    #
+    # submitButton = Button(playWinCrossword,text = "Submit",command = submit)
+    # submitButton.place(relx = 0.5,rely = 0.45,anchor = CENTER)
 
 
 
-    playWinCrossword.mainloop()
+    #Label2 = Label(playWinCrossword, text="----------------------------------")
+    #abel2.place(relx=0.5, rely=0.575, anchor=CENTER)
 
-    play = False
+    #randomButton = Button(playWinCrossword,text = "Random",command = random)
+    #randomButton.place(relx= 0.5,rely = 0.80,anchor = CENTER)
 
-    while not play:
-        cont = input("yes? ")
 
-        if cont == "yes":
-            play = True
+
+
+
+    # play = False
+    #
+    # while not play:
+    #     cont = input("yes? ")
+    #
+    #     if cont == "yes":
+    #         play = True
 
     cells = []
 
@@ -122,7 +122,7 @@ def crossword():
             cells.append([cell,[row,col]])
 
 
-
+    url = genericUrl + '9251'
 
     response = requests.get(url)
 
@@ -174,6 +174,7 @@ def crossword():
                         n += 13
 
                 break
+    playWinCrossword.mainloop()
 
 
 
