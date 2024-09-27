@@ -44,7 +44,8 @@ class Crossword(Frame):
     def ChangeCell(self,x,y,value):
         self.grid[x][y].setLetter(value)
 
-
+pass
+pass
 # crossword1 = Crossword()
 #
 #
