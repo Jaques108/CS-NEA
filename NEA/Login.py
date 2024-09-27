@@ -244,11 +244,6 @@ def validate_entry(char_input):
     else:
         return False
 
-pass
-pass
-
-def dosomething():
-    pass
 
 
 app.mainloop()
