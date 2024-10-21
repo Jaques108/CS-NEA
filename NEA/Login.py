@@ -246,7 +246,6 @@ def validate_entry(char_input):
 
 
 
-
 app.mainloop()
 
 
