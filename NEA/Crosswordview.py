@@ -12,6 +12,7 @@ class cell():
         self.currentLetter = letter
     def getLetter(self): #Getter
         print(self.currentLetter)
+        print('test')
 class Crossword(Frame):
     def __init__(self,parent,controller):
         self.controller = controller
