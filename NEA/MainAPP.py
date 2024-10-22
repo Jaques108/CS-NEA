@@ -23,6 +23,8 @@ class MainApp(tk.Tk):
     def SwitchUser(self,name):
         self.username = name
 
+
+
 app = MainApp()
 app.mainloop()
 app.SwitchUser('Joe Crawley !')

@@ -112,69 +112,116 @@ def crossword():
     #     if cont == "yes":
     #         play = True
 
-    cells = []
+    # cells = []
+    #
+    # for row in range(13):
+    #     for col in range(13):
+    #         cell = Label(playWinCrossword, text="⬛", justify='center')
+    #         cell.grid(row=row, column=col, padx=4, pady=4)
+    #
+    #         cells.append([cell,[row,col]])
 
-    for row in range(13):
-        for col in range(13):
-            cell = Label(playWinCrossword, text="⬛", justify='center')
-            cell.grid(row=row, column=col, padx=4, pady=4)
 
-            cells.append([cell,[row,col]])
-
-
-    url = genericUrl + '9251'
+    url = genericUrl + '16993'
 
     response = requests.get(url)
-
-
     soup = BeautifulSoup(response.text, 'html.parser')
-
     mydivs = soup.find_all("div", {"class": "js-crossword"})
     test = (mydivs[0].get('data-crossword-data'))
 
+
     jsonified = json.loads(test)
+    startPositions = []
 
-
-    #Writes an S where we need to start !
+    seen = set()
     for item in jsonified['entries']:
         temp = item['position']
         tempX = temp['x']
         tempY = temp['y']
-        for i in range(len(cells)):
-            pos = cells[i][1]
-            posY = pos[0]
-            posX = pos[1]
 
-            if (posX == tempX) and (posY == tempY):
-                cell = cells[i][0]
-                cell.config(text = "S")
+        startPosition = (tempX,tempY)
 
-                if item['direction'] == 'across':
-                    Length = item['length']
-                    for x in range(1,Length):
-                        cell = cells[i+x][0]
-                        cell.config(text = "--")
+        #Removes duplicates. This is because some start positions belong to both across and down words.
+        if startPosition not in seen:
+            startPositions.append(startPosition)
+            seen.add(startPosition)
 
-                if item['direction'] == 'down':
-                    Length = item['length']
-                    n = 13
-                    for _ in range(1,Length):
-                        cell = cells[i + n][0]
 
-                        text = cell.cget(key="text")
-                        if text == "S":
-                            pass
+        startPositions = sorted(startPositions, key=lambda x: (x[1], x[0]))
 
-                        elif text == "--":
-                            cell.config(text="□")
 
-                        else:
-                            cell.config(text="|")
+    length = len(startPositions) - 1
 
-                        n += 13
 
-                break
-    playWinCrossword.mainloop()
+    x = 0
+    for row in range(13):
+        for col in range(13):
+            currentStartPos = startPositions[x]
+            tempX = startPositions[x][0]
+            tempY = startPositions[x][1]
+
+            if col == tempX and row == tempY:
+                obj = 'S'
+
+                if x != length:
+                    x += 1
+
+
+
+
+            else:
+                obj = '⬛'
+
+
+
+            cell = Label(playWinCrossword, text=obj, justify='center')
+            cell.grid(row=row, column=col, padx=4, pady=4)
+
+
+
+
+
+
+    #Writes an S where we need to start !
+    # for item in jsonified['entries']:
+    #     temp = item['position']
+    #     tempX = temp['x']
+    #     tempY = temp['y']
+    #     for i in range(len(cells)):
+    #         pos = cells[i][1]
+    #         posY = pos[0]
+    #         posX = pos[1]
+    #
+    #         if (posX == tempX) and (posY == tempY):
+    #             cell = cells[i][0]
+    #             cell.config(text = "S")
+    #
+    #             if item['direction'] == 'across':
+    #                 Length = item['length']
+    #                 for x in range(1,Length):
+    #                     cell = cells[i+x][0]
+    #                     cell.config(text = "--")
+    #
+    #             if item['direction'] == 'down':
+    #                 Length = item['length']
+    #                 n = 13
+    #                 for _ in range(1,Length):
+    #                     cell = cells[i + n][0]
+    #
+    #                     text = cell.cget(key="text")
+    #                     if text == "S":
+    #                         pass
+    #
+    #                     elif text == "--":
+    #                         cell.config(text="□")
+    #
+    #                     else:
+    #                         cell.config(text="|")
+    #
+    #                     n += 13
+    #
+    #             break
+    # playWinCrossword.mainloop()
 
 
 
@@ -246,7 +293,14 @@ def validate_entry(char_input):
 
 
 
+
+
 app.mainloop()
+
+
+
+
+
 
 
 

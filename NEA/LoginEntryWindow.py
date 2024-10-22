@@ -18,5 +18,5 @@ class LoginEntryWindow(tk.Frame):
         passLabel = ttk.Label(self, text='Password')
         passLabel.grid(row=2,column=0)
 
-        playButton = ttk.Button(self, text='Play', command=lambda:print('PLay Clicked !'))
+        playButton = ttk.Button(self, text='Play', command=lambda:print('Play Clicked !'))
         playButton.grid(row=3, column=1)
