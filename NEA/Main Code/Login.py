@@ -14,67 +14,7 @@ app.resizable(width=FALSE,height=FALSE)
 
 
 
-def login():
-
-
-    loginWin = Toplevel(app)
-    loginWin.geometry("300x200")
-    loginWin.resizable(width=FALSE, height=FALSE)
-
-    userNameEntry = Entry(loginWin)
-    userNameEntry.place(relx = 0.6, rely =0.2,anchor = CENTER)
-
-    userLabel = Label(loginWin, text = 'Username')
-    userLabel.place(relx = 0.15,rely = 0.2,anchor = CENTER)
-
-    passEntry = Entry(loginWin)
-    passEntry.place(relx=0.6, rely=0.5, anchor=CENTER)
-
-    passLabel = Label(loginWin, text='Password')
-    passLabel.place(relx = 0.15,rely = 0.5,anchor = CENTER)
-
-    def check():
-        user = userNameEntry.cget(key="text")
-        password = passEntry.cget(key="text")
-
-    def cont():
-        if user == "" or password == "":
-            pass
-
-        else:
-            loginWin.destroy()
-            sudoku()
-
-    playButton = Button(loginWin, text = 'Play', command = cont)
-    playButton.place(relx = 0.5, rely = 0.75,anchor = CENTER)
-
-    for widget in loginWin.winfo_children():
-        widget.config(font='Georgia')
-
-
-
-
-
-
-
-def choose():
-    app.destroy()
-
-    chooseWin = Tk()
-    chooseWin.geometry("400x150")
-    chooseWin.title("What to play")
-
-    sudokuButton = Button(chooseWin,text = "Sudoku",command = sudoku, width=20,height=20)
-    sudokuButton.place(relx = 0.25,rely = 0.5,anchor = CENTER)
-
-    crosswordsButton = Button(chooseWin, text="Crossword", command = crossword, width=20, height=20)
-    crosswordsButton.place(relx=0.75, rely=0.5, anchor=CENTER)
-
-
-
-
 def crossword():
-
     playWinCrossword = Tk()
     playWinCrossword.title("Crossword")
     playWinCrossword.resizable(width=FALSE,height=FALSE)
@@ -82,7 +22,7 @@ def crossword():
     genericUrl = "https://www.theguardian.com/crosswords/quick/"
 
 
-    cells = []
+    cells = {}
 
     code = "16994"
     url = genericUrl + code
@@ -132,15 +72,13 @@ def crossword():
 
             cell = Label(playWinCrossword, text=obj, justify='center')
             cell.grid(row=row, column=col, padx=4, pady=4)
-            cells.append(cell)
+
+            position = str(row) + str(col)
+            cells[position] = cell
+
+
 
     cellsBelongingToWord(jsonified,cells)
-
-
-
-
-
-
 
 
 
@@ -155,34 +93,38 @@ def cellsBelongingToWord(var,cells):
         direction = item['direction']
         length = item['length']
 
+
         if direction == 'across':
             for x in range(1, length):
-                cell = cells[posX + x]
+                position = str(posY) + str(posX + x)
+                cell = cells.get(position)
+
                 text = cell.cget(key="text")
 
-                if text == "S":
-                    pass
-
-                elif text == "⬛":
+                if text == "⬛":
                     cell.config(text="--")
 
-                else:
-                    cell.config(text="□")
-
-
-        if direction == 'down':
-            for n in range(1, length):
-                cell = cells[posY + n]
-                text = cell.cget(key="text")
-
-                if text == "S":
+                elif text == "S":
                     pass
 
-                elif text == "--":
+                else:
                     cell.config(text="□")
 
+
+        else:
+            for n in range(1, length):
+                position = str(posY + n) + str(posX)
+                cell = cells.get(position)
+                text = cell.cget(key="text")
+
+                if text == "⬛":
+                    cell.config(text = '|')
+
+                elif text == "S":
+                    pass
+
                 else:
-                    cell.config(text="|")
+                    cell.config(text="□")
 
 
 
@@ -190,21 +132,9 @@ def cellsBelongingToWord(var,cells):
 
 
 
+play = Button(app,text = 'play',command = crossword)
+play.pack()
 
-
-login_button = Button(app, text = 'Log in',command = login)
-login_button.place(relx = 0.5,rely = 0.6, anchor = CENTER)
-
-guest_button = Button(app, text = 'Play as Guest',command = choose)
-guest_button.place(relx = 0.5, rely = 0.8, anchor = CENTER)
-
-
-for widget in app.winfo_children():
-    widget.config(font = ('Georgia', 30))
-
-
-welcome_label = Label(app,text = 'Welcome',font = ('Georgia', 50))
-welcome_label.place(relx = 0.5,rely = 0.2, anchor = CENTER)
 
 app.mainloop()
 
@@ -213,25 +143,3 @@ app.mainloop()
 
 
 
-
-
-
-#We want to obtain crosswords for our game
-
-#Users like guardian crosswords
-
-#Because you did a survey and guardian was best
-
-#So to source their crosswords we can either manually input data into our applciation and use this however this is time consuming
-
-#Another option is to source this data from the guardian website via web-scraping.
-
-#This is quicker and allows to use a vast collection of crosswords.
-
-#DESIGN
-
-#A cross word is gridlike data and therefore can be presented using a 2D List,
-
-#Crosswords have grids where users can enter answers to clues as well as a display for clues.
-
-#Mockup design of crossword
