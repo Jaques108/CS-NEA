@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="fcc33587-880f-4a89-98b5-cef7062c96cd" name="Changes" comment="Upload">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEA/FlaskAPI/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEA/Main Code/Login.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/FlaskAPI/Data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/FlaskAPI/Data.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/FlaskAPI/Data.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +46,7 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/NEA/Login.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/NEA/FlaskAPI/Data.py" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -77,6 +76,7 @@
     "Python.Calculator.executor": "Run",
     "Python.ChoiceFrame.executor": "Run",
     "Python.Crossword.executor": "Run",
+    "Python.Data.executor": "Run",
     "Python.Hangman.executor": "Run",
     "Python.Home Coding 1.executor": "Run",
     "Python.Login.executor": "Run",
@@ -93,7 +93,7 @@
     "Python.Problem 21.executor": "Run",
     "Python.Python Game.executor": "Run",
     "Python.Python.executor": "Run",
-    "Python.Test.executor": "Run",
+    "Python.Test.executor": "Debug",
     "Python.Testing.executor": "Run",
     "Python.Year Programming.executor": "Run",
     "Python._pydev_execfile.executor": "Run",
@@ -104,7 +104,7 @@
     "deletionFromPopupRequiresConfirmation": "false",
     "git-widget-placeholder": "main",
     "last_opened_file_path": "/Users/jake/6th Form/Computer Science/Python",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   },
   "keyToStringList": {
     "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
@@ -305,7 +305,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729804549422</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Upload">
+      <option name="closed" value="true" />
+      <created>1729810040940</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1729810040940</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

@@ -2,7 +2,7 @@ from flask import Flask,request,jsonify
 from bs4 import BeautifulSoup
 import json
 import requests
-from tkinter import *
+
 
 
 app = Flask(__name__)
@@ -87,8 +87,7 @@ def crossword(code):
             else:
                 obj = 'BlackSquare'
 
-
-            position = str(row) + str(col)
+            position = str(row).zfill(2) + str(col).zfill(2)
             cells[position] = {'text':obj}
 
 
@@ -108,8 +107,8 @@ def cellsBelongingToWord(var,cells):
 
 
         if direction == 'across':
-            for x in range(1, length):
-                position = str(posY) + str(posX + x)
+            for x in range(1, length-1):
+                position = str(posY).zfill(2) + str(posX + x).zfill(2)
 
                 cell = cells.get(position)
                 text = cell.get('text')
@@ -124,21 +123,23 @@ def cellsBelongingToWord(var,cells):
                     cell['text'] = "WhiteSquare"
 
 
-        else:
-            for n in range(1, length):
-                position = str(posY + n) + str(posX)
+        elif direction == 'down':
+            for n in range(1, length-1):
+                position = str(posY + n).zfill(2) + str(posX).zfill(2)
                 cell = cells.get(position)
                 text = cell.get('text')
 
 
-                if text == "BlackSqaure":
+                if text == "BlackSquare":
                     cell['text'] = "|"
 
                 elif text == "S":
                     pass
 
                 else:
-                    cell['text'] = "WhiteSquare"
+                    cell['text'] = "WhiteSqaure"
+
+
 
 
 app.run(debug=True)
