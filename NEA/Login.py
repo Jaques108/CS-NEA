@@ -12,6 +12,8 @@ app.resizable(width=FALSE,height=FALSE)
 
 
 
+
+
 def login():
 
 
@@ -50,8 +52,6 @@ def login():
         widget.config(font='Georgia')
 
 
-
-
 def sudoku():
 
     playWinSudoku = Tk()
@@ -69,178 +69,12 @@ def sudoku():
     playWin.mainloop()
 
 
-
-
-def crossword():
-
-    def submit():
-        number = urlEntry.cget(key = "text")
-
-
-    playWinCrossword = Tk()
-    playWinCrossword.title("Crossword")
-    playWinCrossword.resizable(width=FALSE,height=FALSE)
-
-    genericUrl = "https://www.theguardian.com/crosswords/quick/"
-
-    # Label1 = Label(playWinCrossword, text="Enter crossword number #")
-    # Label1.place(relx=0.5, rely=0.075, anchor=CENTER)
-    #
-    # urlEntry = Entry(playWinCrossword)
-    # urlEntry.place(relx = 0.5,rely = 0.25,anchor = CENTER)
-    #
-    # submitButton = Button(playWinCrossword,text = "Submit",command = submit)
-    # submitButton.place(relx = 0.5,rely = 0.45,anchor = CENTER)
-
-
-
-    #Label2 = Label(playWinCrossword, text="----------------------------------")
-    #abel2.place(relx=0.5, rely=0.575, anchor=CENTER)
-
-    #randomButton = Button(playWinCrossword,text = "Random",command = random)
-    #randomButton.place(relx= 0.5,rely = 0.80,anchor = CENTER)
-
-
-
-
-
-    # play = False
-    #
-    # while not play:
-    #     cont = input("yes? ")
-    #
-    #     if cont == "yes":
-    #         play = True
-
-    # cells = []
-    #
-    # for row in range(13):
-    #     for col in range(13):
-    #         cell = Label(playWinCrossword, text="⬛", justify='center')
-    #         cell.grid(row=row, column=col, padx=4, pady=4)
-    #
-    #         cells.append([cell,[row,col]])
-
-
-    url = genericUrl + '16993'
-
-    response = requests.get(url)
-    soup = BeautifulSoup(response.text, 'html.parser')
-    mydivs = soup.find_all("div", {"class": "js-crossword"})
-    test = (mydivs[0].get('data-crossword-data'))
-
-
-    jsonified = json.loads(test)
-    startPositions = []
-
-    seen = set()
-    for item in jsonified['entries']:
-        temp = item['position']
-        tempX = temp['x']
-        tempY = temp['y']
-
-        startPosition = (tempX,tempY)
-
-        #Removes duplicates. This is because some start positions belong to both across and down words.
-        if startPosition not in seen:
-            startPositions.append(startPosition)
-            seen.add(startPosition)
-
-
-        startPositions = sorted(startPositions, key=lambda x: (x[1], x[0]))
-
-
-    length = len(startPositions) - 1
-
-
-    x = 0
-    for row in range(13):
-        for col in range(13):
-            currentStartPos = startPositions[x]
-            tempX = startPositions[x][0]
-            tempY = startPositions[x][1]
-
-            if col == tempX and row == tempY:
-                obj = 'S'
-
-                if x != length:
-                    x += 1
-
-
-
-
-            else:
-                obj = '⬛'
-
-
-
-            cell = Label(playWinCrossword, text=obj, justify='center')
-            cell.grid(row=row, column=col, padx=4, pady=4)
-
-
-
-
-
-
-    #Writes an S where we need to start !
-    # for item in jsonified['entries']:
-    #     temp = item['position']
-    #     tempX = temp['x']
-    #     tempY = temp['y']
-    #     for i in range(len(cells)):
-    #         pos = cells[i][1]
-    #         posY = pos[0]
-    #         posX = pos[1]
-    #
-    #         if (posX == tempX) and (posY == tempY):
-    #             cell = cells[i][0]
-    #             cell.config(text = "S")
-    #
-    #             if item['direction'] == 'across':
-    #                 Length = item['length']
-    #                 for x in range(1,Length):
-    #                     cell = cells[i+x][0]
-    #                     cell.config(text = "--")
-    #
-    #             if item['direction'] == 'down':
-    #                 Length = item['length']
-    #                 n = 13
-    #                 for _ in range(1,Length):
-    #                     cell = cells[i + n][0]
-    #
-    #                     text = cell.cget(key="text")
-    #                     if text == "S":
-    #                         pass
-    #
-    #                     elif text == "--":
-    #                         cell.config(text="□")
-    #
-    #                     else:
-    #                         cell.config(text="|")
-    #
-    #                     n += 13
-    #
-    #             break
-    # playWinCrossword.mainloop()
-
-
-
-
-
-
-
-        #Make input cells different character  (-)!
-        # if item['direction'] == 'across':
-        #     Length = item['length']
-        #     for i in range(1,Length):
-        #         self.grid[tempY][tempX+i] = '-'
-        # elif item['direction'] == 'down':
-        #     Length = item['length']
-        #     for i in range(1,Length):
-        #         self.grid[tempY+i][tempX] = '|'
-
-
-
+#To make it so that the only thing a user can input is a number and only 1 number max
+def validate_entry(char_input):
+    if len(char_input) <= 1 and char_input.isdigit() or char_input == "":
+        return True
+    else:
+        return False
 
 
 
@@ -256,6 +90,121 @@ def choose():
 
     crosswordsButton = Button(chooseWin, text="Crossword", command = crossword, width=20, height=20)
     crosswordsButton.place(relx=0.75, rely=0.5, anchor=CENTER)
+
+
+
+
+def crossword():
+
+    playWinCrossword = Tk()
+    playWinCrossword.title("Crossword")
+    playWinCrossword.resizable(width=FALSE,height=FALSE)
+
+    genericUrl = "https://www.theguardian.com/crosswords/quick/"
+
+
+    cells = []
+
+    code = "16994"
+    url = genericUrl + code
+
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, 'html.parser')
+    mydivs = soup.find_all("div", {"class": "js-crossword"})
+    test = (mydivs[0].get('data-crossword-data'))
+
+    jsonified = json.loads(test)
+
+
+    startPositions = []
+    seen = set()
+    for item in jsonified['entries']:
+        temp = item['position']
+        tempX = temp['x']
+        tempY = temp['y']
+
+        startPosition = (tempX, tempY)
+
+        # Removes duplicates. This is because some start positions belong to both across and down words.
+        if startPosition not in seen:
+            startPositions.append(startPosition)
+            seen.add(startPosition)
+
+        startPositions = sorted(startPositions, key=lambda x: (x[1], x[0]))
+
+    length = len(startPositions) - 1
+
+    x = 0
+    for row in range(13):
+        for col in range(13):
+            currentStartPos = startPositions[x]
+            tempX = startPositions[x][0]
+            tempY = startPositions[x][1]
+
+            if col == tempX and row == tempY:
+                obj = 'S'
+
+                if x != length:
+                    x += 1
+
+
+            else:
+                obj = '⬛'
+
+            cell = Label(playWinCrossword, text=obj, justify='center')
+            cell.grid(row=row, column=col, padx=4, pady=4)
+            cells.append(cell)
+
+    cellsBelongingToWord(jsonified,cells)
+
+
+
+
+
+
+
+
+
+
+
+def cellsBelongingToWord(var,cells):
+    for item in var['entries']:
+        temp = item['position']
+        posX = temp['x']
+        posY = temp['y']
+
+        direction = item['direction']
+        length = item['length']
+
+        if direction == 'across':
+            for x in range(1, length):
+                cell = cells[posX + x]
+                text = cell.cget(key="text")
+
+                if text == "S":
+                    pass
+
+                elif text == "⬛":
+                    cell.config(text="--")
+
+                else:
+                    cell.config(text="□")
+
+
+        if direction == 'down':
+            for n in range(1, length):
+                cell = cells[posY + n]
+                text = cell.cget(key="text")
+
+                if text == "S":
+                    pass
+
+                elif text == "--":
+                    cell.config(text="□")
+
+                else:
+                    cell.config(text="|")
+
 
 
 
@@ -277,23 +226,6 @@ for widget in app.winfo_children():
 
 welcome_label = Label(app,text = 'Welcome',font = ('Georgia', 50))
 welcome_label.place(relx = 0.5,rely = 0.2, anchor = CENTER)
-
-
-
-
-
-
-#To make it so that the only thing a user can input is a number and only 1 number max
-
-def validate_entry(char_input):
-    if len(char_input) <= 1 and char_input.isdigit() or char_input == "":
-        return True
-    else:
-        return False
-
-
-
-
 
 app.mainloop()
 
