@@ -7,11 +7,9 @@ class choiceFrame(Frame):
         self.parent = parent
         self.controller = controller
 
-        #self.geometry("400x150")
-        #self.title("What to play")
 
         sudokuButton = Button(self, text="Sudoku", command=lambda:self.controller.show_frame('sudokuFrame','350x335','Sudoku'),width = 20,height = 20)
-        sudokuButton.place(relx=0.25, rely=0.5, anchor=CENTER)
+        sudokuButton.grid(row=0,column=0)
 
         crosswordsButton = Button(self, text="Crossword", width=20, height=20)
-        crosswordsButton.place(relx=0.75, rely=0.5, anchor=CENTER)
+        crosswordsButton.grid(row = 0,column=1)
