@@ -1,4 +1,3 @@
-from crypt import methods
 from flask import Flask,request,jsonify
 from bs4 import BeautifulSoup
 import json
@@ -25,23 +24,32 @@ app = Flask(__name__)
 #My first endpoint (Where someone gets something)
 
 
-@app.route('/GenerateCells',methods=['GET'])
-def crossword():
-
+@app.route('/GenerateCells/<code>',methods=['GET'])
+def crossword(code):
     genericUrl = "https://www.theguardian.com/crosswords/quick/"
-    code = "16992"
-    url = genericUrl + code
+
+    if code.isdigit():
+        url = genericUrl + code
+
+    else:
+        return 'Invalid Code'
 
 
     cells = {}
 
 
-    response = requests.get(url)
-    soup = BeautifulSoup(response.text, 'html.parser')
-    mydivs = soup.find_all("div", {"class": "js-crossword"})
-    test = (mydivs[0].get('data-crossword-data'))
+    try:
+        response = requests.get(url)
+        soup = BeautifulSoup(response.text, 'html.parser')
+        mydivs = soup.find_all("div", {"class": "js-crossword"})
+        test = (mydivs[0].get('data-crossword-data'))
 
-    jsonified = json.loads(test)
+        jsonified = json.loads(test)
+
+    except:
+        return "Code doesn't exist"
+
+
 
 
     startPositions = []
@@ -77,7 +85,7 @@ def crossword():
 
 
             else:
-                obj = '⬛'
+                obj = 'BlackSquare'
 
 
             position = str(row) + str(col)
@@ -106,14 +114,14 @@ def cellsBelongingToWord(var,cells):
                 cell = cells.get(position)
                 text = cell.get('text')
 
-                if text == "⬛":
+                if text == "BlackSquare":
                     cell['text'] = "--"
 
                 elif text == "S":
                     pass
 
                 else:
-                    cell['text'] = "□"
+                    cell['text'] = "WhiteSquare"
 
 
         else:
@@ -123,14 +131,14 @@ def cellsBelongingToWord(var,cells):
                 text = cell.get('text')
 
 
-                if text == "⬛":
+                if text == "BlackSqaure":
                     cell['text'] = "|"
 
                 elif text == "S":
                     pass
 
                 else:
-                    cell['text'] = "□"
+                    cell['text'] = "WhiteSquare"
 
 
 app.run(debug=True)
