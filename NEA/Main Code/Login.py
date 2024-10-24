@@ -52,29 +52,8 @@ def login():
         widget.config(font='Georgia')
 
 
-def sudoku():
-
-    playWinSudoku = Tk()
-    playWinSudoku.title("Sudoku")
-    playWinSudoku.resizable(width=FALSE, height=FALSE)
-    playWinSudoku.geometry("350x335")
 
 
-    valid = (playWinSudoku.register(validate_entry), '%P')
-    for row in range(9):
-        for col in range(9):
-            entry = Entry(playWinSudoku, width=2, validate='key', validatecommand=valid,justify = 'center')
-            entry.grid(row=row, column=col, padx=4, pady=4)
-
-    playWin.mainloop()
-
-
-#To make it so that the only thing a user can input is a number and only 1 number max
-def validate_entry(char_input):
-    if len(char_input) <= 1 and char_input.isdigit() or char_input == "":
-        return True
-    else:
-        return False
 
 
 

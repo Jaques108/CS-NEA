@@ -1,6 +1,6 @@
 from tkinter import ttk
 import tkinter as tk
-class LoginEntryWindow(tk.Frame):
+class loginEntryFrame(tk.Frame):
     def __init__(self,parent,controller):
         tk.Frame.__init__(self,parent)
         self.controller = controller
@@ -18,5 +18,5 @@ class LoginEntryWindow(tk.Frame):
         passLabel = ttk.Label(self, text='Password')
         passLabel.grid(row=2,column=0)
 
-        playButton = ttk.Button(self, text='Play', command=lambda:print('Play Clicked !'))
+        playButton = ttk.Button(self, text='Play', command=lambda:print('Play Clicked!'))
         playButton.grid(row=3, column=1)

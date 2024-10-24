@@ -9,5 +9,5 @@ class testpage2(tk.Frame):
         label = tk.Label(self,text='FRAME 2 HELLO !!!')
         label.grid()
 
-        Button1 = tk.Button(self, text='switch frame', command=lambda: self.controller.show_frame('loginPage'))
+        Button1 = tk.Button(self, text='switch frame', command=lambda: self.controller.show_frame('loginPage','600x600','Welcome'))
         Button1.grid(row=1)

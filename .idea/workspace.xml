@@ -5,10 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fcc33587-880f-4a89-98b5-cef7062c96cd" name="Changes" comment="Upload">
-      <change afterPath="$PROJECT_DIR$/NEA/Test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NEA/Frames/ChoiceFrame.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NEA/Frames/SudokuFrame.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NEA/Main Code/MainAPP.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEA/FlaskAPI/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/FlaskAPI/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEA/Login.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/Crosswordview.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Main Code/Crosswordview.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/Login.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Main Code/Login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/LoginEntryWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Frames/LoginEntryFrame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/LoginFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Frames/LoginFrame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/MainAPP.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/TestFrame2.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Frames/TestFrame2.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,11 +82,13 @@
     "Python.BlackJack.executor": "Run",
     "Python.Calculator tkinter.executor": "Run",
     "Python.Calculator.executor": "Run",
+    "Python.ChoiceFrame.executor": "Run",
     "Python.Crossword.executor": "Run",
     "Python.Hangman.executor": "Run",
     "Python.Home Coding 1.executor": "Run",
     "Python.Login.executor": "Run",
     "Python.LoginEntryWindow.executor": "Run",
+    "Python.LoginFrame.executor": "Run",
     "Python.MainAPP.executor": "Run",
     "Python.Messaging (Sockets).executor": "Run",
     "Python.Mines Game.executor": "Run",
@@ -113,11 +121,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/NEA/Main Code" />
+      <recent name="$PROJECT_DIR$/NEA/Frames" />
       <recent name="$PROJECT_DIR$/NEA" />
       <recent name="$PROJECT_DIR$/School Stuff" />
       <recent name="$PROJECT_DIR$/Random Shit" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/tkinter" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -256,7 +264,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729620314807</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Upload">
+      <option name="closed" value="true" />
+      <created>1729788821927</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1729788821927</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
