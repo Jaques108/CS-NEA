@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="fcc33587-880f-4a89-98b5-cef7062c96cd" name="Changes" comment="Upload">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEA/Main Code/Login.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Main Code/Login.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEA/Misc/Test.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Misc/Test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/FlaskAPI/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/Main Code/Login.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/FlaskAPI/Data.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +79,7 @@
     "Python.Crossword.executor": "Run",
     "Python.Hangman.executor": "Run",
     "Python.Home Coding 1.executor": "Run",
-    "Python.Login.executor": "Debug",
+    "Python.Login.executor": "Run",
     "Python.LoginEntryWindow.executor": "Run",
     "Python.LoginFrame.executor": "Run",
     "Python.MainAPP.executor": "Run",
@@ -281,7 +281,31 @@
       <option name="project" value="LOCAL" />
       <updated>1729793794748</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Upload">
+      <option name="closed" value="true" />
+      <created>1729804529015</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1729804529015</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Upload">
+      <option name="closed" value="true" />
+      <created>1729804537313</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1729804537313</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Upload">
+      <option name="closed" value="true" />
+      <created>1729804549422</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1729804549422</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -302,15 +326,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Upload" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/NEA/Main Code/Login.py</url>
-          <line>105</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
         <watch expression="startPositions[0][1]" language="Python" />
