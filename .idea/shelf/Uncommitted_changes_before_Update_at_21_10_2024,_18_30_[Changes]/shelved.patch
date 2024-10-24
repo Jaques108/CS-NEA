@@ -1,0 +1,144 @@
+Index: NEA/Login.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import requests\nfrom bs4 import BeautifulSoup\nimport json\n\nfrom tkinter import *\n\n\napp = Tk()\napp.geometry(\"400x400\")\napp.title('Main Menu')\napp.resizable(width=FALSE,height=FALSE)\n\n\n\ndef login():\n\n\n    loginWin = Toplevel(app)\n    loginWin.geometry(\"300x200\")\n    loginWin.resizable(width=FALSE, height=FALSE)\n\n    userNameEntry = Entry(loginWin)\n    userNameEntry.place(relx = 0.6, rely =0.2,anchor = CENTER)\n\n    userLabel = Label(loginWin, text = 'Username')\n    userLabel.place(relx = 0.15,rely = 0.2,anchor = CENTER)\n\n    passEntry = Entry(loginWin)\n    passEntry.place(relx=0.6, rely=0.5, anchor=CENTER)\n\n    passLabel = Label(loginWin, text='Password')\n    passLabel.place(relx = 0.15,rely = 0.5,anchor = CENTER)\n\n    def check():\n        user = userNameEntry.cget(key=\"text\")\n        password = passEntry.cget(key=\"text\")\n\n    def cont():\n        if user == \"\" or password == \"\":\n            pass\n\n        else:\n            loginWin.destroy()\n            sudoku()\n\n    playButton = Button(loginWin, text = 'Play', command = cont)\n    playButton.place(relx = 0.5, rely = 0.75,anchor = CENTER)\n\n    for widget in loginWin.winfo_children():\n        widget.config(font='Georgia')\n\n\n\n\ndef sudoku():\n\n    playWinSudoku = Tk()\n    playWinSudoku.title(\"Sudoku\")\n    playWinSudoku.resizable(width=FALSE, height=FALSE)\n    playWinSudoku.geometry(\"350x335\")\n\n\n    valid = (playWinSudoku.register(validate_entry), '%P')\n    for row in range(9):\n        for col in range(9):\n            entry = Entry(playWinSudoku, width=2, validate='key', validatecommand=valid,justify = 'center')\n            entry.grid(row=row, column=col, padx=4, pady=4)\n\n    playWin.mainloop()\n\n\n\n\ndef crossword():\n\n    def submit():\n        number = urlEntry.cget(key = \"text\")\n\n\n    playWinCrossword = Tk()\n    playWinCrossword.title(\"Crossword\")\n    playWinCrossword.resizable(width=FALSE,height=FALSE)\n\n    genericUrl = \"https://www.theguardian.com/crosswords/quick/\"\n\n    # Label1 = Label(playWinCrossword, text=\"Enter crossword number #\")\n    # Label1.place(relx=0.5, rely=0.075, anchor=CENTER)\n    #\n    # urlEntry = Entry(playWinCrossword)\n    # urlEntry.place(relx = 0.5,rely = 0.25,anchor = CENTER)\n    #\n    # submitButton = Button(playWinCrossword,text = \"Submit\",command = submit)\n    # submitButton.place(relx = 0.5,rely = 0.45,anchor = CENTER)\n\n\n\n    #Label2 = Label(playWinCrossword, text=\"----------------------------------\")\n    #abel2.place(relx=0.5, rely=0.575, anchor=CENTER)\n\n    #randomButton = Button(playWinCrossword,text = \"Random\",command = random)\n    #randomButton.place(relx= 0.5,rely = 0.80,anchor = CENTER)\n\n\n\n\n\n    # play = False\n    #\n    # while not play:\n    #     cont = input(\"yes? \")\n    #\n    #     if cont == \"yes\":\n    #         play = True\n\n    cells = []\n\n    for row in range(13):\n        for col in range(13):\n            cell = Label(playWinCrossword, text=\"⬛\", justify='center')\n            cell.grid(row=row, column=col, padx=4, pady=4)\n\n            cells.append([cell,[row,col]])\n\n\n    url = genericUrl + '9251'\n\n    response = requests.get(url)\n\n\n    soup = BeautifulSoup(response.text, 'html.parser')\n\n    mydivs = soup.find_all(\"div\", {\"class\": \"js-crossword\"})\n    test = (mydivs[0].get('data-crossword-data'))\n\n    jsonified = json.loads(test)\n\n\n    #Writes an S where we need to start !\n    for item in jsonified['entries']:\n        temp = item['position']\n        tempX = temp['x']\n        tempY = temp['y']\n        for i in range(len(cells)):\n            pos = cells[i][1]\n            posY = pos[0]\n            posX = pos[1]\n\n            if (posX == tempX) and (posY == tempY):\n                cell = cells[i][0]\n                cell.config(text = \"S\")\n\n                if item['direction'] == 'across':\n                    Length = item['length']\n                    for x in range(1,Length):\n                        cell = cells[i+x][0]\n                        cell.config(text = \"--\")\n\n                if item['direction'] == 'down':\n                    Length = item['length']\n                    n = 13\n                    for _ in range(1,Length):\n                        cell = cells[i + n][0]\n\n                        text = cell.cget(key=\"text\")\n                        if text == \"S\":\n                            pass\n\n                        elif text == \"--\":\n                            cell.config(text=\"□\")\n\n                        else:\n                            cell.config(text=\"|\")\n\n                        n += 13\n\n                break\n    playWinCrossword.mainloop()\n\n\n\n\n\n\n\n        #Make input cells different character  (-)!\n        # if item['direction'] == 'across':\n        #     Length = item['length']\n        #     for i in range(1,Length):\n        #         self.grid[tempY][tempX+i] = '-'\n        # elif item['direction'] == 'down':\n        #     Length = item['length']\n        #     for i in range(1,Length):\n        #         self.grid[tempY+i][tempX] = '|'\n\n\n\n\n\n\ndef choose():\n    app.destroy()\n\n    chooseWin = Tk()\n    chooseWin.geometry(\"400x150\")\n    chooseWin.title(\"What to play\")\n\n    sudokuButton = Button(chooseWin,text = \"Sudoku\",command = sudoku, width=20,height=20)\n    sudokuButton.place(relx = 0.25,rely = 0.5,anchor = CENTER)\n\n    crosswordsButton = Button(chooseWin, text=\"Crossword\", command = crossword, width=20, height=20)\n    crosswordsButton.place(relx=0.75, rely=0.5, anchor=CENTER)\n\n\n\n\n\n\n\n\nlogin_button = Button(app, text = 'Log in',command = login)\nlogin_button.place(relx = 0.5,rely = 0.6, anchor = CENTER)\n\nguest_button = Button(app, text = 'Play as Guest',command = choose)\nguest_button.place(relx = 0.5, rely = 0.8, anchor = CENTER)\n\n\nfor widget in app.winfo_children():\n    widget.config(font = ('Georgia', 30))\n\n\nwelcome_label = Label(app,text = 'Welcome',font = ('Georgia', 50))\nwelcome_label.place(relx = 0.5,rely = 0.2, anchor = CENTER)\n\n\n\n\n\n\n#To make it so that the only thing a user can input is a number and only 1 number max\n\ndef validate_entry(char_input):\n    if len(char_input) <= 1 and char_input.isdigit() or char_input == \"\":\n        return True\n    else:\n        return False\n\n\n\napp.mainloop()\n\n\n\n\n#We want to obtain crosswords for our game\n\n#Users like guardian crosswords\n\n#Because you did a survey and guardian was best\n\n#So to source their crosswords we can either manually input data into our applciation and use this however this is time consuming\n\n#Another option is to source this data from the guardian website via web-scraping.\n\n#This is quicker and allows to use a vast collection of crosswords.\n\n#DESIGN\n\n#A cross word is gridlike data and therefore can be presented using a 2D List,\n\n#Crosswords have grids where users can enter answers to clues as well as a display for clues.\n\n#Mockup design of crossword\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/NEA/Login.py b/NEA/Login.py
+--- a/NEA/Login.py	(revision be1b59d79b7d0264492db50557c1a9d8758c0ea4)
++++ b/NEA/Login.py	(date 1728029070009)
+@@ -122,7 +122,7 @@
+             cells.append([cell,[row,col]])
+ 
+ 
+-    url = genericUrl + '9251'
++    url = genericUrl + '16978'
+ 
+     response = requests.get(url)
+ 
+Index: NEA/Crosswordview.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from tkinter import *\n\n#OOP !\n##Crossword = 2d list of cells, where cell is an object\n\n\nclass cell():\n    def __init__(self,currentLetter):\n        self.currentLetter = currentLetter\n\n    def setLetter(self,letter):  #setter\n        self.currentLetter = letter\n    def getLetter(self): #Getter\n        print(self.currentLetter)\nclass Crossword(Frame):\n    def __init__(self,parent,controller):\n        self.controller = controller\n        self.parent = parent\n        Frame.__init__(self,parent)\n        self.crosswordgrid = [[cell('0') for i in range(13)] for k in range(13)]\n        self.clues = []\n        self.answers = [[cell('0') for i in range(13)] for k in range(13)]\n\n        self.label1 = Label(self,text=self.controller.username)\n        self.label1.grid(row=0,column=0)\n    def populate(self):\n        self.label1.config(text=self.controller.username)\n\n    def ShowClues(self):\n        print(self.clues)\n        ###Integrate into GUI at somepoint\n    def printGrid(self):\n        for item in self.grid:\n\n            Temp = [k.currentLetter for k in item]\n            print(Temp)\n        #integrate into GUI\n    def CheckIfCorrect(self):\n        for i in range(len(self.crosswordgrid)):\n            for k in range(len(self.crosswordgrid[i])):\n                if self.crosswordgrid[i][k].currentLetter != self.answers[i][k].currentLetter:\n                    return False\n        return True\n    def ChangeCell(self,x,y,value):\n        self.grid[x][y].setLetter(value)\n\n\n# crossword1 = Crossword()\n#\n#\n# print(crossword1.CheckIfCorrect())\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/NEA/Crosswordview.py b/NEA/Crosswordview.py
+--- a/NEA/Crosswordview.py	(revision be1b59d79b7d0264492db50557c1a9d8758c0ea4)
++++ b/NEA/Crosswordview.py	(date 1728904025798)
+@@ -6,7 +6,7 @@
+ 
+ class cell():
+     def __init__(self,currentLetter):
+-        self.currentLetter = currentLetter
++        self.currentLetter = currentL etter
+ 
+     def setLetter(self,letter):  #setter
+         self.currentLetter = letter
+Index: NEA/Test.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from tkinter import *\napp = Tk()\napp.geometry(\"300x300\")\n\n\nLabel = Label(app,text = \"TESTING\")\nLabel.pack()\n\n\ntext = Label.cget(key=\"text\")\nprint(text)\n\nif text == \"-\":\n    print(\"bazinga\")\n    Label.config(text = \"bazinga\")\n\n\n\n\n\napp.mainloop()\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/NEA/Test.py b/NEA/Test.py
+--- a/NEA/Test.py	(revision be1b59d79b7d0264492db50557c1a9d8758c0ea4)
++++ b/NEA/Test.py	(date 1728042954682)
+@@ -1,21 +1,35 @@
+-from tkinter import *
+-app = Tk()
+-app.geometry("300x300")
++
++numbers = [1,6,4,7,9,3,4,63,6,62,4,6,3,4,8]
++
++
+ 
++def bubbleSort(array):
++    done = False
++    length = len(array)
+ 
+-Label = Label(app,text = "TESTING")
+-Label.pack()
+ 
++    while not done:
++        swaps = 0
++        iterations = 0
++        for i in range(length - 1):
++            iterations += 1
+ 
+-text = Label.cget(key="text")
+-print(text)
++            if array[i] > array[i + 1]:
++                swaps += 1
+ 
+-if text == "-":
+-    print("bazinga")
+-    Label.config(text = "bazinga")
++                temp = array[i]
++                array[i] = array[i + 1]
++                array[i + 1] = temp
+ 
+ 
++        if swaps == 0:
++            done = True
+ 
+ 
++    return array,('Iterations:',iterations)
+ 
+-app.mainloop()
++
++
++print(bubbleSort(numbers))
++
++
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"fcc33587-880f-4a89-98b5-cef7062c96cd\" name=\"Changes\" comment=\"Upload\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_09_2024,_09_47_[Changes]/shelved.patch\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_09_2024__09_47__Changes_.xml\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/NEA/Login.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/NEA/Login.py\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"ExportToHTMLSettings\">\n    <option name=\"OPEN_IN_BROWSER\" value=\"true\" />\n    <option name=\"OUTPUT_DIRECTORY\" value=\"$PROJECT_DIR$/exportToHTML\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Python Script\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"PUSH_TAGS\">\n      <GitPushTagMode>\n        <option name=\"argument\" value=\"--tags\" />\n        <option name=\"title\" value=\"All\" />\n      </GitPushTagMode>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitHubPullRequestSearchHistory\">{\n  &quot;lastFilter&quot;: {\n    &quot;state&quot;: &quot;OPEN&quot;,\n    &quot;assignee&quot;: &quot;Jaques108&quot;\n  }\n}</component>\n  <component name=\"GithubPullRequestsUISettings\">{\n  &quot;selectedUrlAndAccountId&quot;: {\n    &quot;url&quot;: &quot;https://github.com/Jaques108/CS-NEA&quot;,\n    &quot;accountId&quot;: &quot;ea9d7374-0f21-46a7-86ab-88931896b6cd&quot;\n  }\n}</component>\n  <component name=\"HighlightingSettingsPerFile\">\n    <setting file=\"file://$PROJECT_DIR$/NEA/Login.py\" root0=\"FORCE_HIGHLIGHTING\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 1\n}</component>\n  <component name=\"ProjectId\" id=\"2e8C4ZYvxaP7ssbgvwzDjOXErAz\" />\n  <component name=\"ProjectLevelVcsManager\">\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\n  </component>\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;Python.2022 P1 Question.executor&quot;: &quot;Run&quot;,\n    &quot;Python.AS Mock Program Binary.executor&quot;: &quot;Run&quot;,\n    &quot;Python.AS Mock Program Stack.executor&quot;: &quot;Run&quot;,\n    &quot;Python.ASCII Programming.executor&quot;: &quot;Run&quot;,\n    &quot;Python.BItwise Manipulation.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Binary Search Algorithm.executor&quot;: &quot;Run&quot;,\n    &quot;Python.BlackJack.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Calculator tkinter.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Calculator.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Crossword.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Hangman.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Home Coding 1.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Login.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Messaging (Sockets).executor&quot;: &quot;Run&quot;,\n    &quot;Python.Mines Game.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Password Checker.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Password Generator.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Password.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Population Modelling.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Problem 10.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Problem 21.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Python Game.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Python.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Test.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Testing.executor&quot;: &quot;Run&quot;,\n    &quot;Python.Year Programming.executor&quot;: &quot;Run&quot;,\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\n    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,\n    &quot;git-widget-placeholder&quot;: &quot;main&quot;,\n    &quot;last_opened_file_path&quot;: &quot;/Users/jake/6th Form/Computer Science/Python&quot;,\n    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;\n  },\n  &quot;keyToStringList&quot;: {\n    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [\n      &quot;Python&quot;\n    ]\n  }\n}</component>\n  <component name=\"RecentsManager\">\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/NEA\" />\n      <recent name=\"$PROJECT_DIR$/School Stuff\" />\n      <recent name=\"$PROJECT_DIR$/Random Shit\" />\n      <recent name=\"$PROJECT_DIR$\" />\n      <recent name=\"$PROJECT_DIR$/tkinter\" />\n    </key>\n  </component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"bundled-python-sdk-98f27166c754-ba05f1cad1b1-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.21829.153\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"fcc33587-880f-4a89-98b5-cef7062c96cd\" name=\"Changes\" comment=\"\" />\n      <created>1711276629155</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1711276629155</updated>\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"Crossword\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1726562093764</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1726562093764</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"Upload\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1726562701290</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1726562701290</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"Upload\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1726563055843</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1726563055843</updated>\n    </task>\n    <task id=\"LOCAL-00004\" summary=\"Upload\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1726565984285</created>\n      <option name=\"number\" value=\"00004\" />\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1726565984285</updated>\n    </task>\n    <task id=\"LOCAL-00005\" summary=\"Upload\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1726735549184</created>\n      <option name=\"number\" value=\"00005\" />\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1726735549184</updated>\n    </task>\n    <task id=\"LOCAL-00006\" summary=\"Upload\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1726735607490</created>\n      <option name=\"number\" value=\"00006\" />\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1726735607490</updated>\n    </task>\n    <task id=\"LOCAL-00007\" summary=\"Upload\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1726735918911</created>\n      <option name=\"number\" value=\"00007\" />\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1726735918911</updated>\n    </task>\n    <task id=\"LOCAL-00008\" summary=\"Upload\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1726735947549</created>\n      <option name=\"number\" value=\"00008\" />\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1726735947549</updated>\n    </task>\n    <task id=\"LOCAL-00009\" summary=\"Upload\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1726750305431</created>\n      <option name=\"number\" value=\"00009\" />\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1726750305431</updated>\n    </task>\n    <task id=\"LOCAL-00010\" summary=\"Upload\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1726764529565</created>\n      <option name=\"number\" value=\"00010\" />\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1726764529565</updated>\n    </task>\n    <task id=\"LOCAL-00011\" summary=\"Upload\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1726765269060</created>\n      <option name=\"number\" value=\"00011\" />\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1726765269060</updated>\n    </task>\n    <task id=\"LOCAL-00012\" summary=\"Upload\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1726765301099</created>\n      <option name=\"number\" value=\"00012\" />\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1726765301099</updated>\n    </task>\n    <task id=\"LOCAL-00013\" summary=\"Upload\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1726767453504</created>\n      <option name=\"number\" value=\"00013\" />\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1726767453504</updated>\n    </task>\n    <task id=\"LOCAL-00014\" summary=\"Upload\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1726777036429</created>\n      <option name=\"number\" value=\"00014\" />\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1726777036429</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"15\" />\n    <servers />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Crossword\" />\n    <MESSAGE value=\"Merge remote-tracking branch 'origin/main'\" />\n    <MESSAGE value=\"Upload\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Upload\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision be1b59d79b7d0264492db50557c1a9d8758c0ea4)
++++ b/.idea/workspace.xml	(date 1728904493339)
+@@ -5,10 +5,10 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="fcc33587-880f-4a89-98b5-cef7062c96cd" name="Changes" comment="Upload">
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_09_2024,_09_47_[Changes]/shelved.patch" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_09_2024__09_47__Changes_.xml" beforeDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/NEA/Crosswordview.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Crosswordview.py" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/NEA/Login.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Login.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/NEA/Test.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Test.py" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -43,7 +43,7 @@
+ }</component>
+   <component name="GithubPullRequestsUISettings">{
+   &quot;selectedUrlAndAccountId&quot;: {
+-    &quot;url&quot;: &quot;https://github.com/Jaques108/CS-NEA&quot;,
++    &quot;url&quot;: &quot;https://github.com/Jaques108/CS-NEA.git&quot;,
+     &quot;accountId&quot;: &quot;ea9d7374-0f21-46a7-86ab-88931896b6cd&quot;
+   }
+ }</component>
+@@ -79,6 +79,7 @@
+     &quot;Python.Hangman.executor&quot;: &quot;Run&quot;,
+     &quot;Python.Home Coding 1.executor&quot;: &quot;Run&quot;,
+     &quot;Python.Login.executor&quot;: &quot;Run&quot;,
++    &quot;Python.MainAPP.executor&quot;: &quot;Run&quot;,
+     &quot;Python.Messaging (Sockets).executor&quot;: &quot;Run&quot;,
+     &quot;Python.Mines Game.executor&quot;: &quot;Run&quot;,
+     &quot;Python.Password Checker.executor&quot;: &quot;Run&quot;,
+@@ -118,7 +119,7 @@
+   <component name="SharedIndexes">
+     <attachedChunks>
+       <set>
+-        <option value="bundled-python-sdk-98f27166c754-ba05f1cad1b1-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.21829.153" />
++        <option value="bundled-python-sdk-0e3be3396995-c546a90a8094-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.23339.19" />
+       </set>
+     </attachedChunks>
+   </component>
