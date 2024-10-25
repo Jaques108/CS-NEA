@@ -73,19 +73,7 @@ def crossword(code):
     x = 0
     for row in range(13):
         for col in range(13):
-            currentStartPos = startPositions[x]
-            tempX = startPositions[x][0]
-            tempY = startPositions[x][1]
-
-            if col == tempX and row == tempY:
-                obj = 'S'
-
-                if x != length:
-                    x += 1
-
-
-            else:
-                obj = 'BlackSquare'
+            obj = 'BlackSquare'
 
             position = str(row).zfill(2) + str(col).zfill(2)
             cells[position] = {'text':obj}
@@ -107,13 +95,15 @@ def cellsBelongingToWord(var,cells):
 
 
         if direction == 'across':
-            for x in range(1, length-1):
+            for x in range(0,length):
                 position = str(posY).zfill(2) + str(posX + x).zfill(2)
-
                 cell = cells.get(position)
                 text = cell.get('text')
 
-                if text == "BlackSquare":
+                if x == 0:
+                    cell['text'] = 'S'
+
+                elif text == "BlackSquare":
                     cell['text'] = "--"
 
                 elif text == "S":
@@ -124,13 +114,15 @@ def cellsBelongingToWord(var,cells):
 
 
         elif direction == 'down':
-            for n in range(1, length-1):
+            for n in range(0,length):
                 position = str(posY + n).zfill(2) + str(posX).zfill(2)
                 cell = cells.get(position)
                 text = cell.get('text')
 
+                if x == 0:
+                    cell['text'] = 'S'
 
-                if text == "BlackSquare":
+                elif text == "BlackSquare":
                     cell['text'] = "|"
 
                 elif text == "S":
