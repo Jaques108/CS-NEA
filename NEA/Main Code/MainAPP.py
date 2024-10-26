@@ -32,8 +32,6 @@ class MainApp(tk.Tk):
         self.geometry(size)
         self.title(title)
         self.resizable(width=False, height=False)
-
-
         frame.tkraise()
 
     def SwitchUser(self, name):

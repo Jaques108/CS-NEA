@@ -1,7 +1,9 @@
 from tkinter import *
 from tkinter import ttk
+from NEA.Frames.CrosswordFrame import crosswordFrame
 import requests
 import json
+
 
 
 
@@ -32,6 +34,7 @@ class ccFrame(ttk.Frame):
 
 
             getCrosswordData()
+            crosswordFrame.displayData(self)
 
 
 
@@ -45,6 +48,7 @@ class ccFrame(ttk.Frame):
 
         codeSubmit = ttk.Button(self,text = 'Submit',command = submit)
         codeSubmit.place(relx = 0.5,rely = 0.8,anchor = CENTER)
+
 
 
 

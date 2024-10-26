@@ -1,509 +1,509 @@
 {
     "0000": {
-        "text": "S"
+        "text": "\u2b1b\ufe0f"
     },
     "0001": {
-        "text": "--"
+        "text": "\u2b1b\ufe0f"
     },
     "0002": {
-        "text": "WhiteSqaure"
-    },
-    "0003": {
-        "text": "--"
-    },
-    "0004": {
-        "text": "WhiteSqaure"
-    },
-    "0005": {
-        "text": "--"
-    },
-    "0006": {
-        "text": "WhiteSqaure"
-    },
-    "0007": {
-        "text": "--"
-    },
-    "0008": {
-        "text": "BlackSquare"
-    },
-    "0009": {
         "text": "S"
     },
+    "0003": {
+        "text": "\u25fb\ufe0f"
+    },
+    "0004": {
+        "text": "\u25fb\ufe0f"
+    },
+    "0005": {
+        "text": "\u25fb\ufe0f"
+    },
+    "0006": {
+        "text": "\u25fb\ufe0f"
+    },
+    "0007": {
+        "text": "\u25fb\ufe0f"
+    },
+    "0008": {
+        "text": "\u25fb\ufe0f"
+    },
+    "0009": {
+        "text": "\u25fb\ufe0f"
+    },
     "0010": {
-        "text": "WhiteSqaure"
+        "text": "\u25fb\ufe0f"
     },
     "0011": {
-        "text": "--"
+        "text": "\u25fb\ufe0f"
     },
     "0012": {
-        "text": "WhiteSqaure"
+        "text": "\u2b1b\ufe0f"
     },
     "0100": {
-        "text": "|"
+        "text": "\u25fb\ufe0f"
     },
     "0101": {
-        "text": "BlackSquare"
+        "text": "\u2b1b\ufe0f"
     },
     "0102": {
-        "text": "|"
+        "text": "\u25fb\ufe0f"
     },
     "0103": {
-        "text": "BlackSquare"
+        "text": "\u2b1b\ufe0f"
     },
     "0104": {
-        "text": "|"
+        "text": "\u25fb\ufe0f"
     },
     "0105": {
-        "text": "BlackSquare"
+        "text": "\u2b1b\ufe0f"
     },
     "0106": {
-        "text": "|"
+        "text": "\u25fb\ufe0f"
     },
     "0107": {
-        "text": "BlackSquare"
+        "text": "\u2b1b\ufe0f"
     },
     "0108": {
-        "text": "|"
+        "text": "\u25fb\ufe0f"
     },
     "0109": {
-        "text": "BlackSquare"
+        "text": "\u2b1b\ufe0f"
     },
     "0110": {
-        "text": "|"
+        "text": "\u25fb\ufe0f"
     },
     "0111": {
-        "text": "BlackSquare"
+        "text": "\u2b1b\ufe0f"
     },
     "0112": {
-        "text": "|"
+        "text": "\u2b1b\ufe0f"
     },
     "0200": {
         "text": "S"
     },
     "0201": {
-        "text": "--"
+        "text": "\u25fb\ufe0f"
     },
     "0202": {
-        "text": "WhiteSqaure"
+        "text": "\u25fb\ufe0f"
     },
     "0203": {
-        "text": "--"
+        "text": "\u25fb\ufe0f"
     },
     "0204": {
-        "text": "WhiteSqaure"
+        "text": "\u25fb\ufe0f"
     },
     "0205": {
-        "text": "BlackSquare"
+        "text": "\u25fb\ufe0f"
     },
     "0206": {
-        "text": "S"
+        "text": "\u25fb\ufe0f"
     },
     "0207": {
-        "text": "--"
+        "text": "\u2b1b\ufe0f"
     },
     "0208": {
-        "text": "WhiteSqaure"
-    },
-    "0209": {
-        "text": "--"
-    },
-    "0210": {
-        "text": "WhiteSqaure"
-    },
-    "0211": {
-        "text": "--"
-    },
-    "0212": {
-        "text": "WhiteSqaure"
-    },
-    "0300": {
-        "text": "|"
-    },
-    "0301": {
-        "text": "BlackSquare"
-    },
-    "0302": {
-        "text": "|"
-    },
-    "0303": {
-        "text": "BlackSquare"
-    },
-    "0304": {
-        "text": "|"
-    },
-    "0305": {
-        "text": "BlackSquare"
-    },
-    "0306": {
-        "text": "|"
-    },
-    "0307": {
-        "text": "BlackSquare"
-    },
-    "0308": {
-        "text": "|"
-    },
-    "0309": {
-        "text": "BlackSquare"
-    },
-    "0310": {
-        "text": "|"
-    },
-    "0311": {
-        "text": "BlackSquare"
-    },
-    "0312": {
-        "text": "|"
-    },
-    "0400": {
-        "text": "BlackSquare"
-    },
-    "0401": {
         "text": "S"
     },
+    "0209": {
+        "text": "\u25fb\ufe0f"
+    },
+    "0210": {
+        "text": "\u25fb\ufe0f"
+    },
+    "0211": {
+        "text": "\u25fb\ufe0f"
+    },
+    "0212": {
+        "text": "\u25fb\ufe0f"
+    },
+    "0300": {
+        "text": "\u25fb\ufe0f"
+    },
+    "0301": {
+        "text": "\u2b1b\ufe0f"
+    },
+    "0302": {
+        "text": "\u25fb\ufe0f"
+    },
+    "0303": {
+        "text": "\u2b1b\ufe0f"
+    },
+    "0304": {
+        "text": "\u25fb\ufe0f"
+    },
+    "0305": {
+        "text": "\u2b1b\ufe0f"
+    },
+    "0306": {
+        "text": "\u25fb\ufe0f"
+    },
+    "0307": {
+        "text": "\u2b1b\ufe0f"
+    },
+    "0308": {
+        "text": "\u25fb\ufe0f"
+    },
+    "0309": {
+        "text": "\u2b1b\ufe0f"
+    },
+    "0310": {
+        "text": "\u25fb\ufe0f"
+    },
+    "0311": {
+        "text": "\u2b1b\ufe0f"
+    },
+    "0312": {
+        "text": "\u25fb\ufe0f"
+    },
+    "0400": {
+        "text": "S"
+    },
+    "0401": {
+        "text": "\u25fb\ufe0f"
+    },
     "0402": {
-        "text": "WhiteSqaure"
+        "text": "\u25fb\ufe0f"
     },
     "0403": {
-        "text": "--"
+        "text": "\u25fb\ufe0f"
     },
     "0404": {
-        "text": "WhiteSqaure"
+        "text": "\u2b1b\ufe0f"
     },
     "0405": {
-        "text": "--"
+        "text": "S"
     },
     "0406": {
-        "text": "WhiteSqaure"
+        "text": "\u25fb\ufe0f"
     },
     "0407": {
-        "text": "--"
+        "text": "\u25fb\ufe0f"
     },
     "0408": {
-        "text": "WhiteSqaure"
+        "text": "\u25fb\ufe0f"
     },
     "0409": {
-        "text": "--"
+        "text": "\u25fb\ufe0f"
     },
     "0410": {
-        "text": "WhiteSqaure"
+        "text": "\u25fb\ufe0f"
     },
     "0411": {
-        "text": "--"
+        "text": "\u25fb\ufe0f"
     },
     "0412": {
-        "text": "WhiteSqaure"
+        "text": "\u25fb\ufe0f"
     },
     "0500": {
-        "text": "|"
+        "text": "\u25fb\ufe0f"
     },
     "0501": {
-        "text": "BlackSquare"
+        "text": "\u2b1b\ufe0f"
     },
     "0502": {
-        "text": "|"
+        "text": "\u2b1b\ufe0f"
     },
     "0503": {
-        "text": "BlackSquare"
+        "text": "\u2b1b\ufe0f"
     },
     "0504": {
-        "text": "|"
+        "text": "\u25fb\ufe0f"
     },
     "0505": {
-        "text": "BlackSquare"
+        "text": "\u2b1b\ufe0f"
     },
     "0506": {
-        "text": "|"
+        "text": "\u25fb\ufe0f"
     },
     "0507": {
-        "text": "BlackSquare"
+        "text": "\u2b1b\ufe0f"
     },
     "0508": {
-        "text": "|"
+        "text": "\u25fb\ufe0f"
     },
     "0509": {
-        "text": "BlackSquare"
+        "text": "\u2b1b\ufe0f"
     },
     "0510": {
-        "text": "BlackSquare"
+        "text": "\u25fb\ufe0f"
     },
     "0511": {
-        "text": "BlackSquare"
+        "text": "\u2b1b\ufe0f"
     },
     "0512": {
-        "text": "|"
+        "text": "\u25fb\ufe0f"
     },
     "0600": {
         "text": "S"
     },
     "0601": {
-        "text": "--"
+        "text": "\u25fb\ufe0f"
     },
     "0602": {
-        "text": "WhiteSqaure"
+        "text": "\u25fb\ufe0f"
     },
     "0603": {
-        "text": "--"
+        "text": "\u25fb\ufe0f"
     },
     "0604": {
-        "text": "WhiteSqaure"
+        "text": "\u25fb\ufe0f"
     },
     "0605": {
-        "text": "--"
+        "text": "\u25fb\ufe0f"
     },
     "0606": {
-        "text": "BlackSquare"
+        "text": "\u2b1b\ufe0f"
     },
     "0607": {
         "text": "S"
     },
     "0608": {
-        "text": "WhiteSqaure"
+        "text": "\u25fb\ufe0f"
     },
     "0609": {
-        "text": "--"
+        "text": "\u25fb\ufe0f"
     },
     "0610": {
-        "text": "WhiteSqaure"
+        "text": "\u25fb\ufe0f"
     },
     "0611": {
-        "text": "--"
+        "text": "\u25fb\ufe0f"
     },
     "0612": {
-        "text": "WhiteSqaure"
+        "text": "\u25fb\ufe0f"
     },
     "0700": {
-        "text": "|"
+        "text": "\u25fb\ufe0f"
     },
     "0701": {
-        "text": "BlackSquare"
+        "text": "\u2b1b\ufe0f"
     },
     "0702": {
-        "text": "BlackSquare"
+        "text": "\u25fb\ufe0f"
     },
     "0703": {
-        "text": "BlackSquare"
+        "text": "\u2b1b\ufe0f"
     },
     "0704": {
-        "text": "|"
+        "text": "\u25fb\ufe0f"
     },
     "0705": {
-        "text": "BlackSquare"
+        "text": "\u2b1b\ufe0f"
     },
     "0706": {
-        "text": "|"
+        "text": "\u25fb\ufe0f"
     },
     "0707": {
-        "text": "BlackSquare"
+        "text": "\u2b1b\ufe0f"
     },
     "0708": {
-        "text": "|"
+        "text": "\u25fb\ufe0f"
     },
     "0709": {
-        "text": "BlackSquare"
+        "text": "\u2b1b\ufe0f"
     },
     "0710": {
-        "text": "|"
+        "text": "\u2b1b\ufe0f"
     },
     "0711": {
-        "text": "BlackSquare"
+        "text": "\u2b1b\ufe0f"
     },
     "0712": {
-        "text": "|"
+        "text": "\u25fb\ufe0f"
     },
     "0800": {
         "text": "S"
     },
     "0801": {
-        "text": "--"
+        "text": "\u25fb\ufe0f"
     },
     "0802": {
-        "text": "WhiteSqaure"
+        "text": "\u25fb\ufe0f"
     },
     "0803": {
-        "text": "--"
+        "text": "\u25fb\ufe0f"
     },
     "0804": {
-        "text": "WhiteSqaure"
+        "text": "\u25fb\ufe0f"
     },
     "0805": {
-        "text": "--"
+        "text": "\u25fb\ufe0f"
     },
     "0806": {
-        "text": "WhiteSqaure"
+        "text": "\u25fb\ufe0f"
     },
     "0807": {
-        "text": "--"
+        "text": "\u25fb\ufe0f"
     },
     "0808": {
-        "text": "WhiteSqaure"
+        "text": "\u2b1b\ufe0f"
     },
     "0809": {
-        "text": "--"
+        "text": "S"
     },
     "0810": {
-        "text": "WhiteSqaure"
+        "text": "\u25fb\ufe0f"
     },
     "0811": {
-        "text": "--"
+        "text": "\u25fb\ufe0f"
     },
     "0812": {
-        "text": "BlackSquare"
+        "text": "\u25fb\ufe0f"
     },
     "0900": {
-        "text": "|"
+        "text": "\u25fb\ufe0f"
     },
     "0901": {
-        "text": "BlackSquare"
+        "text": "\u2b1b\ufe0f"
     },
     "0902": {
-        "text": "|"
+        "text": "\u25fb\ufe0f"
     },
     "0903": {
-        "text": "BlackSquare"
+        "text": "\u2b1b\ufe0f"
     },
     "0904": {
-        "text": "|"
+        "text": "\u25fb\ufe0f"
     },
     "0905": {
-        "text": "BlackSquare"
+        "text": "\u2b1b\ufe0f"
     },
     "0906": {
-        "text": "|"
+        "text": "\u25fb\ufe0f"
     },
     "0907": {
-        "text": "BlackSquare"
+        "text": "\u2b1b\ufe0f"
     },
     "0908": {
-        "text": "|"
+        "text": "\u25fb\ufe0f"
     },
     "0909": {
-        "text": "BlackSquare"
+        "text": "\u2b1b\ufe0f"
     },
     "0910": {
-        "text": "|"
+        "text": "\u25fb\ufe0f"
     },
     "0911": {
-        "text": "BlackSquare"
+        "text": "\u2b1b\ufe0f"
     },
     "0912": {
-        "text": "|"
+        "text": "\u25fb\ufe0f"
     },
     "1000": {
         "text": "S"
     },
     "1001": {
-        "text": "--"
+        "text": "\u25fb\ufe0f"
     },
     "1002": {
-        "text": "WhiteSqaure"
+        "text": "\u25fb\ufe0f"
     },
     "1003": {
-        "text": "--"
+        "text": "\u25fb\ufe0f"
     },
     "1004": {
-        "text": "WhiteSqaure"
+        "text": "\u25fb\ufe0f"
     },
     "1005": {
-        "text": "--"
+        "text": "\u2b1b\ufe0f"
     },
     "1006": {
-        "text": "WhiteSqaure"
+        "text": "S"
     },
     "1007": {
-        "text": "BlackSquare"
+        "text": "\u25fb\ufe0f"
     },
     "1008": {
-        "text": "S"
+        "text": "\u25fb\ufe0f"
     },
     "1009": {
-        "text": "--"
+        "text": "\u25fb\ufe0f"
     },
     "1010": {
-        "text": "WhiteSqaure"
+        "text": "\u25fb\ufe0f"
     },
     "1011": {
-        "text": "--"
+        "text": "\u25fb\ufe0f"
     },
     "1012": {
-        "text": "WhiteSqaure"
+        "text": "\u25fb\ufe0f"
     },
     "1100": {
-        "text": "|"
+        "text": "\u2b1b\ufe0f"
     },
     "1101": {
-        "text": "BlackSquare"
+        "text": "\u2b1b\ufe0f"
     },
     "1102": {
-        "text": "|"
+        "text": "\u25fb\ufe0f"
     },
     "1103": {
-        "text": "BlackSquare"
+        "text": "\u2b1b\ufe0f"
     },
     "1104": {
-        "text": "|"
+        "text": "\u25fb\ufe0f"
     },
     "1105": {
-        "text": "BlackSquare"
+        "text": "\u2b1b\ufe0f"
     },
     "1106": {
-        "text": "|"
+        "text": "\u25fb\ufe0f"
     },
     "1107": {
-        "text": "BlackSquare"
+        "text": "\u2b1b\ufe0f"
     },
     "1108": {
-        "text": "|"
+        "text": "\u25fb\ufe0f"
     },
     "1109": {
-        "text": "BlackSquare"
+        "text": "\u2b1b\ufe0f"
     },
     "1110": {
-        "text": "|"
+        "text": "\u25fb\ufe0f"
     },
     "1111": {
-        "text": "BlackSquare"
+        "text": "\u2b1b\ufe0f"
     },
     "1112": {
-        "text": "|"
+        "text": "\u25fb\ufe0f"
     },
     "1200": {
-        "text": "S"
+        "text": "\u2b1b\ufe0f"
     },
     "1201": {
-        "text": "--"
-    },
-    "1202": {
-        "text": "WhiteSqaure"
-    },
-    "1203": {
-        "text": "--"
-    },
-    "1204": {
-        "text": "BlackSquare"
-    },
-    "1205": {
         "text": "S"
     },
+    "1202": {
+        "text": "\u25fb\ufe0f"
+    },
+    "1203": {
+        "text": "\u25fb\ufe0f"
+    },
+    "1204": {
+        "text": "\u25fb\ufe0f"
+    },
+    "1205": {
+        "text": "\u25fb\ufe0f"
+    },
     "1206": {
-        "text": "WhiteSqaure"
+        "text": "\u25fb\ufe0f"
     },
     "1207": {
-        "text": "--"
+        "text": "\u25fb\ufe0f"
     },
     "1208": {
-        "text": "WhiteSqaure"
+        "text": "\u25fb\ufe0f"
     },
     "1209": {
-        "text": "--"
+        "text": "\u25fb\ufe0f"
     },
     "1210": {
-        "text": "WhiteSqaure"
+        "text": "\u25fb\ufe0f"
     },
     "1211": {
-        "text": "--"
+        "text": "\u2b1b\ufe0f"
     },
     "1212": {
-        "text": "WhiteSqaure"
+        "text": "\u2b1b\ufe0f"
     }
 }

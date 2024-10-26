@@ -75,7 +75,7 @@ def crossword(code):
     x = 0
     for row in range(13):
         for col in range(13):
-            obj = 'BlackSquare'
+            obj = '⬛️'
 
             position = str(row).zfill(2) + str(col).zfill(2)
             cells[position] = {'text':obj}
@@ -105,14 +105,14 @@ def cellsBelongingToWord(var,cells):
                 if x == 0:
                     cell['text'] = 'S'
 
-                elif text == "BlackSquare":
+                elif text == "⬛":
                     cell['text'] = "--"
 
                 elif text == "S":
                     pass
 
                 else:
-                    cell['text'] = "WhiteSquare"
+                    cell['text'] = "◻️"
 
 
         elif direction == 'down':
@@ -124,14 +124,14 @@ def cellsBelongingToWord(var,cells):
                 if x == 0:
                     cell['text'] = 'S'
 
-                elif text == "BlackSquare":
+                elif text == "⬛":
                     cell['text'] = "|"
 
                 elif text == "S":
                     pass
 
                 else:
-                    cell['text'] = "WhiteSqaure"
+                    cell['text'] = "◻️"
 
 
 
