@@ -75,7 +75,7 @@ def crossword(code):
     x = 0
     for row in range(13):
         for col in range(13):
-            obj = '⬛️'
+            obj = "⬛️"
 
             position = str(row).zfill(2) + str(col).zfill(2)
             cells[position] = {'text':obj}
