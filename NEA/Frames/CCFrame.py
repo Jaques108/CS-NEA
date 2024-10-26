@@ -27,7 +27,7 @@ class ccFrame(ttk.Frame):
                 dictData = webResponse.json()
 
 
-                afile = open('/Users/jake/main/NEA/Frames/Code.txt', 'w')
+                afile = open('Code.txt', 'w')
                 json.dump(dictData, afile, indent=4)
                 afile.close()
 
@@ -43,7 +43,7 @@ class ccFrame(ttk.Frame):
         codeLabel = ttk.Label(self,text = 'Enter Crossword Code')
         codeLabel.place(relx = 0.5,rely = 0.25,anchor = CENTER)
 
-        codeEntry = ttk.Entry(self)
+        codeEntry = ttk.Entry(self,justify='center')
         codeEntry.place(relx = 0.5,rely = 0.5,anchor = CENTER)
 
         codeSubmit = ttk.Button(self,text = 'Submit',command = submit)

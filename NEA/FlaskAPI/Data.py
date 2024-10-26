@@ -75,7 +75,7 @@ def crossword(code):
     x = 0
     for row in range(13):
         for col in range(13):
-            obj = "⬛️"
+            obj = "B"
 
             position = str(row).zfill(2) + str(col).zfill(2)
             cells[position] = {'text':obj}
@@ -105,14 +105,14 @@ def cellsBelongingToWord(var,cells):
                 if x == 0:
                     cell['text'] = 'S'
 
-                elif text == "⬛":
+                elif text == "B":
                     cell['text'] = "--"
 
                 elif text == "S":
                     pass
 
                 else:
-                    cell['text'] = "◻️"
+                    cell['text'] = "W"
 
 
         elif direction == 'down':
@@ -124,14 +124,14 @@ def cellsBelongingToWord(var,cells):
                 if x == 0:
                     cell['text'] = 'S'
 
-                elif text == "⬛":
+                elif text == "B":
                     cell['text'] = "|"
 
                 elif text == "S":
                     pass
 
                 else:
-                    cell['text'] = "◻️"
+                    cell['text'] = "W"
 
 
 

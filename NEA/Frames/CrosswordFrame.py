@@ -12,9 +12,15 @@ class crosswordFrame(ttk.Frame):
         self.controller = controller
 
     def displayData(self):
-        afile = open('/Users/jake/main/NEA/Frames/Code.txt', 'r')
+        afile = open('Code.txt', 'r')
         data = json.load(afile)
 
-        for key, value in data.items():
-            text = value.get('text')
-            print(text)
+        for cellID, cellData in data.items():
+            posX = int(cellID[2:])
+            posY = int(cellID[:2])
+
+            obj = cellData.get("text")
+
+            cell = ttk.Label(self,text =obj)
+            cell.grid(column = posX,row = posY)
+
