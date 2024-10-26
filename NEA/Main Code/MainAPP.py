@@ -3,6 +3,8 @@ from NEA.Frames.LoginFrame import loginFrame
 from NEA.Frames.LoginEntryFrame import loginEntryFrame
 from NEA.Frames.ChoiceFrame import choiceFrame
 from NEA.Frames.SudokuFrame import sudokuFrame
+from NEA.Frames.CCFrame import ccFrame
+from NEA.Frames.CrosswordFrame import crosswordFrame
 
 
 
@@ -15,7 +17,7 @@ class MainApp(tk.Tk):
         self.frames = {}
 
 
-        for F in [loginFrame, loginEntryFrame,choiceFrame,sudokuFrame]:
+        for F in [loginFrame, loginEntryFrame,choiceFrame,sudokuFrame,ccFrame,crosswordFrame]:
             frame = F(container, self)  #Instancing each frame!
             self.frames[F.__name__] = frame
             frame.grid(row=0, column=0, sticky='nsew')
@@ -27,16 +29,11 @@ class MainApp(tk.Tk):
 
     def show_frame(self, nextframe,size,title):
         frame = self.frames[nextframe]
-        self.geometry('')
-        self.resizable(width = False,height = False)
-        
-        #Have the option for the application to auto-set the geometry
-        if size == '':
-            pass
-        else:
-            self.geometry(size)
-        
+        self.geometry(size)
         self.title(title)
+        self.resizable(width=False, height=False)
+
+
         frame.tkraise()
 
     def SwitchUser(self, name):

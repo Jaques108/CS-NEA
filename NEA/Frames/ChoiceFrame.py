@@ -11,5 +11,5 @@ class choiceFrame(Frame):
         sudokuButton = Button(self, text="Sudoku", command=lambda:self.controller.show_frame('sudokuFrame','350x335','Sudoku'),width = 20,height = 20)
         sudokuButton.grid(row=0,column=0)
 
-        crosswordsButton = Button(self, text="Crossword", width=20, height=20)
+        crosswordsButton = Button(self, text="Crossword",command=lambda:self.controller.show_frame('ccFrame','','Code'),width=20, height=20)
         crosswordsButton.grid(row = 0,column=1)

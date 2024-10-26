@@ -1,0 +1,509 @@
+{
+    "0000": {
+        "text": "S"
+    },
+    "0001": {
+        "text": "--"
+    },
+    "0002": {
+        "text": "WhiteSqaure"
+    },
+    "0003": {
+        "text": "--"
+    },
+    "0004": {
+        "text": "WhiteSqaure"
+    },
+    "0005": {
+        "text": "--"
+    },
+    "0006": {
+        "text": "WhiteSqaure"
+    },
+    "0007": {
+        "text": "--"
+    },
+    "0008": {
+        "text": "BlackSquare"
+    },
+    "0009": {
+        "text": "S"
+    },
+    "0010": {
+        "text": "WhiteSqaure"
+    },
+    "0011": {
+        "text": "--"
+    },
+    "0012": {
+        "text": "WhiteSqaure"
+    },
+    "0100": {
+        "text": "|"
+    },
+    "0101": {
+        "text": "BlackSquare"
+    },
+    "0102": {
+        "text": "|"
+    },
+    "0103": {
+        "text": "BlackSquare"
+    },
+    "0104": {
+        "text": "|"
+    },
+    "0105": {
+        "text": "BlackSquare"
+    },
+    "0106": {
+        "text": "|"
+    },
+    "0107": {
+        "text": "BlackSquare"
+    },
+    "0108": {
+        "text": "|"
+    },
+    "0109": {
+        "text": "BlackSquare"
+    },
+    "0110": {
+        "text": "|"
+    },
+    "0111": {
+        "text": "BlackSquare"
+    },
+    "0112": {
+        "text": "|"
+    },
+    "0200": {
+        "text": "S"
+    },
+    "0201": {
+        "text": "--"
+    },
+    "0202": {
+        "text": "WhiteSqaure"
+    },
+    "0203": {
+        "text": "--"
+    },
+    "0204": {
+        "text": "WhiteSqaure"
+    },
+    "0205": {
+        "text": "BlackSquare"
+    },
+    "0206": {
+        "text": "S"
+    },
+    "0207": {
+        "text": "--"
+    },
+    "0208": {
+        "text": "WhiteSqaure"
+    },
+    "0209": {
+        "text": "--"
+    },
+    "0210": {
+        "text": "WhiteSqaure"
+    },
+    "0211": {
+        "text": "--"
+    },
+    "0212": {
+        "text": "WhiteSqaure"
+    },
+    "0300": {
+        "text": "|"
+    },
+    "0301": {
+        "text": "BlackSquare"
+    },
+    "0302": {
+        "text": "|"
+    },
+    "0303": {
+        "text": "BlackSquare"
+    },
+    "0304": {
+        "text": "|"
+    },
+    "0305": {
+        "text": "BlackSquare"
+    },
+    "0306": {
+        "text": "|"
+    },
+    "0307": {
+        "text": "BlackSquare"
+    },
+    "0308": {
+        "text": "|"
+    },
+    "0309": {
+        "text": "BlackSquare"
+    },
+    "0310": {
+        "text": "|"
+    },
+    "0311": {
+        "text": "BlackSquare"
+    },
+    "0312": {
+        "text": "|"
+    },
+    "0400": {
+        "text": "BlackSquare"
+    },
+    "0401": {
+        "text": "S"
+    },
+    "0402": {
+        "text": "WhiteSqaure"
+    },
+    "0403": {
+        "text": "--"
+    },
+    "0404": {
+        "text": "WhiteSqaure"
+    },
+    "0405": {
+        "text": "--"
+    },
+    "0406": {
+        "text": "WhiteSqaure"
+    },
+    "0407": {
+        "text": "--"
+    },
+    "0408": {
+        "text": "WhiteSqaure"
+    },
+    "0409": {
+        "text": "--"
+    },
+    "0410": {
+        "text": "WhiteSqaure"
+    },
+    "0411": {
+        "text": "--"
+    },
+    "0412": {
+        "text": "WhiteSqaure"
+    },
+    "0500": {
+        "text": "|"
+    },
+    "0501": {
+        "text": "BlackSquare"
+    },
+    "0502": {
+        "text": "|"
+    },
+    "0503": {
+        "text": "BlackSquare"
+    },
+    "0504": {
+        "text": "|"
+    },
+    "0505": {
+        "text": "BlackSquare"
+    },
+    "0506": {
+        "text": "|"
+    },
+    "0507": {
+        "text": "BlackSquare"
+    },
+    "0508": {
+        "text": "|"
+    },
+    "0509": {
+        "text": "BlackSquare"
+    },
+    "0510": {
+        "text": "BlackSquare"
+    },
+    "0511": {
+        "text": "BlackSquare"
+    },
+    "0512": {
+        "text": "|"
+    },
+    "0600": {
+        "text": "S"
+    },
+    "0601": {
+        "text": "--"
+    },
+    "0602": {
+        "text": "WhiteSqaure"
+    },
+    "0603": {
+        "text": "--"
+    },
+    "0604": {
+        "text": "WhiteSqaure"
+    },
+    "0605": {
+        "text": "--"
+    },
+    "0606": {
+        "text": "BlackSquare"
+    },
+    "0607": {
+        "text": "S"
+    },
+    "0608": {
+        "text": "WhiteSqaure"
+    },
+    "0609": {
+        "text": "--"
+    },
+    "0610": {
+        "text": "WhiteSqaure"
+    },
+    "0611": {
+        "text": "--"
+    },
+    "0612": {
+        "text": "WhiteSqaure"
+    },
+    "0700": {
+        "text": "|"
+    },
+    "0701": {
+        "text": "BlackSquare"
+    },
+    "0702": {
+        "text": "BlackSquare"
+    },
+    "0703": {
+        "text": "BlackSquare"
+    },
+    "0704": {
+        "text": "|"
+    },
+    "0705": {
+        "text": "BlackSquare"
+    },
+    "0706": {
+        "text": "|"
+    },
+    "0707": {
+        "text": "BlackSquare"
+    },
+    "0708": {
+        "text": "|"
+    },
+    "0709": {
+        "text": "BlackSquare"
+    },
+    "0710": {
+        "text": "|"
+    },
+    "0711": {
+        "text": "BlackSquare"
+    },
+    "0712": {
+        "text": "|"
+    },
+    "0800": {
+        "text": "S"
+    },
+    "0801": {
+        "text": "--"
+    },
+    "0802": {
+        "text": "WhiteSqaure"
+    },
+    "0803": {
+        "text": "--"
+    },
+    "0804": {
+        "text": "WhiteSqaure"
+    },
+    "0805": {
+        "text": "--"
+    },
+    "0806": {
+        "text": "WhiteSqaure"
+    },
+    "0807": {
+        "text": "--"
+    },
+    "0808": {
+        "text": "WhiteSqaure"
+    },
+    "0809": {
+        "text": "--"
+    },
+    "0810": {
+        "text": "WhiteSqaure"
+    },
+    "0811": {
+        "text": "--"
+    },
+    "0812": {
+        "text": "BlackSquare"
+    },
+    "0900": {
+        "text": "|"
+    },
+    "0901": {
+        "text": "BlackSquare"
+    },
+    "0902": {
+        "text": "|"
+    },
+    "0903": {
+        "text": "BlackSquare"
+    },
+    "0904": {
+        "text": "|"
+    },
+    "0905": {
+        "text": "BlackSquare"
+    },
+    "0906": {
+        "text": "|"
+    },
+    "0907": {
+        "text": "BlackSquare"
+    },
+    "0908": {
+        "text": "|"
+    },
+    "0909": {
+        "text": "BlackSquare"
+    },
+    "0910": {
+        "text": "|"
+    },
+    "0911": {
+        "text": "BlackSquare"
+    },
+    "0912": {
+        "text": "|"
+    },
+    "1000": {
+        "text": "S"
+    },
+    "1001": {
+        "text": "--"
+    },
+    "1002": {
+        "text": "WhiteSqaure"
+    },
+    "1003": {
+        "text": "--"
+    },
+    "1004": {
+        "text": "WhiteSqaure"
+    },
+    "1005": {
+        "text": "--"
+    },
+    "1006": {
+        "text": "WhiteSqaure"
+    },
+    "1007": {
+        "text": "BlackSquare"
+    },
+    "1008": {
+        "text": "S"
+    },
+    "1009": {
+        "text": "--"
+    },
+    "1010": {
+        "text": "WhiteSqaure"
+    },
+    "1011": {
+        "text": "--"
+    },
+    "1012": {
+        "text": "WhiteSqaure"
+    },
+    "1100": {
+        "text": "|"
+    },
+    "1101": {
+        "text": "BlackSquare"
+    },
+    "1102": {
+        "text": "|"
+    },
+    "1103": {
+        "text": "BlackSquare"
+    },
+    "1104": {
+        "text": "|"
+    },
+    "1105": {
+        "text": "BlackSquare"
+    },
+    "1106": {
+        "text": "|"
+    },
+    "1107": {
+        "text": "BlackSquare"
+    },
+    "1108": {
+        "text": "|"
+    },
+    "1109": {
+        "text": "BlackSquare"
+    },
+    "1110": {
+        "text": "|"
+    },
+    "1111": {
+        "text": "BlackSquare"
+    },
+    "1112": {
+        "text": "|"
+    },
+    "1200": {
+        "text": "S"
+    },
+    "1201": {
+        "text": "--"
+    },
+    "1202": {
+        "text": "WhiteSqaure"
+    },
+    "1203": {
+        "text": "--"
+    },
+    "1204": {
+        "text": "BlackSquare"
+    },
+    "1205": {
+        "text": "S"
+    },
+    "1206": {
+        "text": "WhiteSqaure"
+    },
+    "1207": {
+        "text": "--"
+    },
+    "1208": {
+        "text": "WhiteSqaure"
+    },
+    "1209": {
+        "text": "--"
+    },
+    "1210": {
+        "text": "WhiteSqaure"
+    },
+    "1211": {
+        "text": "--"
+    },
+    "1212": {
+        "text": "WhiteSqaure"
+    }
+}

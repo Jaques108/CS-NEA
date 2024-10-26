@@ -8,11 +8,6 @@ class sudokuFrame(Frame):
         self.controller = controller
 
 
-
-        # self.title("Sudoku")
-        # self.resizable(width=FALSE, height=FALSE)
-        # self.geometry("350x335")
-
         valid = (self.register(validate_entry), '%P')
         for row in range(9):
             for col in range(9):
