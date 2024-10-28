@@ -137,11 +137,3 @@ def cellsBelongingToWord(var,cells):
 
 
 app.run(debug=True)
-
-
-
-
-
-
-
-
