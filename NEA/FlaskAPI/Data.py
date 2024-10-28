@@ -24,6 +24,72 @@ app = Flask(__name__)
 #My first endpoint (Where someone gets something)
 
 
+@app.route('/GenerateCellsNew/<code>',methods=['GET'])
+def crossword1(code):
+    genericUrl = "https://www.theguardian.com/crosswords/quick/"
+
+    if code.isdigit():
+        url = genericUrl + code
+
+    else:
+        return 'Invalid Code'
+
+    clues = {}
+    solutions = {}
+    starts = {}
+    cells = [['' for x in range(13)] for y in range(13)]
+
+    try:
+        response = requests.get(url)
+        soup = BeautifulSoup(response.text, 'html.parser')
+        mydivs = soup.find_all("div", {"class": "js-crossword"})
+        test = (mydivs[0].get('data-crossword-data'))
+
+        jsonified = json.loads(test)
+
+
+    except:
+        return "Code doesn't exist"
+
+
+    print('hello')
+
+
+    for entry in jsonified['entries']:
+        ##populate clues
+        clues[entry['id']] = entry['clue']
+
+        #populate solutions
+        solutions[entry['id']] = entry['solution']
+        #get starting x coord
+        startX = entry['position']['x']
+        #get starting y coord
+        startY = entry['position']['y']
+
+        starts[entry['id']] = {'x':startX,'y':startY}
+
+        direction = entry['direction']
+        length = entry['length']
+        if direction == 'across':
+            for i in range(length):
+                cells[startY][startX+i] = entry['solution'][i]
+        else:
+            for i in range(length):
+                cells[startY+i][startX] = entry['solution'][i]
+    for i in range(len(cells)):
+        for x in range(len(cells[0])):
+            if cells[i][x] == '':
+                cells[i][x] = '$'
+
+
+
+
+
+
+
+
+    returnPayload = {'cells':cells,'solutions':solutions,'clues':clues,'starts':starts}
+    return jsonify(returnPayload)
 
 
 @app.route('/GenerateCells/<code>',methods=['GET'])
@@ -136,4 +202,4 @@ def cellsBelongingToWord(var,cells):
 
 
 
-app.run(debug=True)
+app.run(debug=False)
