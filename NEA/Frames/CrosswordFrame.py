@@ -20,9 +20,9 @@ class crosswordFrame(ttk.Frame):
             dictData = None
 
             try:
-                webResponse = requests.get(url, timeout=5)  #Add a timeout to prevent indefinite waiting
+                webResponse = requests.get(url,timeout=7)  #Add a timeout to prevent indefinite waiting
 
-                if webResponse != 200:  #Check if response is successful
+                if webResponse.status_code != 200:  #Check if response is successful
                     errorLabel.config(text='Error - Code not accepted. Try again.')
 
                 else:
@@ -43,7 +43,7 @@ class crosswordFrame(ttk.Frame):
                     afile.close()
 
                 getCrosswordData()
-                displayData()
+
 
 
 
@@ -68,6 +68,7 @@ class crosswordFrame(ttk.Frame):
 
                         self.cells.append(cell)
 
+                displayData()
 
 
 

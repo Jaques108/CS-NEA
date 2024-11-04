@@ -6,13 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="fcc33587-880f-4a89-98b5-cef7062c96cd" name="Changes" comment="Upload">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_10_2024,_18_30_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_10_2024__18_30__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEA/Code.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/NEA/FlaskAPI/Data.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/FlaskAPI/Data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEA/Frames/CCFrame.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEA/Frames/ChoiceFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Frames/ChoiceFrame.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NEA/Frames/CrosswordFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Frames/CrosswordFrame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEA/Main Code/MainAPP.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Main Code/MainAPP.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/Misc/Test.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Misc/Test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +47,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Jaques108/CS-NEA.git&quot;,
-    &quot;accountId&quot;: &quot;ea9d7374-0f21-46a7-86ab-88931896b6cd&quot;
+    &quot;accountId&quot;: &quot;cfb0590f-e807-4271-8f76-27308b410af8&quot;
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
@@ -135,7 +134,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-0e3be3396995-c546a90a8094-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.23339.19" />
+        <option value="bundled-python-sdk-98f27166c754-ba05f1cad1b1-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.21829.153" />
       </set>
     </attachedChunks>
   </component>
@@ -377,6 +376,15 @@
     <option name="LAST_COMMIT_MESSAGE" value="Upload" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/NEA/FlaskAPI/Data.py</url>
+          <line>41</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
         <watch expression="startPositions[0][1]" language="Python" />
