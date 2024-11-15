@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fcc33587-880f-4a89-98b5-cef7062c96cd" name="Changes" comment="Upload">
-      <change afterPath="$PROJECT_DIR$/NEA/Frames/CrosswordFrameNew.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/Frames/CrosswordFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Frames/CrosswordFrame.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,57 +67,57 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.2022 P1 Question.executor&quot;: &quot;Run&quot;,
-    &quot;Python.AS Mock Program Binary.executor&quot;: &quot;Run&quot;,
-    &quot;Python.AS Mock Program Stack.executor&quot;: &quot;Run&quot;,
-    &quot;Python.ASCII Programming.executor&quot;: &quot;Run&quot;,
-    &quot;Python.BItwise Manipulation.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Binary Search Algorithm.executor&quot;: &quot;Run&quot;,
-    &quot;Python.BlackJack.executor&quot;: &quot;Run&quot;,
-    &quot;Python.CCFrame.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.Calculator tkinter.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Calculator.executor&quot;: &quot;Run&quot;,
-    &quot;Python.ChoiceFrame.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Crossword.executor&quot;: &quot;Run&quot;,
-    &quot;Python.CrosswordFrame.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.Data.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Hangman.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Home Coding 1.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Login.executor&quot;: &quot;Run&quot;,
-    &quot;Python.LoginEntryWindow.executor&quot;: &quot;Run&quot;,
-    &quot;Python.LoginFrame.executor&quot;: &quot;Run&quot;,
-    &quot;Python.MainAPP.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Messaging (Sockets).executor&quot;: &quot;Run&quot;,
-    &quot;Python.Mines Game.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Password Checker.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Password Generator.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Password.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Population Modelling.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Problem 10.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Problem 21.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Python Game.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Python.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Test.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Testing.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Year Programming.executor&quot;: &quot;Run&quot;,
-    &quot;Python._pydev_execfile.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/jake/6th Form/Computer Science/Python&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.2022 P1 Question.executor": "Run",
+    "Python.AS Mock Program Binary.executor": "Run",
+    "Python.AS Mock Program Stack.executor": "Run",
+    "Python.ASCII Programming.executor": "Run",
+    "Python.BItwise Manipulation.executor": "Run",
+    "Python.Binary Search Algorithm.executor": "Run",
+    "Python.BlackJack.executor": "Run",
+    "Python.CCFrame.executor": "Debug",
+    "Python.Calculator tkinter.executor": "Run",
+    "Python.Calculator.executor": "Run",
+    "Python.ChoiceFrame.executor": "Run",
+    "Python.Crossword.executor": "Run",
+    "Python.CrosswordFrame.executor": "Run",
+    "Python.Data.executor": "Run",
+    "Python.Hangman.executor": "Run",
+    "Python.Home Coding 1.executor": "Run",
+    "Python.Login.executor": "Run",
+    "Python.LoginEntryWindow.executor": "Run",
+    "Python.LoginFrame.executor": "Run",
+    "Python.MainAPP.executor": "Run",
+    "Python.Messaging (Sockets).executor": "Run",
+    "Python.Mines Game.executor": "Run",
+    "Python.Password Checker.executor": "Run",
+    "Python.Password Generator.executor": "Run",
+    "Python.Password.executor": "Run",
+    "Python.Population Modelling.executor": "Run",
+    "Python.Problem 10.executor": "Run",
+    "Python.Problem 21.executor": "Run",
+    "Python.Python Game.executor": "Run",
+    "Python.Python.executor": "Run",
+    "Python.Test.executor": "Run",
+    "Python.Testing.executor": "Run",
+    "Python.Year Programming.executor": "Run",
+    "Python._pydev_execfile.executor": "Run",
+    "Python.main.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "deletionFromPopupRequiresConfirmation": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/jake/6th Form/Computer Science/Python",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;Python&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "Python"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\jakem\PycharmProjects\CS-NEA\NEA" />
@@ -130,7 +130,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-98f27166c754-ba05f1cad1b1-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.21829.153" />
+        <option value="bundled-python-sdk-d7ad00fb9fc3-c546a90a8094-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.23726.102" />
       </set>
     </attachedChunks>
   </component>
@@ -359,7 +359,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730740456092</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Upload">
+      <option name="closed" value="true" />
+      <created>1730741722839</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1730741722839</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

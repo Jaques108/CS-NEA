@@ -7,11 +7,15 @@ import json
 
 
 
+
 class crosswordFrame(ttk.Frame):
     def __init__(self,parent,controller):
         ttk.Frame.__init__(self,parent)
         self.parent = parent
         self.controller = controller
+
+        squareWidth, squareHeight = 50, 50
+        squarePX, squarePY = 2, 2
 
 
         def submit():
@@ -63,8 +67,16 @@ class crosswordFrame(ttk.Frame):
 
                         obj = cellData.get("text")
 
-                        cell = ttk.Label(self, text=obj)
-                        cell.grid(column=posX, row=posY,padx=10,pady=10)
+                        if obj == 'B':
+                            color = 'black'
+
+                        else:
+                            color = 'white'
+
+
+
+                        cell = ttk.Label(self,background = color,font = ('roboto',16))
+                        cell.grid(column=posX, row=posY)
 
                         self.cells.append(cell)
 
