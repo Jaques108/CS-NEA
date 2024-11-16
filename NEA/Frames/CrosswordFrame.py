@@ -12,6 +12,7 @@ class crosswordFrame(ttk.Frame):
         self.controller = controller
 
         textItems = {}
+        nonTextRectangles = []
 
         def submit():
             code = codeEntry.get()
@@ -49,7 +50,6 @@ class crosswordFrame(ttk.Frame):
 
                     canvas = Canvas(self, width=canvasSize, height=canvasSize)
                     canvas.pack()
-                    canvas.bind('<Key>',partial(enterText, canvas))
                     canvas.focus_set()
 
 
@@ -70,12 +70,15 @@ class crosswordFrame(ttk.Frame):
 
                         if obj == 'B':
                             rectangleID = canvas.create_rectangle(x1, y1, x2, y2, fill="black", outline="black")
+                            nonTextRectangles.append(rectangleID)
 
                         else:
                             rectangleID = canvas.create_rectangle(x1, y1, x2, y2, fill="white", outline="black")
                             canvas.tag_bind(rectangleID, "<Enter>", partial(mouseEnter, canvas, rectangleID))
                             canvas.tag_bind(rectangleID, "<Leave>", partial(mouseExit, canvas, rectangleID))
                             canvas.tag_bind(rectangleID, "<Button-1>", partial(onClick, canvas, rectangleID))
+                            canvas.bind('<Key>', partial(enterText, canvas,rectangleID))
+
 
 
                 displayData()
@@ -121,35 +124,58 @@ class crosswordFrame(ttk.Frame):
 
         def setActive(canvas,rectangleID):
                 tags = canvas.gettags(rectangleID)
-                tags = 'active'
+                tags += ('active',)
                 canvas.itemconfig(rectangleID, tags=tags)
                 canvas.itemconfig(rectangleID, fill="#ADD8E6")
 
 
 
-        def enterText(canvas,event):
+        def enterText(canvas,rectangleID,event):
             char = event.char.upper()
+
 
             if char == '\x08':
                 char = ''
 
+            if not char.isalpha() and not char == '':
+                return False
 
-
-
-
-            for item in canvas.find_withtag('active'):
-                coords = canvas.coords(item)
+            for rectangleID in canvas.find_withtag('active'):
+                coords = canvas.coords(rectangleID)
 
                 xCenter = (coords[0] + coords[2]) / 2
                 yCenter = (coords[1] + coords[3]) / 2
 
-                if item in textItems:
+                if rectangleID in textItems:
                     # If text exists, delete the existing text item
-                    canvas.delete(textItems[item])
+                    canvas.delete(textItems[rectangleID])
 
                     # Create new text and store the reference in the textItems dictionary
                 text = canvas.create_text(xCenter, yCenter, text=char, font=("Arial", 24), fill="black", tags='text')
-                textItems[item] = text
+                textItems[rectangleID] = text
+
+                canvas.tag_bind(text, "<Enter>", partial(mouseEnter, canvas, rectangleID))
+                canvas.tag_bind(text, "<Leave>", partial(mouseExit, canvas, rectangleID))
+                canvas.tag_bind(text, "<Button-1>", partial(onClick, canvas, rectangleID))
+                canvas.bind('<Key>', partial(enterText, canvas, rectangleID))
+
+
+                if char == '':
+                    nextRectangleID = rectangleID - 1
+
+                else:
+                    nextRectangleID = rectangleID + 1
+
+                if nextRectangleID in nonTextRectangles:
+                    return False
+
+
+                clearActive(canvas)
+                setActive(canvas,nextRectangleID)
+
+
+
+
 
 
 
