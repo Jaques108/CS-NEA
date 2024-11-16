@@ -11,6 +11,8 @@ class crosswordFrame(ttk.Frame):
         self.parent = parent
         self.controller = controller
 
+        textItems = {}
+
         def submit():
             code = codeEntry.get()
             url = f'http://127.0.0.1:5000/GenerateCells/{code}'
@@ -47,6 +49,10 @@ class crosswordFrame(ttk.Frame):
 
                     canvas = Canvas(self, width=canvasSize, height=canvasSize)
                     canvas.pack()
+                    canvas.bind('<Key>',partial(enterText, canvas))
+                    canvas.focus_set()
+
+
 
                     with open('Code.txt', 'r') as afile:
                         data = json.load(afile)
@@ -85,6 +91,8 @@ class crosswordFrame(ttk.Frame):
             else:
                 canvas.itemconfig(rectangleID, fill="grey")
 
+
+
         def mouseExit(canvas,rectangleID,event):
             itemTags = canvas.gettags(rectangleID)
 
@@ -96,21 +104,18 @@ class crosswordFrame(ttk.Frame):
 
 
 
-
         def onClick(canvas, rectangleID, event):
             clearActive(canvas)
             setActive(canvas,rectangleID)
-            enterText(canvas,rectangleID,event)
 
 
 
         def clearActive(canvas):
             for item in canvas.find_withtag('active'):
                 itemTags = canvas.gettags(item)  # Get the tags of the current item
-                cleanTags = ' ' # Remove the 'active' tag
+                cleanTags = list(filter(lambda x: (x != 'active'), itemTags)) # Remove the 'active' tag
                 canvas.itemconfig(item, tags=cleanTags)  # Update the tags of the item
                 canvas.itemconfig(item, fill="white")
-
 
 
 
@@ -121,11 +126,30 @@ class crosswordFrame(ttk.Frame):
                 canvas.itemconfig(rectangleID, fill="#ADD8E6")
 
 
-        def enterText(canvas,rectangleID,event):
-            coords = canvas.coords(rectangleID)
-            char = event.char.upper()
-            canvas.create_text((coords[0] + coords[2]) / 2, (coords[1] + coords[3]) / 2,text=char, font=("Arial", 24),fill = 'green')
 
+        def enterText(canvas,event):
+            char = event.char.upper()
+
+            if char == '\x08':
+                char = ''
+
+
+
+
+
+            for item in canvas.find_withtag('active'):
+                coords = canvas.coords(item)
+
+                xCenter = (coords[0] + coords[2]) / 2
+                yCenter = (coords[1] + coords[3]) / 2
+
+                if item in textItems:
+                    # If text exists, delete the existing text item
+                    canvas.delete(textItems[item])
+
+                    # Create new text and store the reference in the textItems dictionary
+                text = canvas.create_text(xCenter, yCenter, text=char, font=("Arial", 24), fill="black", tags='text')
+                textItems[item] = text
 
 
 
