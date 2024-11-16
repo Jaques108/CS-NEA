@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fcc33587-880f-4a89-98b5-cef7062c96cd" name="Changes" comment="Upload">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/FlaskAPI/Data.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/FlaskAPI/Data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NEA/Frames/CrosswordFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Frames/CrosswordFrame.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,12 +42,12 @@
     &quot;assignee&quot;: &quot;Jaques108&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Jaques108/CS-NEA.git",
-    "accountId": "ea9d7374-0f21-46a7-86ab-88931896b6cd"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Jaques108/CS-NEA.git&quot;,
+    &quot;accountId&quot;: &quot;ea9d7374-0f21-46a7-86ab-88931896b6cd&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/NEA/FlaskAPI/Data.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/NEA/Frames/CCFrame.py" root0="SKIP_INSPECTION" />
@@ -392,7 +394,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730741722839</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Upload">
+      <option name="closed" value="true" />
+      <created>1731753503472</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1731753503472</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

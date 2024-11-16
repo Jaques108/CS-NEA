@@ -76,6 +76,7 @@ def crossword1(code):
         else:
             for i in range(length):
                 cells[startY+i][startX] = entry['solution'][i]
+
     for i in range(len(cells)):
         for x in range(len(cells[0])):
             if cells[i][x] == '':

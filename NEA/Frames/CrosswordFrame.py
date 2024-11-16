@@ -106,25 +106,25 @@ class crosswordFrame(ttk.Frame):
 
         def clearActive(canvas):
             for item in canvas.find_withtag('active'):
-                itemTags = canvas.gettags(item)  #Get the tags of the current item
-                cleanTags = ' ' #Remove the 'active' tag
-                canvas.itemconfig(item, tags=cleanTags)  #Update the tags of the item
-                canvas.itemconfig(item, fill="white")  #Change the color of the item to white
+                itemTags = canvas.gettags(item)  # Get the tags of the current item
+                cleanTags = ' ' # Remove the 'active' tag
+                canvas.itemconfig(item, tags=cleanTags)  # Update the tags of the item
+                canvas.itemconfig(item, fill="white")
+
+
 
 
         def setActive(canvas,rectangleID):
-            tags = canvas.gettags(rectangleID)
-            tags = 'active'
-            canvas.itemconfig(rectangleID, tags=tags)
-            canvas.itemconfig(rectangleID, fill="#ADD8E6")
+                tags = canvas.gettags(rectangleID)
+                tags = 'active'
+                canvas.itemconfig(rectangleID, tags=tags)
+                canvas.itemconfig(rectangleID, fill="#ADD8E6")
 
 
         def enterText(canvas,rectangleID,event):
             coords = canvas.coords(rectangleID)
             char = event.char.upper()
-
-
-            canvas.create_text((coords[0] + coords[2]) / 2, (coords[1] + coords[3]) / 2,text=char, font=("Arial", 24))
+            canvas.create_text((coords[0] + coords[2]) / 2, (coords[1] + coords[3]) / 2,text=char, font=("Arial", 24),fill = 'green')
 
 
 
