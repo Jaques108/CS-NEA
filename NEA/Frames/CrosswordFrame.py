@@ -4,6 +4,7 @@ import json
 import requests
 from functools import partial
 
+
 class crosswordFrame(ttk.Frame):
     def __init__(self, parent, controller):
         ttk.Frame.__init__(self, parent)
@@ -63,27 +64,77 @@ class crosswordFrame(ttk.Frame):
 
                         if obj == 'B':
                             rectangleID = canvas.create_rectangle(x1, y1, x2, y2, fill="black", outline="black")
-                            canvas.tag_bind(rectangleID, "<Button-1>", partial(onClick, canvas, rectangleID))
 
                         else:
                             rectangleID = canvas.create_rectangle(x1, y1, x2, y2, fill="white", outline="black")
+                            canvas.tag_bind(rectangleID, "<Enter>", partial(mouseEnter, canvas, rectangleID))
+                            canvas.tag_bind(rectangleID, "<Leave>", partial(mouseExit, canvas, rectangleID))
                             canvas.tag_bind(rectangleID, "<Button-1>", partial(onClick, canvas, rectangleID))
+
 
                 displayData()
 
-        def onClick(canvas, rectangleID, event):
-            coords = canvas.coords(rectangleID)
-            textTag = f"text_{rectangleID}"
 
-            if coords[0] < event.x < coords[2] and coords[1] < event.y < coords[3]:
-                canvas.delete(textTag)
-                canvas.create_text((coords[0] + coords[2]) / 2, (coords[1] + coords[3]) / 2,text="K", font=("Arial", 24), tags=textTag)
+
+        def mouseEnter(canvas,rectangleID,event):
+            itemTags = canvas.gettags(rectangleID)
+
+            if 'active' in itemTags:
+                pass
+
+            else:
+                canvas.itemconfig(rectangleID, fill="grey")
+
+        def mouseExit(canvas,rectangleID,event):
+            itemTags = canvas.gettags(rectangleID)
+
+            if 'active' in itemTags:
+                pass
+
+            else:
+                canvas.itemconfig(rectangleID, fill="white")
+
+
+
+
+        def onClick(canvas, rectangleID, event):
+            clearActive(canvas)
+            setActive(canvas,rectangleID)
+            enterText(canvas,rectangleID,event)
+
+
+
+        def clearActive(canvas):
+            for item in canvas.find_withtag('active'):
+                itemTags = canvas.gettags(item)  #Get the tags of the current item
+                cleanTags = list(filter(lambda x: (x != 'active'), itemTags))  #Remove the 'active' tag
+                canvas.itemconfig(item, tags=cleanTags)  #Update the tags of the item
+                canvas.itemconfig(item, fill="white")  #Change the color of the item to white
+
+
+        def setActive(canvas,rectangleID):
+            tags = canvas.gettags(rectangleID)
+            tags += ('active',)
+            canvas.itemconfig(rectangleID, tags=tags)
+            canvas.itemconfig(rectangleID, fill="#ADD8E6")
+
+
+        def enterText(canvas,rectangleID,event):
+            coords = canvas.coords(rectangleID)
+            char = event.char.upper()
+
+
+            canvas.create_text((coords[0] + coords[2]) / 2, (coords[1] + coords[3]) / 2,text=char, font=("Arial", 24))
+
+
+
+
 
         # UI Elements
         codeLabel = ttk.Label(self, text='Enter Crossword Code')
         codeLabel.place(relx=0.5, rely=0.25, anchor="center")
 
-        codeEntry = ttk.Entry(self)
+        codeEntry = ttk.Entry(self,justify='center')
         codeEntry.place(relx=0.5, rely=0.5, anchor="center")
 
         codeSubmit = ttk.Button(self, text='Submit', command=submit)
