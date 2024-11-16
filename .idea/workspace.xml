@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fcc33587-880f-4a89-98b5-cef7062c96cd" name="Changes" comment="Upload">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NEA/Frames/CrosswordFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Frames/CrosswordFrame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/School/Task1.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/School/Task3.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/School/Task4.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/School/Task5.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,12 +40,12 @@
     &quot;assignee&quot;: &quot;Jaques108&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Jaques108/CS-NEA.git&quot;,
-    &quot;accountId&quot;: &quot;cfb0590f-e807-4271-8f76-27308b410af8&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Jaques108/CS-NEA.git",
+    "accountId": "ea9d7374-0f21-46a7-86ab-88931896b6cd"
   }
-}</component>
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/NEA/FlaskAPI/Data.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/NEA/Frames/CCFrame.py" root0="SKIP_INSPECTION" />
@@ -134,7 +129,7 @@
   </component>
   <component name="RunManager">
     <configuration name="MainAPP" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="CS-NEA" />
+      <module name="main" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -142,8 +137,9 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.12 (Python)" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/NEA/Main Code" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/NEA/Main Code/MainAPP.py" />
@@ -159,7 +155,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-d7ad00fb9fc3-c546a90a8094-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.23726.102" />
+        <option value="bundled-python-sdk-0e3be3396995-c546a90a8094-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.23339.19" />
       </set>
     </attachedChunks>
   </component>

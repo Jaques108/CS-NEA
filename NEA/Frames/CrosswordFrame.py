@@ -107,14 +107,14 @@ class crosswordFrame(ttk.Frame):
         def clearActive(canvas):
             for item in canvas.find_withtag('active'):
                 itemTags = canvas.gettags(item)  #Get the tags of the current item
-                cleanTags = list(filter(lambda x: (x != 'active'), itemTags))  #Remove the 'active' tag
+                cleanTags = ' ' #Remove the 'active' tag
                 canvas.itemconfig(item, tags=cleanTags)  #Update the tags of the item
                 canvas.itemconfig(item, fill="white")  #Change the color of the item to white
 
 
         def setActive(canvas,rectangleID):
             tags = canvas.gettags(rectangleID)
-            tags += ('active',)
+            tags = 'active'
             canvas.itemconfig(rectangleID, tags=tags)
             canvas.itemconfig(rectangleID, fill="#ADD8E6")
 
