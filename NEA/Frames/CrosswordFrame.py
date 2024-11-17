@@ -15,6 +15,8 @@ class crosswordFrame(ttk.Frame):
         nonTextRectangles = []
         startText = []
 
+
+
         def submit():
             code = codeEntry.get()
             url = f'http://127.0.0.1:5000/GenerateCells/{code}'
@@ -67,7 +69,7 @@ class crosswordFrame(ttk.Frame):
                         x2 = x1 + cellSize
                         y2 = y1 + cellSize
 
-                        obj = cellData.get("text")
+                        obj = str(cellData.get("text"))
 
                         if obj == 'B':
                             rectangleID = canvas.create_rectangle(x1, y1, x2, y2, fill="black", outline="black")
@@ -76,20 +78,29 @@ class crosswordFrame(ttk.Frame):
                         else:
 
                             # Add the text inside the rectangle
-                            if obj == 'S':
-                                text = canvas.create_text(x1 + 6, y1 + 10, text=obj, fill="black", font=("Arial", 12))
-                                canvas.tag_bind(text, "<Enter>", partial(mouseEnter, canvas,rectangleID))
-                                canvas.tag_bind(text, "<Leave>", partial(mouseExit, canvas,rectangleID))
-                                canvas.tag_bind(text, "<Button-1>", partial(onClick, canvas,rectangleID))
-                                rectangleID = canvas.create_rectangle(x1, y1, x2, y2, fill="white", outline="black")
+                            if obj.isdigit():
 
-                                startText.append(rectangleID)
+                                obj = int(obj)
+
+                                xOffset = x1 + 6
+                                yOffset = y1 + 7.5
+
+                                if obj > 9:
+                                    xOffset = x1 + 6.55
+
+
+                                startID = canvas.create_text(xOffset, yOffset, text=obj, fill="black", font=("Comic Sans MS", 8))
+                                canvas.tag_bind(startID, "<Enter>", partial(mouseEnter, canvas,startID))
+                                canvas.tag_bind(startID, "<Leave>", partial(mouseExit, canvas,startID))
+                                canvas.tag_bind(startID, "<Button-1>", partial(onClick, canvas,startID))
+                                rectangleID = canvas.create_rectangle(x1, y1, x2, y2, fill="white", outline="black")
+                                startText.append(startID)
 
 
                             else:
                                 rectangleID = canvas.create_rectangle(x1, y1, x2, y2, fill="white", outline="black")
 
-                            canvas.tag_raise(text)
+                            canvas.tag_raise(startID)
 
                             # Bind events to the rectangle
                             canvas.tag_bind(rectangleID, "<Enter>", partial(mouseEnter, canvas, rectangleID))
@@ -109,6 +120,12 @@ class crosswordFrame(ttk.Frame):
             if 'active' in itemTags:
                 pass
 
+            elif rectangleID in nonTextRectangles:
+                return False
+
+            elif rectangleID in startText:
+                return False
+
             else:
                 canvas.itemconfig(rectangleID, fill="grey")
 
@@ -120,12 +137,29 @@ class crosswordFrame(ttk.Frame):
             if 'active' in itemTags:
                 pass
 
+
+            elif rectangleID in nonTextRectangles:
+                return False
+
+            elif rectangleID in startText:
+                return False
+
+
+
             else:
                 canvas.itemconfig(rectangleID, fill="white")
 
 
 
         def onClick(canvas, rectangleID, event):
+
+            if rectangleID in nonTextRectangles:
+                return False
+
+            elif rectangleID in startText:
+                return False
+
+
             clearActive(canvas)
             setActive(canvas,rectangleID)
 
@@ -144,10 +178,9 @@ class crosswordFrame(ttk.Frame):
                 tags = canvas.gettags(rectangleID)
                 tags += ('active',)
                 canvas.itemconfig(rectangleID, tags=tags)
-                canvas.itemconfig(rectangleID, fill="#ADD8E6")
 
-
-
+                if rectangleID not in startText:
+                    canvas.itemconfig(rectangleID, fill="#ADD8E6")
 
 
 
@@ -163,7 +196,7 @@ class crosswordFrame(ttk.Frame):
 
             for rectangleID in canvas.find_withtag('active'):
                 coords = canvas.coords(rectangleID)
-                print(coords)
+
 
                 xCenter = (coords[0] + coords[2]) / 2
                 yCenter = (coords[1] + coords[3]) / 2
@@ -173,7 +206,7 @@ class crosswordFrame(ttk.Frame):
                     canvas.delete(textItems[rectangleID])
 
                     # Create new text and store the reference in the textItems dictionary
-                textID = canvas.create_text(xCenter, yCenter, text=char, font=("Arial", 24), fill="black", tags='text')
+                textID = canvas.create_text(xCenter, yCenter, text=char, font=("Arial", 16), fill="black", tags='text')
                 textItems[rectangleID] = textID
 
                 #Make sure the text has the same attributes as the rectangle because tkinter is goofy like that
@@ -195,11 +228,6 @@ class crosswordFrame(ttk.Frame):
 
                 clearActive(canvas)
                 setActive(canvas,nextRectangleID)
-
-
-
-
-
 
 
 

@@ -119,12 +119,16 @@ def crossword(code):
         tempX = temp['x']
         tempY = temp['y']
 
+
+
         startPosition = (tempX, tempY)
 
         # Removes duplicates. This is because some start positions belong to both across and down words.
         if startPosition not in seen:
             startPositions.append(startPosition)
             seen.add(startPosition)
+
+
 
         startPositions = sorted(startPositions, key=lambda x: (x[1], x[0]))
 
@@ -150,6 +154,8 @@ def cellsBelongingToWord(var,cells):
         posX = temp['x']
         posY = temp['y']
 
+        number = item['number']
+
         direction = item['direction']
         length = item['length']
 
@@ -161,7 +167,7 @@ def cellsBelongingToWord(var,cells):
                 text = cell.get('text')
 
                 if x == 0:
-                    cell['text'] = 'S'
+                    cell['text'] = number
 
 
                 elif text == "B":
@@ -181,7 +187,7 @@ def cellsBelongingToWord(var,cells):
                 text = cell.get('text')
 
                 if n == 0:
-                    cell['text'] = 'S'
+                    cell['text'] = number
 
 
                 elif text == "B":

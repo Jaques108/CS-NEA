@@ -8,7 +8,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NEA/FlaskAPI/Data.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/FlaskAPI/Data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/Frames/ChoiceFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Frames/ChoiceFrame.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NEA/Frames/CrosswordFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Frames/CrosswordFrame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/Frames/LoginFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Frames/LoginFrame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/Main Code/MainAPP.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Main Code/MainAPP.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +48,7 @@
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
     "url": "https://github.com/Jaques108/CS-NEA.git",
-    "accountId": "ea9d7374-0f21-46a7-86ab-88931896b6cd"
+    "accountId": "cfb0590f-e807-4271-8f76-27308b410af8"
   }
 }]]></component>
   <component name="HighlightingSettingsPerFile">
@@ -129,32 +132,9 @@
       <recent name="$PROJECT_DIR$/NEA" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.MainAPP">
-    <configuration name="Data" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="main" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.12 (Python)" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/NEA/FlaskAPI" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/NEA/FlaskAPI/Data.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager">
     <configuration name="MainAPP" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="main" />
+      <module name="CS-NEA" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -162,9 +142,8 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.12 (Python)" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/NEA/Main Code" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/NEA/Main Code/MainAPP.py" />
@@ -180,7 +159,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-0e3be3396995-c546a90a8094-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.23339.19" />
+        <option value="bundled-python-sdk-d7ad00fb9fc3-c546a90a8094-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.23726.102" />
       </set>
     </attachedChunks>
   </component>
@@ -452,16 +431,5 @@
     <MESSAGE value="Merge remote-tracking branch 'origin/main'" />
     <MESSAGE value="Upload" />
     <option name="LAST_COMMIT_MESSAGE" value="Upload" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/NEA/FlaskAPI/Data.py</url>
-          <line>147</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

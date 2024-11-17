@@ -23,7 +23,7 @@ class MainApp(tk.Tk):
             self.frames[F.__name__] = frame
             frame.grid(row=0, column=0, sticky='nsew')
 
-        self.show_frame('loginFrame', '600x600', 'Welcome')
+        self.show_frame('loginFrame', '600x300', 'Welcome')
 
 
 
