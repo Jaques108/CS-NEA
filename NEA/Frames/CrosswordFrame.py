@@ -4,6 +4,8 @@ import json
 import requests
 from functools import partial
 
+from Demos.mmapfile_demo import offset
+
 
 class crosswordFrame(ttk.Frame):
     def __init__(self, parent, controller):
@@ -89,11 +91,12 @@ class crosswordFrame(ttk.Frame):
                                     xOffset = x1 + 6.55
 
 
-                                startID = canvas.create_text(xOffset, yOffset, text=obj, fill="black", font=("Comic Sans MS", 8))
+                                startID = canvas.create_text(xOffset, yOffset, text=obj, fill="black", font=("Comic Sans MS", 8),tags = 'startText')
                                 canvas.tag_bind(startID, "<Enter>", partial(mouseEnter, canvas,startID))
                                 canvas.tag_bind(startID, "<Leave>", partial(mouseExit, canvas,startID))
                                 canvas.tag_bind(startID, "<Button-1>", partial(onClick, canvas,startID))
                                 rectangleID = canvas.create_rectangle(x1, y1, x2, y2, fill="white", outline="black")
+
                                 startText.append(startID)
 
 
@@ -216,13 +219,20 @@ class crosswordFrame(ttk.Frame):
                 canvas.bind('<Key>', partial(enterText, canvas, rectangleID))
 
 
-                if char == '':
+                offset = 1
+
+                if rectangleID in canvas.find_withtag('startText'):
+                    offset = 2
+
+
+                elif char == '':
                     nextRectangleID = rectangleID - 1
 
                 else:
                     nextRectangleID = rectangleID + 1
 
-                if nextRectangleID in nonTextRectangles or nextRectangleID in startText:
+
+                if nextRectangleID in nonTextRectangles:
                     return False
 
 
