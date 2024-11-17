@@ -155,7 +155,7 @@ def cellsBelongingToWord(var,cells):
 
 
         if direction == 'across':
-            for x in range(0,length):
+            for x in range(length):
                 position = str(posY).zfill(2) + str(posX + x).zfill(2)
                 cell = cells.get(position)
                 text = cell.get('text')
@@ -163,24 +163,26 @@ def cellsBelongingToWord(var,cells):
                 if x == 0:
                     cell['text'] = 'S'
 
+
                 elif text == "B":
                     cell['text'] = "--"
 
                 elif text == "S":
                     pass
 
-                else:
+                elif text == '|':
                     cell['text'] = "W"
 
 
         elif direction == 'down':
-            for n in range(0,length):
+            for n in range(length):
                 position = str(posY + n).zfill(2) + str(posX).zfill(2)
                 cell = cells.get(position)
                 text = cell.get('text')
 
-                if x == 0:
+                if n == 0:
                     cell['text'] = 'S'
+
 
                 elif text == "B":
                     cell['text'] = "|"
@@ -188,7 +190,7 @@ def cellsBelongingToWord(var,cells):
                 elif text == "S":
                     pass
 
-                else:
+                elif text == '--':
                     cell['text'] = "W"
 
 

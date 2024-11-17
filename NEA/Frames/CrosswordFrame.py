@@ -13,6 +13,7 @@ class crosswordFrame(ttk.Frame):
 
         textItems = {}
         nonTextRectangles = []
+        startText = []
 
         def submit():
             code = codeEntry.get()
@@ -70,14 +71,31 @@ class crosswordFrame(ttk.Frame):
 
                         if obj == 'B':
                             rectangleID = canvas.create_rectangle(x1, y1, x2, y2, fill="black", outline="black")
-                            nonTextRectangles.append(rectangleID)
+                            nonTextRectangles.append(rectangleID) #Make it so the program isnt stupid and understands that a black square is not a place to put text in
 
                         else:
-                            rectangleID = canvas.create_rectangle(x1, y1, x2, y2, fill="white", outline="black")
+
+                            # Add the text inside the rectangle
+                            if obj == 'S':
+                                text = canvas.create_text(x1 + 6, y1 + 10, text=obj, fill="black", font=("Arial", 12))
+                                canvas.tag_bind(text, "<Enter>", partial(mouseEnter, canvas,rectangleID))
+                                canvas.tag_bind(text, "<Leave>", partial(mouseExit, canvas,rectangleID))
+                                canvas.tag_bind(text, "<Button-1>", partial(onClick, canvas,rectangleID))
+                                rectangleID = canvas.create_rectangle(x1, y1, x2, y2, fill="white", outline="black")
+
+                                startText.append(rectangleID)
+
+
+                            else:
+                                rectangleID = canvas.create_rectangle(x1, y1, x2, y2, fill="white", outline="black")
+
+                            canvas.tag_raise(text)
+
+                            # Bind events to the rectangle
                             canvas.tag_bind(rectangleID, "<Enter>", partial(mouseEnter, canvas, rectangleID))
                             canvas.tag_bind(rectangleID, "<Leave>", partial(mouseExit, canvas, rectangleID))
                             canvas.tag_bind(rectangleID, "<Button-1>", partial(onClick, canvas, rectangleID))
-                            canvas.bind('<Key>', partial(enterText, canvas,rectangleID))
+                            canvas.bind('<Key>', partial(enterText, canvas, rectangleID))
 
 
 
@@ -130,6 +148,9 @@ class crosswordFrame(ttk.Frame):
 
 
 
+
+
+
         def enterText(canvas,rectangleID,event):
             char = event.char.upper()
 
@@ -142,6 +163,7 @@ class crosswordFrame(ttk.Frame):
 
             for rectangleID in canvas.find_withtag('active'):
                 coords = canvas.coords(rectangleID)
+                print(coords)
 
                 xCenter = (coords[0] + coords[2]) / 2
                 yCenter = (coords[1] + coords[3]) / 2
@@ -151,12 +173,13 @@ class crosswordFrame(ttk.Frame):
                     canvas.delete(textItems[rectangleID])
 
                     # Create new text and store the reference in the textItems dictionary
-                text = canvas.create_text(xCenter, yCenter, text=char, font=("Arial", 24), fill="black", tags='text')
-                textItems[rectangleID] = text
+                textID = canvas.create_text(xCenter, yCenter, text=char, font=("Arial", 24), fill="black", tags='text')
+                textItems[rectangleID] = textID
 
-                canvas.tag_bind(text, "<Enter>", partial(mouseEnter, canvas, rectangleID))
-                canvas.tag_bind(text, "<Leave>", partial(mouseExit, canvas, rectangleID))
-                canvas.tag_bind(text, "<Button-1>", partial(onClick, canvas, rectangleID))
+                #Make sure the text has the same attributes as the rectangle because tkinter is goofy like that
+                canvas.tag_bind(textID, "<Enter>", partial(mouseEnter, canvas, rectangleID))
+                canvas.tag_bind(textID, "<Leave>", partial(mouseExit, canvas, rectangleID))
+                canvas.tag_bind(textID, "<Button-1>", partial(onClick, canvas, rectangleID))
                 canvas.bind('<Key>', partial(enterText, canvas, rectangleID))
 
 
@@ -166,7 +189,7 @@ class crosswordFrame(ttk.Frame):
                 else:
                     nextRectangleID = rectangleID + 1
 
-                if nextRectangleID in nonTextRectangles:
+                if nextRectangleID in nonTextRectangles or nextRectangleID in startText:
                     return False
 
 
