@@ -17,6 +17,8 @@ class crosswordFrame(ttk.Frame):
         textItems = {}
         nonTextRectangles = []
         startPositions = []
+        normalRectangles = []
+        arrowKeys = ['Left', 'Right', 'Up', 'Down']
 
 
 
@@ -51,7 +53,6 @@ class crosswordFrame(ttk.Frame):
                     codeSubmit.destroy()
                     errorLabel.destroy()
 
-                    rectangles = []
 
                     cellSize = 40
                     canvasSize = 40 * 13
@@ -59,6 +60,7 @@ class crosswordFrame(ttk.Frame):
                     canvas = Canvas(self, width=canvasSize, height=canvasSize)
                     canvas.pack()
                     canvas.focus_set()
+
 
 
 
@@ -106,13 +108,20 @@ class crosswordFrame(ttk.Frame):
                             else:
                                 rectangleID = canvas.create_rectangle(x1, y1, x2, y2, fill="white", outline="black")
 
+
                             canvas.tag_raise(startID)
 
                             # Bind events to the rectangle
                             canvas.tag_bind(rectangleID, "<Enter>", partial(mouseEnter, canvas, rectangleID))
                             canvas.tag_bind(rectangleID, "<Leave>", partial(mouseExit, canvas, rectangleID))
                             canvas.tag_bind(rectangleID, "<Button-1>", partial(onClick, canvas, rectangleID))
+
                             canvas.bind('<Key>', partial(enterText, canvas, rectangleID))
+
+                            canvas.bind('<Left>', partial(enterText, canvas, rectangleID))
+                            canvas.bind('<Right>', partial(enterText, canvas, rectangleID))
+                            canvas.bind('<Up>', partial(enterText, canvas, rectangleID))
+                            canvas.bind('<Down>', partial(enterText, canvas, rectangleID))
 
 
 
@@ -144,7 +153,6 @@ class crosswordFrame(ttk.Frame):
 
             if 'active' in itemTags:
                 pass
-
 
             elif rectangleID in nonTextRectangles:
                 return False
@@ -193,11 +201,15 @@ class crosswordFrame(ttk.Frame):
 
 
         def enterText(canvas,rectangleID,event):
+
             char = event.char.upper()
+            print(char)
 
 
             if char == '\x08':
                 char = ''
+
+
 
             if not char.isalpha() and not char == '':
                 return False
@@ -231,10 +243,8 @@ class crosswordFrame(ttk.Frame):
 
                 if char == '':
                     offset = - 1
-                    nextRectangleID = rectangleID + offset
 
-                else:
-                    nextRectangleID = rectangleID + offset
+                nextRectangleID = rectangleID + offset
 
 
                 if nextRectangleID in nonTextRectangles:
