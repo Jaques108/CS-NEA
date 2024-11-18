@@ -1,10 +1,11 @@
+from curses.textpad import rectangle
 from tkinter import *
 from tkinter import ttk
 import json
 import requests
 from functools import partial
 
-from Demos.mmapfile_demo import offset
+
 
 
 class crosswordFrame(ttk.Frame):
@@ -15,7 +16,7 @@ class crosswordFrame(ttk.Frame):
 
         textItems = {}
         nonTextRectangles = []
-        startText = []
+        startPositions = []
 
 
 
@@ -50,6 +51,8 @@ class crosswordFrame(ttk.Frame):
                     codeSubmit.destroy()
                     errorLabel.destroy()
 
+                    rectangles = []
+
                     cellSize = 40
                     canvasSize = 40 * 13
 
@@ -77,6 +80,9 @@ class crosswordFrame(ttk.Frame):
                             rectangleID = canvas.create_rectangle(x1, y1, x2, y2, fill="black", outline="black")
                             nonTextRectangles.append(rectangleID) #Make it so the program isnt stupid and understands that a black square is not a place to put text in
 
+
+
+
                         else:
 
                             # Add the text inside the rectangle
@@ -91,13 +97,10 @@ class crosswordFrame(ttk.Frame):
                                     xOffset = x1 + 6.55
 
 
-                                startID = canvas.create_text(xOffset, yOffset, text=obj, fill="black", font=("Comic Sans MS", 8),tags = 'startText')
-                                canvas.tag_bind(startID, "<Enter>", partial(mouseEnter, canvas,startID))
-                                canvas.tag_bind(startID, "<Leave>", partial(mouseExit, canvas,startID))
-                                canvas.tag_bind(startID, "<Button-1>", partial(onClick, canvas,startID))
+                                startID = canvas.create_text(xOffset, yOffset, text=obj, fill="black", font=("Comic Sans MS", 8),tags = 'startPositions')
                                 rectangleID = canvas.create_rectangle(x1, y1, x2, y2, fill="white", outline="black")
+                                startPositions.append(startID)
 
-                                startText.append(startID)
 
 
                             else:
@@ -110,6 +113,8 @@ class crosswordFrame(ttk.Frame):
                             canvas.tag_bind(rectangleID, "<Leave>", partial(mouseExit, canvas, rectangleID))
                             canvas.tag_bind(rectangleID, "<Button-1>", partial(onClick, canvas, rectangleID))
                             canvas.bind('<Key>', partial(enterText, canvas, rectangleID))
+
+
 
 
 
@@ -126,7 +131,7 @@ class crosswordFrame(ttk.Frame):
             elif rectangleID in nonTextRectangles:
                 return False
 
-            elif rectangleID in startText:
+            elif rectangleID in startPositions:
                 return False
 
             else:
@@ -144,7 +149,7 @@ class crosswordFrame(ttk.Frame):
             elif rectangleID in nonTextRectangles:
                 return False
 
-            elif rectangleID in startText:
+            elif rectangleID in startPositions:
                 return False
 
 
@@ -159,7 +164,7 @@ class crosswordFrame(ttk.Frame):
             if rectangleID in nonTextRectangles:
                 return False
 
-            elif rectangleID in startText:
+            elif rectangleID in startPositions:
                 return False
 
 
@@ -182,7 +187,7 @@ class crosswordFrame(ttk.Frame):
                 tags += ('active',)
                 canvas.itemconfig(rectangleID, tags=tags)
 
-                if rectangleID not in startText:
+                if rectangleID not in startPositions:
                     canvas.itemconfig(rectangleID, fill="#ADD8E6")
 
 
@@ -204,6 +209,8 @@ class crosswordFrame(ttk.Frame):
                 xCenter = (coords[0] + coords[2]) / 2
                 yCenter = (coords[1] + coords[3]) / 2
 
+
+
                 if rectangleID in textItems:
                     # If text exists, delete the existing text item
                     canvas.delete(textItems[rectangleID])
@@ -219,21 +226,42 @@ class crosswordFrame(ttk.Frame):
                 canvas.bind('<Key>', partial(enterText, canvas, rectangleID))
 
 
+
                 offset = 1
 
-                if rectangleID in canvas.find_withtag('startText'):
-                    offset = 2
-
-
-                elif char == '':
-                    nextRectangleID = rectangleID - 1
+                if char == '':
+                    offset = - 1
+                    nextRectangleID = rectangleID + offset
 
                 else:
-                    nextRectangleID = rectangleID + 1
+                    nextRectangleID = rectangleID + offset
 
 
                 if nextRectangleID in nonTextRectangles:
                     return False
+
+
+                elif nextRectangleID in startPositions:
+                    nextRectangleID = rectangleID + (offset * 2)
+
+                    if nextRectangleID in nonTextRectangles:
+                        return False
+
+
+
+                newCoords = canvas.coords(nextRectangleID)
+                nextYCenter = (newCoords[1] + newCoords[3]) / 2
+
+                difference = yCenter - nextYCenter
+
+
+
+                if difference != 0:
+                    return False
+
+
+
+
 
 
                 clearActive(canvas)
