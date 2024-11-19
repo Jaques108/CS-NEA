@@ -1,4 +1,3 @@
-from curses.textpad import rectangle
 from tkinter import *
 from tkinter import ttk
 import json
@@ -18,7 +17,7 @@ class crosswordFrame(ttk.Frame):
         nonTextRectangles = []
         startPositions = []
         normalRectangles = []
-        arrowKeys = ['Left', 'Right', 'Up', 'Down']
+
 
 
 
@@ -118,10 +117,10 @@ class crosswordFrame(ttk.Frame):
 
                             canvas.bind('<Key>', partial(enterText, canvas, rectangleID))
 
-                            canvas.bind('<Left>', partial(enterText, canvas, rectangleID))
-                            canvas.bind('<Right>', partial(enterText, canvas, rectangleID))
-                            canvas.bind('<Up>', partial(enterText, canvas, rectangleID))
-                            canvas.bind('<Down>', partial(enterText, canvas, rectangleID))
+                            canvas.bind('<Left>', partial(moveActiveHorizontally, canvas, rectangleID))
+                            canvas.bind('<Right>', partial(moveActiveHorizontally, canvas, rectangleID))
+                            canvas.bind('<Up>', partial(moveActiveVertically, canvas, rectangleID))
+                            canvas.bind('<Down>', partial(moveActiveVertically, canvas, rectangleID))
 
 
 
@@ -264,18 +263,39 @@ class crosswordFrame(ttk.Frame):
 
                 difference = yCenter - nextYCenter
 
-
-
                 if difference != 0:
                     return False
 
 
 
-
-
-
                 clearActive(canvas)
                 setActive(canvas,nextRectangleID)
+
+
+        def moveActiveHorizontally(canvas,rectangleID,event):
+            for rectangleID in canvas.find_withtag('active'):
+                offset = 1
+
+                if event.keysym == 'Left':
+                    offset = - 1
+
+
+                onClick(canvas, (rectangleID + offset), event)
+
+
+
+
+
+
+
+        def moveActiveVertically(canvas,rectangleID,event):
+            if event.keysym == 'Up':
+                print("Up arrow key pressed")
+
+            elif event.keysym == 'Down':
+                print("Down arrow key pressed")
+
+
 
 
 

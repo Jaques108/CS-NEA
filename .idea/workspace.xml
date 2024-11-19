@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fcc33587-880f-4a89-98b5-cef7062c96cd" name="Changes" comment="Upload">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NEA/Frames/CrosswordFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Frames/CrosswordFrame.py" afterDir="false" />
     </list>
@@ -43,7 +44,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Jaques108/CS-NEA.git&quot;,
-    &quot;accountId&quot;: &quot;ea9d7374-0f21-46a7-86ab-88931896b6cd&quot;
+    &quot;accountId&quot;: &quot;cfb0590f-e807-4271-8f76-27308b410af8&quot;
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
@@ -129,7 +130,7 @@
   </component>
   <component name="RunManager">
     <configuration name="MainAPP" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="main" />
+      <module name="CS-NEA" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -154,7 +155,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-0e3be3396995-c546a90a8094-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.23339.19" />
+        <option value="bundled-python-sdk-d7ad00fb9fc3-c546a90a8094-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.23726.102" />
       </set>
     </attachedChunks>
   </component>
