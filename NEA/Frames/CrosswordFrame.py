@@ -1,3 +1,4 @@
+from http.cookiejar import offset_from_tz_string
 from tkinter import *
 from tkinter import ttk
 import json
@@ -90,15 +91,24 @@ class crosswordFrame(ttk.Frame):
                             if obj.isdigit():
 
                                 obj = int(obj)
+                                offset = 6
 
-                                xOffset = x1 + 6
+
+                                if obj > 9 or x1 < 40:   #God forgive me
+                                    if x1 < 40 and obj > 9:
+                                        offset = 8.75
+
+                                    elif obj < 9:
+                                        offset = 8
+
+                                    else:
+                                        offset = 6.5
+
+                                xOffset = x1 + offset
                                 yOffset = y1 + 7.5
 
-                                if obj > 9:
-                                    xOffset = x1 + 6.55
 
-
-                                startID = canvas.create_text(xOffset, yOffset, text=obj, fill="black", font=("Comic Sans MS", 8),tags = 'startPositions')
+                                startID = canvas.create_text(xOffset, yOffset, text=obj, fill="black", font=('Guardian Egyptian', 8),tags = 'startPositions')
                                 rectangleID = canvas.create_rectangle(x1, y1, x2, y2, fill="white", outline="black")
                                 startPositions.append(startID)
 
