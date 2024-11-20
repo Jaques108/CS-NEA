@@ -117,10 +117,10 @@ class crosswordFrame(ttk.Frame):
 
                             canvas.bind('<Key>', partial(enterText, canvas, rectangleID))
 
-                            canvas.bind('<Left>', partial(moveActiveHorizontally, canvas, rectangleID))
-                            canvas.bind('<Right>', partial(moveActiveHorizontally, canvas, rectangleID))
-                            canvas.bind('<Up>', partial(moveActiveVertically, canvas, rectangleID))
-                            canvas.bind('<Down>', partial(moveActiveVertically, canvas, rectangleID))
+                            canvas.bind('<Left>', partial(enterText, canvas, rectangleID))
+                            canvas.bind('<Right>', partial(enterText, canvas, rectangleID))
+                            canvas.bind('<Up>', partial(enterText, canvas, rectangleID))
+                            canvas.bind('<Down>', partial(enterText, canvas, rectangleID))
 
 
 
@@ -200,12 +200,17 @@ class crosswordFrame(ttk.Frame):
 
 
         def enterText(canvas,rectangleID,event):
+            directions = ['LEFT','RIGHT','UP','DOWN']
+            char = event.keysym.upper()
+            replace = True
 
-            char = event.char.upper()
-            print(char)
+            if char in directions:
+                replace = False
 
 
-            if char == '\x08':
+
+
+            if char == '\x08' or char == 'BACKSPACE':
                 char = ''
 
 
@@ -222,40 +227,55 @@ class crosswordFrame(ttk.Frame):
 
 
 
-                if rectangleID in textItems:
+                if rectangleID in textItems and replace:
                     # If text exists, delete the existing text item
                     canvas.delete(textItems[rectangleID])
 
                     # Create new text and store the reference in the textItems dictionary
-                textID = canvas.create_text(xCenter, yCenter, text=char, font=("Arial", 16), fill="black", tags='text')
-                textItems[rectangleID] = textID
+                if replace:
+                    textID = canvas.create_text(xCenter, yCenter, text=char, font=("Arial", 16), fill="black", tags='text')
+                    textItems[rectangleID] = textID
 
-                #Make sure the text has the same attributes as the rectangle because tkinter is goofy like that
-                canvas.tag_bind(textID, "<Enter>", partial(mouseEnter, canvas, rectangleID))
-                canvas.tag_bind(textID, "<Leave>", partial(mouseExit, canvas, rectangleID))
-                canvas.tag_bind(textID, "<Button-1>", partial(onClick, canvas, rectangleID))
-                canvas.bind('<Key>', partial(enterText, canvas, rectangleID))
+                    #Make sure the text has the same attributes as the rectangle because tkinter is goofy like that
+                    canvas.tag_bind(textID, "<Enter>", partial(mouseEnter, canvas, rectangleID))
+                    canvas.tag_bind(textID, "<Leave>", partial(mouseExit, canvas, rectangleID))
+                    canvas.tag_bind(textID, "<Button-1>", partial(onClick, canvas, rectangleID))
+                    canvas.bind('<Key>', partial(enterText, canvas, rectangleID))
 
 
 
                 offset = 1
 
-                if char == '':
+                if char == '' or char == 'LEFT':
                     offset = - 1
 
                 nextRectangleID = rectangleID + offset
+
+
+                if char == 'UP':
+                    if yCenter != 20:
+                        yCenter -= 40
+
+                    tuple = canvas.find_overlapping(xCenter,yCenter,xCenter + 1,yCenter + 1) #Returns the ID as a tuple idk why
+                    nextRectangleID = tuple[0]
+
+                elif char == 'DOWN':
+                    if yCenter != 500:
+                        yCenter += 40
+                    tuple = canvas.find_overlapping(xCenter,yCenter,xCenter + 1,yCenter + 1)
+                    nextRectangleID = tuple[0]
+
 
 
                 if nextRectangleID in nonTextRectangles:
                     return False
 
 
-                elif nextRectangleID in startPositions:
+                elif nextRectangleID in startPositions and (char != 'UP' or char != 'DOWN'):
                     nextRectangleID = rectangleID + (offset * 2)
 
                     if nextRectangleID in nonTextRectangles:
                         return False
-
 
 
                 newCoords = canvas.coords(nextRectangleID)
@@ -270,30 +290,6 @@ class crosswordFrame(ttk.Frame):
 
                 clearActive(canvas)
                 setActive(canvas,nextRectangleID)
-
-
-        def moveActiveHorizontally(canvas,rectangleID,event):
-            for rectangleID in canvas.find_withtag('active'):
-                offset = 1
-
-                if event.keysym == 'Left':
-                    offset = - 1
-
-
-                onClick(canvas, (rectangleID + offset), event)
-
-
-
-
-
-
-
-        def moveActiveVertically(canvas,rectangleID,event):
-            if event.keysym == 'Up':
-                print("Up arrow key pressed")
-
-            elif event.keysym == 'Down':
-                print("Down arrow key pressed")
 
 
 

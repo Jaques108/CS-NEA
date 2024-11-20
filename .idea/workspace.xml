@@ -44,7 +44,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Jaques108/CS-NEA.git&quot;,
-    &quot;accountId&quot;: &quot;cfb0590f-e807-4271-8f76-27308b410af8&quot;
+    &quot;accountId&quot;: &quot;ea9d7374-0f21-46a7-86ab-88931896b6cd&quot;
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
@@ -130,7 +130,7 @@
   </component>
   <component name="RunManager">
     <configuration name="MainAPP" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="CS-NEA" />
+      <module name="main" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -155,7 +155,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-d7ad00fb9fc3-c546a90a8094-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.23726.102" />
+        <option value="bundled-python-sdk-0e3be3396995-c546a90a8094-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.23339.19" />
       </set>
     </attachedChunks>
   </component>
@@ -424,7 +424,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731891072801</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Upload">
+      <option name="closed" value="true" />
+      <created>1731934895466</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1731934895466</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -443,5 +451,16 @@
     <MESSAGE value="Merge remote-tracking branch 'origin/main'" />
     <MESSAGE value="Upload" />
     <option name="LAST_COMMIT_MESSAGE" value="Upload" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/NEA/Frames/CrosswordFrame.py</url>
+          <line>255</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
