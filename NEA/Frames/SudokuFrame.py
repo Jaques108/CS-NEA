@@ -8,12 +8,25 @@ class sudokuFrame(Frame):
         self.controller = controller
 
 
+
+    def createGrid(self):
+        cellSize = 40
+        canvasSize = 40 * 9
+
+        canvas = Canvas(self, width=canvasSize, height=canvasSize)
+        canvas.pack()
+        canvas.focus_set()
+
+
         valid = (self.register(validate_entry), '%P')
+
         for row in range(9):
             for col in range(9):
-                entry = Entry(self, width=2, validate='key', validatecommand=valid, justify='center')
-                entry.grid(row=row, column=col, padx=4, pady=4)
-
+                x1 = col * cellSize
+                y1 = row * cellSize
+                x2 = x1 + cellSize
+                y2 = y1 + cellSize
+                rectagleID = canvas.create_rectangle(x1,y1,x2,y2,fill="white", outline="black")
 
 
 

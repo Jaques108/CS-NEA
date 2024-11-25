@@ -1,4 +1,3 @@
-from http.cookiejar import offset_from_tz_string
 from tkinter import *
 from tkinter import ttk
 import json
