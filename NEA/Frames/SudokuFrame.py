@@ -2,8 +2,7 @@ from tkinter import *
 from functools import partial
 import re
 
-from packaging.utils import canonicalize_version
-from soupsieve import select
+
 
 
 class sudokuFrame(Frame):
@@ -98,8 +97,27 @@ class sudokuFrame(Frame):
         grid = [[''for x in range(9)]for y in range(9)]
         print(grid)
 
-        for i in range(2,163,2):
-            print(i,canvas.itemcget(i, 'text'))
+        index = 2
+
+        for col in range(9):
+            for row in range(9):
+
+                number = canvas.itemcget(index, 'text')
+                grid[col][row] = number
+
+                index += 2
+
+
+
+
+
+
+
+
+
+        print(grid)
+
+
 
 
 
