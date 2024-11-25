@@ -1,5 +1,5 @@
 import tkinter as tk
-from NEA.Frames.LoginFrame import loginFrame
+from NEA.Frames.MainMenu import mainMenuFrame
 from NEA.Frames.LoginEntryFrame import loginEntryFrame
 from NEA.Frames.ChoiceFrame import choiceFrame
 from NEA.Frames.SudokuFrame import sudokuFrame
@@ -18,12 +18,12 @@ class MainApp(tk.Tk):
         self.frames = {}
 
 
-        for F in [loginFrame, loginEntryFrame,choiceFrame,sudokuFrame,crosswordFrame]:
+        for F in [mainMenuFrame, loginEntryFrame, choiceFrame, sudokuFrame, crosswordFrame]:
             frame = F(container, self)  #Instancing each frame!
             self.frames[F.__name__] = frame
             frame.grid(row=0, column=0, sticky='nsew')
 
-        self.show_frame('loginFrame', '600x300', 'Welcome')
+        self.show_frame('mainMenuFrame', '600x300', 'Welcome')
 
 
 

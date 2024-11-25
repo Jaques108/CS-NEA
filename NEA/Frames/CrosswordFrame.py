@@ -216,9 +216,6 @@ class crosswordFrame(ttk.Frame):
             if char in directions:
                 replace = False
 
-
-
-
             if char == '\x08' or char == 'BACKSPACE':
                 char = ''
 
