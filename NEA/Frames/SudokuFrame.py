@@ -44,6 +44,10 @@ class sudokuFrame(Frame):
                 canvas.tag_bind(rectangleID, "<Leave>", partial(self.mouseExit, canvas, rectangleID))
                 canvas.tag_bind(rectangleID, "<Button-1>",partial(self.onClick,canvas,rectangleID))
 
+                canvas.tag_bind(textID, "<Enter>", partial(self.mouseEnter, canvas, rectangleID))
+                canvas.tag_bind(textID, "<Leave>", partial(self.mouseExit, canvas, rectangleID))
+                canvas.tag_bind(textID, "<Button-1>", partial(self.onClick, canvas, rectangleID))
+
                 canvas.bind('<Key>', partial(self.enterText, canvas))
 
         self.submitButton = Button(self, text='submit',command = partial(self.canvas2array,canvas))
@@ -73,6 +77,7 @@ class sudokuFrame(Frame):
 
         except:
             pass
+
         self.selectedRectangleID = rectangleID
         self.selectedTextID = self.textIDs[rectangleID]
         canvas.itemconfig(rectangleID, fill="#ADD8E6")
@@ -88,14 +93,19 @@ class sudokuFrame(Frame):
         match = re.match(pattern,char)
         match = bool(match)
 
-        if match:
+        if match or char == 'BACKSPACE':
+            if char == 'BACKSPACE':
+                char = ''
             canvas.itemconfig(self.selectedTextID,text = char)
 
 
 
+
+
+
+
     def canvas2array(self,canvas):
-        grid = [[''for x in range(9)]for y in range(9)]
-        print(grid)
+        self.grid = [[''for x in range(9)]for y in range(9)]
 
         index = 2
 
@@ -103,19 +113,13 @@ class sudokuFrame(Frame):
             for row in range(9):
 
                 number = canvas.itemcget(index, 'text')
-                grid[col][row] = number
+                self.grid[col][row] = number
 
                 index += 2
 
 
 
-
-
-
-
-
-
-        print(grid)
+        print(self.grid)
 
 
 
