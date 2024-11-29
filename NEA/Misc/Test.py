@@ -1,4 +1,4 @@
-    # # # This is a place to test code on a fresh file
+from NEA.Frames.SudokuFrame import sudokuFrame  # # # This is a place to test code on a fresh file
     # # # Please delete when done :)
     #
     #
@@ -219,48 +219,70 @@
     #     app.mainloop()
     #
 
-import random
-grid = [['' for x in range(9)] for y in range(9)]
+# import random
+# grid = [['' for x in range(9)] for y in range(9)]
+#
+#
+# def generateSudoku():
+#     for x in range(9):
+#         for y in range(9):
+#             randomNumber = random.randint(1,9)
+#             valid = checkIfValid(randomNumber,y,x)
+#
+#     return grid
+#
+#
+# def checkIfValid(number,position,index):
+#     for i in range(len(grid)-1):
+#         array = grid[i]
+#         if array[position] == number:
+#             return False
+#
+#     nextY, nextX = (position, index + 1) if position < 8 else (index + 1, 0)
+#
+#
+#     grid[index][position] = number
+#
+#     nextNum = random.randint(1,9)
+#
+#     if checkIfValid(nextNum,nextY,nextX):
+#         return True
+#
+#
+# print(generateSudoku())
 
-
-def generateSudoku():
-    for x in range(9):
-        for y in range(9):
-            randomNumber = random.randint(1,9)
-            valid = checkIfValid(randomNumber,y,x)
-
-    return grid
-
-
-def checkIfValid(number,position,index):
-    for i in range(len(grid)-1):
-        array = grid[i]
-        if array[position] == number:
-            return False
-
-    nextY, nextX = (y, x + 1) if y < 8 else (x + 1, 0)
-
-
-    grid[index][position] = number
-
-    nextNum = random.randint(1,9)
-
-    if checkIfValid(nextY,nextX):
-        return True
-
-
-print(generateSudoku())
-
-
-
-
-
-
-
-
-
-
-
+# usernames = ['DoeJ1']
+#
+# def existingUsers(username):
+#     if username in usernames:
+#         return False
+#
+#     return True
+#
+#
+#
+# def createUsername():
+#     firstName = input('Enter first name: ')
+#     lastName = input('Enter last name: ')
+#
+#     number = 1
+#     firstLetter = firstName[0]
+#
+#     username = lastName + firstLetter + str(number)
+#
+#     check = existingUsers(username)
+#
+#     while check == False:
+#         n = 1
+#         username = lastName + firstLetter + str(number + n)
+#         check = existingUsers(username)
+#         n += 1
+#
+#     print('Username accepted',username)
+#
+#
+#
+# print(createUsername())
 
 
 
