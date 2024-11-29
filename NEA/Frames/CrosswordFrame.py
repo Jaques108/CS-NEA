@@ -1,3 +1,4 @@
+#Import our needed modules
 from tkinter import *
 from tkinter import ttk
 import json
@@ -6,9 +7,11 @@ from functools import partial
 
 
 
+#Create the class
+class crosswordFrame(ttk.Frame):
 
-class crosswordFrame(ttk.Frame): #Create the class
-    def __init__(self, parent, controller): #Initiate the class
+    #Initiate the class
+    def __init__(self, parent, controller):
         ttk.Frame.__init__(self, parent)
         self.parent = parent
         self.controller = controller
@@ -18,12 +21,16 @@ class crosswordFrame(ttk.Frame): #Create the class
         startPositions = [] #List of rectangles at the start of every word
 
 
+        #This function is binded to the submit button which is run when it is pressed - starts the whole process
+        def submit():
+            #Get the code entered
+            code = codeEntry.get()
 
-        def submit(): #This function is binded to the submit button which is run when it is pressed - starts the whole process
-            code = codeEntry.get() #Get the code entered
-            url = f'http://127.0.0.1:5000/GenerateCells/{code}' #Create the whole URL by appending the code to the main URL
+            #Create the whole URL by appending the code to the main URL
+            url = f'http://127.0.0.1:5000/GenerateCells/{code}'
 
-            dictData = None #Variable to see if we get returned crossword data
+            #Variable to see if we get returned crossword data
+            dictData = None
 
             try:
                 webResponse = requests.get(url, timeout=7) #Include a timeout becuase internet can be slow and we don't want the user to be stuck
@@ -33,17 +40,20 @@ class crosswordFrame(ttk.Frame): #Create the class
                 else:
                     dictData = webResponse.json() #Update dictData if response is valid
 
-            except requests.exceptions.RequestException as e: #Connection error handling
-                errorLabel.config(text=f'Connection Error: {e}. Please try again.') #Display connection error message to user
+            except requests.exceptions.RequestException: #Connection error handling
+                errorLabel.config(text=f'Connection Error. Please try again.') #Display connection error message to user
 
-            if dictData is None: #Make sure we have crossword data
+            #Make sure we have crossword data
+            if dictData is None:
                 pass
 
-            else: #If we have crossword data run the getCrosswordData function to retrieve it
-
+            else:
+                #If we have crossword data run the getCrosswordData function to retrieve it
                 def getCrosswordData():
+                    #Open text file
                     with open('Code.txt', 'w') as afile:
-                        json.dump(dictData, afile, indent=4) #Write the data into a text file
+                        #Write the data into a text file
+                        json.dump(dictData, afile, indent=4)
 
                 getCrosswordData() #Actually call the function
 
@@ -102,8 +112,8 @@ class crosswordFrame(ttk.Frame): #Create the class
                                 obj = int(obj)
                                 offset = 6
 
-
-                                if obj > 9 or x1 < 40:   #God forgive me
+                                #God forgive me
+                                if obj > 9 or x1 < 40:
                                     if x1 < 40 and obj > 9:
                                         offset = 8.75
 
@@ -116,7 +126,7 @@ class crosswordFrame(ttk.Frame): #Create the class
                                 xOffset = x1 + offset
                                 yOffset = y1 + 7.5
 
-                                #Alright its done
+                                #Alright it's done
 
 
                                 #Create the little numbers in the top left of rectangles at the start of a word
@@ -151,10 +161,11 @@ class crosswordFrame(ttk.Frame): #Create the class
 
 
 
-
                 #Call the function
                 displayData()
 
+        def draw(canvas):
+            pass
 
         #Function called when cursor enters the area of a rectangle
         def mouseEnter(canvas,rectangleID,event):

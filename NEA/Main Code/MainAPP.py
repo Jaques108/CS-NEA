@@ -8,38 +8,53 @@ from NEA.Frames.CrosswordFrame import crosswordFrame
 
 
 
-
+#Create the class
 class MainApp(tk.Tk):
+    #Initialise the class
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
+        #Use this for the login system
         self.username = None
+
+        #Create the tkinter window
         container = tk.Frame(self)
         container.pack()
+
+        #Dictionary to store each of the frames
         self.frames = {}
 
 
+        #Iterating through the frames
         for F in [mainMenuFrame, loginEntryFrame, choiceFrame, sudokuFrame, crosswordFrame]:
-            frame = F(container, self)  #Instancing each frame!
+
+            #Instancing each frame!
+            frame = F(container, self)
             self.frames[F.__name__] = frame
             frame.grid(row=0, column=0, sticky='nsew')
 
-        self.show_frame('mainMenuFrame', '600x300', 'Welcome')
+        #Show the main menu frame using the showFrame function
+        self.showFrame('mainMenuFrame', '600x300', 'Welcome')
 
 
 
-
-    def show_frame(self, nextframe,size,title):
+    #Create a function which displays a specified frame
+    def showFrame(self, nextframe,size,title):
+        #Frame is a varible which stores the next frame to be displayed
         frame = self.frames[nextframe]
+
+        #Set attributes
         self.geometry(size)
         self.title(title)
         self.resizable(width=False, height=False)
+
+        #Raise the frame
         frame.tkraise()
 
 
-
+    #Function for the login system
     def SwitchUser(self, name):
         self.username = name
 
-
+#Run the whole thing
 app = MainApp()
 app.mainloop()
