@@ -74,7 +74,7 @@ class sudokuFrame(Frame):
                 number = sudokuGrid[row][col]
                 if number == '':
                     tag = 'blankSquare'
-                    color = 'white'
+                    color = 'black'
                 else:
                     tag = 'permanentNumber'
                     color = 'red'
