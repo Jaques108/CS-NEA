@@ -16,6 +16,9 @@ class sudokuFrame(Frame):
         self.selectedRectangleID = None
         self.selectedTextID = None
 
+        self.responseLabel = Label(self, text='')
+
+
     # Function that creates the 9x9 grid
     def createGrid(self):
         # Dictionary that stores the rectangle IDs with their corresponding text IDs
@@ -38,7 +41,9 @@ class sudokuFrame(Frame):
 
             # Check if the request was successful
             if response.status_code == 200:
-                sudokuGrid = response.json()  # Parse the JSON response
+                grids = response.json()
+                sudokuGrid = grids[9:]# Parse the JSON response
+                solutionGrid = grids[:9]
 
             else:
                 print(f"Error: Unable to fetch data. Status Code: {response.status_code}")
@@ -92,8 +97,12 @@ class sudokuFrame(Frame):
         for columnLine in range(1,3):
             canvas.create_line(0, (pixelWidth*columnLine), canvasSize, (pixelWidth*columnLine),fill = 'black',width = 5)
 
-        self.submitButton = Button(self, text='submit', command=partial(self.canvas2array, canvas))
+
+        self.submitButton = Button(self, text='submit', command=partial(self.canvas2array, canvas,solutionGrid))
         self.submitButton.pack()
+
+        self.responseLabel.pack()
+
 
     # Function that sets a rectangle to be 'active'
     def setActive(self, canvas, rectangleID):
@@ -156,7 +165,10 @@ class sudokuFrame(Frame):
                 char = ''
             canvas.itemconfig(self.selectedTextID, text=char)
 
-    def canvas2array(self, canvas):
+
+
+    def canvas2array(self, canvas,solutionGrid):
+
         self.grid = [['' for x in range(9)] for y in range(9)]
 
         index = 2
@@ -168,9 +180,11 @@ class sudokuFrame(Frame):
 
                 index += 2
 
-        print(self.grid)
+        if self.grid == solutionGrid:
+            self.responseLabel.config(text = 'Correct!')
 
-
+        else:
+            self.responseLabel.config(text = 'Incorrect')
 
 
 

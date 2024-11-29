@@ -14,11 +14,12 @@ def generateSudoku():
     if fillGrid(0, 0,grid):
         for n in range(9):
             for m in range(9):
+                changedGrid = grid
                 diceRoll = random.randint(1,6)
                 if diceRoll != 3:
-                    grid[n][m] = ''
+                    changedGrid[n][m] = ''
 
-        return grid
+        return grid + changedGrid
     else:
         return "Failed to generate Sudoku!"
 
