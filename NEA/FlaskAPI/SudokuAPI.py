@@ -1,6 +1,8 @@
 from flask import Flask,jsonify
 import random
+import copy
 
+from NEA.Frames.ChoiceFrame import choiceFrame
 
 sudoku = Flask(__name__)
 
@@ -12,9 +14,9 @@ def generateSudoku():
 
     # Attempt to fill the grid
     if fillGrid(0, 0,grid):
+        changedGrid = copy.deepcopy(grid)
         for n in range(9):
             for m in range(9):
-                changedGrid = grid
                 diceRoll = random.randint(1,6)
                 if diceRoll != 3:
                     changedGrid[n][m] = ''
@@ -71,7 +73,7 @@ def isValid(number, row, col,grid):
 result = generateSudoku()
 
 
-sudoku.run(debug = False,port = 8080)
+sudoku.run(debug = True,port = 8080)
 
 
 
