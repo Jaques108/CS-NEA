@@ -77,7 +77,7 @@ class sudokuFrame(Frame):
                     color = 'black'
                 else:
                     tag = 'permanentNumber'
-                    color = 'red'
+                    color = 'blue'
 
                 # Create the text/textID
                 textID = canvas.create_text(xCenter, yCenter, text=number, font=("Arial", 16), fill=color, tags=('text',tag))
@@ -166,8 +166,10 @@ class sudokuFrame(Frame):
         match = re.match(pattern, char)
         match = bool(match)
 
+        canvas.itemconfig(self.selectedTextID, fill='black')
+
         tags = canvas.gettags(self.selectedTextID)
-        print(tags)
+
 
 
         if 'permanentNumber' in tags:
@@ -181,7 +183,7 @@ class sudokuFrame(Frame):
 
 
     def canvas2array(self, canvas,solutionGrid):
-
+        solved = True
         self.grid = [['' for x in range(9)] for y in range(9)]
 
         index = 2
@@ -191,13 +193,23 @@ class sudokuFrame(Frame):
                 number = canvas.itemcget(index, 'text')
                 self.grid[col][row] = number
 
+                if number == '':
+                    pass
+
+                elif solutionGrid[col][row] != int(number):
+                    self.responseLabel.config(text='Incorrect')
+                    solved = False
+
+
+
                 index += 2
 
-        if self.grid == solutionGrid:
+        if solved:
             self.responseLabel.config(text = 'Correct!')
 
-        else:
-            self.responseLabel.config(text = 'Incorrect')
+
+
+
 
 
 

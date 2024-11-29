@@ -5,7 +5,7 @@ import requests
 import random
 
 
-crossword = Flask(__name__)
+Crossword = Flask(__name__)
 
 
 #In API's we have types of requests
@@ -24,7 +24,7 @@ crossword = Flask(__name__)
 
 #My first endpoint (Where someone gets something)
 
-@crossword.route('/GenerateCells/<code>',methods=['GET'])
+@Crossword.route('/GenerateCells/<code>',methods=['GET'])
 def crossword(code):
 
     genericUrl = "https://www.theguardian.com/crosswords/quick/"
@@ -129,4 +129,4 @@ def cellsBelongingToWord(var,cells):
                 elif text == '--':
                     cell['text'] = "W"
 
-crossword.run(debug=False)
+Crossword.run(debug=False)

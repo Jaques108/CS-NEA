@@ -17,8 +17,8 @@ def generateSudoku():
         changedGrid = copy.deepcopy(grid)
         for n in range(9):
             for m in range(9):
-                diceRoll = random.randint(1,6)
-                if diceRoll != 3:
+                diceRoll = random.randint(1,3)
+                if diceRoll == 1:
                     changedGrid[n][m] = ''
 
         return grid + changedGrid
@@ -73,7 +73,7 @@ def isValid(number, row, col,grid):
 result = generateSudoku()
 
 
-sudoku.run(debug = True,port = 8080)
+sudoku.run(debug = False,port = 8080)
 
 
 
