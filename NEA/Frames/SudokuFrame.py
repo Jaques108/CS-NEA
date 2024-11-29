@@ -74,7 +74,7 @@ class sudokuFrame(Frame):
                 number = sudokuGrid[row][col]
 
                 # Create the text/textID
-                textID = canvas.create_text(xCenter, yCenter, text=number, font=("Arial", 16), fill="black", tags='text')
+                textID = canvas.create_text(xCenter, yCenter, text=number, font=("Arial", 16), fill="red", tags=('text','permanentNumber'))
 
                 # Append to dictionary
                 self.textIDs[rectangleID] = textID
@@ -160,6 +160,9 @@ class sudokuFrame(Frame):
         match = re.match(pattern, char)
         match = bool(match)
 
+        tags = canvas.findwithtags(self.selectedTextID)
+        if 'permanentNumbers' in tags:
+            return False
         if match or char == 'BACKSPACE':
             if char == 'BACKSPACE':
                 char = ''
