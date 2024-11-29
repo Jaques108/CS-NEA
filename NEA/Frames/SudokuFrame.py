@@ -1,6 +1,7 @@
 from tkinter import *
 from functools import partial
 import re
+import requests
 
 
 # Create the class
@@ -29,9 +30,27 @@ class sudokuFrame(Frame):
         canvas.pack()
         canvas.focus_set()
 
+        API_URL = "http://127.0.0.1:8080/GenerateGrid"
+
+        try:
+            # Make a GET request to the API
+            response = requests.get(API_URL)
+
+            # Check if the request was successful
+            if response.status_code == 200:
+                sudokuGrid = response.json()  # Parse the JSON response
+
+            else:
+                print(f"Error: Unable to fetch data. Status Code: {response.status_code}")
+                print(response.text)
+
+        except requests.exceptions.RequestException as e:
+            print(f"Request failed: {e}")
+
         # Generate the rectangles
         for row in range(9):
             for col in range(9):
+
                 # Multiply the coordinates by cellSize to get the pixel values of where to place the rectangles (this finds the top left corner of the rectangle)
                 x1 = col * cellSize
                 y1 = row * cellSize
@@ -47,8 +66,10 @@ class sudokuFrame(Frame):
                 # Create rectangle
                 rectangleID = canvas.create_rectangle(x1, y1, x2, y2, fill="white", outline="black")
 
+                number = sudokuGrid[row][col]
+
                 # Create the text/textID
-                textID = canvas.create_text(xCenter, yCenter, text='', font=("Arial", 16), fill="black", tags='text')
+                textID = canvas.create_text(xCenter, yCenter, text=number, font=("Arial", 16), fill="black", tags='text')
 
                 # Append to dictionary
                 self.textIDs[rectangleID] = textID

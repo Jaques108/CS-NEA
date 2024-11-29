@@ -1,13 +1,8 @@
-from flask import Flask,request,jsonify
-from bs4 import BeautifulSoup
-import json
-import requests
+from flask import Flask,jsonify
 import random
 
 
 sudoku = Flask(__name__)
-
-
 
 
 @sudoku.route('/GenerateGrid',methods = ['GET'])
@@ -17,6 +12,12 @@ def generateSudoku():
 
     # Attempt to fill the grid
     if fillGrid(0, 0,grid):
+        for n in range(9):
+            for m in range(9):
+                diceRoll = random.randint(1,6)
+                if diceRoll != 3:
+                    grid[n][m] = ''
+
         return grid
     else:
         return "Failed to generate Sudoku!"
