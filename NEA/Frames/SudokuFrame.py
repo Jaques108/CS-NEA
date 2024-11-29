@@ -74,11 +74,13 @@ class sudokuFrame(Frame):
                 number = sudokuGrid[row][col]
                 if number == '':
                     tag = 'blankSquare'
+                    color = 'white'
                 else:
                     tag = 'permanentNumber'
+                    color = 'red'
 
                 # Create the text/textID
-                textID = canvas.create_text(xCenter, yCenter, text=number, font=("Arial", 16), fill="red", tags=('text',tag))
+                textID = canvas.create_text(xCenter, yCenter, text=number, font=("Arial", 16), fill=color, tags=('text',tag))
 
                 # Append to dictionary
                 self.textIDs[rectangleID] = textID
