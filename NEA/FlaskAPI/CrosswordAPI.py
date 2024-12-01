@@ -30,6 +30,7 @@ def crossword(code):
     genericUrl = "https://www.theguardian.com/crosswords/quick/"
     url = genericUrl + code
     cells = {}
+    clues = []
 
 
     response = requests.get(url)
@@ -42,11 +43,24 @@ def crossword(code):
 
 
 
-
     startPositions = []
     seen = set()
+
+
     for item in jsonified['entries']:
         temp = item['position']
+
+        clue = item['clue']
+        direction = item['direction']
+        numberList = (item['group'])[0]
+        if numberList[1] == '-':
+            number = int(numberList[0])
+
+        else:
+            number = int(numberList[:2])
+
+
+
         tempX = temp['x']
         tempY = temp['y']
 
@@ -58,6 +72,12 @@ def crossword(code):
         if startPosition not in seen:
             startPositions.append(startPosition)
             seen.add(startPosition)
+
+
+            clue = (clue,number,direction)
+            clues.append(clue)
+
+
 
 
 
@@ -76,7 +96,14 @@ def crossword(code):
 
 
     cellsBelongingToWord(jsonified,cells)
-    return cells
+    result = {
+        "cells": cells,
+        "clues": clues
+    }
+
+
+    return result
+
 
 def cellsBelongingToWord(var,cells):
     for item in var['entries']:
@@ -110,6 +137,9 @@ def cellsBelongingToWord(var,cells):
                     cell['text'] = "W"
 
 
+
+
+
         elif direction == 'down':
             for n in range(length):
                 position = str(posY + n).zfill(2) + str(posX).zfill(2)
@@ -129,4 +159,6 @@ def cellsBelongingToWord(var,cells):
                 elif text == '--':
                     cell['text'] = "W"
 
-Crossword.run(debug=False)
+
+
+Crossword.run(debug=True)

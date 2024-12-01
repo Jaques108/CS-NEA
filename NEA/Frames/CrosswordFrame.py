@@ -20,6 +20,10 @@ class crosswordFrame(ttk.Frame):
         nonTextRectangles = [] #List for the locations of black rectangles (Non-Text)
         startPositions = [] #List of rectangles at the start of every word
 
+        # Variables to account for pixel sizes
+        cellSize = 40
+        canvasSize = 40 * 13
+
 
         #This function is binded to the submit button which is run when it is pressed - starts the whole process
         def submit():
@@ -64,12 +68,10 @@ class crosswordFrame(ttk.Frame):
                     codeSubmit.destroy()
                     errorLabel.destroy()
 
-                    #Variables to account for pixel sizes
-                    cellSize = 40
-                    canvasSize = 40 * 13
+
 
                     #Create the canvas and display it
-                    canvas = Canvas(self, width=canvasSize, height=canvasSize)
+                    canvas = Canvas(self, width=canvasSize + (cellSize*6), height=canvasSize)
                     canvas.pack()
                     canvas.focus_set()
 
@@ -77,11 +79,11 @@ class crosswordFrame(ttk.Frame):
                     with open('Code.txt', 'r') as afile:
                         data = json.load(afile)
 
-                    for cellID, cellData in data.items(): #Iterate through the data
+                    for cellID, cellData in data['cells'].items(): #Iterate through the data
                         #Find the x and y coordinates for each item using list comprehension
+
                         posX = int(cellID[2:])
                         posY = int(cellID[:2])
-
 
                         #Multiply the coordinates by cellSize to get the pixel values of where to place the rectangles (this finds the top left corner of the rectangle)
                         x1 = posX * cellSize
@@ -160,12 +162,25 @@ class crosswordFrame(ttk.Frame):
                             canvas.bind('<Down>', partial(enterText, canvas, rectangleID))
 
 
+                    canvas.create_text(canvasSize + (cellSize * 3), cellSize, text='Across')
+                    canvas.create_text(canvasSize + (cellSize * 3), cellSize * 7, text='Down')
+
+                    for clue, number, position in data['clues'].items():
+                        print(clue, number, position)
+
+
 
                 #Call the function
                 displayData()
 
-        def draw(canvas):
-            pass
+
+
+
+
+
+
+
+
 
         #Function called when cursor enters the area of a rectangle
         def mouseEnter(canvas,rectangleID,event):
