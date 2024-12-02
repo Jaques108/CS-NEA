@@ -1,5 +1,6 @@
 #Import our needed modules
 from tkinter import *
+from tkinter import font
 from tkinter import ttk
 import json
 import requests
@@ -71,7 +72,7 @@ class crosswordFrame(ttk.Frame):
 
 
                     #Create the canvas and display it
-                    canvas = Canvas(self, width=canvasSize + (cellSize*6), height=canvasSize)
+                    canvas = Canvas(self, width=canvasSize + (cellSize*8), height=canvasSize)
                     canvas.pack()
                     canvas.focus_set()
 
@@ -162,12 +163,52 @@ class crosswordFrame(ttk.Frame):
                             canvas.bind('<Down>', partial(enterText, canvas, rectangleID))
 
 
-                    canvas.create_text(canvasSize + (cellSize * 3), cellSize, text='Across')
-                    canvas.create_text(canvasSize + (cellSize * 3), cellSize * 7, text='Down')
+                    canvas.create_text(canvasSize + (cellSize * 4), cellSize - 20, text='Across',font=("Helvetica", 20, "bold"))
+                    canvas.create_text(canvasSize + (cellSize * 4), (cellSize * 7)+20, text='Down',font=("Helvetica", 20, "bold"))
 
-                    for clue, number, position in data['clues'].items():
-                        print(clue, number, position)
+                    acrossOffset = cellSize +10
+                    downOffset = (cellSize * 8) + 5
 
+                    wrapWidth = cellSize * 8
+
+                    fontStyle = font.Font(family='Arial', size=12)
+                    textFont = ('Arial',12)
+
+
+                    padding = 0
+                    numTimesWraps = 1
+                    wraps = False
+
+
+                    for index,(clue, number, position) in enumerate(data['clues']):
+                        clueWidth = fontStyle.measure(clue)
+
+                        text = str(number) + ' ' + clue
+
+                        if clueWidth > wrapWidth or wraps:
+                            if wraps:
+                                wraps = False
+                            else:
+                                wraps = True
+                            padding = numTimesWraps * 10
+                            numTimesWraps += 1
+
+
+
+
+                        if position == 'across':
+                            canvas.create_text(canvasSize + (cellSize * 4), padding + acrossOffset, text=text,width=wrapWidth,font = textFont,anchor='center')
+                            acrossOffset += 20
+
+                        elif position == 'down':
+                            canvas.create_text(canvasSize + (cellSize * 4), padding + downOffset, text=text,width=wrapWidth,font = textFont,anchor='center')
+                            downOffset += 20
+
+                    def goBack():
+                        self.controller.showFrame('choiceFrame', '', 'What to play')
+
+                    goBackButton = ttk.Button(self, text='Go Back', command=goBack)
+                    goBackButton.place(relx=0.935, rely=0.035, anchor='center')
 
 
                 #Call the function
@@ -408,3 +449,4 @@ class crosswordFrame(ttk.Frame):
 
         errorLabel = ttk.Label(self)
         errorLabel.place(relx=0.5, rely=0.65, anchor="center")
+
