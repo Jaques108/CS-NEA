@@ -1,11 +1,67 @@
+from click import password_option
 from flask import Flask,request,jsonify
 from bs4 import BeautifulSoup
 import json
 import requests
 import random
+import hashlib
+import jwt
+import datetime
+from sqlite3 import Error
 
+from soupsieve import select
+
+from SQLBackEnd import SQLBackEnd
+
+
+
+SQL = SQLBackEnd('main.db')
 
 Crossword = Flask(__name__)
+
+
+@Crossword.route('/CreateUser',methods = ['POST'])
+def createUser():
+    data = requests.get_json()
+    username = data['username']
+    password = data['password'].encode('utf-8')
+    passwordHash = hashlib.sha256(password).hexdigest()
+
+
+    SQL.connect()
+    insertUser = 'INSERT INTO users (username,password) VALUES (?,?)'
+    e = SQL.executeQuery(insertUser, [username, passwordHash])
+    SQL.closeConnection()
+
+    if isinstance(e,'Error'):
+        return jsonify('Error',e),400
+
+
+
+    return jsonify({'message': 'User created successfully'}),201
+
+
+@Crossword.route('/Login',methods = ['POST'])
+def login():
+    data = requests.get_json()
+    username = data['username']
+    password = data['password'].encode('utf-8')
+    passwordHash = hashlib.sha256(password).hexdigest()
+
+    selectQuery = 'SELECT * FROM users WHERE username = ? AND password = ?'
+    SQL.connect()
+    user = SQL.executeQuery(selectQuery,[username,passwordHash])
+
+
+
+
+
+
+
+
+
+
+
 
 
 #In API's we have types of requests

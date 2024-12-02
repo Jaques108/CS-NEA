@@ -47,7 +47,7 @@ class SQLBackEnd:
 
         except Error as e:
             print(f'Error {e}')
-            return None
+            return e
 
 
     def closeConnection(self):
