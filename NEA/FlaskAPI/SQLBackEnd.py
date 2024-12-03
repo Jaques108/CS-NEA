@@ -70,9 +70,7 @@ if __name__ == '__main__':
     #SQL.closeConnection()
 
     insertUser = 'INSERT INTO users (username,password) VALUES (?,?)'
-    SQL.executeQuery(insertUser,['jake','pass1'])
 
-    print(SQL.executeQuery('SELECT * FROM users'))
 
 
 

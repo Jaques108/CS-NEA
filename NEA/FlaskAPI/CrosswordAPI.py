@@ -5,7 +5,6 @@ import json
 import requests
 import random
 import hashlib
-import jwt
 import datetime
 from sqlite3 import Error
 
@@ -22,7 +21,7 @@ Crossword = Flask(__name__)
 
 @Crossword.route('/CreateUser',methods = ['POST'])
 def createUser():
-    data = requests.get_json()
+    data = request.get_json()
     username = data['username']
     password = data['password'].encode('utf-8')
     passwordHash = hashlib.sha256(password).hexdigest()
@@ -33,12 +32,63 @@ def createUser():
     e = SQL.executeQuery(insertUser, [username, passwordHash])
     SQL.closeConnection()
 
-    if isinstance(e,'Error'):
-        return jsonify('Error',e),400
+    if isinstance(e,Error):
+        return jsonify('Error',str(e)),400
 
 
 
     return jsonify({'message': 'User created successfully'}),201
+
+
+@Crossword.route('/GetUsers',methods = ['GET'])
+def getUsers():
+    # Connect to the database
+    SQL.connect()
+
+    # Define the query to select all users
+    query = 'SELECT * FROM users'
+
+    # Execute the query
+    result = SQL.executeQuery(query)
+
+    # Close the database connection
+    SQL.closeConnection()
+
+    # Check if any users were retrieved
+    if result:
+        # Return users as JSON
+        # The result will be a list of tuples. Convert it into a dictionary if needed
+        users = [{"id": user[0], "username": user[1], "password": user[2]} for user in result]
+        return jsonify({'users': users}), 200
+
+    else:
+        return jsonify({'message': 'No users found'}), 404
+
+
+@Crossword.route('/DeleteUser/<username>', methods=['DELETE'])
+def deleteUser(username):
+    # Connect to the database
+    SQL.connect()
+
+    if username == '*':
+        # Delete all users
+        query = 'DELETE FROM users'
+        SQL.executeQuery(query)
+
+        # Reset the AUTOINCREMENT index for the users table
+        reset_query = "DELETE FROM sqlite_sequence WHERE name='users'"
+        SQL.executeQuery(reset_query)
+
+    else:
+        # Delete a specific user
+        query = 'DELETE FROM users WHERE username = ?'
+        SQL.executeQuery(query, [username])
+
+    # Close the database connection
+    SQL.closeConnection()
+
+    print(jsonify({'message': f'User {username} deleted successfully' if username != 'all' else 'All users deleted successfully'}), 200)
+    return True
 
 
 @Crossword.route('/Login',methods = ['POST'])
