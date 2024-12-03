@@ -313,4 +313,4 @@ result = generateSudoku()
 
 
 
-API.run(debug=True)
+API.run(debug=False)

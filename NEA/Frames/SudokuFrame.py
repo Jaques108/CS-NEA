@@ -166,10 +166,8 @@ class sudokuFrame(Frame):
         match = re.match(pattern, char)
         match = bool(match)
 
-        canvas.itemconfig(self.selectedTextID, fill='black')
 
         tags = canvas.gettags(self.selectedTextID)
-
 
 
         if 'permanentNumber' in tags:
@@ -179,6 +177,8 @@ class sudokuFrame(Frame):
             if char == 'BACKSPACE':
                 char = ''
             canvas.itemconfig(self.selectedTextID, text=char)
+
+        canvas.itemconfig(self.selectedTextID, fill='black')
 
 
 

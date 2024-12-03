@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fcc33587-880f-4a89-98b5-cef7062c96cd" name="Changes" comment="Upload">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEA/FlaskAPI &amp; SQL/MainAPI.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/FlaskAPI+SQL/MainAPI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEA/FlaskAPI &amp; SQL/SQLBackEnd.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/FlaskAPI+SQL/SQLBackEnd.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/FlaskAPI+SQL/MainAPI.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/FlaskAPI+SQL/MainAPI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/FlaskAPI+SQL/SQLBackEnd.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/FlaskAPI+SQL/SQLBackEnd.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/Frames/CrosswordFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Frames/CrosswordFrame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/Frames/LoginEntryFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Frames/LoginEntryFrame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/Frames/MainMenu.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Frames/MainMenu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/Frames/SudokuFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Frames/SudokuFrame.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,10 +53,9 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/NEA/FlaskAPI/CrosswordAPI.py" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/NEA/FlaskAPI/SQLBackEnd.py" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/NEA/FlaskAPI/SudokuAPI.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/NEA/FlaskAPI+SQL/MainAPI.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/NEA/Frames/CrosswordFrame.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/NEA/Frames/LoginEntryFrame.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/NEA/Frames/SudokuFrame.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/NEA/Main Code/MainAPP.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/NEA/Misc/Test.py" root0="SKIP_INSPECTION" />
@@ -141,7 +145,7 @@
   </component>
   <component name="RunManager">
     <configuration name="MainAPP" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="main" />
+      <module name="CS-NEA" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />

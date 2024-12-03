@@ -57,8 +57,6 @@ class SQLBackEnd:
 
 
 
-
-
 if __name__ == '__main__':
     SQL = SQLBackEnd('main.db')
     SQL.connect()
@@ -67,7 +65,6 @@ if __name__ == '__main__':
     (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL UNIQUE, password TEXT NOT NULL);'''
 
     SQL.createTable(createTableScript)
-    #SQL.closeConnection()
 
     insertUser = 'INSERT INTO users (username,password) VALUES (?,?)'
 

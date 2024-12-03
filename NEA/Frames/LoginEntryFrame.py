@@ -18,7 +18,7 @@ class loginEntryFrame(tk.Frame):
         self.userNameEntry = ttk.Entry(self)
         self.userNameEntry.grid(row=1,column=1,sticky = 'news')
 
-        self.passEntry = ttk.Entry(self)
+        self.passEntry = ttk.Entry(self,show ='*')
         self.passEntry.grid(row=2, column=1,sticky = 'news')
 
         self.userLabel = ttk.Label(self, text='Username')
@@ -27,13 +27,13 @@ class loginEntryFrame(tk.Frame):
         self.passLabel = ttk.Label(self, text='Password')
         self.passLabel.grid(row=2,column=0)
 
-        self.playButton = ttk.Button(self, text='Play',command = self.onPlayButtonClick)
+        self.playButton = ttk.Button(self, text='Log In',command = self.onPlayButtonClick)
         self.playButton.grid(row=3, column=1,sticky = 'news')
 
         self.responseLabel = ttk.Label(self,text = '',wraplength=185)
         self.responseLabel.grid(row = 4,column = 1,sticky = 'news')
 
-        self.signUpButton = ttk.Button(self,text = 'Sign Up',command = self.signUp)
+        self.signUpButton = ttk.Button(self,text = 'Register',command = self.signUp)
         self.signUpButton.grid(row = 5,column = 1,sticky = 'news')
 
 

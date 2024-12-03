@@ -31,6 +31,10 @@ class crosswordFrame(ttk.Frame):
             #Get the code entered
             code = codeEntry.get()
 
+            if code.isdigit():
+                code = int(code) + 9250
+
+
             #Create the whole URL by appending the code to the main URL
             url = f'http://127.0.0.1:5000/GenerateCells/{code}'
 
@@ -441,6 +445,9 @@ class crosswordFrame(ttk.Frame):
         codeLabel = ttk.Label(self, text='Enter Crossword Code')
         codeLabel.place(relx=0.5, rely=0.25, anchor="center")
 
+        codeLabel = ttk.Label(self, text='Valid codes range from : 1-7750')
+        codeLabel.place(relx=0.5, rely=0.35, anchor="center")
+
         codeEntry = ttk.Entry(self,justify='center')
         codeEntry.place(relx=0.5, rely=0.5, anchor="center")
 
@@ -449,4 +456,6 @@ class crosswordFrame(ttk.Frame):
 
         errorLabel = ttk.Label(self)
         errorLabel.place(relx=0.5, rely=0.65, anchor="center")
+
+
 
