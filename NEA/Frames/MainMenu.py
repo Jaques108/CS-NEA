@@ -10,7 +10,7 @@ class mainMenuFrame(tk.Frame):
         self.parent = parent
 
         #Widgets
-        login_button = ttk.Button(self, text='Log in', command=lambda:self.controller.showFrame('loginEntryFrame','300x400','Log in'))
+        login_button = ttk.Button(self, text='Log in', command=lambda:self.controller.showFrame('loginEntryFrame','300x200','Log in'))
         login_button.grid(row=2,column=0)
 
         guest_button = ttk.Button(self, text='Play as Guest', command=lambda:self.controller.showFrame('choiceFrame','','What to play'))

@@ -1,25 +1,25 @@
 from click import password_option
 from flask import Flask,request,jsonify
 from bs4 import BeautifulSoup
+from sqlite3 import Error
+from SQLBackEnd import SQLBackEnd
+
 import json
 import requests
 import random
 import hashlib
 import datetime
-from sqlite3 import Error
+import copy
 
-from soupsieve import select
-
-from SQLBackEnd import SQLBackEnd
 
 
 
 SQL = SQLBackEnd('main.db')
 
-Crossword = Flask(__name__)
+API = Flask(__name__)
 
 
-@Crossword.route('/CreateUser',methods = ['POST'])
+@API.route('/CreateUser', methods = ['POST'])
 def createUser():
     data = request.get_json()
     username = data['username']
@@ -40,7 +40,7 @@ def createUser():
     return jsonify({'message': 'User created successfully'}),201
 
 
-@Crossword.route('/GetUsers',methods = ['GET'])
+@API.route('/GetUsers', methods = ['GET'])
 def getUsers():
     # Connect to the database
     SQL.connect()
@@ -65,7 +65,7 @@ def getUsers():
         return jsonify({'message': 'No users found'}), 404
 
 
-@Crossword.route('/DeleteUser/<username>', methods=['DELETE'])
+@API.route('/DeleteUser/<username>', methods=['DELETE'])
 def deleteUser(username):
     # Connect to the database
     SQL.connect()
@@ -86,51 +86,32 @@ def deleteUser(username):
 
     # Close the database connection
     SQL.closeConnection()
-
-    print(jsonify({'message': f'User {username} deleted successfully' if username != 'all' else 'All users deleted successfully'}), 200)
-    return True
+    return jsonify({'message': f'User {username} deleted successfully' if username != '*' else 'All users deleted successfully'}), 200
 
 
-@Crossword.route('/Login',methods = ['POST'])
+
+@API.route('/Login', methods = ['POST'])
 def login():
-    data = requests.get_json()
+    data = request.get_json()
     username = data['username']
     password = data['password'].encode('utf-8')
+
     passwordHash = hashlib.sha256(password).hexdigest()
 
     selectQuery = 'SELECT * FROM users WHERE username = ? AND password = ?'
     SQL.connect()
     user = SQL.executeQuery(selectQuery,[username,passwordHash])
+    SQL.closeConnection()
+
+    if user:
+        return jsonify({'message': 'Login successful'}), 200
+
+    else:
+        return jsonify({'message': 'Invalid username or password'}), 401
 
 
 
-
-
-
-
-
-
-
-
-
-
-#In API's we have types of requests
-
-#The ones we care about are GET and POST
-
-#GET is getting something quickly
-
-#POST is giving some data to the server in exchange for some more (sometimes)
-
-#Tasks
-
-#Research flask API's understand what a POST method is
-
-#Implement a login through your API (simple if statements for now, SQL later)
-
-#My first endpoint (Where someone gets something)
-
-@Crossword.route('/GenerateCells/<code>',methods=['GET'])
+@API.route('/GenerateCells/<code>', methods=['GET'])
 def crossword(code):
 
     genericUrl = "https://www.theguardian.com/crosswords/quick/"
@@ -267,4 +248,69 @@ def cellsBelongingToWord(var,cells):
 
 
 
-Crossword.run(debug=True)
+
+
+@API.route('/GenerateGrid', methods = ['GET'])
+def generateSudoku():
+    # Initialize a 9x9 grid with empty values
+    grid = [[0 for x in range(9)] for y in range(9)]
+
+    # Attempt to fill the grid
+    if fillGrid(0, 0,grid):
+        changedGrid = copy.deepcopy(grid)
+        for n in range(9):
+            for m in range(9):
+                diceRoll = random.randint(1,4)
+                if diceRoll != 1:
+                    changedGrid[n][m] = ''
+
+        return grid + changedGrid
+    else:
+        return "Failed to generate Sudoku!"
+
+def fillGrid(row, col,grid):
+    # If we've reached the end of the grid, return True (base case)
+    if row == 9:
+        return True
+
+    # Calculate next cell's position
+    nextRow, nextCol = (row, col + 1) if col < 8 else (row + 1, 0)
+
+    # Try placing a random number (1-9) in the current cell
+    numbers = list(range(1, 10))
+    random.shuffle(numbers)
+    for num in numbers:
+        if isValid(num, row, col,grid):
+            grid[row][col] = num
+            if fillGrid(nextRow, nextCol,grid):  # Recursively fill the next cell
+                return True
+            grid[row][col] = 0  # Backtrack if needed
+
+    return False  # If no valid number is found, return False
+
+def isValid(number, row, col,grid):
+    # Check if the number is valid in the current row
+    if number in grid[row]:
+        return False
+
+    # Check if the number is valid in the current column
+    for i in range(9):
+        if grid[i][col] == number:
+            return False
+
+    # Check if the number is valid in the 3x3 subgrid
+    startRow, startCol = 3 * (row // 3), 3 * (col // 3)
+    for i in range(startRow, startRow + 3):
+        for j in range(startCol, startCol + 3):
+            if grid[i][j] == number:
+                return False
+
+    return True
+
+# Generate and print the Sudoku grid
+result = generateSudoku()
+
+
+
+
+API.run(debug=True)

@@ -33,7 +33,7 @@ class sudokuFrame(Frame):
         canvas.pack()
         canvas.focus_set()
 
-        API_URL = "http://127.0.0.1:8080/GenerateGrid"
+        API_URL = "http://127.0.0.1:5000/GenerateGrid"
 
         try:
             # Make a GET request to the API

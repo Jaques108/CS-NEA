@@ -37,7 +37,7 @@ class SQLBackEnd:
                     cursor.execute(queryScript)
 
                 self.connection.commit()
-                print('query executed successfully')
+                print('Query executed successfully')
 
                 return cursor.fetchall()
 
