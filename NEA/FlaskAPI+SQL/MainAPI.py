@@ -107,7 +107,7 @@ def login():
     secretKey = 'idkwhattoputforthis'
 
     if user:
-        payload = {"user": username,  "exp": (datetime.datetime.now(datetime.UTC) + datetime.timedelta(minutes=0.1)).timestamp()}
+        payload = {"user": username,  "exp": (datetime.datetime.now(datetime.UTC) + datetime.timedelta(hours = 1)).timestamp()}
 
         token = jwt.encode(payload, secretKey, algorithm='HS256')
 

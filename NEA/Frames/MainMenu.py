@@ -32,7 +32,6 @@ class mainMenuFrame(tk.Frame):
 
         try:
             token = jwt.decode(encryptedToken, self.secretKey, algorithms=["HS256"])
-            print('success')
             self.controller.showFrame('choiceFrame', '465x330', 'What to play')
 
         except jwt.ExpiredSignatureError:
