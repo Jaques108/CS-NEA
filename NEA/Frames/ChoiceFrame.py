@@ -32,10 +32,10 @@ class choiceFrame(Frame):
 
 
         #Widgets
-        sudokuButton = Button(self, text="Sudoku", command=sudokuFrame,width = 20,height = 20)
-        sudokuButton.grid(row=0,column=0,sticky = 'news')
+        self.sudokuButton = Button(self, text="Sudoku", command=sudokuFrame,width = 20,height = 20)
+        self.sudokuButton.grid(row=0,column=0,sticky = 'news')
 
-        crosswordsButton = Button(self, text="Crossword",command=lambda:self.controller.showFrame('crosswordFrame','','Crossword'),width=20, height=20)
-        crosswordsButton.grid(row = 0,column=1,sticky = 'news')
+        self.crosswordsButton = Button(self, text="Crossword",command=lambda:self.controller.showFrame('crosswordFrame','','Crossword'),width=20, height=20)
+        self.crosswordsButton.grid(row = 0,column=1,sticky = 'news')
 
 

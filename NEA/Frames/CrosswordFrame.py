@@ -209,7 +209,9 @@ class crosswordFrame(ttk.Frame):
                             downOffset += 20
 
                     def goBack():
-                        self.controller.showFrame('choiceFrame', '', 'What to play')
+                        canvas.destroy()
+                        self.controller.showFrame('choiceFrame', '465x330', 'What to play')
+
 
                     goBackButton = ttk.Button(self, text='Go Back', command=goBack)
                     goBackButton.place(relx=0.935, rely=0.035, anchor='center')

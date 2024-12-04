@@ -10,7 +10,8 @@ import random
 import hashlib
 import datetime
 import copy
-
+import jwt
+import secrets
 
 
 
@@ -104,6 +105,16 @@ def login():
     SQL.closeConnection()
 
     if user:
+        payload = {"user": username,  "exp": (datetime.datetime.now(datetime.UTC) + datetime.timedelta(minutes=1.5)).timestamp()}
+        secretKey = secrets.token_urlsafe(32)
+        token = jwt.encode(payload, secretKey, algorithm='HS256')
+
+
+
+        afile = open('Token.txt','w')
+        afile.write(token)
+        afile.close()
+
         return jsonify({'message': 'Login successful'}), 200
 
     else:

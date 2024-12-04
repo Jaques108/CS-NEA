@@ -81,7 +81,7 @@ class loginEntryFrame(tk.Frame):
             registerUser = requests.post(self.API_URL + 'CreateUser',json = data)
 
             if not registerUser:
-                self.responseLabel.config(text='Username/Password not accepted')
+                self.responseLabel.config(text='User already exists')
 
             else:
                 self.responseLabel.config(text='Registered Successfully')
