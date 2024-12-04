@@ -104,14 +104,14 @@ def login():
     user = SQL.executeQuery(selectQuery,[username,passwordHash])
     SQL.closeConnection()
 
+    secretKey = 'idkwhattoputforthis'
+
     if user:
-        payload = {"user": username,  "exp": (datetime.datetime.now(datetime.UTC) + datetime.timedelta(minutes=1.5)).timestamp()}
-        secretKey = secrets.token_urlsafe(32)
+        payload = {"user": username,  "exp": (datetime.datetime.now(datetime.UTC) + datetime.timedelta(minutes=0.1)).timestamp()}
+
         token = jwt.encode(payload, secretKey, algorithm='HS256')
 
-
-
-        afile = open('Token.txt','w')
+        afile = open('/Users/jake/main/NEA/Token.txt', 'w')
         afile.write(token)
         afile.close()
 
