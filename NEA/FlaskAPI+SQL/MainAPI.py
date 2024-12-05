@@ -151,6 +151,7 @@ def crossword(code):
         clue = item['clue']
         direction = item['direction']
         numberList = (item['group'])[0]
+
         if numberList[1] == '-':
             number = int(numberList[0])
 
@@ -187,9 +188,11 @@ def crossword(code):
     for row in range(13):
         for col in range(13):
             obj = "B"
+            wordNumber = None
 
             position = str(row).zfill(2) + str(col).zfill(2)
-            cells[position] = {'text':obj}
+            cells[position] = {'text':obj,'wordNumber':wordNumber}
+
 
 
 
@@ -219,7 +222,9 @@ def cellsBelongingToWord(var,cells):
             for x in range(length):
                 position = str(posY).zfill(2) + str(posX + x).zfill(2)
                 cell = cells.get(position)
+
                 text = cell.get('text')
+                currentNum = cell.get('wordNumber')
 
                 if x == 0:
                     cell['text'] = number
@@ -235,6 +240,13 @@ def cellsBelongingToWord(var,cells):
                     cell['text'] = "W"
 
 
+                if currentNum != None:
+                    cell['wordNumber'] = [currentNum,number]
+
+                else:
+                    cell['wordNumber'] = [number]
+
+
 
 
 
@@ -242,7 +254,9 @@ def cellsBelongingToWord(var,cells):
             for n in range(length):
                 position = str(posY + n).zfill(2) + str(posX).zfill(2)
                 cell = cells.get(position)
+
                 text = cell.get('text')
+                currentNum = cell.get('wordNumber')
 
                 if n == 0:
                     cell['text'] = number
@@ -257,6 +271,12 @@ def cellsBelongingToWord(var,cells):
                 elif text == '--':
                     cell['text'] = "W"
 
+
+                if currentNum != None:
+                    cell['wordNumber'] = [currentNum,number]
+
+                else:
+                    cell['wordNumber'] = [number]
 
 
 

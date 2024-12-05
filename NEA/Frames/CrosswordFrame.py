@@ -103,6 +103,8 @@ class crosswordFrame(ttk.Frame):
                         obj = str(cellData.get("text"))
 
 
+
+
                         #If the current items text is 'B' it is meant to be a non-text rectangle
                         if obj == 'B':
                             rectangleID = canvas.create_rectangle(x1, y1, x2, y2, fill="black", outline="black")
@@ -112,6 +114,7 @@ class crosswordFrame(ttk.Frame):
 
                         #Any other item text
                         else:
+                            wordNumberTag = cellData.get('wordNumber')
                             #If the object is a number (one of the numbers to mark the start of a worf)
                             if obj.isdigit():
 
@@ -137,8 +140,8 @@ class crosswordFrame(ttk.Frame):
 
 
                                 #Create the little numbers in the top left of rectangles at the start of a word
-                                startID = canvas.create_text(xOffset, yOffset, text=obj, fill="black", font=('Guardian Egyptian', 8),tags = 'startPositions')
-                                rectangleID = canvas.create_rectangle(x1, y1, x2, y2, fill="white", outline="black")
+                                startID = canvas.create_text(xOffset, yOffset, text=obj, fill="black", font=('Guardian Egyptian', 8),tags ='startPositions')
+                                rectangleID = canvas.create_rectangle(x1, y1, x2, y2, fill="white", outline="black",tags = wordNumberTag)
 
                                 #Append the start ID to the array startPositions to keep track of them
                                 startPositions.append(startID)
@@ -146,7 +149,7 @@ class crosswordFrame(ttk.Frame):
 
 
                             else:
-                                rectangleID = canvas.create_rectangle(x1, y1, x2, y2, fill="white", outline="black")
+                                rectangleID = canvas.create_rectangle(x1, y1, x2, y2, fill="white", outline="black",tags = wordNumberTag)
 
 
                             canvas.tag_raise(startID)
@@ -194,6 +197,7 @@ class crosswordFrame(ttk.Frame):
                                 wraps = False
                             else:
                                 wraps = True
+
                             padding = numTimesWraps * 10
                             numTimesWraps += 1
 
@@ -286,6 +290,27 @@ class crosswordFrame(ttk.Frame):
 
             elif rectangleID in startPositions:
                 return False
+
+            wordNumberTag = canvas.gettags(rectangleID)
+            removePos = 1
+
+            if len(wordNumberTag) == 3:
+                removePos = 2
+
+            wordNumberTagClean = wordNumberTag[:removePos]
+
+
+
+
+            print(wordNumberTagClean)
+
+            rectangles = canvas.find_withtag(wordNumberTag)
+
+
+
+
+
+
 
             #Make the rectangle clicked the active one and clear the other active one (if there is one)
             clearActive(canvas)
