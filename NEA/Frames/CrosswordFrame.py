@@ -300,8 +300,6 @@ class crosswordFrame(ttk.Frame):
             wordNumberTagClean = wordNumberTag[:removePos]
 
 
-
-
             print(wordNumberTagClean)
 
             rectangles = canvas.find_withtag(wordNumberTag)
