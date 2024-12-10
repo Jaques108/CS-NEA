@@ -1,5 +1,5 @@
 from tkinter import *
-from functools import partial
+from functools import partial, cache
 import re
 import requests
 
@@ -23,6 +23,13 @@ class sudokuFrame(Frame):
     def createGrid(self):
         # Dictionary that stores the rectangle IDs with their corresponding text IDs
         self.textIDs = {}
+        self.candidateModeBool = False
+        self.directions = {'1':'nw','2':'n','3':'ne','4':'w','5':'center','6':'e','7':'sw','8':'s','9':'se',}
+
+        self.candidateModeTexts = {i: [] for i in range(0, 81)}
+
+
+
 
         # Variables to account for pixel sizes
         cellSize = 40
@@ -33,11 +40,13 @@ class sudokuFrame(Frame):
         canvas.pack()
         canvas.focus_set()
 
-        API_URL = "http://127.0.0.1:5000/GenerateGrid"
+
+
+        self.API_URL = "http://127.0.0.1:5000/GenerateGrid"
 
         try:
             # Make a GET request to the API
-            response = requests.get(API_URL)
+            response = requests.get(self.API_URL)
 
             # Check if the request was successful
             if response.status_code == 200:
@@ -71,6 +80,10 @@ class sudokuFrame(Frame):
                 # Create rectangle
                 rectangleID = canvas.create_rectangle(x1, y1, x2, y2, fill="white", outline="black")
 
+
+
+
+
                 number = sudokuGrid[row][col]
                 if number == '':
                     tag = 'blankSquare'
@@ -97,6 +110,7 @@ class sudokuFrame(Frame):
                 canvas.bind('<Key>', partial(self.enterText, canvas))
 
         pixelWidth= 120
+
         for rowLine in range(1,3):
             canvas.create_line((pixelWidth*rowLine),0,(pixelWidth*rowLine),canvasSize,fill='black',width = 5)
 
@@ -106,6 +120,12 @@ class sudokuFrame(Frame):
 
         self.submitButton = Button(self, text='submit', command=partial(self.canvas2array, canvas,solutionGrid))
         self.submitButton.pack()
+
+        self.candidateButton = Button(self,text = 'Candidate Mode',command = self.candidateMode)
+        self.candidateButton.place(relx = 0.2,rely = 0.95,anchor = 'center')
+
+        self.normalButton = Button(self,text = 'Normal Mode',command = self.normalMode)
+        self.normalButton.place(relx = 0.8,rely = 0.95,anchor = 'center')
 
         self.responseLabel.pack()
 
@@ -151,6 +171,7 @@ class sudokuFrame(Frame):
         else:
             canvas.itemconfig(rectangleID, fill="white")
 
+
     def onClick(self, canvas, rectangleID, event):
         self.clearActive(canvas)
 
@@ -167,16 +188,89 @@ class sudokuFrame(Frame):
         match = bool(match)
 
 
-        tags = canvas.gettags(self.selectedTextID)
+        self.tags = canvas.gettags(self.selectedTextID)
+        self.currentText = canvas.itemcget(self.selectedTextID,'text')
 
 
-        if 'permanentNumber' in tags:
+
+        if 'permanentNumber' in self.tags:
             return False
+
+
 
         if match or char == 'BACKSPACE':
             if char == 'BACKSPACE':
                 char = ''
-            canvas.itemconfig(self.selectedTextID, text=char)
+
+            if self.candidateModeBool:
+                canvas.itemconfig(self.selectedTextID,text = '')
+
+                rectangleCoords = canvas.coords(self.selectedRectangleID)
+                x1, y1, x2, y2 = rectangleCoords
+                anchor = self.directions.get(char, None)
+                anchorPositions = {
+                    'nw': (x1 + 5, y1 + 5),  # Top-left
+                    'n': ((x1 + x2) / 2, y1 + 5),  # Top-middle
+                    'ne': (x2 - 5, y1 + 5),  # Top-right
+                    'w': (x1 + 5, (y1 + y2) / 2),  # Middle-left
+                    'center': ((x1 + x2) / 2, (y1 + y2) / 2),  # Center
+                    'e': (x2 - 5, (y1 + y2) / 2),  # Middle-right
+                    'sw': (x1 + 5, y2 - 5),  # Bottom-left
+                    's': ((x1 + x2) / 2, y2 - 5),  # Bottom-middle
+                    'se': (x2 - 5, y2 - 5)  # Bottom-right
+                }
+
+                if anchor is None:
+                    return False
+
+                x, y = anchorPositions[anchor]
+
+                data = self.candidateModeTexts[(self.selectedTextID / 2) - 1]
+
+
+                if char in data:
+                    index = data.index(char) + 1
+                    text = data[index]
+
+                    canvas.delete(text)
+                    self.candidateModeTexts[(self.selectedTextID / 2) - 1].remove(char)
+
+
+                else:
+                    self.candidateText = canvas.create_text(x, y, text=char, font=('Arial', 8), anchor=anchor,fill = 'black',tags = 'candidateNumber')
+
+                    self.candidateModeTexts[(self.selectedTextID / 2) - 1].append(char)
+                    self.candidateModeTexts[(self.selectedTextID / 2) - 1].append(self.candidateText)
+
+
+
+                canvas.coords(self.selectedTextID, x, y)
+
+            if not self.candidateModeBool:
+                # Reset to centered placement for normal mode
+                rectangleCoords = canvas.coords(self.selectedRectangleID)
+                x1, y1, x2, y2 = rectangleCoords
+                xCenter = (x1 + x2) / 2
+                yCenter = (y1 + y2) / 2
+
+                # In the Normal Mode logic
+                data = self.candidateModeTexts[(self.selectedTextID // 2) - 1]
+                for candidate in data[1::2]:  # Only delete candidate text IDs
+                    canvas.delete(candidate)
+                self.candidateModeTexts[(self.selectedTextID // 2) - 1].clear()
+
+
+
+                # Update text content and reset its anchor to 'center'
+                canvas.itemconfig(self.selectedTextID,text=char,font=('Arial', 16),anchor='center') # Ensure it's centered
+
+
+
+                # Reset the coordinates of the text to match the rectangle's center
+                canvas.coords(self.selectedTextID, xCenter, yCenter)
+
+
+
 
         canvas.itemconfig(self.selectedTextID, fill='black')
 
@@ -193,12 +287,19 @@ class sudokuFrame(Frame):
                 number = canvas.itemcget(index, 'text')
                 self.grid[col][row] = number
 
+
                 if number == '':
                     pass
 
                 elif solutionGrid[col][row] != int(number):
                     self.responseLabel.config(text='Incorrect')
+                    canvas.itemconfig(index,fill = 'red')
                     solved = False
+
+                else:
+                    color = canvas.itemcget(index,'fill')
+                    if color != 'blue':
+                        canvas.itemconfig(index, fill='green')
 
 
 
@@ -208,20 +309,11 @@ class sudokuFrame(Frame):
             self.responseLabel.config(text = 'Correct!')
 
 
+    def candidateMode(self):
+        self.candidateModeBool = True
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    def normalMode(self):
+        self.candidateModeBool = False
 
 
 

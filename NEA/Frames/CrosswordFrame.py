@@ -76,9 +76,13 @@ class crosswordFrame(ttk.Frame):
 
 
                     #Create the canvas and display it
-                    canvas = Canvas(self, width=canvasSize + (cellSize*8), height=canvasSize)
+                    canvas = Canvas(self, width=canvasSize + (cellSize*16), height=canvasSize)
                     canvas.pack()
                     canvas.focus_set()
+
+                    def goBack(canvas):
+                        canvas.destroy()
+                        self.controller.showFrame('choiceFrame', '465x330', 'What to play')
 
                     #Collect the data from the text file
                     with open('Code.txt', 'r') as afile:
@@ -170,24 +174,22 @@ class crosswordFrame(ttk.Frame):
                             canvas.bind('<Down>', partial(enterText, canvas, rectangleID))
 
 
-                    canvas.create_text(canvasSize + (cellSize * 4), cellSize - 20, text='Across',font=("Helvetica", 20, "bold"))
-                    canvas.create_text(canvasSize + (cellSize * 4), (cellSize * 7)+20, text='Down',font=("Helvetica", 20, "bold"))
+                    canvas.create_text(canvasSize + (cellSize * 2.3), cellSize - 20, text='Across',font=("Helvetica", 30, "bold"))
+                    canvas.create_text(canvasSize + (cellSize * 10), cellSize - 20, text='Down',font=("Helvetica", 30, "bold"))
 
-                    acrossOffset = cellSize +10
-                    downOffset = (cellSize * 8) + 5
+                    acrossOffset = cellSize + 15
+                    downOffset = cellSize + 15
 
-                    wrapWidth = cellSize * 8
+                    wrapWidth = cellSize * 7
 
                     fontStyle = font.Font(family='Arial', size=12)
-                    textFont = ('Arial',12)
+                    textFont = ('Arial',16)
 
-
-                    padding = 0
+                    padding = 1
                     numTimesWraps = 1
                     wraps = False
 
-
-                    for index,(clue, number, position) in enumerate(data['clues']):
+                    for index, (clue, number, position) in enumerate(data['clues']):
                         clueWidth = fontStyle.measure(clue)
 
                         text = str(number) + ' ' + clue
@@ -204,21 +206,22 @@ class crosswordFrame(ttk.Frame):
 
 
 
+
+
                         if position == 'across':
-                            canvas.create_text(canvasSize + (cellSize * 4), padding + acrossOffset, text=text,width=wrapWidth,font = textFont,anchor='center')
-                            acrossOffset += 20
+                            canvas.create_text(canvasSize + cellSize,(acrossOffset + padding), text=text,width=wrapWidth,font = textFont,anchor='w')
+                            acrossOffset += 30
 
                         elif position == 'down':
-                            canvas.create_text(canvasSize + (cellSize * 4), padding + downOffset, text=text,width=wrapWidth,font = textFont,anchor='center')
-                            downOffset += 20
-
-                    def goBack():
-                        canvas.destroy()
-                        self.controller.showFrame('choiceFrame', '465x330', 'What to play')
+                            canvas.create_text(canvasSize + (cellSize * 9),(downOffset + padding), text=text,width=wrapWidth,font = textFont,anchor='w')
+                            downOffset += 30
 
 
-                    goBackButton = ttk.Button(self, text='Go Back', command=goBack)
-                    goBackButton.place(relx=0.935, rely=0.035, anchor='center')
+
+
+
+                    goBackButton = ttk.Button(self, text='Go Back', command=partial(goBack,canvas))
+                    goBackButton.place(relx=0.95, rely=0.965, anchor='center')
 
 
                 #Call the function
@@ -291,19 +294,34 @@ class crosswordFrame(ttk.Frame):
             elif rectangleID in startPositions:
                 return False
 
-            wordNumberTag = canvas.gettags(rectangleID)
-            removePos = 1
+            allWordNumberTags = canvas.gettags(rectangleID)
 
-            if len(wordNumberTag) == 3:
-                removePos = 2
+            firstWordTag = None
+            secondWordTag = None
+            counter = 0
 
-            wordNumberTagClean = wordNumberTag[:removePos]
+            for tag in allWordNumberTags:
+                if tag == 'active' or tag == 'current':
+                    pass
+
+                elif tag.isdigit():
+                    if counter == 0:
+                        firstWordTag = tag
+                        counter += 1
+
+                    else:
+                        secondWordTag = tag
 
 
-            print(wordNumberTagClean)
 
-            rectangles = canvas.find_withtag(wordNumberTag)
 
+
+
+            if secondWordTag == None:
+                rectangles = canvas.find_withtag(firstWordTag)
+
+            else:
+                rectangles = canvas.find_withtag(firstWordTag) + canvas.find_withtag(secondWordTag)
 
 
 
@@ -311,8 +329,13 @@ class crosswordFrame(ttk.Frame):
 
 
             #Make the rectangle clicked the active one and clear the other active one (if there is one)
+            for rectangle in rectangles:
+                print(rectangles)
+                print(rectangle)
+
             clearActive(canvas)
             setActive(canvas,rectangleID)
+
 
 
 
@@ -447,7 +470,11 @@ class crosswordFrame(ttk.Frame):
                 newCoords = canvas.coords(nextRectangleID)
 
                 #We are only interested in the Y coordinates so get those from newCoords
-                nextYCenter = (newCoords[1] + newCoords[3]) / 2
+                try:
+                    nextYCenter = (newCoords[1] + newCoords[3]) / 2
+
+                except:
+                    pass
 
 
                 #Subtract the previous rectangle Y coordinates with the new one
@@ -481,6 +508,8 @@ class crosswordFrame(ttk.Frame):
 
         errorLabel = ttk.Label(self)
         errorLabel.place(relx=0.5, rely=0.65, anchor="center")
+
+
 
 
 

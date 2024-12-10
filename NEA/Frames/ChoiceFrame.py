@@ -16,26 +16,38 @@ class choiceFrame(Frame):
         self.grid_columnconfigure(0, weight=1)
         self.grid_columnconfigure(1, weight=1)
 
-        #Function to call the sudokuFrame instance
-        def sudokuFrame():
-            self.controller.showFrame('sudokuFrame', '', 'Sudoku')
-            self.grid_columnconfigure(0, weight=1)
-            self.grid_columnconfigure(0, weight=1)
+        try:
+            self.sudokuButton.destroy()
+            self.crosswordsButton.destroy()
+
+        except:
+            pass
+
+        # Widgets
+        self.sudokuButton = Button(self, text="Sudoku", command=sudokuFrame, width=20, height=20)
+        self.sudokuButton.grid(row=0, column=0, sticky='news')
+
+        self.crosswordsButton = Button(self, text="Crossword",command=lambda: self.controller.showFrame('crosswordFrame', '', 'Crossword'),width=20, height=20)
+        self.crosswordsButton.grid(row=0, column=1, sticky='news')
 
 
-            #Create varible to hold sudokuFrame
-            sudokuFrameInstance = self.controller.frames['sudokuFrame']
 
-            #Run the createGrid function inside of sudokuFrame
-            sudokuFrameInstance.createGrid()
+    #Function to call the sudokuFrame instance
+    def sudokuFrame(self):
+        self.controller.showFrame('sudokuFrame', '', 'Sudoku')
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_columnconfigure(0, weight=1)
+
+
+        #Create varible to hold sudokuFrame
+        sudokuFrameInstance = self.controller.frames['sudokuFrame']
+
+        #Run the createGrid function inside of sudokuFrame
+        sudokuFrameInstance.createGrid()
 
 
 
-        #Widgets
-        self.sudokuButton = Button(self, text="Sudoku", command=sudokuFrame,width = 20,height = 20)
-        self.sudokuButton.grid(row=0,column=0,sticky = 'news')
 
-        self.crosswordsButton = Button(self, text="Crossword",command=lambda:self.controller.showFrame('crosswordFrame','','Crossword'),width=20, height=20)
-        self.crosswordsButton.grid(row = 0,column=1,sticky = 'news')
+
 
 

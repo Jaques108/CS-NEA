@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcc33587-880f-4a89-98b5-cef7062c96cd" name="Changes" comment="Upload" />
+    <list default="true" id="fcc33587-880f-4a89-98b5-cef7062c96cd" name="Changes" comment="Upload">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/Frames/ChoiceFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Frames/ChoiceFrame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/Frames/CrosswordFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Frames/CrosswordFrame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/Frames/LoginEntryFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Frames/LoginEntryFrame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/Frames/SudokuFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Frames/SudokuFrame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/Token.txt" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Token.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,7 +55,7 @@
     <setting file="file://$PROJECT_DIR$/NEA/Frames/CrosswordFrame.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/NEA/Frames/LoginEntryFrame.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/NEA/Frames/SudokuFrame.py" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/NEA/Main Code/MainAPP.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/NEA/Main Code/Main.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/NEA/Misc/Test.py" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -89,6 +96,7 @@
     &quot;Python.LoginEntryFrame.executor&quot;: &quot;Debug&quot;,
     &quot;Python.LoginEntryWindow.executor&quot;: &quot;Run&quot;,
     &quot;Python.LoginFrame.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Main.executor&quot;: &quot;Debug&quot;,
     &quot;Python.MainAPI.executor&quot;: &quot;Run&quot;,
     &quot;Python.MainAPP.executor&quot;: &quot;Run&quot;,
     &quot;Python.Messaging (Sockets).executor&quot;: &quot;Run&quot;,
@@ -195,14 +203,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1711276629155</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Upload">
-      <option name="closed" value="true" />
-      <created>1726735918911</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1726735918911</updated>
     </task>
     <task id="LOCAL-00008" summary="Upload">
       <option name="closed" value="true" />
@@ -588,7 +588,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733419917441</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="Upload">
+      <option name="closed" value="true" />
+      <created>1733427861835</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1733427861835</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="UnknownFeatures">

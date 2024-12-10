@@ -61,7 +61,7 @@ class loginEntryFrame(tk.Frame):
             sendData = requests.post(self.API_URL + 'Login',json = data)
 
             if not sendData:
-                self.responseLabel.config(text = 'Username/Password not accepted')
+                self.responseLabel.config(text = 'Incorrect Username/Password')
 
 
             else:
