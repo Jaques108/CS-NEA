@@ -118,7 +118,7 @@ class sudokuFrame(Frame):
             canvas.create_line(0, (pixelWidth*columnLine), canvasSize, (pixelWidth*columnLine),fill = 'black',width = 5)
 
 
-        self.submitButton = Button(self, text='submit', command=partial(self.canvas2array, canvas,solutionGrid))
+        self.submitButton = Button(self, text='Check!', command=partial(self.canvas2array, canvas,solutionGrid))
         self.submitButton.pack()
 
         self.candidateButton = Button(self,text = 'Candidate Mode',command = self.candidateMode)
@@ -239,8 +239,11 @@ class sudokuFrame(Frame):
                 else:
                     self.candidateText = canvas.create_text(x, y, text=char, font=('Arial', 8), anchor=anchor,fill = 'black',tags = 'candidateNumber')
 
-                    self.candidateModeTexts[(self.selectedTextID / 2) - 1].append(char)
-                    self.candidateModeTexts[(self.selectedTextID / 2) - 1].append(self.candidateText)
+                    dataTexts = char,str(self.candidateText)
+
+                    self.candidateModeTexts[(self.selectedTextID / 2) - 1].append(dataTexts)
+
+
 
 
 
@@ -254,10 +257,17 @@ class sudokuFrame(Frame):
                 yCenter = (y1 + y2) / 2
 
                 # In the Normal Mode logic
-                data = self.candidateModeTexts[(self.selectedTextID // 2) - 1]
-                for candidate in data[1::2]:  # Only delete candidate text IDs
-                    canvas.delete(candidate)
-                self.candidateModeTexts[(self.selectedTextID // 2) - 1].clear()
+                data = self.candidateModeTexts[(self.selectedTextID / 2) - 1]
+
+                for candidate in data:
+                    char = candidate[0]
+                    textID = candidate[1]
+
+                    print(char,textID)
+
+                    canvas.delete(textID)
+
+                self.candidateModeTexts[(self.selectedTextID / 2) - 1].clear()
 
 
 
