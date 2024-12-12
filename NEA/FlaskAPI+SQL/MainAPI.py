@@ -142,7 +142,7 @@ def crossword(code):
 
 
     startPositions = []
-    seen = set()
+
 
 
     for item in jsonified['entries']:
@@ -159,25 +159,14 @@ def crossword(code):
             number = int(numberList[:2])
 
 
-
         tempX = temp['x']
         tempY = temp['y']
 
-
-
         startPosition = (tempX, tempY)
+        startPositions.append(startPosition)
 
-        # Removes duplicates. This is because some start positions belong to both across and down words.
-        if startPosition not in seen:
-            startPositions.append(startPosition)
-            seen.add(startPosition)
-
-
-            clue = (clue,number,direction)
-            clues.append(clue)
-
-
-
+        clue = (clue,number,direction)
+        clues.append(clue)
 
 
         startPositions = sorted(startPositions, key=lambda x: (x[1], x[0]))
@@ -291,7 +280,7 @@ def generateSudoku():
         changedGrid = copy.deepcopy(grid)
         for n in range(9):
             for m in range(9):
-                diceRoll = random.randint(1,4)
+                diceRoll = random.randint(1,5)
                 if diceRoll != 1:
                     changedGrid[n][m] = ''
 

@@ -226,14 +226,25 @@ class sudokuFrame(Frame):
                 x, y = anchorPositions[anchor]
 
                 data = self.candidateModeTexts[(self.selectedTextID / 2) - 1]
+                self.numbers = []
+
+                for i in range(len(data)):
+                    number = data[i][0]
+                    self.numbers.append(number)
 
 
-                if char in data:
-                    index = data.index(char) + 1
+
+
+
+                if char in self.numbers:
+                    chars = [item[0] for item in data]
+
+                    index = chars.index(char)
                     text = data[index]
 
-                    canvas.delete(text)
-                    self.candidateModeTexts[(self.selectedTextID / 2) - 1].remove(char)
+                    canvas.delete(text[1])
+                    del self.candidateModeTexts[(self.selectedTextID / 2) - 1][index]
+
 
 
                 else:
@@ -259,12 +270,10 @@ class sudokuFrame(Frame):
                 # In the Normal Mode logic
                 data = self.candidateModeTexts[(self.selectedTextID / 2) - 1]
 
+
                 for candidate in data:
                     char = candidate[0]
                     textID = candidate[1]
-
-                    print(char,textID)
-
                     canvas.delete(textID)
 
                 self.candidateModeTexts[(self.selectedTextID / 2) - 1].clear()

@@ -84,6 +84,10 @@ class crosswordFrame(ttk.Frame):
                         canvas.destroy()
                         self.controller.showFrame('choiceFrame', '465x330', 'What to play')
 
+                    def combinedFunction(canvas,rectangleID,event):
+                        enterText(canvas,rectangleID,event)
+                        changeTextDirection(canvas,event)
+
                     #Collect the data from the text file
                     with open('Code.txt', 'r') as afile:
                         data = json.load(afile)
@@ -170,8 +174,9 @@ class crosswordFrame(ttk.Frame):
                             #Bind arrow keys
                             canvas.bind('<Left>', partial(enterText, canvas, rectangleID))
                             canvas.bind('<Right>', partial(enterText, canvas, rectangleID))
-                            canvas.bind('<Up>', partial(enterText, canvas, rectangleID))
-                            canvas.bind('<Down>', partial(enterText, canvas, rectangleID))
+                            canvas.bind('<Up>', partial(combinedFunction, canvas, rectangleID))
+                            canvas.bind('<Down>', partial(combinedFunction, canvas, rectangleID))
+
 
 
                     canvas.create_text(canvasSize + (cellSize * 2.3), cellSize - 20, text='Across',font=("Helvetica", 30, "bold"))
@@ -205,9 +210,6 @@ class crosswordFrame(ttk.Frame):
 
 
 
-
-
-
                         if position == 'across':
                             canvas.create_text(canvasSize + cellSize,(acrossOffset + padding), text=text,width=wrapWidth,font = textFont,anchor='w')
                             acrossOffset += 30
@@ -215,8 +217,6 @@ class crosswordFrame(ttk.Frame):
                         elif position == 'down':
                             canvas.create_text(canvasSize + (cellSize * 9),(downOffset + padding), text=text,width=wrapWidth,font = textFont,anchor='w')
                             downOffset += 30
-
-
 
 
 
@@ -233,10 +233,7 @@ class crosswordFrame(ttk.Frame):
 
 
 
-
-
-
-        #Function called when cursor enters the area of a rectangle
+        #Function called when cursor enters the area of a rectangle - provides the user with feedback makes it feel more responsive
         def mouseEnter(canvas,rectangleID,event):
             #Get the current tags of the rectangle
             itemTags = canvas.gettags(rectangleID)
@@ -257,7 +254,7 @@ class crosswordFrame(ttk.Frame):
                 return False
 
             else:
-                #Make the rectangle grey to have UI feedback to the user
+                #Make the rectangle grey
                 canvas.itemconfig(rectangleID, fill="grey")
 
 
@@ -277,9 +274,6 @@ class crosswordFrame(ttk.Frame):
 
             elif rectangleID in startPositions:
                 return False
-
-
-
             else:
                 #Change the rectangle back to normal
                 canvas.itemconfig(rectangleID, fill="white")
@@ -327,12 +321,7 @@ class crosswordFrame(ttk.Frame):
 
 
 
-
             #Make the rectangle clicked the active one and clear the other active one (if there is one)
-            for rectangle in rectangles:
-                print(rectangles)
-                print(rectangle)
-
             clearActive(canvas)
             setActive(canvas,rectangleID)
 
@@ -374,6 +363,7 @@ class crosswordFrame(ttk.Frame):
             #Record the character pressed
             char = event.keysym.upper()
 
+
             #Boolean used if using arrow keys
             replace = True
 
@@ -385,6 +375,9 @@ class crosswordFrame(ttk.Frame):
             #If char is a backspace - set char to blank so it performs a delete function
             if char == '\x08' or char == 'BACKSPACE':
                 char = ''
+
+            if len(char) != 1 and char != '' and char not in directions:
+                return False
 
 
             #Error handling
@@ -478,7 +471,10 @@ class crosswordFrame(ttk.Frame):
 
 
                 #Subtract the previous rectangle Y coordinates with the new one
-                difference = yCenter - nextYCenter
+                if nextYCenter:
+                    difference = yCenter - nextYCenter
+                else:
+                    return False
 
                 #If the Y coordinates have changed return false
                 if difference != 0:
@@ -488,6 +484,9 @@ class crosswordFrame(ttk.Frame):
                 #If we've made it this far clear the current active rectange and set active the next rectangle
                 clearActive(canvas)
                 setActive(canvas,nextRectangleID)
+
+        def changeTextDirection(canvas,event):
+            print('working')
 
 
 
