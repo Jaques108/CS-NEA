@@ -33,7 +33,7 @@ class choiceFrame(Frame):
 
     #Function to call the sudokuFrame instance
     def sudokuFrameOpen(self):
-        self.controller.showFrame('sudokuFrame', '', 'Sudoku')
+        self.controller.showFrame('sudokuFrame', '810x810', 'Sudoku')
         self.grid_columnconfigure(0, weight=1)
         self.grid_columnconfigure(0, weight=1)
 

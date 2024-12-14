@@ -281,7 +281,7 @@ def generateSudoku():
         for n in range(9):
             for m in range(9):
                 diceRoll = random.randint(1,5)
-                if diceRoll != 1:
+                if diceRoll <= 2:
                     changedGrid[n][m] = ''
 
         return grid + changedGrid

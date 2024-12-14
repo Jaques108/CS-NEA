@@ -32,8 +32,8 @@ class sudokuFrame(Frame):
 
 
         # Variables to account for pixel sizes
-        cellSize = 40
-        canvasSize = 40 * 9
+        cellSize = 80
+        canvasSize = 80 * 9
 
         # Create the canvas and place it
         canvas = Canvas(self, width=canvasSize, height=canvasSize)
@@ -87,13 +87,13 @@ class sudokuFrame(Frame):
                 number = sudokuGrid[row][col]
                 if number == '':
                     tag = 'blankSquare'
-                    color = 'black'
+                    font=('Arial', 24)
                 else:
                     tag = 'permanentNumber'
-                    color = 'blue'
+                    font=('Arial', 24,'bold')
 
                 # Create the text/textID
-                textID = canvas.create_text(xCenter, yCenter, text=number, font=("Arial", 16), fill=color, tags=('text',tag))
+                textID = canvas.create_text(xCenter, yCenter, text=number, font=font, fill='black', tags=('text',tag))
 
                 # Append to dictionary
                 self.textIDs[rectangleID] = textID
@@ -109,7 +109,7 @@ class sudokuFrame(Frame):
 
                 canvas.bind('<Key>', partial(self.enterText, canvas))
 
-        pixelWidth= 120
+        pixelWidth = 240
 
         for rowLine in range(1,3):
             canvas.create_line((pixelWidth*rowLine),0,(pixelWidth*rowLine),canvasSize,fill='black',width = 5)
@@ -122,10 +122,10 @@ class sudokuFrame(Frame):
         self.submitButton.pack()
 
         self.candidateButton = Button(self,text = 'Candidate Mode',command = self.candidateMode)
-        self.candidateButton.place(relx = 0.2,rely = 0.95,anchor = 'center')
+        self.candidateButton.place(relx = 0.2,rely = 0.975,anchor = 'center')
 
         self.normalButton = Button(self,text = 'Normal Mode',command = self.normalMode)
-        self.normalButton.place(relx = 0.8,rely = 0.95,anchor = 'center')
+        self.normalButton.place(relx = 0.8,rely = 0.975,anchor = 'center')
 
         self.responseLabel.pack()
 
@@ -248,7 +248,7 @@ class sudokuFrame(Frame):
 
 
                 else:
-                    self.candidateText = canvas.create_text(x, y, text=char, font=('Arial', 8), anchor=anchor,fill = 'black',tags = 'candidateNumber')
+                    self.candidateText = canvas.create_text(x, y, text=char, font=('Arial', 16), anchor=anchor,fill = 'black',tags = 'candidateNumber')
 
                     dataTexts = char,str(self.candidateText)
 
@@ -272,7 +272,6 @@ class sudokuFrame(Frame):
 
 
                 for candidate in data:
-                    char = candidate[0]
                     textID = candidate[1]
                     canvas.delete(textID)
 
@@ -281,7 +280,7 @@ class sudokuFrame(Frame):
 
 
                 # Update text content and reset its anchor to 'center'
-                canvas.itemconfig(self.selectedTextID,text=char,font=('Arial', 16),anchor='center') # Ensure it's centered
+                canvas.itemconfig(self.selectedTextID,text=char,font=('Arial', 26),anchor='center') # Ensure it's centered
 
 
 
