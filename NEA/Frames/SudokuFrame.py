@@ -295,7 +295,6 @@ class sudokuFrame(Frame):
 
 
     def canvas2array(self, canvas,solutionGrid):
-        solved = True
         self.grid = [['' for x in range(9)] for y in range(9)]
 
         index = 2
@@ -303,7 +302,7 @@ class sudokuFrame(Frame):
         for col in range(9):
             for row in range(9):
                 number = canvas.itemcget(index, 'text')
-                self.grid[col][row] = number
+                self.grid[col][row] = int(number)
 
 
                 if number == '':
@@ -312,19 +311,20 @@ class sudokuFrame(Frame):
                 elif solutionGrid[col][row] != int(number):
                     self.responseLabel.config(text='Incorrect')
                     canvas.itemconfig(index,fill = 'red')
-                    solved = False
 
                 else:
-                    color = canvas.itemcget(index,'fill')
-                    if color != 'blue':
+                    font = canvas.itemcget(index,'font')
+                    if 'bold' not in font:
                         canvas.itemconfig(index, fill='green')
 
 
 
                 index += 2
 
-        if solved:
-            self.responseLabel.config(text = 'Correct!')
+        if self.grid == solutionGrid:
+            self.controller.showFrame('sudokuSuccessFrame', '200x200', 'Well Done!')
+
+
 
 
     def candidateMode(self):

@@ -280,7 +280,7 @@ def generateSudoku():
         changedGrid = copy.deepcopy(grid)
         for n in range(9):
             for m in range(9):
-                diceRoll = random.randint(1,5)
+                diceRoll = random.randint(1,345678)
                 if diceRoll <= 2:
                     changedGrid[n][m] = ''
 

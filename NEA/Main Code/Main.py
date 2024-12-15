@@ -4,6 +4,7 @@ from NEA.Frames.LoginEntryFrame import loginEntryFrame
 from NEA.Frames.ChoiceFrame import choiceFrame
 from NEA.Frames.SudokuFrame import sudokuFrame
 from NEA.Frames.CrosswordFrame import crosswordFrame
+from NEA.Frames.SudokuSuccessFrame import sudokuSuccessFrame
 
 
 
@@ -25,7 +26,7 @@ class MainApp(tk.Tk):
 
 
         #Iterating through the frames
-        for F in [mainMenuFrame, loginEntryFrame, choiceFrame, sudokuFrame, crosswordFrame]:
+        for F in [mainMenuFrame, loginEntryFrame, choiceFrame, sudokuFrame, crosswordFrame,sudokuSuccessFrame]:
 
             #Instancing each frame!
             frame = F(container, self)
@@ -46,6 +47,7 @@ class MainApp(tk.Tk):
         self.geometry(size)
         self.title(title)
         self.resizable(width=False, height=False)
+        frame.grid(row=0, column=0, sticky="nsew")
 
         #Raise the frame
         frame.tkraise()
