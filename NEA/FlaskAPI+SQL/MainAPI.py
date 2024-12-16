@@ -147,9 +147,9 @@ def crossword(code):
 
     for item in jsonified['entries']:
         temp = item['position']
-
         clue = item['clue']
         direction = item['direction']
+
         numberList = (item['group'])[0]
 
         if numberList[1] == '-':
@@ -185,17 +185,18 @@ def crossword(code):
 
 
 
-    cellsBelongingToWord(jsonified,cells)
+    solutionGrid = cellsBelongingToWord(jsonified,cells)
     result = {
         "cells": cells,
-        "clues": clues
+        "clues": clues,
+        "solutionGrid":solutionGrid
     }
-
-
     return result
 
 
 def cellsBelongingToWord(var,cells):
+    solutionGrid = [[None for x in range(13)] for y in range(13)]
+
     for item in var['entries']:
         temp = item['position']
         posX = temp['x']
@@ -205,10 +206,12 @@ def cellsBelongingToWord(var,cells):
 
         direction = item['direction']
         length = item['length']
-
+        solution = item['solution']
 
         if direction == 'across':
             for x in range(length):
+                solutionGrid[posY][posX + x] = solution[x]
+
                 position = str(posY).zfill(2) + str(posX + x).zfill(2)
                 cell = cells.get(position)
 
@@ -241,6 +244,8 @@ def cellsBelongingToWord(var,cells):
 
         elif direction == 'down':
             for n in range(length):
+                solutionGrid[posY + n][posX] = solution[n]
+
                 position = str(posY + n).zfill(2) + str(posX).zfill(2)
                 cell = cells.get(position)
 
@@ -266,6 +271,9 @@ def cellsBelongingToWord(var,cells):
 
                 else:
                     cell['wordNumber'] = [number]
+
+    return solutionGrid
+
 
 
 

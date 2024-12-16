@@ -84,6 +84,13 @@ class crosswordFrame(ttk.Frame):
                         canvas.destroy()
                         self.controller.showFrame('choiceFrame', '465x330', 'What to play')
 
+                    def submit(canvas):
+                        for rectangleID in canvas.find_all():
+                            if rectangleID in textItems:
+                                textID = textItems[rectangleID]
+                                text = canvas.itemcget(textID, 'text')
+
+
                     def combinedFunction(canvas,rectangleID,event):
                         enterText(canvas,rectangleID,event)
                         changeTextDirection(canvas,event)
@@ -91,6 +98,7 @@ class crosswordFrame(ttk.Frame):
                     #Collect the data from the text file
                     with open('Code.txt', 'r') as afile:
                         data = json.load(afile)
+                        self.solutionGrid = data['solutionGrid']
 
                     for cellID, cellData in data['cells'].items(): #Iterate through the data
                         #Find the x and y coordinates for each item using list comprehension
@@ -222,6 +230,9 @@ class crosswordFrame(ttk.Frame):
 
                     goBackButton = ttk.Button(self, text='Go Back', command=partial(goBack,canvas))
                     goBackButton.place(relx=0.95, rely=0.965, anchor='center')
+
+                    checkButton = ttk.Button(self,text = 'Check!',command = partial(submit,canvas))
+                    checkButton.place(relx = 0.95,rely = 0.75,anchor = 'center')
 
 
                 #Call the function
@@ -492,6 +503,9 @@ class crosswordFrame(ttk.Frame):
 
 
 
+
+
+
         #Tkinter Widgets
         codeLabel = ttk.Label(self, text='Enter Crossword Code')
         codeLabel.place(relx=0.5, rely=0.25, anchor="center")
@@ -507,6 +521,8 @@ class crosswordFrame(ttk.Frame):
 
         errorLabel = ttk.Label(self)
         errorLabel.place(relx=0.5, rely=0.65, anchor="center")
+
+
 
 
 
