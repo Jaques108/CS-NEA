@@ -18,6 +18,7 @@ class crosswordFrame(ttk.Frame):
         self.controller = controller
 
         textItems = {} #Dictionary for the locations of rectangles with text
+        textChars = {}
         nonTextRectangles = [] #List for the locations of black rectangles (Non-Text)
         startPositions = [] #List of rectangles at the start of every word
 
@@ -74,7 +75,6 @@ class crosswordFrame(ttk.Frame):
                     errorLabel.destroy()
 
 
-
                     #Create the canvas and display it
                     canvas = Canvas(self, width=canvasSize + (cellSize*16), height=canvasSize)
                     canvas.pack()
@@ -92,27 +92,37 @@ class crosswordFrame(ttk.Frame):
                         self.controller.showFrame('choiceFrame', '465x330', 'What to play')
                         canvas.focus_set()
 
-                    def submit(canvas,self):
+                    def submit(canvas):
                         rectangleIDs = []
 
                         for cellID in self.data['cells'].items():
                             coords = cellID[0]
 
-                            xCoords = (int(coords[:2]) * 40) + 20
-                            yCoords = (int(coords[2:]) * 40) + 20
+                            xCoords = (int(coords[2:]) * 40) + 20
+                            yCoords = (int(coords[:2]) * 40) + 20
+
+                            xPos = int(coords[2:])
+                            yPos = int(coords[:2])
 
                             rectangleID = canvas.find_overlapping(xCoords,yCoords,xCoords + 5,yCoords + 5)[0]
-                            textID = textItems(rectangleID)
-                            print(char)
-                            rectangleIDs.append(rectangleIDs)
 
+                            if rectangleID in textItems:
+                                char = textChars[rectangleID]
+                                self.userGrid[yPos][xPos] = char
 
-                        rectangleIDs = sorted(rectangleIDs)
-                        print(rectangleIDs)
+                        solved = True
+                        for i in range(13):
+                            for x in range(13):
+                                userChar = self.userGrid[i][x]
+                                solutionChar = self.solutionGrid[i][x]
 
+                                if userChar == solutionChar or userChar == None:
+                                    print('W')
 
+                                else:
+                                    solved = False
 
-
+                        print(solved)
 
 
                         canvas.focus_set()
@@ -252,10 +262,10 @@ class crosswordFrame(ttk.Frame):
 
 
 
-                    goBackButton = ttk.Button(self, text='Go Back', command=partial(goBack,canvas,self))
+                    goBackButton = ttk.Button(self, text='Go Back', command=None)
                     goBackButton.place(relx=0.95, rely=0.965, anchor='center')
 
-                    checkButton = ttk.Button(self,text = 'Check!',command = partial(submit,canvas,self))
+                    checkButton = ttk.Button(self,text = 'Check!',command = partial(submit,canvas))
                     checkButton.place(relx = 0.75,rely = 0.965,anchor = 'center')
 
 
@@ -439,6 +449,7 @@ class crosswordFrame(ttk.Frame):
                 if replace:
                     textID = canvas.create_text(xCenter, yCenter, text=char, font=("Arial", 16), fill="black", tags='text')
                     textItems[rectangleID] = textID
+                    textChars[rectangleID] = char
                     #Create new text and store the reference in the textItems dictionary
 
                     #Make sure the text has the same attributes as the rectangle because tkinter is goofy like that - the text creates a dead zone where the normal functions of the rectangle do not work
