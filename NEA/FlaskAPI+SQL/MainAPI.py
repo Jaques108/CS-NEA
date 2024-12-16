@@ -186,6 +186,7 @@ def crossword(code):
 
 
     solutionGrid = cellsBelongingToWord(jsonified,cells)
+
     result = {
         "cells": cells,
         "clues": clues,

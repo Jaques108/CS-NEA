@@ -80,27 +80,51 @@ class crosswordFrame(ttk.Frame):
                     canvas.pack()
                     canvas.focus_set()
 
+                    self.userGrid = [[None for x in range(13)] for y in range(13)]
+
+                    # Collect the data from the text file
+                    with open('Code.txt', 'r') as afile:
+                        self.data = json.load(afile)
+                        self.solutionGrid = self.data['solutionGrid']
+
                     def goBack(canvas):
                         canvas.destroy()
                         self.controller.showFrame('choiceFrame', '465x330', 'What to play')
+                        canvas.focus_set()
 
-                    def submit(canvas):
-                        for rectangleID in canvas.find_all():
-                            if rectangleID in textItems:
-                                textID = textItems[rectangleID]
-                                text = canvas.itemcget(textID, 'text')
+                    def submit(canvas,self):
+                        rectangleIDs = []
+
+                        for cellID in self.data['cells'].items():
+                            coords = cellID[0]
+
+                            xCoords = (int(coords[:2]) * 40) + 20
+                            yCoords = (int(coords[2:]) * 40) + 20
+
+                            rectangleID = canvas.find_overlapping(xCoords,yCoords,xCoords + 5,yCoords + 5)[0]
+                            textID = textItems(rectangleID)
+                            print(char)
+                            rectangleIDs.append(rectangleIDs)
+
+
+                        rectangleIDs = sorted(rectangleIDs)
+                        print(rectangleIDs)
+
+
+
+
+
+
+                        canvas.focus_set()
 
 
                     def combinedFunction(canvas,rectangleID,event):
                         enterText(canvas,rectangleID,event)
                         changeTextDirection(canvas,event)
 
-                    #Collect the data from the text file
-                    with open('Code.txt', 'r') as afile:
-                        data = json.load(afile)
-                        self.solutionGrid = data['solutionGrid']
 
-                    for cellID, cellData in data['cells'].items(): #Iterate through the data
+
+                    for cellID, cellData in self.data['cells'].items(): #Iterate through the data
                         #Find the x and y coordinates for each item using list comprehension
 
                         posX = int(cellID[2:])
@@ -202,7 +226,7 @@ class crosswordFrame(ttk.Frame):
                     numTimesWraps = 1
                     wraps = False
 
-                    for index, (clue, number, position) in enumerate(data['clues']):
+                    for index, (clue, number, position) in enumerate(self.data['clues']):
                         clueWidth = fontStyle.measure(clue)
 
                         text = str(number) + ' ' + clue
@@ -228,11 +252,11 @@ class crosswordFrame(ttk.Frame):
 
 
 
-                    goBackButton = ttk.Button(self, text='Go Back', command=partial(goBack,canvas))
+                    goBackButton = ttk.Button(self, text='Go Back', command=partial(goBack,canvas,self))
                     goBackButton.place(relx=0.95, rely=0.965, anchor='center')
 
-                    checkButton = ttk.Button(self,text = 'Check!',command = partial(submit,canvas))
-                    checkButton.place(relx = 0.95,rely = 0.75,anchor = 'center')
+                    checkButton = ttk.Button(self,text = 'Check!',command = partial(submit,canvas,self))
+                    checkButton.place(relx = 0.75,rely = 0.965,anchor = 'center')
 
 
                 #Call the function
@@ -498,9 +522,6 @@ class crosswordFrame(ttk.Frame):
 
         def changeTextDirection(canvas,event):
             print('working')
-
-
-
 
 
 
