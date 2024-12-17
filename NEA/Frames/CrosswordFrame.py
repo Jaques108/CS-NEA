@@ -6,6 +6,7 @@ from tkinter import ttk
 import json
 import requests
 from functools import partial
+from datetime import date
 
 
 
@@ -28,16 +29,22 @@ class crosswordFrame(ttk.Frame):
         cellSize = 40
         canvasSize = 40 * 13
 
-        def generateRandomCode():
-            self.randomCode = True
+        def dailyCrossword():
+            self.dailyCrossword = True
             submit()
 
 
         #This function is binded to the submit button which is run when it is pressed - starts the whole process
         def submit():
 
-            if self.randomCode:
-                code = random.randint(1,7750) + 9250
+            if self.dailyCrossword:
+                startDay = date(2024,12,17)
+                today = date.today()
+
+                difference = (today - startDay).days
+
+                #Just when i set this yk
+                code = 17041 + difference
             else:
                 #Get the code entered
                 code = codeEntry.get()
@@ -574,7 +581,7 @@ class crosswordFrame(ttk.Frame):
         codeSubmit = ttk.Button(self, text='Submit', command=submit)
         codeSubmit.place(relx=0.5, rely=0.75, anchor="center")
 
-        randomCode = ttk.Button(self,text = 'Random Crossword',command= generateRandomCode)
+        randomCode = ttk.Button(self,text = 'Daily Crossword',command= dailyCrossword)
         randomCode.place(relx = 0.5,rely = 0.875,anchor = 'center')
 
         errorLabel = ttk.Label(self)
