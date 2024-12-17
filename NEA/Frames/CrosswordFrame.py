@@ -1,4 +1,5 @@
 #Import our needed modules
+import random
 from tkinter import *
 from tkinter import font
 from tkinter import ttk
@@ -16,6 +17,7 @@ class crosswordFrame(ttk.Frame):
         ttk.Frame.__init__(self, parent)
         self.parent = parent
         self.controller = controller
+        self.randomCode = False
 
         textItems = {} #Dictionary for the locations of rectangles with text
         textChars = {}
@@ -26,14 +28,22 @@ class crosswordFrame(ttk.Frame):
         cellSize = 40
         canvasSize = 40 * 13
 
+        def generateRandomCode():
+            self.randomCode = True
+            submit()
+
 
         #This function is binded to the submit button which is run when it is pressed - starts the whole process
         def submit():
-            #Get the code entered
-            code = codeEntry.get()
 
-            if code.isdigit():
-                code = int(code) + 9250
+            if self.randomCode:
+                code = random.randint(1,7750) + 9250
+            else:
+                #Get the code entered
+                code = codeEntry.get()
+
+                if code.isdigit():
+                    code = int(code) + 9250
 
 
             #Create the whole URL by appending the code to the main URL
@@ -131,7 +141,7 @@ class crosswordFrame(ttk.Frame):
 
 
                                     if userChar == solutionChar and textID in textItems.values():
-                                        canvas.itemconfig(textID, fill='Green')
+                                        canvas.itemconfig(textID, fill='Blue')
 
 
                                     else:
@@ -562,7 +572,10 @@ class crosswordFrame(ttk.Frame):
         codeEntry.place(relx=0.5, rely=0.5, anchor="center")
 
         codeSubmit = ttk.Button(self, text='Submit', command=submit)
-        codeSubmit.place(relx=0.5, rely=0.8, anchor="center")
+        codeSubmit.place(relx=0.5, rely=0.75, anchor="center")
+
+        randomCode = ttk.Button(self,text = 'Random Crossword',command= generateRandomCode)
+        randomCode.place(relx = 0.5,rely = 0.875,anchor = 'center')
 
         errorLabel = ttk.Label(self)
         errorLabel.place(relx=0.5, rely=0.65, anchor="center")
