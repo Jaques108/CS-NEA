@@ -40,6 +40,9 @@ def createUser():
 
     return jsonify({'message': 'User created successfully'}),201
 
+    def checkPassword(password):
+        pass
+
 
 @API.route('/GetUsers', methods = ['GET'])
 def getUsers():
@@ -289,7 +292,7 @@ def generateSudoku():
         changedGrid = copy.deepcopy(grid)
         for n in range(9):
             for m in range(9):
-                diceRoll = random.randint(1,345678)
+                diceRoll = random.randint(1,5)
                 if diceRoll <= 2:
                     changedGrid[n][m] = ''
 

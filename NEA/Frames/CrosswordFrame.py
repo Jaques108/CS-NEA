@@ -53,9 +53,11 @@ class crosswordFrame(ttk.Frame):
             except requests.exceptions.RequestException: #Connection error handling
                 errorLabel.config(text=f'Connection Error. Please try again.') #Display connection error message to user
 
+
             #Make sure we have crossword data
             if dictData is None:
                 pass
+
 
             else:
                 #If we have crossword data run the getCrosswordData function to retrieve it
@@ -116,13 +118,27 @@ class crosswordFrame(ttk.Frame):
                                 userChar = self.userGrid[i][x]
                                 solutionChar = self.solutionGrid[i][x]
 
-                                if userChar == solutionChar or userChar == None:
-                                    print('W')
+                                xCoords = (x * 40) + 30
+                                yCoords = (i * 40) + 30
+
+                                tempRectangleID = canvas.find_overlapping(xCoords, yCoords, xCoords - 10, yCoords - 10)
+
+                                if userChar is None:
+                                    pass
 
                                 else:
-                                    solved = False
+                                    textID = tempRectangleID[1]
 
-                        print(solved)
+
+                                    if userChar == solutionChar and textID in textItems.values():
+                                        canvas.itemconfig(textID, fill='Green')
+
+
+                                    else:
+                                        canvas.itemconfig(textID,fill = 'Red')
+                                        solved = False
+
+
 
 
                         canvas.focus_set()
@@ -157,7 +173,7 @@ class crosswordFrame(ttk.Frame):
 
                         #If the current items text is 'B' it is meant to be a non-text rectangle
                         if obj == 'B':
-                            rectangleID = canvas.create_rectangle(x1, y1, x2, y2, fill="black", outline="black")
+                            rectangleID = canvas.create_rectangle(x1, y1, x2, y2, fill="black", outline="black",tags = 'rectangle')
                             nonTextRectangles.append(rectangleID) #Make it so the program isnt stupid and understands that a black square is not a place to put text in
 
 
@@ -262,8 +278,8 @@ class crosswordFrame(ttk.Frame):
 
 
 
-                    goBackButton = ttk.Button(self, text='Go Back', command=None)
-                    goBackButton.place(relx=0.95, rely=0.965, anchor='center')
+                    #goBackButton = ttk.Button(self, text='Go Back', command=None)
+                    #goBackButton.place(relx=0.95, rely=0.965, anchor='center')
 
                     checkButton = ttk.Button(self,text = 'Check!',command = partial(submit,canvas))
                     checkButton.place(relx = 0.75,rely = 0.965,anchor = 'center')
@@ -324,6 +340,7 @@ class crosswordFrame(ttk.Frame):
                 canvas.itemconfig(rectangleID, fill="white")
 
 
+
         #Function called when rectangle is clicked on
         def onClick(canvas, rectangleID, event):
 
@@ -352,10 +369,6 @@ class crosswordFrame(ttk.Frame):
                         secondWordTag = tag
 
 
-
-
-
-
             if secondWordTag == None:
                 rectangles = canvas.find_withtag(firstWordTag)
 
@@ -369,7 +382,6 @@ class crosswordFrame(ttk.Frame):
             #Make the rectangle clicked the active one and clear the other active one (if there is one)
             clearActive(canvas)
             setActive(canvas,rectangleID)
-
 
 
 
@@ -398,6 +410,7 @@ class crosswordFrame(ttk.Frame):
                 if rectangleID not in startPositions:
                     #Give it a blueish color
                     canvas.itemconfig(rectangleID, fill="#ADD8E6")
+
 
 
         #Complicated function used to enter text in rectangles - the issue is these rectangles don't have a text attribute unlike labels which do, so it gets a little trickier
@@ -531,10 +544,10 @@ class crosswordFrame(ttk.Frame):
                 clearActive(canvas)
                 setActive(canvas,nextRectangleID)
 
+
+
         def changeTextDirection(canvas,event):
             print('working')
-
-
 
 
 

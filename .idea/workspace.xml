@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="fcc33587-880f-4a89-98b5-cef7062c96cd" name="Changes" comment="Upload">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/FlaskAPI+SQL/MainAPI.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/FlaskAPI+SQL/MainAPI.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NEA/Frames/CrosswordFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Frames/CrosswordFrame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/Token.txt" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Token.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -199,14 +201,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1711276629155</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Upload">
-      <option name="closed" value="true" />
-      <created>1729620314807</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1729620314807</updated>
     </task>
     <task id="LOCAL-00016" summary="Upload">
       <option name="closed" value="true" />
@@ -592,7 +586,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734353333668</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="Upload">
+      <option name="closed" value="true" />
+      <created>1734376401808</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1734376401808</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="UnknownFeatures">
