@@ -2,6 +2,7 @@ from multiprocessing.resource_tracker import register
 from tkinter import ttk
 import tkinter as tk
 import requests
+import re
 
 
 class loginEntryFrame(tk.Frame):
@@ -40,13 +41,13 @@ class loginEntryFrame(tk.Frame):
 
     def getUserDetails(self):
         # Fetch the latest user input every time the button is clicked
-        username = self.userNameEntry.get()
-        password = self.passEntry.get()
+        self.username = self.userNameEntry.get()
+        self.password = self.passEntry.get()
 
-        if username == '' or password == '':
+        if self.username == '' or self.password == '':
             return False  # Return False if either is empty
 
-        return username, password
+        return self.username, self.password
 
 
 
@@ -56,13 +57,12 @@ class loginEntryFrame(tk.Frame):
 
         # Check if the result is valid
         if result:
-            username, password = result
-            data = {'username': username, 'password': password}
+            self.username, self.password = result
+            data = {'username': self.username, 'password': self.password}
             sendData = requests.post(self.API_URL + 'Login',json = data)
 
             if not sendData:
                 self.responseLabel.config(text = 'Incorrect Username/Password')
-
 
             else:
                 self.controller.showFrame('choiceFrame', '', 'What to play')
@@ -74,23 +74,45 @@ class loginEntryFrame(tk.Frame):
 
     def signUp(self):
         result = self.getUserDetails()
+        checkedPassword = self.checkPassword(self.password)
 
         if result:
-            username,password = result
-            data = {'username':username,'password':password}
-            registerUser = requests.post(self.API_URL + 'CreateUser',json = data)
+            if checkedPassword == 'Password Accepted':
+                username,password = result
+                data = {'username':username,'password':password}
+                registerUser = requests.post(self.API_URL + 'CreateUser',json = data)
 
-            if not registerUser:
-                self.responseLabel.config(text='User already exists')
+                if not registerUser:
+                    self.responseLabel.config(text='User already exists')
 
+                else:
+                    self.responseLabel.config(text='Registered Successfully')
             else:
-                self.responseLabel.config(text='Registered Successfully')
+                self.responseLabel.config(text=checkedPassword)
 
         else:
             self.responseLabel.config(text="Username or Password fields are empty. Please provide valid inputs.")
 
 
+    def checkPassword(self,password):
+        # Check password length
+        if len(password) < 8:
+            return 'Password needs to be at least 8 characters long'
 
+        # Define regex patterns for digit, uppercase, and special character
+        patterns = {
+            'digit': r'\d',
+            'uppercase': r'[A-Z]',
+            'special_char': r'[^\w\s]'
+        }
+
+        # Check each pattern and return the appropriate message if not found
+        for requirement, pattern in patterns.items():
+            if not re.search(pattern, password):
+                return f"Password needs {requirement.replace('_', ' ')}"
+
+        # If all conditions are met, return 'Password Accepted'
+        return 'Password Accepted'
 
 
 

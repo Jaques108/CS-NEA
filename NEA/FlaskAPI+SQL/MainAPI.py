@@ -15,33 +15,44 @@ import secrets
 
 
 
+
 SQL = SQLBackEnd('main.db')
 
 API = Flask(__name__)
 
 
-@API.route('/CreateUser', methods = ['POST'])
+@API.route('/CreateUser', methods=['POST'])
 def createUser():
     data = request.get_json()
     username = data['username']
-    password = data['password'].encode('utf-8')
-    passwordHash = hashlib.sha256(password).hexdigest()
+    password = data['password']
+
+    # Validate the password
+    checkedPassword = checkPassword(password)
+
+    # If the password is valid, proceed with registration
+    if checkedPassword == 'Password Accepted':
+        # Hash the password
+        encodedPassword = password.encode('utf-8')
+        passwordHash = hashlib.sha256(encodedPassword).hexdigest()
+
+        # Connect to the database and insert the user
+        SQL.connect()
+        insertUser = 'INSERT INTO users (username, password) VALUES (?, ?)'
+        e = SQL.executeQuery(insertUser, [username, passwordHash])
+        SQL.closeConnection()
+
+        # Check for errors in insertion
+        if isinstance(e, Error):
+            return jsonify({'message': f'Error: {str(e)}'}), 400
+
+        return jsonify({'message': 'User created successfully'}), 201
+
+    else:
+        # Return the validation error message
+        return jsonify({'message': checkedPassword}), 400
 
 
-    SQL.connect()
-    insertUser = 'INSERT INTO users (username,password) VALUES (?,?)'
-    e = SQL.executeQuery(insertUser, [username, passwordHash])
-    SQL.closeConnection()
-
-    if isinstance(e,Error):
-        return jsonify('Error',str(e)),400
-
-
-
-    return jsonify({'message': 'User created successfully'}),201
-
-    def checkPassword(password):
-        pass
 
 
 @API.route('/GetUsers', methods = ['GET'])
@@ -277,7 +288,6 @@ def cellsBelongingToWord(var,cells):
                     cell['wordNumber'] = [number]
 
     return solutionGrid
-
 
 
 

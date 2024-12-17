@@ -7,7 +7,7 @@
     <list default="true" id="fcc33587-880f-4a89-98b5-cef7062c96cd" name="Changes" comment="Upload">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NEA/FlaskAPI+SQL/MainAPI.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/FlaskAPI+SQL/MainAPI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEA/Frames/CrosswordFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Frames/CrosswordFrame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/Frames/LoginEntryFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Frames/LoginEntryFrame.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NEA/Token.txt" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Token.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -201,14 +201,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1711276629155</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Upload">
-      <option name="closed" value="true" />
-      <created>1729788821927</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1729788821927</updated>
     </task>
     <task id="LOCAL-00017" summary="Upload">
       <option name="closed" value="true" />
@@ -594,7 +586,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734376401808</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="Upload">
+      <option name="closed" value="true" />
+      <created>1734444801673</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1734444801673</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -616,13 +616,5 @@
     <MESSAGE value="Merge remote-tracking branch 'origin/main'" />
     <MESSAGE value="Upload" />
     <option name="LAST_COMMIT_MESSAGE" value="Upload" />
-  </component>
-  <component name="XDebuggerManager">
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="textItems" language="Python" />
-        <watch expression="textItems" language="Python" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>
