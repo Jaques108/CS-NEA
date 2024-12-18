@@ -571,7 +571,8 @@ class crosswordFrame(ttk.Frame):
                         newCoords = canvas.coords(nextRectangleID)
 
                         # We are only interested in the Y coordinates so get those from newCoords
-                        nextYCenter = (newCoords[1] + newCoords[3]) / 2
+                        if len(newCoords) > 2:
+                            nextYCenter = (newCoords[1] + newCoords[3]) / 2
 
 
 
