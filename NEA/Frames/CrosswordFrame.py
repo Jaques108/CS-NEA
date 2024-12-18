@@ -19,6 +19,7 @@ class crosswordFrame(ttk.Frame):
         self.parent = parent
         self.controller = controller
         self.randomCode = False
+        self.upDownText = False
 
         textItems = {} #Dictionary for the locations of rectangles with text
         textChars = {}
@@ -36,6 +37,7 @@ class crosswordFrame(ttk.Frame):
 
         #This function is binded to the submit button which is run when it is pressed - starts the whole process
         def submit():
+
 
             if self.dailyCrossword:
                 startDay = date(2024,12,17)
@@ -99,6 +101,12 @@ class crosswordFrame(ttk.Frame):
                     canvas.pack()
                     canvas.focus_set()
 
+                    self.directionLabel = ttk.Label(self, text='Direction: ',font = ('Arial',24))
+                    self.directionLabel.place(relx=0.5, rely=0.95, anchor='center')
+
+                    self.directionUpdateLabel = ttk.Label(self,text = '',font = ('Arial',24))
+                    self.directionUpdateLabel.place(relx = 0.575,rely = 0.95,anchor = 'center')
+
                     self.userGrid = [[None for x in range(13)] for y in range(13)]
 
                     # Collect the data from the text file
@@ -148,7 +156,7 @@ class crosswordFrame(ttk.Frame):
 
 
                                     if userChar == solutionChar and textID in textItems.values():
-                                        canvas.itemconfig(textID, fill='Blue')
+                                        canvas.itemconfig(textID, fill='Green')
 
 
                                     else:
@@ -161,9 +169,9 @@ class crosswordFrame(ttk.Frame):
                         canvas.focus_set()
 
 
-                    def combinedFunction(canvas,rectangleID,event):
+                    def combinedFunction(canvas,direction,rectangleID,event):
                         enterText(canvas,rectangleID,event)
-                        changeTextDirection(canvas,event)
+                        changeTextDirection(canvas,direction,event)
 
 
 
@@ -247,10 +255,10 @@ class crosswordFrame(ttk.Frame):
 
 
                             #Bind arrow keys
-                            canvas.bind('<Left>', partial(enterText, canvas, rectangleID))
-                            canvas.bind('<Right>', partial(enterText, canvas, rectangleID))
-                            canvas.bind('<Up>', partial(combinedFunction, canvas, rectangleID))
-                            canvas.bind('<Down>', partial(combinedFunction, canvas, rectangleID))
+                            canvas.bind('<Left>', partial(combinedFunction, canvas,'Left', rectangleID))
+                            canvas.bind('<Right>', partial(combinedFunction, canvas,'Right', rectangleID))
+                            canvas.bind('<Up>', partial(combinedFunction, canvas,'Up',rectangleID))
+                            canvas.bind('<Down>', partial(combinedFunction, canvas,'Down',rectangleID))
 
 
 
@@ -432,6 +440,7 @@ class crosswordFrame(ttk.Frame):
 
         #Complicated function used to enter text in rectangles - the issue is these rectangles don't have a text attribute unlike labels which do, so it gets a little trickier
         def enterText(canvas,rectangleID,event):
+            safe = False
             #List of key directions - avoids the repetitive if/else statements
             directions = ['LEFT','RIGHT','UP','DOWN']
 
@@ -497,64 +506,86 @@ class crosswordFrame(ttk.Frame):
                     offset = - 1
 
                 #Calculate the ID of next rectangle to be set active
-                nextRectangleID = rectangleID + offset
+                nextRectangleID = None
+
+                if not self.upDownText:
+                    nextRectangleID = rectangleID + offset
 
 
-                #If we're going up then add 40 pixels (size of rectangle) and find the overlapping rectangle and set that active
-                if char == 'UP':
-                    #Make sure we don't go off the grid
-                    if yCenter != 20:
-                        yCenter -= 40
+                elif self.upDownText:
+                    newYCenter = ((coords[1] + coords[3]) / 2) + (cellSize * offset)
 
-                    #Find the ID of the overlapping rectangle but it gets returned as a tuple idk why
-                    tuple = canvas.find_overlapping(xCenter,yCenter,xCenter + 1,yCenter + 1)
+                    if newYCenter < 0 or newYCenter > 500:
+                        return False
 
-                    #Convert into integer from tuple
-                    nextRectangleID = tuple[0]
+                    nextRectangleID = canvas.find_overlapping(xCenter,newYCenter,xCenter+1,newYCenter+1)[0]
 
-                #Same thing for going down
-                elif char == 'DOWN':
-                    if yCenter != 500:
-                        yCenter += 40
-                    tuple = canvas.find_overlapping(xCenter,yCenter,xCenter + 1,yCenter + 1)
-                    nextRectangleID = tuple[0]
+                    if nextRectangleID in nonTextRectangles or char == 'LEFT' or char == 'RIGHT':
+                        pass
+                    else:
+                        safe = True
 
 
-                #If the next rectangle is a black rectangle return false
-                if nextRectangleID in nonTextRectangles:
-                    return False
 
-                #This is an error because text ID takes the place of a rectangle so its not as simple as adding 1 because it goes to the little number in the top right - so we have to add 2 to skip it - so we multiply the value of offset by 2
-                elif nextRectangleID in startPositions and (char != 'UP' or char != 'DOWN'):
-                    nextRectangleID = rectangleID + (offset * 2)
 
-                    #However if we go too far and the next rectangle is black then return false
+
+
+                if not safe:
+                    #If we're going up then add 40 pixels (size of rectangle) and find the overlapping rectangle and set that active
+                    if char == 'UP':
+                        #Make sure we don't go off the grid
+                        if yCenter != 20:
+                            yCenter -= 40
+
+                        #Find the ID of the overlapping rectangle but it gets returned as a tuple idk why
+                        tuple = canvas.find_overlapping(xCenter,yCenter,xCenter + 1,yCenter + 1)
+
+                        #Convert into integer from tuple
+                        nextRectangleID = tuple[0]
+
+                    #Same thing for going down
+                    elif char == 'DOWN':
+                        if yCenter != 500:
+                            yCenter += 40
+                        tuple = canvas.find_overlapping(xCenter,yCenter,xCenter + 1,yCenter + 1)
+                        nextRectangleID = tuple[0]
+
+
+                    #If the next rectangle is a black rectangle return false
                     if nextRectangleID in nonTextRectangles:
                         return False
 
+                    #This is an error because text ID takes the place of a rectangle so its not as simple as adding 1 because it goes to the little number in the top right - so we have to add 2 to skip it - so we multiply the value of offset by 2
+                    elif nextRectangleID in startPositions and (char != 'UP' or char != 'DOWN'):
+                        nextRectangleID = rectangleID + (offset * 2)
 
-                #Check if we have gone to the next row - causes problems so we want to stop it - sides should be hard
-
-                #Retrieve the coordinates of the next rectangle
-                newCoords = canvas.coords(nextRectangleID)
-
-                #We are only interested in the Y coordinates so get those from newCoords
-                try:
-                    nextYCenter = (newCoords[1] + newCoords[3]) / 2
-
-                except:
-                    pass
+                        #However if we go too far and the next rectangle is black then return false
+                        if nextRectangleID in nonTextRectangles:
+                            return False
 
 
-                #Subtract the previous rectangle Y coordinates with the new one
-                if nextYCenter:
-                    difference = yCenter - nextYCenter
-                else:
-                    return False
+                    #Check if we have gone to the next row - causes problems so we want to stop it - sides should be hard
 
-                #If the Y coordinates have changed return false
-                if difference != 0:
-                    return False
+                    #Retrieve the coordinates of the next rectangle
+                    if nextRectangleID is not None:
+                        newCoords = canvas.coords(nextRectangleID)
+
+                        # We are only interested in the Y coordinates so get those from newCoords
+                        nextYCenter = (newCoords[1] + newCoords[3]) / 2
+
+
+
+
+
+                    #Subtract the previous rectangle Y coordinates with the new one
+                    try:
+                        difference = yCenter - nextYCenter
+                    except:
+                        return False
+
+                    #If the Y coordinates have changed return false
+                    if difference != 0:
+                        return False
 
 
                 #If we've made it this far clear the current active rectange and set active the next rectangle
@@ -563,8 +594,16 @@ class crosswordFrame(ttk.Frame):
 
 
 
-        def changeTextDirection(canvas,event):
-            print('working')
+        def changeTextDirection(canvas,direction,event):
+            if direction == 'Up' or direction == 'Down':
+                self.upDownText = True
+                self.directionUpdateLabel.config(text = 'Down')
+
+            else:
+                self.upDownText = False
+                self.directionUpdateLabel.config(text='Across')
+
+
 
 
 
@@ -586,6 +625,8 @@ class crosswordFrame(ttk.Frame):
 
         errorLabel = ttk.Label(self)
         errorLabel.place(relx=0.5, rely=0.65, anchor="center")
+
+
 
 
 
