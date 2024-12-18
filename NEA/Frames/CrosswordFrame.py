@@ -512,7 +512,7 @@ class crosswordFrame(ttk.Frame):
                     nextRectangleID = rectangleID + offset
 
 
-                elif self.upDownText:
+                elif self.upDownText and (char not in directions):
                     newYCenter = ((coords[1] + coords[3]) / 2) + (cellSize * offset)
 
                     if newYCenter < 0 or newYCenter > 500:
@@ -520,10 +520,10 @@ class crosswordFrame(ttk.Frame):
 
                     nextRectangleID = canvas.find_overlapping(xCenter,newYCenter,xCenter+1,newYCenter+1)[0]
 
-                    if nextRectangleID in nonTextRectangles or char == 'LEFT' or char == 'RIGHT':
-                        pass
-                    else:
-                        safe = True
+                    if nextRectangleID in nonTextRectangles:
+                        return False
+
+                    safe = True
 
 
 
