@@ -296,19 +296,25 @@ class sudokuFrame(Frame):
 
     def canvas2array(self, canvas,solutionGrid):
         self.grid = [['' for x in range(9)] for y in range(9)]
+        self.complete = True
+        self.solved = True
 
         index = 2
 
         for col in range(9):
             for row in range(9):
                 number = canvas.itemcget(index, 'text')
-                self.grid[col][row] = int(number)
+                self.grid[col][row] = number
+
+                if number.isdigit():
+                    number = int(number)
 
 
                 if number == '':
-                    pass
+                    self.complete = False
 
-                elif solutionGrid[col][row] != int(number):
+                elif solutionGrid[col][row] != number:
+                    self.solved = False
                     self.responseLabel.config(text='Incorrect')
                     canvas.itemconfig(index,fill = 'red')
 
@@ -319,10 +325,16 @@ class sudokuFrame(Frame):
 
 
 
+
+
+
                 index += 2
 
-        if self.grid == solutionGrid:
-            self.controller.showFrame('sudokuSuccessFrame', '200x200', 'Well Done!')
+        if self.solved and not self.complete:
+            self.responseLabel.config(text = 'Incomplete')
+
+        elif self.complete and self.solved:
+            self.controller.showFrame('sudokuSuccessFrame', '600x600', 'Well Done!')
 
 
 

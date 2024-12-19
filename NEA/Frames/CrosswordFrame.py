@@ -137,6 +137,7 @@ class crosswordFrame(ttk.Frame):
                                 char = textChars[rectangleID]
                                 self.userGrid[yPos][xPos] = char
 
+
                         solved = True
                         for i in range(13):
                             for x in range(13):
@@ -149,7 +150,7 @@ class crosswordFrame(ttk.Frame):
                                 tempRectangleID = canvas.find_overlapping(xCoords, yCoords, xCoords - 10, yCoords - 10)
 
                                 if userChar is None:
-                                    pass
+                                    solved = False
 
                                 else:
                                     textID = tempRectangleID[1]
@@ -161,7 +162,11 @@ class crosswordFrame(ttk.Frame):
 
                                     else:
                                         canvas.itemconfig(textID,fill = 'Red')
-                                        solved = False
+
+
+                        if solved:
+                            self.controller.showFrame('crosswordSuccessFrame', '600x600', 'Well Done!')
+
 
 
 

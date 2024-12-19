@@ -303,7 +303,7 @@ def generateSudoku():
         for n in range(9):
             for m in range(9):
                 diceRoll = random.randint(1,5)
-                if diceRoll <= 2:
+                if diceRoll <= 2: #Removes 2/B numbers from the grid where B is the upper bound for our random number
                     changedGrid[n][m] = ''
 
         return grid + changedGrid

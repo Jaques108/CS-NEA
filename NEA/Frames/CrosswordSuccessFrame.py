@@ -1,7 +1,7 @@
 from tkinter import *
 
 #Create the class
-class sudokuSuccessFrame(Frame):
+class crosswordSuccessFrame(Frame):
     #Initialise the class
     def __init__(self, parent, controller):
         Frame.__init__(self, parent)
@@ -12,10 +12,4 @@ class sudokuSuccessFrame(Frame):
 
 
         self.successLabel = Label(self,text = 'Well Done my g')
-        self.successLabel.place(relx = 0.42,rely = 0.35,anchor = 'center')
-
-
-
-
-
-
+        self.successLabel.place(relx = 0.5,rely = 0.5,anchor = 'center')
