@@ -108,6 +108,7 @@ def deleteUser(username):
 @API.route('/Login', methods = ['POST'])
 def login():
     data = request.get_json()
+
     username = data['username']
     password = data['password'].encode('utf-8')
 
@@ -122,12 +123,10 @@ def login():
 
     if user:
         payload = {"user": username,  "exp": (datetime.datetime.now(datetime.UTC) + datetime.timedelta(hours = 1)).timestamp()}
-
         token = jwt.encode(payload, secretKey, algorithm='HS256')
-
-        afile = open('/Users/jake/main/NEA/Token.txt', 'w')
-        afile.write(token)
-        afile.close()
+        SQL.connect()
+        sendToken = SQL.executeQuery(selectQuery,[payload])
+        SQL.closeConnection()
 
         return jsonify({'message': 'Login successful'}), 200
 
@@ -151,8 +150,6 @@ def crossword(code):
     test = (mydivs[0].get('data-crossword-data'))
 
     jsonified = json.loads(test)
-
-
 
 
     startPositions = []

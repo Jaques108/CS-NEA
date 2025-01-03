@@ -1,4 +1,3 @@
-from multiprocessing.resource_tracker import register
 from tkinter import ttk
 import tkinter as tk
 import requests
@@ -13,6 +12,9 @@ class loginEntryFrame(tk.Frame):
 
         self.controller = controller
         self.parent = parent
+
+        self.stars = True
+        self.showPassVar = tk.BooleanVar(value=False)
 
         self.API_URL = 'http://127.0.0.1:5000/'
 
@@ -36,6 +38,12 @@ class loginEntryFrame(tk.Frame):
 
         self.signUpButton = ttk.Button(self,text = 'Register',command = self.signUp)
         self.signUpButton.grid(row = 5,column = 1,sticky = 'news')
+
+        self.showPassLabel = ttk.Label(self,text = 'Show Password')
+        self.showPassLabel.grid(row = 2,column =3)
+
+        self.showPassCheckButton = ttk.Checkbutton(self, variable=self.showPassVar,command = self.showPass)
+        self.showPassCheckButton.grid(row = 2,column = 2)
 
 
 
@@ -114,5 +122,14 @@ class loginEntryFrame(tk.Frame):
         # If all conditions are met, return 'Password Accepted'
         return 'Password Accepted'
 
+
+    def showPass(self):
+        if self.stars:
+            self.passEntry.config(show = '')
+            self.stars = False
+
+        else:
+            self.passEntry.config(show = '*')
+            self.stars = True
 
 
