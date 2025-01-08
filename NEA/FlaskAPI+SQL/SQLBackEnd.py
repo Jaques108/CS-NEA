@@ -32,6 +32,7 @@ class SQLBackEnd:
             if self.connection:
                 cursor = self.connection.cursor()
                 if params:
+                    print(params)
                     cursor.execute(queryScript,params)
                 else:
                     cursor.execute(queryScript)
@@ -46,7 +47,7 @@ class SQLBackEnd:
                 return None
 
         except Error as e:
-            print(f'Error {e}')
+            print(f'Error - {e}')
             return e
 
 
@@ -65,6 +66,8 @@ if __name__ == '__main__':
     (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL UNIQUE, password TEXT NOT NULL);'''
 
     SQL.createTable(createTableScript)
+
+
 
     insertUser = 'INSERT INTO users (username,password) VALUES (?,?)'
 

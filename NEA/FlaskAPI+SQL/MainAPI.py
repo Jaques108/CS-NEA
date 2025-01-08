@@ -124,9 +124,11 @@ def login():
     if user:
         payload = {"user": username,  "exp": (datetime.datetime.now(datetime.UTC) + datetime.timedelta(hours = 1)).timestamp()}
         token = jwt.encode(payload, secretKey, algorithm='HS256')
-        SQL.connect()
-        sendToken = SQL.executeQuery(selectQuery,[payload])
-        SQL.closeConnection()
+
+        afile = open('../Token.txt', 'w')
+        afile.write(token)
+        afile.close()
+
 
         return jsonify({'message': 'Login successful'}), 200
 
@@ -140,6 +142,7 @@ def crossword(code):
 
     genericUrl = "https://www.theguardian.com/crosswords/quick/"
     url = genericUrl + code
+
     cells = {}
     clues = []
 
@@ -291,6 +294,7 @@ def cellsBelongingToWord(var,cells):
 
 @API.route('/GenerateGrid', methods = ['GET'])
 def generateSudoku():
+    B = 223455
     # Initialize a 9x9 grid with empty values
     grid = [[0 for x in range(9)] for y in range(9)]
 
@@ -299,7 +303,7 @@ def generateSudoku():
         changedGrid = copy.deepcopy(grid)
         for n in range(9):
             for m in range(9):
-                diceRoll = random.randint(1,5)
+                diceRoll = random.randint(1,B)
                 if diceRoll <= 2: #Removes 2/B numbers from the grid where B is the upper bound for our random number
                     changedGrid[n][m] = ''
 

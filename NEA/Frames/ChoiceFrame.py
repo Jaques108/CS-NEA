@@ -5,6 +5,7 @@ from NEA.Frames.CrosswordFrame import crosswordFrame
 from NEA.Frames.SudokuFrame import sudokuFrame
 
 
+
 #Create the class
 class choiceFrame(Frame):
     #Initialise the class
@@ -25,10 +26,10 @@ class choiceFrame(Frame):
             pass
 
         # Widgets
-        self.sudokuButton = Button(self, text="Sudoku", command=self.sudokuFrameOpen, width=20, height=20)
+        self.sudokuButton = Button(self, text="Sudoku", command=self.sudokuFrameOpen, width=35, height=35)
         self.sudokuButton.grid(row=0, column=0, sticky='news')
 
-        self.crosswordsButton = Button(self, text="Crossword",command=lambda: self.controller.showFrame('crosswordFrame', '', 'Crossword'),width=20, height=20)
+        self.crosswordsButton = Button(self, text="Crossword",command=lambda: self.controller.showFrame('crosswordFrame', '', 'Crossword'),width=35, height=35)
         self.crosswordsButton.grid(row=0, column=1, sticky='news')
 
     #Function to call the sudokuFrame instance

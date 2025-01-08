@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 import jwt
 
+
 #Create the class
 class mainMenuFrame(tk.Frame):
     #Initialise the class
@@ -12,36 +13,54 @@ class mainMenuFrame(tk.Frame):
 
         self.secretKey = 'idkwhattoputforthis'
 
+        self.font = 'Georgia', 15
+
+
+
+        # Make it so that buttons are placed correctly and the formatting doesn't mess up
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_columnconfigure(1, weight=1)
 
         #Widgets
-        login_button = ttk.Button(self, text='Log in/Register', command=lambda:self.controller.showFrame('loginEntryFrame','465x330','What to play'))
-        login_button.grid(row=2,column=0)
+        self.welcomeLabel = ttk.Label(self, text='Welcome', font = ('Georgia',50))
+        self.welcomeLabel.pack(padx = 10,pady = 50)
 
-        guest_button = ttk.Button(self, text='Play as Guest', command=lambda:self.controller.showFrame('choiceFrame','465x330','What to play'))
-        guest_button.grid(row=2,column=2)
+        self.loginButton = tk.Button(self, text='Log in/Register', command=self.checkIfToken,font=self.font,width = 20,height = 10)
+        self.loginButton.place(relx = 0.15,rely =0.4,anchor = 'center')
 
-
-        welcome_label = ttk.Label(self, text='Welcome', font=('Georgia', 50))
-        welcome_label.grid(row=1, column=1)
-
-
-    #def checkIfToken(self):
+        self.guestButton = tk.Button(self, text='Play as Guest', command=lambda:self.controller.showFrame('choiceFrame','725x585','Games'),font=self.font,width = 20,height = 10)
+        self.guestButton.place(relx = 0.85,rely =0.4,anchor = 'center')
 
 
-        # try:
-        #     token = jwt.decode(encryptedToken, self.secretKey, algorithms=["HS256"])
-        #     self.controller.showFrame('choiceFrame', '465x330', 'What to play')
-        #
-        # except jwt.ExpiredSignatureError:
-        #     # Handle expired token
-        #     print("Error: Token has expired.")
-        #     self.controller.showFrame('loginEntryFrame', '300x200', 'Log in')
-        #
-        #
-        # except jwt.InvalidTokenError:
-        #     # Handle any other errors related to token validity
-        #     print("Error: Invalid token.")
-        #     self.controller.showFrame('loginEntryFrame', '300x200', 'Log in')
+
+
+
+
+
+
+
+
+    def checkIfToken(self):
+        afile = open('/Users/jake/main/NEA/Token.txt','r')
+        encryptedToken = afile.read()
+        afile.close()
+
+        try:
+            token = jwt.decode(encryptedToken, self.secretKey, algorithms=["HS256"])
+            if token:
+                print('Success')
+                self.controller.showFrame('choiceFrame','725x585','Games')
+
+        except jwt.ExpiredSignatureError:
+            # Handle expired token
+            print("Error: Token has expired.")
+            self.controller.showFrame('loginEntryFrame', '465x330', 'Log in')
+
+
+        except jwt.InvalidTokenError:
+            # Handle any other errors related to token validity
+            print("Error: Invalid token.")
+            self.controller.showFrame('loginEntryFrame', '465x330', 'Log in')
 
 
 

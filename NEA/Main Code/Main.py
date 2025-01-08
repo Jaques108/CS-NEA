@@ -1,10 +1,13 @@
 import tkinter as tk
+
+#Import our frames
 from NEA.Frames.MainMenu import mainMenuFrame
 from NEA.Frames.LoginEntryFrame import loginEntryFrame
 from NEA.Frames.ChoiceFrame import choiceFrame
 from NEA.Frames.SudokuFrame import sudokuFrame
 from NEA.Frames.CrosswordFrame import crosswordFrame
-from NEA.Frames.SudokuSuccessFrame import sudokuSuccessFrame
+from NEA.Frames.SuccessFrame import successFrame
+
 
 
 
@@ -26,7 +29,7 @@ class MainApp(tk.Tk):
 
 
         #Iterating through the frames
-        for F in [mainMenuFrame, loginEntryFrame, choiceFrame, sudokuFrame, crosswordFrame,sudokuSuccessFrame]:
+        for F in [mainMenuFrame, loginEntryFrame, choiceFrame, sudokuFrame, crosswordFrame,successFrame]:
 
             #Instancing each frame!
             frame = F(container, self)
@@ -34,7 +37,8 @@ class MainApp(tk.Tk):
             frame.grid(row=0, column=0, sticky='nsew')
 
         #Show the main menu frame using the showFrame function
-        self.showFrame('mainMenuFrame', '600x300', 'Welcome')
+        self.showFrame('mainMenuFrame', '800x400', 'Welcome')
+
 
 
 
@@ -52,10 +56,6 @@ class MainApp(tk.Tk):
         #Raise the frame
         frame.tkraise()
 
-
-    #Function for the login system
-    def SwitchUser(self, name):
-        self.username = name
 
 #Run the whole thing
 app = MainApp()

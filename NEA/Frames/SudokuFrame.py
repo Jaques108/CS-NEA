@@ -193,7 +193,7 @@ class sudokuFrame(Frame):
 
 
 
-        if 'permanentNumber' in self.tags:
+        if 'permanentNumber' in self.tags or char == '0':
             return False
 
 
@@ -334,7 +334,7 @@ class sudokuFrame(Frame):
             self.responseLabel.config(text = 'Incomplete')
 
         elif self.complete and self.solved:
-            self.controller.showFrame('sudokuSuccessFrame', '600x600', 'Well Done!')
+            self.controller.showFrame('successFrame', '600x650', 'Well Done!')
 
 
 

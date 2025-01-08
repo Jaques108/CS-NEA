@@ -18,8 +18,12 @@ class crosswordFrame(ttk.Frame):
         ttk.Frame.__init__(self, parent)
         self.parent = parent
         self.controller = controller
+
+        #Booleans used later in the code - they are very important
         self.randomCode = False
         self.upDownText = False
+        self.dailyCrossword = False
+        self.endRange = ''
 
         textItems = {} #Dictionary for the locations of rectangles with text
         textChars = {}
@@ -30,6 +34,25 @@ class crosswordFrame(ttk.Frame):
         cellSize = 40
         canvasSize = 40 * 13
 
+        # Stuff for the daily crossword best to keep global so it can be used in the text label of the range of codes
+
+        # This is the day I started from - it doesn't matter what day it is so long as we are consistent
+        startDay = date(2024, 12, 9)
+
+        # Find todays date
+        today = date.today()
+
+        # Find how many days it's been since startDay
+        difference = (today - startDay).days
+
+        # This bit is because the Guardian does not release a new crossword on Sundays so check how many weeks its been since the start and minus that number to the code to account for that
+        change = int(difference / 7) + 1
+        difference -= change
+
+        self.endRange = str(7784 + int(difference))
+
+
+        #Function that tells the program that the user wants to do the daily crossword - changes a bool value to True
         def dailyCrossword():
             self.dailyCrossword = True
             submit()
@@ -39,18 +62,16 @@ class crosswordFrame(ttk.Frame):
         def submit():
 
 
+            #Check if the user wants to do the daily crossword
             if self.dailyCrossword:
-                startDay = date(2024,12,17)
-                today = date.today()
+                #The code for startDay crossword is 17034 so just add difference to find the crossword code for today
+                code = 17034 + int(difference)
 
-                difference = (today - startDay).days
-
-                #Just when i set this yk
-                code = 17041 + difference
             else:
                 #Get the code entered
                 code = codeEntry.get()
 
+                #Error handling so we don't get error if code is a string or something
                 if code.isdigit():
                     code = int(code) + 9250
 
@@ -62,14 +83,17 @@ class crosswordFrame(ttk.Frame):
             dictData = None
 
             try:
-                webResponse = requests.get(url, timeout=7) #Include a timeout becuase internet can be slow and we don't want the user to be stuck
+                # Include a timeout becuase internet can be slow and we don't want the user to be stuck
+                webResponse = requests.get(url, timeout=7)
 
-                if webResponse.status_code != 200: #Check if response is invalid (200 is a successful status code)
+                # Check if response is invalid (200 is a successful status code)
+                if webResponse.status_code != 200:
                     errorLabel.config(text='Error - Code not accepted. Try again.') #Display error message to user
                 else:
                     dictData = webResponse.json() #Update dictData if response is valid
 
-            except requests.exceptions.RequestException: #Connection error handling
+            # Connection error handling
+            except requests.exceptions.RequestException:
                 errorLabel.config(text=f'Connection Error. Please try again.') #Display connection error message to user
 
 
@@ -86,7 +110,7 @@ class crosswordFrame(ttk.Frame):
                         #Write the data into a text file
                         json.dump(dictData, afile, indent=4)
 
-                getCrosswordData() #Actually call the function
+                getCrosswordData() #Call the function
 
                 def displayData():
                     #Destroy previous widgets for the crossword
@@ -101,11 +125,15 @@ class crosswordFrame(ttk.Frame):
                     canvas.pack()
                     canvas.focus_set()
 
+                    #Widgets to tell the user what direction the text will be input in
+
                     self.directionLabel = ttk.Label(self, text='Direction: ',font = ('Arial',24))
                     self.directionLabel.place(relx=0.5, rely=0.95, anchor='center')
 
                     self.directionUpdateLabel = ttk.Label(self,text = '',font = ('Arial',24))
                     self.directionUpdateLabel.place(relx = 0.575,rely = 0.95,anchor = 'center')
+
+                    #Create a list to store the users characters for every rectangle
 
                     self.userGrid = [[None for x in range(13)] for y in range(13)]
 
@@ -114,66 +142,80 @@ class crosswordFrame(ttk.Frame):
                         self.data = json.load(afile)
                         self.solutionGrid = self.data['solutionGrid']
 
-                    def goBack(canvas):
-                        canvas.destroy()
-                        self.controller.showFrame('choiceFrame', '465x330', 'What to play')
-                        canvas.focus_set()
 
+                    #Function run when the user wants to check their answers so far
                     def submit(canvas):
+                        #List to store all the rectangleIDs so we can keep track of them
                         rectangleIDs = []
 
+                        #Iterate through every cell/rectangle
                         for cellID in self.data['cells'].items():
+                            #Coords is returned as a tuple so just find the first item in the tuple - there only is one so no issues
                             coords = cellID[0]
 
+                            #Find the coordinates in terms of pixels of where these rectangles are based on their coords which is a string eg ('0804')
                             xCoords = (int(coords[2:]) * 40) + 20
                             yCoords = (int(coords[:2]) * 40) + 20
 
+                            #Returns the numbers themselves without accounting for pixels
                             xPos = int(coords[2:])
                             yPos = int(coords[:2])
 
+                            #Find the rectangle we want - again its returned as a tuple so do the same thing
                             rectangleID = canvas.find_overlapping(xCoords,yCoords,xCoords + 5,yCoords + 5)[0]
 
+                            #If we have entered text in this rectangle it would have been saved to the textItems dictionary - if not no text exists
                             if rectangleID in textItems:
+                                #Find the character in this rectangle
                                 char = textChars[rectangleID]
+
+                                #Update the userGrid list to change from None --> the character the user input
                                 self.userGrid[yPos][xPos] = char
 
 
                         solved = True
+                        #Bool to check if we have solved it - if it makes it through without being set to False than we know its fully solved with no blank spaces
                         for i in range(13):
                             for x in range(13):
+                                #Go through both lists and compare each letter one by one
                                 userChar = self.userGrid[i][x]
                                 solutionChar = self.solutionGrid[i][x]
 
+                                # Finds the coordinates (in pixels) of the current rectangle - add 30 beacuse then we can create a nice 20x20 area to check for the text
                                 xCoords = (x * 40) + 30
                                 yCoords = (i * 40) + 30
 
+                                #Find the rectangleID
                                 tempRectangleID = canvas.find_overlapping(xCoords, yCoords, xCoords - 10, yCoords - 10)
 
+                                #If the user has input nothing we set the solved bool to False because the whole thing is not complete - but not wrong
                                 if userChar is None:
                                     solved = False
 
                                 else:
+                                    #Find the textID by taking the second item returned in the tuple - if text exists it will be second - first is the rectangle
                                     textID = tempRectangleID[1]
 
 
+                                    #If the char is correct and the text is in our textItems dictionary than we know can set the color to green to show the user that specific character is correct
                                     if userChar == solutionChar and textID in textItems.values():
                                         canvas.itemconfig(textID, fill='Green')
 
-
+                                    #If it isn't correct set the color to red to show the user it is wrong
                                     else:
                                         canvas.itemconfig(textID,fill = 'Red')
 
-
+                        #If the whole thing is solved then show them the success frame to give them some satisfaction for solving the whole thing
                         if solved:
-                            self.controller.showFrame('crosswordSuccessFrame', '600x600', 'Well Done!')
+                            self.controller.showFrame('successFrame', '600x600', 'Well Done!')
 
 
 
 
-
+                        #Ensure the canvas is still usable because clicking the button 'unfocuses' the canvas meaning that user inputs are not registered
                         canvas.focus_set()
 
-
+                    #This function is used for changing text input direction but we also need the arrow keys for navigating the grid and we can't have 2 functions for the same key so simply just combine them
                     def combinedFunction(canvas,direction,rectangleID,event):
                         enterText(canvas,rectangleID,event)
                         changeTextDirection(canvas,direction,event)
@@ -193,7 +235,6 @@ class crosswordFrame(ttk.Frame):
                         #Add 40 to both coordinates to find the bottom right corner of the rectangle
                         x2 = x1 + cellSize
                         y2 = y1 + cellSize
-
 
                         #Get the text value of each item ['B','S','W']
                         obj = str(cellData.get("text"))
@@ -218,7 +259,7 @@ class crosswordFrame(ttk.Frame):
                                 obj = int(obj)
                                 offset = 6
 
-                                #God forgive me
+
                                 if obj > 9 or x1 < 40:
                                     if x1 < 40 and obj > 9:
                                         offset = 8.75
@@ -231,8 +272,6 @@ class crosswordFrame(ttk.Frame):
 
                                 xOffset = x1 + offset
                                 yOffset = y1 + 7.5
-
-                                #Alright it's done
 
 
                                 #Create the little numbers in the top left of rectangles at the start of a word
@@ -267,26 +306,36 @@ class crosswordFrame(ttk.Frame):
 
 
 
+                    #Display the clue headers - across and down
                     canvas.create_text(canvasSize + (cellSize * 2.3), cellSize - 20, text='Across',font=("Helvetica", 30, "bold"))
                     canvas.create_text(canvasSize + (cellSize * 10), cellSize - 20, text='Down',font=("Helvetica", 30, "bold"))
 
+                    #Variables so we can place clues progressivly more down - so they don't all bunch up in one place
                     acrossOffset = cellSize + 15
                     downOffset = cellSize + 15
 
+                    #Calulate how far the text can go before it goes too far and it needs to wrap to the next line
                     wrapWidth = cellSize * 7
 
+                    #Variables storing font attributes to make our life easier so we're not repeating it a million times
                     fontStyle = font.Font(family='Arial', size=12)
                     textFont = ('Arial',16)
 
+
+                    #Variables for displaying the text because when the text wraps it is 'smushed' into the other clues
                     padding = 1
                     numTimesWraps = 1
                     wraps = False
 
+                    #Iterate through every clue, finding the text and its number eg 4-across
                     for index, (clue, number, position) in enumerate(self.data['clues']):
+                        #Find how long the entire text will be
                         clueWidth = fontStyle.measure(clue)
 
+                        #Concanetate the number with the clue description
                         text = str(number) + ' ' + clue
 
+                        #If it goes longer than our predefined wrapwidth then add some padding because when it wraps its still too close to the next clue
                         if clueWidth > wrapWidth or wraps:
                             if wraps:
                                 wraps = False
@@ -297,7 +346,7 @@ class crosswordFrame(ttk.Frame):
                             numTimesWraps += 1
 
 
-
+                        #If the clue belongs to either across or down place it accordingly
                         if position == 'across':
                             canvas.create_text(canvasSize + cellSize,(acrossOffset + padding), text=text,width=wrapWidth,font = textFont,anchor='w')
                             acrossOffset += 30
@@ -308,8 +357,8 @@ class crosswordFrame(ttk.Frame):
 
 
 
-                    #goBackButton = ttk.Button(self, text='Go Back', command=None)
-                    #goBackButton.place(relx=0.95, rely=0.965, anchor='center')
+
+                    #Button to run the check function
 
                     checkButton = ttk.Button(self,text = 'Check!',command = partial(submit,canvas))
                     checkButton.place(relx = 0.75,rely = 0.965,anchor = 'center')
@@ -373,7 +422,7 @@ class crosswordFrame(ttk.Frame):
 
         #Function called when rectangle is clicked on
         def onClick(canvas, rectangleID, event):
-
+            #Error handling
             if rectangleID in nonTextRectangles:
                 return False
 
@@ -510,31 +559,37 @@ class crosswordFrame(ttk.Frame):
                 if char == '' or char == 'LEFT':
                     offset = - 1
 
-                #Calculate the ID of next rectangle to be set active
+                #Empty var to store the next rectangle ID
                 nextRectangleID = None
 
+                #If we are not going up or down the next rectangleID is simple to calculate
                 if not self.upDownText:
                     nextRectangleID = rectangleID + offset
 
-
+                #If we are going up and down but we do not want to move the active cell rather want to enter text do this
                 elif self.upDownText and (char not in directions):
+                    #Find the center of the next rectangle ID
                     newYCenter = ((coords[1] + coords[3]) / 2) + (cellSize * offset)
 
+                    #Ensure we don't go off the canvas
                     if newYCenter < 0 or newYCenter > 500:
                         return False
 
+                    #Find next rectangleID
                     nextRectangleID = canvas.find_overlapping(xCenter,newYCenter,xCenter+1,newYCenter+1)[0]
 
+                    #If we've gone to a black rectangle stop
                     if nextRectangleID in nonTextRectangles:
                         return False
 
+                    #Varible to tell the program we can skip the next section of code because we already know the next rectangle ID
                     safe = True
 
 
 
 
 
-
+                #If we haven't already found the next rectangle ID do this
                 if not safe:
                     #If we're going up then add 40 pixels (size of rectangle) and find the overlapping rectangle and set that active
                     if char == 'UP':
@@ -601,10 +656,12 @@ class crosswordFrame(ttk.Frame):
 
 
         def changeTextDirection(canvas,direction,event):
+            #If this function is called by the up or down key update the Boolean so the program knows we want to go up and down
             if direction == 'Up' or direction == 'Down':
                 self.upDownText = True
                 self.directionUpdateLabel.config(text = 'Down')
 
+            #If not set it to False
             else:
                 self.upDownText = False
                 self.directionUpdateLabel.config(text='Across')
@@ -617,7 +674,7 @@ class crosswordFrame(ttk.Frame):
         codeLabel = ttk.Label(self, text='Enter Crossword Code')
         codeLabel.place(relx=0.5, rely=0.25, anchor="center")
 
-        codeLabel = ttk.Label(self, text='Valid codes range from : 1-7750')
+        codeLabel = ttk.Label(self, text='Valid codes range from : 1-'+ self.endRange)
         codeLabel.place(relx=0.5, rely=0.35, anchor="center")
 
         codeEntry = ttk.Entry(self,justify='center')

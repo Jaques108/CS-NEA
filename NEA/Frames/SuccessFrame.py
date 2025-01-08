@@ -1,7 +1,7 @@
 from tkinter import *
 
 #Create the class
-class crosswordSuccessFrame(Frame):
+class successFrame(Frame):
     #Initialise the class
     def __init__(self, parent, controller):
         Frame.__init__(self, parent)
@@ -10,6 +10,13 @@ class crosswordSuccessFrame(Frame):
 
         self.pack_propagate(False)  # Prevent resizing based on widgets
 
+        self.koolaidOhYeahMan = PhotoImage(file='/Users/jake/main/NEA/ohyeah.png')
 
-        self.successLabel = Label(self,text = 'Well Done my g')
-        self.successLabel.place(relx = 0.5,rely = 0.5,anchor = 'center')
+        self.koolaidOhYeahManLabel = Label(self,image = self.koolaidOhYeahMan)
+        self.koolaidOhYeahManLabel.place(relx = 0.41,rely = 0.42,anchor = 'center')
+
+
+
+
+
+
