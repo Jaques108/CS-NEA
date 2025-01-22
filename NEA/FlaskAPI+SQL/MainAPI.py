@@ -12,6 +12,7 @@ import datetime
 import copy
 import jwt
 import secrets
+import re
 
 
 
@@ -23,34 +24,33 @@ API = Flask(__name__)
 
 @API.route('/CreateUser', methods=['POST'])
 def createUser():
+
     data = request.get_json()
     username = data['username']
     password = data['password']
 
-    # Validate the password
-    checkedPassword = checkPassword(password)
 
-    # If the password is valid, proceed with registration
-    if checkedPassword == 'Password Accepted':
-        # Hash the password
-        encodedPassword = password.encode('utf-8')
-        passwordHash = hashlib.sha256(encodedPassword).hexdigest()
+    #We do not need to check for validity as it has already been done by the LoginFrame
 
-        # Connect to the database and insert the user
-        SQL.connect()
-        insertUser = 'INSERT INTO users (username, password) VALUES (?, ?)'
-        e = SQL.executeQuery(insertUser, [username, passwordHash])
-        SQL.closeConnection()
+    # Hash the password
+    encodedPassword = password.encode('utf-8')
+    passwordHash = hashlib.sha256(encodedPassword).hexdigest()
 
-        # Check for errors in insertion
-        if isinstance(e, Error):
-            return jsonify({'message': f'Error: {str(e)}'}), 400
+    # Connect to the database and insert the user
+    SQL.connect()
+    insertUser = 'INSERT INTO users (username, password) VALUES (?, ?)'
+    e = SQL.executeQuery(insertUser, [username, passwordHash])
+    SQL.closeConnection()
 
-        return jsonify({'message': 'User created successfully'}), 201
+    # Check for errors in insertion
+    if isinstance(e, Error):
+        return jsonify({'message': f'Error: {str(e)}'}), 400
 
-    else:
-        # Return the validation error message
-        return jsonify({'message': checkedPassword}), 400
+    return jsonify({'message': 'User created successfully'}), 201
+
+
+
+
 
 
 
@@ -160,8 +160,12 @@ def crossword(code):
 
 
     for item in jsonified['entries']:
+        pattern = r'</?(i|span|b)>'
+        uncleanClueText = item['clue']
+        clue = re.sub(pattern, '', uncleanClueText)
+
+
         temp = item['position']
-        clue = item['clue']
         direction = item['direction']
 
         numberList = (item['group'])[0]
@@ -236,7 +240,6 @@ def cellsBelongingToWord(var,cells):
                 if x == 0:
                     cell['text'] = number
 
-
                 elif text == "B":
                     cell['text'] = "--"
 
@@ -294,7 +297,8 @@ def cellsBelongingToWord(var,cells):
 
 @API.route('/GenerateGrid', methods = ['GET'])
 def generateSudoku():
-    B = 223455
+    B = 5 #This number controlls how hard the sudoku is higher the easier it is
+
     # Initialize a 9x9 grid with empty values
     grid = [[0 for x in range(9)] for y in range(9)]
 
@@ -350,7 +354,7 @@ def isValid(number, row, col,grid):
 
     return True
 
-# Generate and print the Sudoku grid
+# Generate the Sudoku grid
 result = generateSudoku()
 
 

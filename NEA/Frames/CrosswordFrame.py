@@ -37,7 +37,7 @@ class crosswordFrame(ttk.Frame):
         # Stuff for the daily crossword best to keep global so it can be used in the text label of the range of codes
 
         # This is the day I started from - it doesn't matter what day it is so long as we are consistent
-        startDay = date(2024, 12, 9)
+        startDay = date(2024, 12, 8)
 
         # Find todays date
         today = date.today()
@@ -46,10 +46,10 @@ class crosswordFrame(ttk.Frame):
         difference = (today - startDay).days
 
         # This bit is because the Guardian does not release a new crossword on Sundays so check how many weeks its been since the start and minus that number to the code to account for that
-        change = int(difference / 7) + 1
+        change = int(difference / 7)
         difference -= change
 
-        self.endRange = str(7784 + int(difference))
+        self.endRange = str(7782 + int(difference))
 
 
         #Function that tells the program that the user wants to do the daily crossword - changes a bool value to True
@@ -65,7 +65,7 @@ class crosswordFrame(ttk.Frame):
             #Check if the user wants to do the daily crossword
             if self.dailyCrossword:
                 #The code for startDay crossword is 17034 so just add difference to find the crossword code for today
-                code = 17034 + int(difference)
+                code = 17032 + int(difference)
 
             else:
                 #Get the code entered
@@ -688,12 +688,3 @@ class crosswordFrame(ttk.Frame):
 
         errorLabel = ttk.Label(self)
         errorLabel.place(relx=0.5, rely=0.65, anchor="center")
-
-
-
-
-
-
-
-
-

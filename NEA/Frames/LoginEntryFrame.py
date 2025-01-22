@@ -90,7 +90,7 @@ class loginEntryFrame(tk.Frame):
                 data = {'username':username,'password':password}
                 registerUser = requests.post(self.API_URL + 'CreateUser',json = data)
 
-                if not registerUser:
+                if registerUser.status_code != 200 and registerUser.status_code != 201:
                     self.responseLabel.config(text='User already exists')
 
                 else:
