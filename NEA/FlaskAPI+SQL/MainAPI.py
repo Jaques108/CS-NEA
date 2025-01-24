@@ -105,69 +105,93 @@ def deleteUser(username):
 
 
 
+#Function to log in the user
 @API.route('/Login', methods = ['POST'])
 def login():
+    #Get the data the user has sent
     data = request.get_json()
 
+    #Separate the username and password
     username = data['username']
-    password = data['password'].encode('utf-8')
+    password = data['password'].encode('utf-8') #Encode with utf-8 so we can hash it without errors
 
+    #Generate the hash for the password
     passwordHash = hashlib.sha256(password).hexdigest()
 
+    #SQL Query - select the users where username = user input and password = user input
     selectQuery = 'SELECT * FROM users WHERE username = ? AND password = ?'
+    #Connect to the database
     SQL.connect()
+    #Excute the query and save it in variable user as it will return the user found (if there is one matching inputs)
     user = SQL.executeQuery(selectQuery,[username,passwordHash])
+    #Close the connectio
     SQL.closeConnection()
 
+    #Use a string to encode the users auth token
     secretKey = 'idkwhattoputforthis'
 
+    #If we have found a user ->
     if user:
+        #Payload is all the data around the user
         payload = {"user": username,  "exp": (datetime.datetime.now(datetime.UTC) + datetime.timedelta(hours = 1)).timestamp()}
+        #Create our token based on the payload
         token = jwt.encode(payload, secretKey, algorithm='HS256')
 
+        #Write the token to a text file
         afile = open('../Token.txt', 'w')
         afile.write(token)
         afile.close()
 
-
+        #Return success
         return jsonify({'message': 'Login successful'}), 200
 
+    #If a user is not returned than there is an error in the users inputs
     else:
         return jsonify({'message': 'Invalid username or password'}), 401
 
 
-
+#Function for generating the crossword
 @API.route('/GenerateCells/<code>', methods=['GET'])
 def crossword(code):
 
+    #Using generic url is because every crossword starts off with this url and the only difference is the number that way separating the two allows for greater control of the crossword we want
     genericUrl = "https://www.theguardian.com/crosswords/quick/"
+    #Concanatate the url with the number
     url = genericUrl + code
 
+    #Dictionary for our cells and an array for our cluess
     cells = {}
     clues = []
 
-
+    #Get the response from our url
     response = requests.get(url)
+    #Parse it with BeautifulSoup
     soup = BeautifulSoup(response.text, 'html.parser')
+
+    #Find all the details relating to our crossword - clues,solutions etc
     mydivs = soup.find_all("div", {"class": "js-crossword"})
-    test = (mydivs[0].get('data-crossword-data'))
+    #Return our data in the variable 'data'
 
-    jsonified = json.loads(test)
+    data = (mydivs[0].get('data-crossword-data'))
+    #Get the json data
+    jsonified = json.loads(data)
 
-
+    #List to store cells with a starting number
     startPositions = []
 
 
-
+    #Iterate through our clues stored in 'entries'
     for item in jsonified['entries']:
+        #Pattern is a variable which we can use in re.sub - it comes from some of the clues still having html elements in them like <i> or <b> - so we use these following lines of code to remove them
         pattern = r'</?(i|span|b)>'
         uncleanClueText = item['clue']
         clue = re.sub(pattern, '', uncleanClueText)
 
-
+        #Temp holds the position of the cell and direction holds the direction (duh)
         temp = item['position']
         direction = item['direction']
 
+        #This bit is for getting the number of the clue, however we are only given it in the form '3-down' for example. We can use string[0] to get the number which works well execept if its a two digit number, so we check if the second char (string[1]) is a dash (meaning its a 1 digit number) and if not then we accommodate for that
         numberList = (item['group'])[0]
 
         if numberList[1] == '-':
@@ -177,32 +201,39 @@ def crossword(code):
             number = int(numberList[:2])
 
 
+        #Find the X and Y coordinates of the clue
         tempX = temp['x']
         tempY = temp['y']
 
+        #Append the position (a tuple) to the startPositions list
         startPosition = (tempX, tempY)
         startPositions.append(startPosition)
 
+        #Do the same with the clues but include their number and direction
         clue = (clue,number,direction)
         clues.append(clue)
 
-
+        #Sort the startpositions as they are not sorted when we retrieve them
         startPositions = sorted(startPositions, key=lambda x: (x[1], x[0]))
 
-    length = len(startPositions) - 1
 
-    x = 0
+    #Create two for loops to generate our 169 cells
     for row in range(13):
         for col in range(13):
+            #Start them all as being black cells or in this case have obj as 'B'
             obj = "B"
+            #Variable to tell each cell what clue it belongs to
             wordNumber = None
 
+            #Create their coordinates. We use zfill as we don't want leading 0s to be removed as every coordinates must be 4 chars long eg '0306'
             position = str(row).zfill(2) + str(col).zfill(2)
+
+            #Add the cell to the dictionary with text 'B' and wordNumber None --> we change it later in the program it's just to set it up
             cells[position] = {'text':obj,'wordNumber':wordNumber}
 
 
 
-
+    #Our solution grid will be the result of the function 'cellsBelongingToWord'. The point of the grid is to have a representation of what the solved grid should look like
     solutionGrid = cellsBelongingToWord(jsonified,cells)
 
     result = {
