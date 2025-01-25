@@ -1,19 +1,24 @@
+#Import our needed modules for SQL
 import sqlite3
 from sqlite3 import Error
 
+#Create a class
 class SQLBackEnd:
     def __init__(self,DBFile):
+        #Attributes
         self.DBFile = DBFile
         self.connection = None
 
+    #Function for connecting to the database
     def connect(self):
         try:
             self.connection = sqlite3.connect(self.DBFile)
             print('connect to database')
-
+        #If fails we return error with the error code which is stored in the variable e
         except Error as e:
             print(f'error connecting to database {e}')
 
+    #Function to create our database table
     def createTable(self,createTableScript):
         try:
             if self.connection:
@@ -55,6 +60,27 @@ class SQLBackEnd:
         if self.connection:
             self.connection.close()
 
+
+#A thing that runs to reset the user IDs
+conn = sqlite3.connect('main.db')
+cursor = conn.cursor()
+
+# Retrieve all user data from the users table
+cursor.execute("SELECT id, password, username FROM users ORDER BY id")
+users = cursor.fetchall()
+
+# Reassign ids starting from 1
+for new_id, user in enumerate(users, start=1):
+    cursor.execute(
+        "UPDATE users SET id = ? WHERE id = ?",
+        (new_id, user[0])  # Update the ID field to be sequential
+    )
+
+# Commit the changes
+conn.commit()
+
+# Close the connection
+conn.close()
 
 
 

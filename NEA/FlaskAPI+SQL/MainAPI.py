@@ -63,6 +63,8 @@ def getUsers():
     # Define the query to select all users
     query = 'SELECT * FROM users'
 
+
+
     # Execute the query
     result = SQL.executeQuery(query)
 
