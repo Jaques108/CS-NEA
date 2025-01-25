@@ -236,6 +236,7 @@ def crossword(code):
     #Our solution grid will be the result of the function 'cellsBelongingToWord'. The point of the grid is to have a representation of what the solved grid should look like
     solutionGrid = cellsBelongingToWord(jsonified,cells)
 
+    #Return all the data we have
     result = {
         "cells": cells,
         "clues": clues,
@@ -244,84 +245,97 @@ def crossword(code):
     return result
 
 
+#Now we use our previous setup to differentiate our cells
 def cellsBelongingToWord(var,cells):
     solutionGrid = [[None for x in range(13)] for y in range(13)]
 
+    #Do the same iteration as the previous function - the variable jsonified is passed from the original function
     for item in var['entries']:
+        #Variables we need for if a word is across or down so we don't have to write the whole code twice
+        across = False
+        down = False
+        defaultChar = None
+        inferiorChar = None
+
+
+        #Find where the x and y coordinates are stored and save in variable temp
         temp = item['position']
+        #Find the respective x and y coordinates
         posX = temp['x']
         posY = temp['y']
 
+        #Also retrieve the number of the clue
         number = item['number']
 
+        #Get other details from the clue
         direction = item['direction']
         length = item['length']
         solution = item['solution']
 
         if direction == 'across':
-            for x in range(length):
-                solutionGrid[posY][posX + x] = solution[x]
-
-                position = str(posY).zfill(2) + str(posX + x).zfill(2)
-                cell = cells.get(position)
-
-                text = cell.get('text')
-                currentNum = cell.get('wordNumber')
-
-                if x == 0:
-                    cell['text'] = number
-
-                elif text == "B":
-                    cell['text'] = "--"
-
-                elif text == "S":
-                    pass
-
-                elif text == '|':
-                    cell['text'] = "W"
-
-
-                if currentNum != None:
-                    cell['wordNumber'] = [currentNum,number]
-
-                else:
-                    cell['wordNumber'] = [number]
-
-
-
+            across = True
+            defaultChar = '--'
+            inferiorChar = '|'
 
 
         elif direction == 'down':
-            for n in range(length):
-                solutionGrid[posY + n][posX] = solution[n]
+            down = True
+            defaultChar = '|'
+            inferiorChar = '--'
 
-                position = str(posY + n).zfill(2) + str(posX).zfill(2)
-                cell = cells.get(position)
+        for x in range(length):
+            if across:
+                #Assign each cell a correct letter based of the string of the clue solution - store this in the array solution grid
+                solutionGrid[posY][posX + x] = solution[x]
 
-                text = cell.get('text')
-                currentNum = cell.get('wordNumber')
-
-                if n == 0:
-                    cell['text'] = number
-
-
-                elif text == "B":
-                    cell['text'] = "|"
-
-                elif text == "S":
-                    pass
-
-                elif text == '--':
-                    cell['text'] = "W"
+                #Generate the cell coordinates - using zfill again to retain leading 0s
+                position = str(posY).zfill(2) + str(posX + x).zfill(2)
 
 
-                if currentNum != None:
-                    cell['wordNumber'] = [currentNum,number]
+            #Same thing here execept its for down clues
+            elif down:
+                solutionGrid[posY + x][posX] = solution[x]
+                position = str(posY + x).zfill(2) + str(posX).zfill(2)
 
-                else:
-                    cell['wordNumber'] = [number]
 
+
+            #Get the cell from our generated coordinates
+            cell = cells.get(position)
+
+            #Find the cells text and what word(clue) it belongs to
+            text = cell.get('text')
+            currentNum = cell.get('wordNumber')
+
+
+            #If we just started then the first cell is the start of a word so is a number
+            if x == 0:
+                cell['text'] = number
+
+            #If the cell is currently a black square then we add two dashes across to signify that it belongs to an across word
+            elif text == "B":
+                cell['text'] = defaultChar
+
+            #If its the start of the word then we ignore it
+            elif text == "S":
+                pass
+
+            #If its already belongs to the other direction word then we show it belongs to both
+            elif text == inferiorChar:
+                cell['text'] = "W"
+
+
+            #I have no idea what is happening here :P
+            if currentNum != None:
+                cell['wordNumber'] = [currentNum,number]
+
+            else:
+                cell['wordNumber'] = [number]
+
+
+
+    #Return our solutionGrid
     return solutionGrid
+
 
 
 
