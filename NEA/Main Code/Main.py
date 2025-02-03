@@ -7,6 +7,7 @@ from NEA.Frames.ChoiceFrame import choiceFrame
 from NEA.Frames.SudokuFrame import sudokuFrame
 from NEA.Frames.CrosswordFrame import crosswordFrame
 from NEA.Frames.SuccessFrame import successFrame
+from NEA.Frames.InstructionsFrame import instructionsFrame
 
 
 
@@ -29,7 +30,7 @@ class MainApp(tk.Tk):
 
 
         #Iterating through the frames
-        for F in [mainMenuFrame, loginEntryFrame, choiceFrame, sudokuFrame, crosswordFrame,successFrame]:
+        for F in [mainMenuFrame, loginEntryFrame, choiceFrame, sudokuFrame, crosswordFrame,instructionsFrame,successFrame]:
 
             #Instancing each frame!
             frame = F(container, self)

@@ -31,6 +31,11 @@ class mainMenuFrame(tk.Frame):
         self.guestButton = tk.Button(self, text='Play as Guest', command=lambda:self.controller.showFrame('choiceFrame','725x585','Games'),font=self.font,width = 20,height = 10)
         self.guestButton.place(relx = 0.85,rely =0.4,anchor = 'center')
 
+        self.instructionsButton = tk.Button(self, text='Instructions',command = self.instructions,font=self.font, width=10, height=5)
+        self.instructionsButton.place(relx=0.5, rely=0.4, anchor='center')
+
+
+
 
 
 
@@ -62,6 +67,9 @@ class mainMenuFrame(tk.Frame):
             print("Error: Invalid token.")
             self.controller.showFrame('loginEntryFrame', '465x330', 'Log in')
 
+
+    def instructions(self):
+        self.controller.showFrame('instructionsFrame','','Instructions')
 
 
 
