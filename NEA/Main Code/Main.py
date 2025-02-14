@@ -38,7 +38,7 @@ class MainApp(tk.Tk):
             frame.grid(row=0, column=0, sticky='nsew')
 
         #Show the main menu frame using the showFrame function
-        self.showFrame('mainMenuFrame', '800x400', 'Welcome')
+        self.showFrame('mainMenuFrame', '800x400', 'Main Menu')
 
 
 

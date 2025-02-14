@@ -11,8 +11,7 @@ class mainMenuFrame(tk.Frame):
         self.controller = controller
         self.parent = parent
 
-        self.secretKey = 'idkwhattoputforthis'
-
+        #Create a set font to use for all the widgets
         self.font = 'Georgia', 15
 
 
@@ -22,7 +21,7 @@ class mainMenuFrame(tk.Frame):
         self.grid_columnconfigure(1, weight=1)
 
         #Widgets
-        self.welcomeLabel = ttk.Label(self, text='Welcome', font = ('Georgia',50))
+        self.welcomeLabel = ttk.Label(self, text='Welcome to the Puzzle game!', font = ('Georgia',50))
         self.welcomeLabel.pack(padx = 10,pady = 50)
 
         self.loginButton = tk.Button(self, text='Log in/Register', command=self.checkIfToken,font=self.font,width = 20,height = 10)
@@ -33,6 +32,8 @@ class mainMenuFrame(tk.Frame):
 
         self.instructionsButton = tk.Button(self, text='Instructions',command = self.instructions,font=self.font, width=10, height=5)
         self.instructionsButton.place(relx=0.5, rely=0.4, anchor='center')
+
+        self.secretKey = 'idkwhattoputforthis'
 
 
 
