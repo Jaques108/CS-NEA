@@ -61,7 +61,6 @@ class crosswordFrame(ttk.Frame):
         #This function is binded to the submit button which is run when it is pressed - starts the whole process
         def submit():
 
-
             #Check if the user wants to do the daily crossword
             if self.dailyCrossword:
                 #The code for startDay crossword is 17034 so just add difference to find the crossword code for today
@@ -210,8 +209,6 @@ class crosswordFrame(ttk.Frame):
                             self.controller.showFrame('successFrame', '600x600', 'Well Done!')
 
 
-
-
                         #Ensure the canvas is still usable because clicking the button 'unfocuses' the canvas meaning that user inputs are not registered
                         canvas.focus_set()
 
@@ -252,7 +249,7 @@ class crosswordFrame(ttk.Frame):
                         #Any other item text
                         else:
                             wordNumberTag = cellData.get('wordNumber')
-                            #If the object is a number (one of the numbers to mark the start of a worf)
+                            #If the object is a number (one of the numbers to mark the start of a word)
                             if obj.isdigit():
 
                                 #This next code is due to formatting issues. Numbers on the leftmost column are cut off slightly. Two digit numbers have a similar problem
