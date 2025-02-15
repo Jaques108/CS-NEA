@@ -96,8 +96,3 @@ if __name__ == '__main__':
 
 
     insertUser = 'INSERT INTO users (username,password) VALUES (?,?)'
-
-
-
-
-

@@ -244,11 +244,10 @@ class crosswordFrame(ttk.Frame):
                             rectangleID = canvas.create_rectangle(x1, y1, x2, y2, fill="black", outline="black",tags = 'rectangle')
                             nonTextRectangles.append(rectangleID) #Make it so the program isnt stupid and understands that a black square is not a place to put text in
 
-
-
                         #Any other item text
                         else:
                             wordNumberTag = cellData.get('wordNumber')
+
                             #If the object is a number (one of the numbers to mark the start of a word)
                             if obj.isdigit():
 
@@ -277,7 +276,6 @@ class crosswordFrame(ttk.Frame):
 
                                 #Append the start ID to the array startPositions to keep track of them
                                 startPositions.append(startID)
-
 
 
                             else:
@@ -450,10 +448,6 @@ class crosswordFrame(ttk.Frame):
 
             else:
                 rectangles = canvas.find_withtag(firstWordTag) + canvas.find_withtag(secondWordTag)
-
-
-
-
 
             #Make the rectangle clicked the active one and clear the other active one (if there is one)
             clearActive(canvas)

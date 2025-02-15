@@ -6,7 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="fcc33587-880f-4a89-98b5-cef7062c96cd" name="Changes" comment="Upload">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/FlaskAPI+SQL/SQLBackEnd.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/FlaskAPI+SQL/SQLBackEnd.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/Frames/ChoiceFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Frames/ChoiceFrame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/Frames/CrosswordFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Frames/CrosswordFrame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/Frames/InstructionsFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Frames/InstructionsFrame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/Frames/LoginEntryFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Frames/LoginEntryFrame.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NEA/Frames/MainMenu.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Frames/MainMenu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/Frames/SuccessFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Frames/SuccessFrame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NEA/Frames/SudokuFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Frames/SudokuFrame.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NEA/Main Code/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Main Code/Main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -93,7 +100,7 @@
     &quot;Python.LoginEntryFrame.executor&quot;: &quot;Debug&quot;,
     &quot;Python.LoginEntryWindow.executor&quot;: &quot;Run&quot;,
     &quot;Python.LoginFrame.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Main.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.Main.executor&quot;: &quot;Run&quot;,
     &quot;Python.MainAPI.executor&quot;: &quot;Run&quot;,
     &quot;Python.MainAPP.executor&quot;: &quot;Run&quot;,
     &quot;Python.Messaging (Sockets).executor&quot;: &quot;Run&quot;,
@@ -140,7 +147,7 @@
       <recent name="$PROJECT_DIR$/NEA/Frames" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Main">
+  <component name="RunManager" selected="Python.MainAPI">
     <configuration name="Main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="main" />
       <option name="ENV_FILES" value="" />
@@ -201,14 +208,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1711276629155</updated>
-    </task>
-    <task id="LOCAL-00027" summary="Upload">
-      <option name="closed" value="true" />
-      <created>1730740456092</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1730740456092</updated>
     </task>
     <task id="LOCAL-00028" summary="Upload">
       <option name="closed" value="true" />
@@ -594,7 +593,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738583627663</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="Upload">
+      <option name="closed" value="true" />
+      <created>1739526149718</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1739526149719</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -616,16 +623,5 @@
     <MESSAGE value="Merge remote-tracking branch 'origin/main'" />
     <MESSAGE value="Upload" />
     <option name="LAST_COMMIT_MESSAGE" value="Upload" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/NEA/Frames/CrosswordFrame.py</url>
-          <line>148</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

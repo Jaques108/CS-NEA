@@ -14,9 +14,3 @@ class successFrame(Frame):
 
         self.koolaidOhYeahManLabel = Label(self,image = self.koolaidOhYeahMan)
         self.koolaidOhYeahManLabel.place(relx = 0.41,rely = 0.42,anchor = 'center')
-
-
-
-
-
-

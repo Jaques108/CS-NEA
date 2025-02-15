@@ -1,5 +1,5 @@
 from tkinter import *
-from functools import partial, cache
+from functools import partial
 import re
 import requests
 
@@ -42,8 +42,8 @@ class sudokuFrame(Frame):
 
 
 
-        self.API_URL = "http://127.0.0.1:5000/GenerateGrid"
 
+        self.API_URL = "http://127.0.0.1:5000/GenerateGrid"
         try:
             # Make a GET request to the API
             response = requests.get(self.API_URL)
@@ -344,8 +344,3 @@ class sudokuFrame(Frame):
 
     def normalMode(self):
         self.candidateModeBool = False
-
-
-
-
-

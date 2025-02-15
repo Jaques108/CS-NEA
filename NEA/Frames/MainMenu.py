@@ -71,11 +71,3 @@ class mainMenuFrame(tk.Frame):
 
     def instructions(self):
         self.controller.showFrame('instructionsFrame','','Instructions')
-
-
-
-
-
-
-
-

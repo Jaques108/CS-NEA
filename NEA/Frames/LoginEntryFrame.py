@@ -131,5 +131,3 @@ class loginEntryFrame(tk.Frame):
         else:
             self.passEntry.config(show = '*')
             self.stars = True
-
-
