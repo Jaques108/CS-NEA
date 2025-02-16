@@ -83,13 +83,20 @@ class sudokuFrame(Frame):
 
 
 
+                #Retrieve the number value of the rectangle
 
                 number = sudokuGrid[row][col]
+                #If there is no number there then it is a blank square or where a user can input text
                 if number == '':
+                    #Give it a tag so we can validate it
                     tag = 'blankSquare'
                     font=('Arial', 24)
+
+                #If there is text there then it should be protected and not be modified in any way
                 else:
+                    #Give it a tag so we can protect it
                     tag = 'permanentNumber'
+                    #Give it a bold text for visual differentiation
                     font=('Arial', 24,'bold')
 
                 # Create the text/textID
@@ -109,8 +116,10 @@ class sudokuFrame(Frame):
 
                 canvas.bind('<Key>', partial(self.enterText, canvas))
 
+        #Variable to store length of lines
         pixelWidth = 240
 
+        #Create the big lines making our 9x9 grid into a 3x3x3 grid
         for rowLine in range(1,3):
             canvas.create_line((pixelWidth*rowLine),0,(pixelWidth*rowLine),canvasSize,fill='black',width = 5)
 
@@ -118,6 +127,7 @@ class sudokuFrame(Frame):
             canvas.create_line(0, (pixelWidth*columnLine), canvasSize, (pixelWidth*columnLine),fill = 'black',width = 5)
 
 
+        #Widgets
         self.submitButton = Button(self, text='Check!', command=partial(self.canvas2array, canvas,solutionGrid))
         self.submitButton.pack()
 
@@ -154,14 +164,17 @@ class sudokuFrame(Frame):
 
 
     def mouseEnter(self, canvas, rectangleID, event):
+        #Get the tags of the rectangle
         itemTags = canvas.gettags(rectangleID)
 
+        #If its a active rectangle (colored light blue) then it wouldnt make sense to darken it
         if 'active' in itemTags:
             pass
 
         else:
             canvas.itemconfig(rectangleID, fill="grey")
 
+    #Same function as mouseEnter except we fill it back to white
     def mouseExit(self, canvas, rectangleID, event):
         itemTags = canvas.gettags(rectangleID)
 
@@ -172,42 +185,57 @@ class sudokuFrame(Frame):
             canvas.itemconfig(rectangleID, fill="white")
 
 
+    #When we click on a rectangle it will set it to be the active onc
     def onClick(self, canvas, rectangleID, event):
+        #Remove all active rectangles
         self.clearActive(canvas)
 
+        #Get the rectangleID of our selected rectangle
         self.selectedRectangleID = rectangleID
+        #Set it active
         self.setActive(canvas, self.selectedRectangleID)
+        #Append it to textIDs as it is probable the user will input a value in the cell - if not no worries it will just store an empty string
         self.selectedTextID = self.textIDs[rectangleID]
 
 
 
     def enterText(self, canvas, event):
+        #This pattern is for re - we want to make sure the input is a number so r'\d' means digit
         pattern = r'\d'
+        #Our char is the input from the keyboard
         char = event.keysym.upper()
+        #This is for validation. bool(match) will return true or false. If it returns true, we know that it is a number thus a valid input
         match = re.match(pattern, char)
         match = bool(match)
 
-
+        #Get the tags of the selectedTextID
         self.tags = canvas.gettags(self.selectedTextID)
         self.currentText = canvas.itemcget(self.selectedTextID,'text')
 
 
-
+        #If the number we are on is a permanent number or char is 0 (an invalid input in sudoku) then we prevent the user from changing it
         if 'permanentNumber' in self.tags or char == '0':
             return False
 
 
-
+        #If the user wants to delete the number then we just update the value in the rectangle to be blank (empty string)
         if match or char == 'BACKSPACE':
             if char == 'BACKSPACE':
                 char = ''
 
+            #If we are in candidate mode run thus
             if self.candidateModeBool:
+                #Remove the existing number if there is one in the cell
                 canvas.itemconfig(self.selectedTextID,text = '')
 
+                #Get the coordinates of the rectangle
                 rectangleCoords = canvas.coords(self.selectedRectangleID)
+                #Break up our coordinates into 4 seperate variables
                 x1, y1, x2, y2 = rectangleCoords
+
+                #Get our anchor value
                 anchor = self.directions.get(char, None)
+                #Set up our anchor positions
                 anchorPositions = {
                     'nw': (x1 + 5, y1 + 5),  # Top-left
                     'n': ((x1 + x2) / 2, y1 + 5),  # Top-middle
@@ -223,11 +251,15 @@ class sudokuFrame(Frame):
                 if anchor is None:
                     return False
 
+                #Save our anchor position in two variables x and y
                 x, y = anchorPositions[anchor]
 
+                #Get the text values
                 data = self.candidateModeTexts[(self.selectedTextID / 2) - 1]
+                #Create a list to temporarily hold the numbers
                 self.numbers = []
 
+                #Iterate through the numbers we have and append it to the list
                 for i in range(len(data)):
                     number = data[i][0]
                     self.numbers.append(number)
@@ -235,29 +267,32 @@ class sudokuFrame(Frame):
 
 
 
-
+                #If the input is already there the user has requested to delete the number
                 if char in self.numbers:
+                    #Iterate through the list finding all the numbers
                     chars = [item[0] for item in data]
 
+                    #Get the index of the chacter
                     index = chars.index(char)
                     text = data[index]
 
+                    #Delete the text and textID
                     canvas.delete(text[1])
                     del self.candidateModeTexts[(self.selectedTextID / 2) - 1][index]
 
 
-
+                #If the user wants to add the number normally then do this
                 else:
+                    #Create text at location x,y and anchor anchor (the value we previously determined)
                     self.candidateText = canvas.create_text(x, y, text=char, font=('Arial', 16), anchor=anchor,fill = 'black',tags = 'candidateNumber')
 
+                    #Get the text values
                     dataTexts = char,str(self.candidateText)
-
+                    #Append them to the list of candidateModeTexts
                     self.candidateModeTexts[(self.selectedTextID / 2) - 1].append(dataTexts)
 
 
-
-
-
+                
                 canvas.coords(self.selectedTextID, x, y)
 
             if not self.candidateModeBool:
@@ -270,11 +305,13 @@ class sudokuFrame(Frame):
                 # In the Normal Mode logic
                 data = self.candidateModeTexts[(self.selectedTextID / 2) - 1]
 
-
+                #Iterate through the texts
                 for candidate in data:
+                    #Return the textID for every text
                     textID = candidate[1]
+                    #Delete it
                     canvas.delete(textID)
-
+                #Clear it from the list
                 self.candidateModeTexts[(self.selectedTextID / 2) - 1].clear()
 
 
@@ -283,43 +320,55 @@ class sudokuFrame(Frame):
                 canvas.itemconfig(self.selectedTextID,text=char,font=('Arial', 26),anchor='center') # Ensure it's centered
 
 
-
                 # Reset the coordinates of the text to match the rectangle's center
                 canvas.coords(self.selectedTextID, xCenter, yCenter)
 
 
 
-
+        #Set it to black color
         canvas.itemconfig(self.selectedTextID, fill='black')
 
 
-
+    #Function to return the canvas of numbers into a 2D array
     def canvas2array(self, canvas,solutionGrid):
+        #Create an empty 9x9 2D array
         self.grid = [['' for x in range(9)] for y in range(9)]
+        #Booleans for checking 
         self.complete = True
         self.solved = True
-
+        
+        
         index = 2
 
+        #Create a nested for loop inside a for loop to run 9x9 times
         for col in range(9):
             for row in range(9):
+                #Get the number value from the rectangle
                 number = canvas.itemcget(index, 'text')
+                #Append it to the list
                 self.grid[col][row] = number
 
+                #If it is a number (the alternative would be an empty string) we cast it to an INT data type
                 if number.isdigit():
                     number = int(number)
 
-
+                #If the user hasn't input anything for one of the cells we change self.complete to False as the puzzle isn't complete
                 if number == '':
                     self.complete = False
 
+                #If the number is wrong then we set self.solved as False as the puzzle is incorrectly solved
                 elif solutionGrid[col][row] != number:
                     self.solved = False
+                    #Return incorrect message to user
                     self.responseLabel.config(text='Incorrect')
+                    #Highlight the number in red so the user can see the incorrect numbers
                     canvas.itemconfig(index,fill = 'red')
 
+                #If the number is correct do this
                 else:
+                    #Get the font of the number
                     font = canvas.itemcget(index,'font')
+                    #If its bold then we ignore it as it is a permanent number
                     if 'bold' not in font:
                         canvas.itemconfig(index, fill='green')
 
@@ -327,18 +376,19 @@ class sudokuFrame(Frame):
 
 
 
-
+                #Increment index value by two every time this is run
                 index += 2
-
+        #If all the answers are correct but the puzzle isn't complete then return 'incomplete' to the user
         if self.solved and not self.complete:
             self.responseLabel.config(text = 'Incomplete')
 
+        #If its solved and complete then display the success frame to the user congratulating them :)
         elif self.complete and self.solved:
             self.controller.showFrame('successFrame', '600x650', 'Well Done!')
 
 
 
-
+    #Functions that swich boolean values for candiate and normal mode
     def candidateMode(self):
         self.candidateModeBool = True
 
