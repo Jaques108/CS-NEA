@@ -84,7 +84,6 @@ class sudokuFrame(Frame):
 
 
                 #Retrieve the number value of the rectangle
-
                 number = sudokuGrid[row][col]
                 #If there is no number there then it is a blank square or where a user can input text
                 if number == '':
@@ -319,10 +318,8 @@ class sudokuFrame(Frame):
                 # Update text content and reset its anchor to 'center'
                 canvas.itemconfig(self.selectedTextID,text=char,font=('Arial', 26),anchor='center') # Ensure it's centered
 
-
                 # Reset the coordinates of the text to match the rectangle's center
                 canvas.coords(self.selectedTextID, xCenter, yCenter)
-
 
 
         #Set it to black color
@@ -336,8 +333,8 @@ class sudokuFrame(Frame):
         #Booleans for checking 
         self.complete = True
         self.solved = True
-        
-        
+
+
         index = 2
 
         #Create a nested for loop inside a for loop to run 9x9 times
@@ -373,11 +370,10 @@ class sudokuFrame(Frame):
                         canvas.itemconfig(index, fill='green')
 
 
-
-
-
                 #Increment index value by two every time this is run
                 index += 2
+
+
         #If all the answers are correct but the puzzle isn't complete then return 'incomplete' to the user
         if self.solved and not self.complete:
             self.responseLabel.config(text = 'Incomplete')
@@ -394,3 +390,5 @@ class sudokuFrame(Frame):
 
     def normalMode(self):
         self.candidateModeBool = False
+
+        

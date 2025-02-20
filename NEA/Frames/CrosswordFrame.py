@@ -74,6 +74,10 @@ class crosswordFrame(ttk.Frame):
                 if code.isdigit():
                     code = int(code) + 9250
 
+                else:
+                    errorLabel.config(text='Error - Code not accepted. Try again.') #Display error message to user
+                    return False
+
 
             #Create the whole URL by appending the code to the main URL
             url = f'http://127.0.0.1:5000/GenerateCells/{code}'
@@ -87,7 +91,7 @@ class crosswordFrame(ttk.Frame):
 
                 # Check if response is invalid (200 is a successful status code)
                 if webResponse.status_code != 200:
-                    errorLabel.config(text='Error - Code not accepted. Try again.') #Display error message to user
+                    errorLabel.config(text='Error - Code is outside of range of valid Crosswords.') #Display error message to user
                 else:
                     dictData = webResponse.json() #Update dictData if response is valid
 
