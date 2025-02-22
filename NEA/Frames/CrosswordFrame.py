@@ -91,11 +91,11 @@ class crosswordFrame(ttk.Frame):
                 webResponse = requests.get(url, timeout=7)
 
 
-                # Check if response is invalid (200 is a successful status code)
+                #Make sure code is between the valid range
                 if not 1 <= int(code) <= int(self.endRange):
                     errorLabel.config(text='Error - Code is outside of range of valid Crosswords.') #Display error message to user
                 else:
-                    dictData = webResponse.json() #Update dictData if response is valid
+                    dictData = webResponse.json() #Update dictData if code is valid
 
             # Connection error handling
             except requests.exceptions.RequestException:
