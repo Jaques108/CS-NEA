@@ -164,6 +164,8 @@ def crossword(code):
     #Dictionary for our cells and an array for our cluess
     cells = {}
     clues = []
+    #List to store cells with a starting number
+    startPositions = []
 
     #Get the response from our url
     response = requests.get(url)
@@ -172,19 +174,19 @@ def crossword(code):
 
     #Find all the details relating to our crossword - clues,solutions etc
     mydivs = soup.find_all("div", {"class": "js-crossword"})
-    #Return our data in the variable 'data'
 
+    #Return our data in the variable 'data'
     data = (mydivs[0].get('data-crossword-data'))
+
     #Get the json data
     jsonified = json.loads(data)
 
-    #List to store cells with a starting number
-    startPositions = []
 
 
     #Iterate through our clues stored in 'entries'
     for item in jsonified['entries']:
-        #Pattern is a variable which we can use in re.sub - it comes from some of the clues still having html elements in them like <i> or <b> - so we use these following lines of code to remove them
+        #Pattern is a variable which we can use in re.sub - it comes from some of the clues still having html elements in them like <i> or <b> -
+        # so we use these following lines of code to remove them
         pattern = r'</?(i|span|b)>'
         uncleanClueText = item['clue']
         clue = re.sub(pattern, '', uncleanClueText)
@@ -193,7 +195,9 @@ def crossword(code):
         temp = item['position']
         direction = item['direction']
 
-        #This bit is for getting the number of the clue, however we are only given it in the form '3-down' for example. We can use string[0] to get the number which works well execept if its a two digit number, so we check if the second char (string[1]) is a dash (meaning its a 1 digit number) and if not then we accommodate for that
+        #This bit is for getting the number of the clue, however we are only given it in the form '3-down' for example.
+        #We can use string[0] to get the number which works well except if its a two digit number, so we check if the second
+        # char (string[1]) is a dash (meaning its a 1 digit number) and if not then we accommodate for that
         numberList = (item['group'])[0]
 
         if numberList[1] == '-':
@@ -235,7 +239,8 @@ def crossword(code):
 
 
 
-    #Our solution grid will be the result of the function 'cellsBelongingToWord'. The point of the grid is to have a representation of what the solved grid should look like
+    #Our solution grid will be the result of the function 'cellsBelongingToWord'.
+    #The point of the grid is to have a representation of what the solved grid should look like
     solutionGrid = cellsBelongingToWord(jsonified,cells)
 
     #Return all the data we have
@@ -349,16 +354,23 @@ def generateSudoku():
     # Initialize a 9x9 grid with empty values
     grid = [[0 for x in range(9)] for y in range(9)]
 
-    # Attempt to fill the grid
+    #Attempt to fill the grid
     if fillGrid(0, 0,grid):
+        #If successful we create a 'deepcopy' of the grid which creates a perfect replica
         changedGrid = copy.deepcopy(grid)
+        #Iterate through our copied grid
         for n in range(9):
             for m in range(9):
+                #Randomly remove numbers
                 diceRoll = random.randint(1,B)
                 if diceRoll <= 2: #Removes 2/B numbers from the grid where B is the upper bound for our random number
+                    #Overwrite the existing number
                     changedGrid[n][m] = ''
 
+        #Return our original grid and the grid with numbers removed
         return grid + changedGrid
+
+    #If we can't do it :( return error message
     else:
         return "Failed to generate Sudoku!"
 
@@ -372,13 +384,21 @@ def fillGrid(row, col,grid):
 
     # Try placing a random number (1-9) in the current cell
     numbers = list(range(1, 10))
+    #Randomly shuffle the numbers
     random.shuffle(numbers)
+    #Iterate through the result
     for num in numbers:
+        #Check if it maintains the rules of sudoku
         if isValid(num, row, col,grid):
+            #If true then write it in the position we are currently at
             grid[row][col] = num
-            if fillGrid(nextRow, nextCol,grid):  # Recursively fill the next cell
+
+            #Recursively fill the next cell
+            if fillGrid(nextRow, nextCol,grid):
                 return True
-            grid[row][col] = 0  # Backtrack if needed
+
+            #Backtrack if needed
+            grid[row][col] = 0
 
     return False  # If no valid number is found, return False
 
@@ -399,12 +419,11 @@ def isValid(number, row, col,grid):
             if grid[i][j] == number:
                 return False
 
+    #If we made it through return True
     return True
 
 # Generate the Sudoku grid
 result = generateSudoku()
 
-
-
-
+#Run the API
 API.run(debug=False)

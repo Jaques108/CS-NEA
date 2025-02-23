@@ -90,7 +90,6 @@ class crosswordFrame(ttk.Frame):
                 # Include a timeout becuase internet can be slow and we don't want the user to be stuck
                 webResponse = requests.get(url, timeout=7)
 
-
                 #Make sure code is between the valid range
                 if not 1 <= int(code) <= int(self.endRange):
                     errorLabel.config(text='Error - Code is outside of range of valid Crosswords.') #Display error message to user
