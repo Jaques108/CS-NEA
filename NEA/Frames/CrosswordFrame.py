@@ -149,7 +149,7 @@ class crosswordFrame(ttk.Frame):
 
 
                     #Function run when the user wants to check their answers so far
-                    def submit(canvas):
+                    def check(canvas):
                         #List to store all the rectangleIDs so we can keep track of them
                         rectangleIDs = []
 
@@ -361,7 +361,7 @@ class crosswordFrame(ttk.Frame):
 
                     #Button to run the check function
 
-                    checkButton = ttk.Button(self,text = 'Check!',command = partial(submit,canvas))
+                    checkButton = ttk.Button(self,text = 'Check!',command = partial(check,canvas))
                     checkButton.place(relx = 0.75,rely = 0.965,anchor = 'center')
 
 
