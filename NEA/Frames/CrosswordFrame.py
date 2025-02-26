@@ -80,7 +80,7 @@ class crosswordFrame(ttk.Frame):
 
 
             #Create the whole URL by appending the code to the main URL
-            url = f'http://127.0.0.1:5000/GenerateCells/{int(code) + 9250}'
+            url = f'http://127.0.0.1:5000/GenerateCells/{code}'
 
             #Variable to see if we get returned crossword data
             dictData = None
@@ -89,9 +89,10 @@ class crosswordFrame(ttk.Frame):
             try:
                 # Include a timeout becuase internet can be slow and we don't want the user to be stuck
                 webResponse = requests.get(url, timeout=7)
+                
 
                 #Make sure code is between the valid range
-                if not 1 <= int(code) <= int(self.endRange):
+                if not 1 <= int(code) <= (int(self.endRange) + 9250):
                     errorLabel.config(text='Error - Code is outside of range of valid Crosswords.') #Display error message to user
                 else:
                     dictData = webResponse.json() #Update dictData if code is valid

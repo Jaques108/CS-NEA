@@ -1,4 +1,3 @@
-from click import password_option
 from flask import Flask,request,jsonify
 from bs4 import BeautifulSoup
 from sqlite3 import Error
@@ -156,7 +155,8 @@ def login():
 @API.route('/GenerateCells/<code>', methods=['GET'])
 def crossword(code):
 
-    #Using generic url is because every crossword starts off with this url and the only difference is the number that way separating the two allows for greater control of the crossword we want
+    #Using generic url is because every crossword starts off with this url and the only difference
+    #is the number that way separating the two allows for greater control of the crossword we want
     genericUrl = "https://www.theguardian.com/crosswords/quick/"
     #Concanatate the url with the number
     url = genericUrl + code
@@ -185,8 +185,9 @@ def crossword(code):
 
     #Iterate through our clues stored in 'entries'
     for item in jsonified['entries']:
-        #Pattern is a variable which we can use in re.sub - it comes from some of the clues still having html elements in them like <i> or <b> -
-        # so we use these following lines of code to remove them
+        #Pattern is a variable which we can use in re.sub - it comes from some of the clues still
+        #having html elements in them like <i> or <b> -
+        #so we use these following lines of code to remove them
         pattern = r'</?(i|span|b)>'
         uncleanClueText = item['clue']
         clue = re.sub(pattern, '', uncleanClueText)
@@ -239,9 +240,9 @@ def crossword(code):
 
 
 
-    #Our solution grid will be the result of the function 'cellsBelongingToWord'.
+    #Our solution grid will be the result of the function 'createSolutionGrid'.
     #The point of the grid is to have a representation of what the solved grid should look like
-    solutionGrid = cellsBelongingToWord(jsonified,cells)
+    solutionGrid = createSolutionGrid(jsonified,cells)
 
     #Return all the data we have
     result = {
@@ -253,7 +254,7 @@ def crossword(code):
 
 
 #Now we use our previous setup to differentiate our cells
-def cellsBelongingToWord(var,cells):
+def createSolutionGrid(var,cells):
     solutionGrid = [[None for x in range(13)] for y in range(13)]
 
     #Do the same iteration as the previous function - the variable jsonified is passed from the original function
@@ -261,12 +262,14 @@ def cellsBelongingToWord(var,cells):
         #Variables we need for if a word is across or down so we don't have to write the whole code twice
         across = False
         down = False
+        #Variables for the across or down symbols
         defaultChar = None
         inferiorChar = None
 
 
         #Find where the x and y coordinates are stored and save in variable temp
         temp = item['position']
+
         #Find the respective x and y coordinates
         posX = temp['x']
         posY = temp['y']
@@ -292,7 +295,8 @@ def cellsBelongingToWord(var,cells):
 
         for x in range(length):
             if across:
-                #Assign each cell a correct letter based of the string of the clue solution - store this in the array solution grid
+                #Assign each cell a correct letter based of the string of the clue solution -
+                #store this in the array solution grid
                 solutionGrid[posY][posX + x] = solution[x]
 
                 #Generate the cell coordinates - using zfill again to retain leading 0s
@@ -318,7 +322,8 @@ def cellsBelongingToWord(var,cells):
             if x == 0:
                 cell['text'] = number
 
-            #If the cell is currently a black square then we add two dashes across to signify that it belongs to an across word
+            #If the cell is currently a black square then we add two dashes across
+            #to signify that it belongs to an across word
             elif text == "B":
                 cell['text'] = defaultChar
 
