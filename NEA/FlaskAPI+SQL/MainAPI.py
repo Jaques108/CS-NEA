@@ -24,12 +24,13 @@ API = Flask(__name__)
 @API.route('/CreateUser', methods=['POST'])
 def createUser():
 
+    #Get the username and password
+    #We do not need to check for validity as it has already been done by the LoginFrame
     data = request.get_json()
     username = data['username']
     password = data['password']
 
 
-    #We do not need to check for validity as it has already been done by the LoginFrame
 
     # Hash the password
     encodedPassword = password.encode('utf-8')
