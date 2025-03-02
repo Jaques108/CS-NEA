@@ -199,11 +199,13 @@ class sudokuFrame(Frame):
 
 
     def enterText(self, canvas, event):
-        #This pattern is for re - we want to make sure the input is a number so r'\d' means digit
+        #This pattern is for re - we want to make sure the
+        #input is a number so r'\d' means digit
         pattern = r'\d'
         #Our char is the input from the keyboard
         char = event.keysym.upper()
-        #This is for validation. bool(match) will return true or false. If it returns true, we know that it is a number thus a valid input
+        #This is for validation. bool(match) will return true or false.
+        #If it returns true, we know that it is a number thus a valid input
         match = re.match(pattern, char)
         match = bool(match)
 
