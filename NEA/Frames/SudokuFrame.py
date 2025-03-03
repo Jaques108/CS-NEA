@@ -1,5 +1,4 @@
 from tkinter import *
-from tkinter import font
 from functools import partial
 import re
 import requests
