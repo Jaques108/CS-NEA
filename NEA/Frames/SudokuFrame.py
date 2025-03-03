@@ -22,7 +22,10 @@ class sudokuFrame(Frame):
         self.font = font.Font(family="Arial", size=50, weight="normal")
 
 
+    #Function for the user to choose the difficulty of the Sudoku
     def chooseDifficulty(self):
+
+        #Create widgets
         self.easyButton = Button(self, text = 'Easy', width = 25, fg = 'green',font = self.font,command = lambda:setDifficulty('Easy'))
         self.easyButton.place(relx = 0.5,rely = 0.3,anchor = 'center')
 
@@ -32,10 +35,16 @@ class sudokuFrame(Frame):
         self.hardButton = Button(self, text='Hard',width = 25,fg = 'red',font = self.font,command = lambda:setDifficulty('Hard'))
         self.hardButton.place(relx = 0.5,rely = 0.9,anchor = 'center')
 
+        #Function pairing the user's button press with
+        #The value of B (Difficuly Variable)
         def setDifficulty(choice):
+            #Create dictionary of choices for easy linking
             choices = {'Easy':5,'Medium':4,'Hard':3}
+
+            #Get the value of B from the string
             self.B = choices[choice]
-            print(self.B)
+
+            #Call the main function
             self.createGrid()
 
 
