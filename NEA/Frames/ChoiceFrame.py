@@ -42,4 +42,4 @@ class choiceFrame(Frame):
         sudokuFrameInstance = self.controller.frames['sudokuFrame']
 
         #Run the createGrid function inside of sudokuFrame
-        sudokuFrameInstance.createGrid()
+        sudokuFrameInstance.chooseDifficulty()

@@ -353,9 +353,10 @@ def createSolutionGrid(var,cells):
 
 
 
-@API.route('/GenerateGrid', methods = ['GET'])
-def generateSudoku():
-    B = 5 #This number controlls how hard the sudoku is higher the easier it is
+@API.route('/GenerateGrid/<int:B>', methods = ['GET'])
+def generateSudoku(B): #The var 'B' controlls how hard the sudoku is higher the easier it is
+
+
 
     # Initialize a 9x9 grid with empty values
     grid = [[0 for x in range(9)] for y in range(9)]
@@ -374,7 +375,7 @@ def generateSudoku():
                     changedGrid[n][m] = ''
 
         #Return our original grid and the grid with numbers removed
-        return grid + changedGrid
+        return jsonify({'original': grid, 'removed': changedGrid})
 
     #If we can't do it :( return error message
     else:
@@ -428,8 +429,7 @@ def isValid(number, row, col,grid):
     #If we made it through return True
     return True
 
-# Generate the Sudoku grid
-result = generateSudoku()
+
 
 #Run the API
 API.run(debug=False)

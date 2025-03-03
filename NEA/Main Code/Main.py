@@ -12,7 +12,6 @@ from NEA.Frames.InstructionsFrame import instructionsFrame
 
 
 
-
 #Create the class
 class MainApp(tk.Tk):
     #Initialise the class

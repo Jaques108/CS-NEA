@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import font
 from functools import partial
 import re
 import requests
@@ -17,6 +18,25 @@ class sudokuFrame(Frame):
         self.selectedTextID = None
 
         self.responseLabel = Label(self, text='')
+
+        self.font = font.Font(family="Arial", size=50, weight="normal")
+
+
+    def chooseDifficulty(self):
+        self.easyButton = Button(self, text = 'Easy', width = 25, fg = 'green',font = self.font,command = lambda:setDifficulty('Easy'))
+        self.easyButton.place(relx = 0.5,rely = 0.3,anchor = 'center')
+
+        self.medButton = Button(self, text='Medium',width = 25,fg = 'orange',font = self.font,command = lambda:setDifficulty('Medium'))
+        self.medButton.place(relx = 0.5,rely = 0.6,anchor = 'center')
+
+        self.hardButton = Button(self, text='Hard',width = 25,fg = 'red',font = self.font,command = lambda:setDifficulty('Hard'))
+        self.hardButton.place(relx = 0.5,rely = 0.9,anchor = 'center')
+
+        def setDifficulty(choice):
+            choices = {'Easy':5,'Medium':4,'Hard':3}
+            self.B = choices[choice]
+            print(self.B)
+            self.createGrid()
 
 
     # Function that creates the 9x9 grid
@@ -43,7 +63,7 @@ class sudokuFrame(Frame):
 
 
 
-        self.API_URL = "http://127.0.0.1:5000/GenerateGrid"
+        self.API_URL = f'http://127.0.0.1:5000/GenerateGrid/{int(self.B)}'
         try:
             # Make a GET request to the API
             response = requests.get(self.API_URL)
@@ -51,8 +71,8 @@ class sudokuFrame(Frame):
             # Check if the request was successful
             if response.status_code == 200:
                 grids = response.json()
-                sudokuGrid = grids[9:]# Parse the JSON response
-                solutionGrid = grids[:9]
+                solutionGrid = grids['original']# Parse the JSON response
+                sudokuGrid = grids['removed']
 
             else:
                 print(f"Error: Unable to fetch data. Status Code: {response.status_code}")
