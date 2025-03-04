@@ -1,4 +1,6 @@
 from tkinter import *
+from tkinter import ttk,font
+
 from functools import partial
 import re
 import requests
@@ -18,21 +20,37 @@ class sudokuFrame(Frame):
 
         self.responseLabel = Label(self, text='')
 
-        self.font = ("Arial",50)
+        self.font = ('Raleway',50)
 
 
     #Function for the user to choose the difficulty of the Sudoku
     def chooseDifficulty(self):
 
         #Create widgets
+        self.goButton = ttk.Button(self, text='\n'+'Play!'+'\n', width=25,command = lambda:setDifficulty('Play'))
+        self.goButton.pack()
+
         self.easyButton = Button(self, text = 'Easy', width = 25, fg = 'green',font = self.font,command = lambda:setDifficulty('Easy'))
-        self.easyButton.place(relx = 0.5,rely = 0.3,anchor = 'center')
+        self.easyButton.place(relx = 0.5,rely = 0.2,anchor = 'center')
 
         self.medButton = Button(self, text='Medium',width = 25,fg = 'orange',font = self.font,command = lambda:setDifficulty('Medium'))
-        self.medButton.place(relx = 0.5,rely = 0.6,anchor = 'center')
+        self.medButton.place(relx = 0.5,rely = 0.5,anchor = 'center')
 
         self.hardButton = Button(self, text='Hard',width = 25,fg = 'red',font = self.font,command = lambda:setDifficulty('Hard'))
-        self.hardButton.place(relx = 0.5,rely = 0.9,anchor = 'center')
+        self.hardButton.place(relx = 0.5,rely = 0.8,anchor = 'center')
+
+        self.difficultyLabel = Label(self,text = 'Difficulty: ',font = self.font)
+        self.difficultyLabel.place(relx = 0.35,rely = 0.95,anchor = 'center')
+
+        self.difficultyChoiceLabel = Label(self,text = '',font = self.font)
+        self.difficultyChoiceLabel.place(relx = 0.65,rely = 0.95,anchor = 'center')
+
+        #Start the value of self.B (the difficulty variable)
+        #as None for easy error checking
+        self.B = None
+
+
+
 
         #Function pairing the user's button press with
         #The value of B (Difficuly Variable)
@@ -40,11 +58,32 @@ class sudokuFrame(Frame):
             #Create dictionary of choices for easy linking
             choices = {'Easy':5,'Medium':4,'Hard':3}
 
-            #Get the value of B from the string
-            self.B = choices[choice]
 
-            #Call the main function
-            self.createGrid()
+            #If the input is in the choices dictionary do this
+            if choice in choices:
+
+                #Set the integer value of B with it's corresponding
+                #string in the dictionary
+                self.B = choices[choice]
+
+                #Update the label to provide UI feedback to the user,
+                #letting them know the difficulty they clicked on
+                self.difficultyChoiceLabel.config(text=choice)
+
+
+            #If the input is to play
+            else:
+                #If self.B has been chosen already
+                if self.B is not None:
+                    #Delete all the current widgets on the screen
+                    for widget in self.winfo_children():
+                        widget.destroy()
+
+                    #Call the createGrid function
+                    self.createGrid()
+
+
+
 
 
     # Function that creates the 9x9 grid
