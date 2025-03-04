@@ -18,7 +18,7 @@ class sudokuFrame(Frame):
 
         self.responseLabel = Label(self, text='')
 
-        self.font = font.Font(family="Arial", size=50, weight="normal")
+        self.font = ("Arial",50)
 
 
     #Function for the user to choose the difficulty of the Sudoku

@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fcc33587-880f-4a89-98b5-cef7062c96cd" name="Changes" comment="Upload">
-      <change afterPath="$PROJECT_DIR$/NEA/Token.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEA/FlaskAPI+SQL/MainAPI.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/FlaskAPI+SQL/MainAPI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEA/Frames/ChoiceFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Frames/ChoiceFrame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEA/Frames/DifficultyFrame.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/NEA/Frames/SudokuFrame.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Frames/SudokuFrame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NEA/Main Code/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/NEA/Main Code/Main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,30 +200,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1711276629155</updated>
-    </task>
-    <task id="LOCAL-00038" summary="Upload">
-      <option name="closed" value="true" />
-      <created>1732881942978</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1732881942978</updated>
-    </task>
-    <task id="LOCAL-00039" summary="Upload">
-      <option name="closed" value="true" />
-      <created>1732887537699</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1732887537699</updated>
-    </task>
-    <task id="LOCAL-00040" summary="Upload">
-      <option name="closed" value="true" />
-      <created>1732889077445</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1732889077445</updated>
     </task>
     <task id="LOCAL-00041" summary="Upload">
       <option name="closed" value="true" />
@@ -598,7 +569,31 @@
       <option name="project" value="LOCAL" />
       <updated>1741001057931</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="Upload">
+      <option name="closed" value="true" />
+      <created>1741004808532</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1741004808532</updated>
+    </task>
+    <task id="LOCAL-00088" summary="Upload">
+      <option name="closed" value="true" />
+      <created>1741004971614</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1741004971614</updated>
+    </task>
+    <task id="LOCAL-00089" summary="Upload">
+      <option name="closed" value="true" />
+      <created>1741004991451</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1741004991451</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="UnknownFeatures">
