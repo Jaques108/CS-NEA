@@ -18,7 +18,6 @@ class sudokuFrame(Frame):
         self.selectedRectangleID = None
         self.selectedTextID = None
 
-        self.responseLabel = Label(self, text='')
 
         self.font = ('Raleway',50)
 
@@ -56,7 +55,7 @@ class sudokuFrame(Frame):
         #The value of B (Difficuly Variable)
         def setDifficulty(choice):
             #Create dictionary of choices for easy linking
-            choices = {'Easy':5,'Medium':4,'Hard':3}
+            choices = {'Easy':16,'Medium':11,'Hard':9}
 
 
             #If the input is in the choices dictionary do this
@@ -94,6 +93,7 @@ class sudokuFrame(Frame):
         self.directions = {'1':'nw','2':'n','3':'ne','4':'w','5':'center','6':'e','7':'sw','8':'s','9':'se',}
 
         self.candidateModeTexts = {i: [] for i in range(0, 81)}
+        self.responseLabel = Label(self, text='')
 
 
 

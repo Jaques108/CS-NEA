@@ -370,7 +370,7 @@ def generateSudoku(B): #The var 'B' controlls how hard the sudoku is higher the 
             for m in range(9):
                 #Randomly remove numbers
                 diceRoll = random.randint(1,B)
-                if diceRoll <= 2: #Removes 2/B numbers from the grid where B is the upper bound for our random number
+                if diceRoll <= 6: #Removes 6/B numbers from the grid where B is the upper bound for our random number
                     #Overwrite the existing number
                     changedGrid[n][m] = ''
 
