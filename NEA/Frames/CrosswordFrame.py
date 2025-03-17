@@ -198,11 +198,13 @@ class crosswordFrame(ttk.Frame):
                                     solved = False
 
                                 else:
-                                    #Find the textID by taking the second item returned in the tuple - if text exists it will be second - first is the rectangle
+                                    #Find the textID by taking the second item returned in the tuple -
+                                    #if text exists it will be second - first is the rectangle
                                     textID = tempRectangleID[1]
 
 
-                                    #If the char is correct and the text is in our textItems dictionary than we know can set the color to green to show the user that specific character is correct
+                                    #If the char is correct and the text is in our textItems dictionary
+                                    #than we know can set the color to green to show the user that specific character is correct
                                     if userChar == solutionChar and textID in textItems.values():
                                         canvas.itemconfig(textID, fill='Green')
 
