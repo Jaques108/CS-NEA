@@ -174,13 +174,18 @@ def crossword(code):
     soup = BeautifulSoup(response.text, 'html.parser')
 
     #Find all the details relating to our crossword - clues,solutions etc
-    mydivs = soup.find_all("div", {"class": "js-crossword"})
+    fullData = soup.find("gu-island", {"name": "CrosswordComponent"})
 
-    #Return our data in the variable 'data'
-    data = (mydivs[0].get('data-crossword-data'))
+
+
+    if len(fullData) == 0:
+        return 'No data was returned'
+
+    # Return our data in the variable 'data'
+    data = (fullData.get('props'))
 
     #Get the json data
-    jsonified = json.loads(data)
+    jsonified = json.loads(data)['data']
 
 
 
