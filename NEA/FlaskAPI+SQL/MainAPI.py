@@ -177,14 +177,14 @@ def crossword(code):
     fullData = soup.find("gu-island", {"name": "CrosswordComponent"})
 
 
-
+    #If the program was not able to get any data return this instead of breaking the program
     if len(fullData) == 0:
         return 'No data was returned'
 
     # Return our data in the variable 'data'
     data = (fullData.get('props'))
 
-    #Get the json data
+    #Get the json data and then return the dictionary 'data' inside our data lol
     jsonified = json.loads(data)['data']
 
 
