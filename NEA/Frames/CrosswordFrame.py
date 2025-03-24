@@ -218,19 +218,27 @@ class crosswordFrame(ttk.Frame):
                                         canvas.itemconfig(textID,fill = 'Red')
 
                         #If the whole thing is solved then show them the success frame to give them some satisfaction for solving the whole thing
-                        if 1 == 1:
+                        if solved:
                             #Get the time now the user has solved it
                             self.endTime = datetime.now(timezone.utc)
                             #Subtract it from the starting time to find the difference ie the total time
                             #Also use .split() to remove the microseconds
                             self.totalTime = str(self.endTime-self.startTime).split('.')[0]
 
-                            afile = open('Timer.txt','w')
+                            afile = open('/Users/jake/main/NEA/Main Code/Timer.txt','w')
                             afile.write(self.totalTime)
                             afile.close()
 
-                            #Show the frame
-                            self.controller.showFrame('successFrame', '700x700', 'Well Done!')
+                            # Create the frame (successFrame) instance
+                            frame = successFrame(self, None)
+                            frame.pack()
+
+
+
+                            # Trigger the time update from outside the class (this is where you call triggerTimeUpdate)
+                            frame.triggerTimeUpdate()  # This will trigger the updateTimeLabel function inside successFrame
+
+
 
 
                         #Ensure the canvas is still usable because clicking the button 'unfocuses' the canvas meaning that user inputs are not registered
