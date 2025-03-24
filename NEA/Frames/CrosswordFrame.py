@@ -1,9 +1,10 @@
 #Import our needed modules
+from NEA.Frames.SuccessFrame import successFrame
 from tkinter import *
 from tkinter import font
 from tkinter import ttk
 from functools import partial
-from datetime import date
+from datetime import date,datetime,timezone
 import json
 import requests
 import random
@@ -148,6 +149,10 @@ class crosswordFrame(ttk.Frame):
                         self.solutionGrid = self.data['solutionGrid']
 
 
+                    #Get the current time for the timer function
+                    self.startTime = datetime.now(timezone.utc)
+
+
                     #Function run when the user wants to check their answers so far
                     def check(canvas):
                         #List to store all the rectangleIDs so we can keep track of them
@@ -213,8 +218,19 @@ class crosswordFrame(ttk.Frame):
                                         canvas.itemconfig(textID,fill = 'Red')
 
                         #If the whole thing is solved then show them the success frame to give them some satisfaction for solving the whole thing
-                        if solved:
-                            self.controller.showFrame('successFrame', '600x600', 'Well Done!')
+                        if 1 == 1:
+                            #Get the time now the user has solved it
+                            self.endTime = datetime.now(timezone.utc)
+                            #Subtract it from the starting time to find the difference ie the total time
+                            #Also use .split() to remove the microseconds
+                            self.totalTime = str(self.endTime-self.startTime).split('.')[0]
+
+                            afile = open('Timer.txt','w')
+                            afile.write(self.totalTime)
+                            afile.close()
+
+                            #Show the frame
+                            self.controller.showFrame('successFrame', '700x700', 'Well Done!')
 
 
                         #Ensure the canvas is still usable because clicking the button 'unfocuses' the canvas meaning that user inputs are not registered
