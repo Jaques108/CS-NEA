@@ -1,0 +1,13 @@
+Index: NEA/Token.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiSmFrZSIsImV4cCI6MTczNDU0NTU2Mi4zODYyMDh9.GzgiEgtyf0mAq6wXqtHa-kT3CL2WkX17dKolA2ZF_do
+===================================================================
+diff --git a/NEA/Token.txt b/NEA/Token.txt
+--- a/NEA/Token.txt	(revision 96ebeca42130c01a649c26b810e082e69b3cc68b)
++++ b/NEA/Token.txt	(date 1735216953391)
+@@ -1,1 +1,1 @@
+-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiSmFrZSIsImV4cCI6MTczNDU0NTU2Mi4zODYyMDh9.GzgiEgtyf0mAq6wXqtHa-kT3CL2WkX17dKolA2ZF_do
+\ No newline at end of file
++eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiSmFrZSIsImV4cCI6MTczNTIyMDU1My4zODk0NDV9.SqdFmODSc8VH2Q_gCHeGwkkR2883PuwgouKms9MZIE0
+\ No newline at end of file

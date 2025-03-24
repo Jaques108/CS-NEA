@@ -1,0 +1,1355 @@
+{
+    "cells": {
+        "0000": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0001": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0002": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0003": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0004": {
+            "text": 1,
+            "wordNumber": [
+                [
+                    1
+                ],
+                1
+            ]
+        },
+        "0005": {
+            "text": "--",
+            "wordNumber": [
+                1
+            ]
+        },
+        "0006": {
+            "text": 2,
+            "wordNumber": [
+                [
+                    1
+                ],
+                2
+            ]
+        },
+        "0007": {
+            "text": "--",
+            "wordNumber": [
+                1
+            ]
+        },
+        "0008": {
+            "text": 3,
+            "wordNumber": [
+                [
+                    1
+                ],
+                3
+            ]
+        },
+        "0009": {
+            "text": "--",
+            "wordNumber": [
+                1
+            ]
+        },
+        "0010": {
+            "text": 4,
+            "wordNumber": [
+                [
+                    1
+                ],
+                4
+            ]
+        },
+        "0011": {
+            "text": "--",
+            "wordNumber": [
+                1
+            ]
+        },
+        "0012": {
+            "text": 5,
+            "wordNumber": [
+                [
+                    1
+                ],
+                5
+            ]
+        },
+        "0100": {
+            "text": 6,
+            "wordNumber": [
+                6
+            ]
+        },
+        "0101": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0102": {
+            "text": 7,
+            "wordNumber": [
+                7
+            ]
+        },
+        "0103": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0104": {
+            "text": "|",
+            "wordNumber": [
+                1
+            ]
+        },
+        "0105": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0106": {
+            "text": "|",
+            "wordNumber": [
+                2
+            ]
+        },
+        "0107": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0108": {
+            "text": "|",
+            "wordNumber": [
+                3
+            ]
+        },
+        "0109": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0110": {
+            "text": "|",
+            "wordNumber": [
+                4
+            ]
+        },
+        "0111": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0112": {
+            "text": "|",
+            "wordNumber": [
+                5
+            ]
+        },
+        "0200": {
+            "text": 8,
+            "wordNumber": [
+                [
+                    8
+                ],
+                6
+            ]
+        },
+        "0201": {
+            "text": "--",
+            "wordNumber": [
+                8
+            ]
+        },
+        "0202": {
+            "text": "W",
+            "wordNumber": [
+                [
+                    8
+                ],
+                7
+            ]
+        },
+        "0203": {
+            "text": "--",
+            "wordNumber": [
+                8
+            ]
+        },
+        "0204": {
+            "text": "W",
+            "wordNumber": [
+                [
+                    8
+                ],
+                1
+            ]
+        },
+        "0205": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0206": {
+            "text": 9,
+            "wordNumber": [
+                [
+                    9
+                ],
+                2
+            ]
+        },
+        "0207": {
+            "text": "--",
+            "wordNumber": [
+                9
+            ]
+        },
+        "0208": {
+            "text": "W",
+            "wordNumber": [
+                [
+                    9
+                ],
+                3
+            ]
+        },
+        "0209": {
+            "text": "--",
+            "wordNumber": [
+                9
+            ]
+        },
+        "0210": {
+            "text": "W",
+            "wordNumber": [
+                [
+                    9
+                ],
+                4
+            ]
+        },
+        "0211": {
+            "text": "--",
+            "wordNumber": [
+                9
+            ]
+        },
+        "0212": {
+            "text": "W",
+            "wordNumber": [
+                [
+                    9
+                ],
+                5
+            ]
+        },
+        "0300": {
+            "text": "|",
+            "wordNumber": [
+                6
+            ]
+        },
+        "0301": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0302": {
+            "text": "|",
+            "wordNumber": [
+                7
+            ]
+        },
+        "0303": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0304": {
+            "text": "|",
+            "wordNumber": [
+                1
+            ]
+        },
+        "0305": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0306": {
+            "text": "|",
+            "wordNumber": [
+                2
+            ]
+        },
+        "0307": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0308": {
+            "text": "|",
+            "wordNumber": [
+                3
+            ]
+        },
+        "0309": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0310": {
+            "text": "|",
+            "wordNumber": [
+                4
+            ]
+        },
+        "0311": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0312": {
+            "text": "|",
+            "wordNumber": [
+                5
+            ]
+        },
+        "0400": {
+            "text": 10,
+            "wordNumber": [
+                [
+                    10
+                ],
+                6
+            ]
+        },
+        "0401": {
+            "text": "--",
+            "wordNumber": [
+                10
+            ]
+        },
+        "0402": {
+            "text": "W",
+            "wordNumber": [
+                [
+                    10
+                ],
+                7
+            ]
+        },
+        "0403": {
+            "text": "--",
+            "wordNumber": [
+                10
+            ]
+        },
+        "0404": {
+            "text": "W",
+            "wordNumber": [
+                [
+                    10
+                ],
+                1
+            ]
+        },
+        "0405": {
+            "text": "--",
+            "wordNumber": [
+                10
+            ]
+        },
+        "0406": {
+            "text": "W",
+            "wordNumber": [
+                [
+                    10
+                ],
+                2
+            ]
+        },
+        "0407": {
+            "text": "--",
+            "wordNumber": [
+                10
+            ]
+        },
+        "0408": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0409": {
+            "text": 11,
+            "wordNumber": [
+                11
+            ]
+        },
+        "0410": {
+            "text": "W",
+            "wordNumber": [
+                [
+                    11
+                ],
+                4
+            ]
+        },
+        "0411": {
+            "text": "--",
+            "wordNumber": [
+                11
+            ]
+        },
+        "0412": {
+            "text": "W",
+            "wordNumber": [
+                [
+                    11
+                ],
+                5
+            ]
+        },
+        "0500": {
+            "text": "|",
+            "wordNumber": [
+                6
+            ]
+        },
+        "0501": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0502": {
+            "text": "|",
+            "wordNumber": [
+                7
+            ]
+        },
+        "0503": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0504": {
+            "text": "|",
+            "wordNumber": [
+                1
+            ]
+        },
+        "0505": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0506": {
+            "text": "|",
+            "wordNumber": [
+                2
+            ]
+        },
+        "0507": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0508": {
+            "text": 12,
+            "wordNumber": [
+                12
+            ]
+        },
+        "0509": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0510": {
+            "text": "|",
+            "wordNumber": [
+                4
+            ]
+        },
+        "0511": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0512": {
+            "text": "|",
+            "wordNumber": [
+                5
+            ]
+        },
+        "0600": {
+            "text": 13,
+            "wordNumber": [
+                [
+                    13
+                ],
+                6
+            ]
+        },
+        "0601": {
+            "text": "--",
+            "wordNumber": [
+                13
+            ]
+        },
+        "0602": {
+            "text": "W",
+            "wordNumber": [
+                [
+                    13
+                ],
+                7
+            ]
+        },
+        "0603": {
+            "text": "--",
+            "wordNumber": [
+                13
+            ]
+        },
+        "0604": {
+            "text": "W",
+            "wordNumber": [
+                [
+                    13
+                ],
+                1
+            ]
+        },
+        "0605": {
+            "text": "--",
+            "wordNumber": [
+                13
+            ]
+        },
+        "0606": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0607": {
+            "text": 14,
+            "wordNumber": [
+                14
+            ]
+        },
+        "0608": {
+            "text": "W",
+            "wordNumber": [
+                [
+                    14
+                ],
+                12
+            ]
+        },
+        "0609": {
+            "text": "--",
+            "wordNumber": [
+                14
+            ]
+        },
+        "0610": {
+            "text": "W",
+            "wordNumber": [
+                [
+                    14
+                ],
+                4
+            ]
+        },
+        "0611": {
+            "text": "--",
+            "wordNumber": [
+                14
+            ]
+        },
+        "0612": {
+            "text": "W",
+            "wordNumber": [
+                [
+                    14
+                ],
+                5
+            ]
+        },
+        "0700": {
+            "text": "|",
+            "wordNumber": [
+                6
+            ]
+        },
+        "0701": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0702": {
+            "text": "|",
+            "wordNumber": [
+                7
+            ]
+        },
+        "0703": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0704": {
+            "text": "|",
+            "wordNumber": [
+                1
+            ]
+        },
+        "0705": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0706": {
+            "text": 15,
+            "wordNumber": [
+                15
+            ]
+        },
+        "0707": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0708": {
+            "text": "|",
+            "wordNumber": [
+                12
+            ]
+        },
+        "0709": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0710": {
+            "text": "|",
+            "wordNumber": [
+                4
+            ]
+        },
+        "0711": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0712": {
+            "text": "|",
+            "wordNumber": [
+                5
+            ]
+        },
+        "0800": {
+            "text": 16,
+            "wordNumber": [
+                [
+                    16
+                ],
+                6
+            ]
+        },
+        "0801": {
+            "text": "--",
+            "wordNumber": [
+                16
+            ]
+        },
+        "0802": {
+            "text": "W",
+            "wordNumber": [
+                [
+                    16
+                ],
+                7
+            ]
+        },
+        "0803": {
+            "text": "--",
+            "wordNumber": [
+                16
+            ]
+        },
+        "0804": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0805": {
+            "text": 17,
+            "wordNumber": [
+                17
+            ]
+        },
+        "0806": {
+            "text": "W",
+            "wordNumber": [
+                [
+                    17
+                ],
+                15
+            ]
+        },
+        "0807": {
+            "text": "--",
+            "wordNumber": [
+                17
+            ]
+        },
+        "0808": {
+            "text": "W",
+            "wordNumber": [
+                [
+                    17
+                ],
+                12
+            ]
+        },
+        "0809": {
+            "text": "--",
+            "wordNumber": [
+                17
+            ]
+        },
+        "0810": {
+            "text": "W",
+            "wordNumber": [
+                [
+                    17
+                ],
+                4
+            ]
+        },
+        "0811": {
+            "text": "--",
+            "wordNumber": [
+                17
+            ]
+        },
+        "0812": {
+            "text": "W",
+            "wordNumber": [
+                [
+                    17
+                ],
+                5
+            ]
+        },
+        "0900": {
+            "text": "|",
+            "wordNumber": [
+                6
+            ]
+        },
+        "0901": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0902": {
+            "text": "|",
+            "wordNumber": [
+                7
+            ]
+        },
+        "0903": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0904": {
+            "text": 18,
+            "wordNumber": [
+                18
+            ]
+        },
+        "0905": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0906": {
+            "text": "|",
+            "wordNumber": [
+                15
+            ]
+        },
+        "0907": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0908": {
+            "text": "|",
+            "wordNumber": [
+                12
+            ]
+        },
+        "0909": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0910": {
+            "text": "|",
+            "wordNumber": [
+                4
+            ]
+        },
+        "0911": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0912": {
+            "text": "|",
+            "wordNumber": [
+                5
+            ]
+        },
+        "1000": {
+            "text": 19,
+            "wordNumber": [
+                [
+                    19
+                ],
+                6
+            ]
+        },
+        "1001": {
+            "text": "--",
+            "wordNumber": [
+                19
+            ]
+        },
+        "1002": {
+            "text": "W",
+            "wordNumber": [
+                [
+                    19
+                ],
+                7
+            ]
+        },
+        "1003": {
+            "text": "--",
+            "wordNumber": [
+                19
+            ]
+        },
+        "1004": {
+            "text": "W",
+            "wordNumber": [
+                [
+                    19
+                ],
+                18
+            ]
+        },
+        "1005": {
+            "text": "--",
+            "wordNumber": [
+                19
+            ]
+        },
+        "1006": {
+            "text": "W",
+            "wordNumber": [
+                [
+                    19
+                ],
+                15
+            ]
+        },
+        "1007": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "1008": {
+            "text": 20,
+            "wordNumber": [
+                [
+                    20
+                ],
+                12
+            ]
+        },
+        "1009": {
+            "text": "--",
+            "wordNumber": [
+                20
+            ]
+        },
+        "1010": {
+            "text": "W",
+            "wordNumber": [
+                [
+                    20
+                ],
+                4
+            ]
+        },
+        "1011": {
+            "text": "--",
+            "wordNumber": [
+                20
+            ]
+        },
+        "1012": {
+            "text": "W",
+            "wordNumber": [
+                [
+                    20
+                ],
+                5
+            ]
+        },
+        "1100": {
+            "text": "|",
+            "wordNumber": [
+                6
+            ]
+        },
+        "1101": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "1102": {
+            "text": "|",
+            "wordNumber": [
+                7
+            ]
+        },
+        "1103": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "1104": {
+            "text": "|",
+            "wordNumber": [
+                18
+            ]
+        },
+        "1105": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "1106": {
+            "text": "|",
+            "wordNumber": [
+                15
+            ]
+        },
+        "1107": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "1108": {
+            "text": "|",
+            "wordNumber": [
+                12
+            ]
+        },
+        "1109": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "1110": {
+            "text": "|",
+            "wordNumber": [
+                4
+            ]
+        },
+        "1111": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "1112": {
+            "text": "|",
+            "wordNumber": [
+                5
+            ]
+        },
+        "1200": {
+            "text": 21,
+            "wordNumber": [
+                [
+                    21
+                ],
+                6
+            ]
+        },
+        "1201": {
+            "text": "--",
+            "wordNumber": [
+                21
+            ]
+        },
+        "1202": {
+            "text": "W",
+            "wordNumber": [
+                [
+                    21
+                ],
+                7
+            ]
+        },
+        "1203": {
+            "text": "--",
+            "wordNumber": [
+                21
+            ]
+        },
+        "1204": {
+            "text": "W",
+            "wordNumber": [
+                [
+                    21
+                ],
+                18
+            ]
+        },
+        "1205": {
+            "text": "--",
+            "wordNumber": [
+                21
+            ]
+        },
+        "1206": {
+            "text": "W",
+            "wordNumber": [
+                [
+                    21
+                ],
+                15
+            ]
+        },
+        "1207": {
+            "text": "--",
+            "wordNumber": [
+                21
+            ]
+        },
+        "1208": {
+            "text": "W",
+            "wordNumber": [
+                [
+                    21
+                ],
+                12
+            ]
+        },
+        "1209": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "1210": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "1211": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "1212": {
+            "text": "B",
+            "wordNumber": null
+        }
+    },
+    "clues": [
+        [
+            "Prankster\u2019s call (5,4)",
+            1,
+            "across"
+        ],
+        [
+            "Session with crossword and granola? (3-2)",
+            8,
+            "across"
+        ],
+        [
+            "Workplace filling station (7)",
+            9,
+            "across"
+        ],
+        [
+            "Chardonnay and Perrier, perhaps (8)",
+            10,
+            "across"
+        ],
+        [
+            "Singer \u2013 ale \u2013 fish (4)",
+            11,
+            "across"
+        ],
+        [
+            "See 17",
+            17,
+            "across"
+        ],
+        [
+            "\u2018Beefy\u2019 cricketer Ian (6)",
+            14,
+            "across"
+        ],
+        [
+            "Pick a ____, any ____ (4)",
+            16,
+            "across"
+        ],
+        [
+            "Orwell novel with Room 101 (8,6-4)",
+            17,
+            "across"
+        ],
+        [
+            "Fleabag and Frasier, e.g. (7)",
+            19,
+            "across"
+        ],
+        [
+            "Modern alternatives to cabs (5)",
+            20,
+            "across"
+        ],
+        [
+            "Knocks down with a feather (9)",
+            21,
+            "across"
+        ],
+        [
+            "Add notes to (8)",
+            1,
+            "down"
+        ],
+        [
+            "Din \u2013 con \u2013 sports kit (6)",
+            2,
+            "down"
+        ],
+        [
+            "Achieve \u2013 country \u2013 alight (4)",
+            3,
+            "down"
+        ],
+        [
+            "One who does better than necessary (12)",
+            4,
+            "down"
+        ],
+        [
+            "Solitude \u2013 seen moonless (anag) (12)",
+            5,
+            "down"
+        ],
+        [
+            "Items of protection while broken bones knit (7,5)",
+            6,
+            "down"
+        ],
+        [
+            "Item often atop a freezer (12)",
+            7,
+            "down"
+        ],
+        [
+            "Smokescreens and fa\u00e7ades (5-3)",
+            12,
+            "down"
+        ],
+        [
+            "Booths for tickets and copies of the Guardian (6)",
+            15,
+            "down"
+        ],
+        [
+            "See 17 Across",
+            17,
+            "down"
+        ]
+    ],
+    "solutionGrid": [
+        [
+            null,
+            null,
+            null,
+            null,
+            "A",
+            "P",
+            "R",
+            "I",
+            "L",
+            "F",
+            "O",
+            "O",
+            "L"
+        ],
+        [
+            "P",
+            null,
+            "R",
+            null,
+            "N",
+            null,
+            "A",
+            null,
+            "A",
+            null,
+            "V",
+            null,
+            "O"
+        ],
+        [
+            "L",
+            "I",
+            "E",
+            "I",
+            "N",
+            null,
+            "C",
+            "A",
+            "N",
+            "T",
+            "E",
+            "E",
+            "N"
+        ],
+        [
+            "A",
+            null,
+            "F",
+            null,
+            "O",
+            null,
+            "K",
+            null,
+            "D",
+            null,
+            "R",
+            null,
+            "E"
+        ],
+        [
+            "S",
+            "P",
+            "R",
+            "I",
+            "T",
+            "Z",
+            "E",
+            "R",
+            null,
+            "B",
+            "A",
+            "S",
+            "S"
+        ],
+        [
+            "T",
+            null,
+            "I",
+            null,
+            "A",
+            null,
+            "T",
+            null,
+            "C",
+            null,
+            "C",
+            null,
+            "O"
+        ],
+        [
+            "E",
+            "I",
+            "G",
+            "H",
+            "T",
+            "Y",
+            null,
+            "B",
+            "O",
+            "T",
+            "H",
+            "A",
+            "M"
+        ],
+        [
+            "R",
+            null,
+            "E",
+            null,
+            "E",
+            null,
+            "K",
+            null,
+            "V",
+            null,
+            "I",
+            null,
+            "E"
+        ],
+        [
+            "C",
+            "A",
+            "R",
+            "D",
+            null,
+            "N",
+            "I",
+            "N",
+            "E",
+            "T",
+            "E",
+            "E",
+            "N"
+        ],
+        [
+            "A",
+            null,
+            "A",
+            null,
+            "F",
+            null,
+            "O",
+            null,
+            "R",
+            null,
+            "V",
+            null,
+            "E"
+        ],
+        [
+            "S",
+            "I",
+            "T",
+            "C",
+            "O",
+            "M",
+            "S",
+            null,
+            "U",
+            "B",
+            "E",
+            "R",
+            "S"
+        ],
+        [
+            "T",
+            null,
+            "O",
+            null,
+            "U",
+            null,
+            "K",
+            null,
+            "P",
+            null,
+            "R",
+            null,
+            "S"
+        ],
+        [
+            "S",
+            "U",
+            "R",
+            "P",
+            "R",
+            "I",
+            "S",
+            "E",
+            "S",
+            null,
+            null,
+            null,
+            null
+        ]
+    ]
+}
