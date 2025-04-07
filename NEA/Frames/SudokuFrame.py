@@ -132,7 +132,8 @@ class sudokuFrame(Frame):
         for row in range(9):
             for col in range(9):
 
-                # Multiply the coordinates by cellSize to get the pixel values of where to place the rectangles (this finds the top left corner of the rectangle)
+                # Multiply the coordinates by cellSize to get the pixel values of where to
+                # place the rectangles (this finds the top left corner of the rectangle)
                 x1 = col * cellSize
                 y1 = row * cellSize
 
@@ -459,5 +460,3 @@ class sudokuFrame(Frame):
 
     def normalMode(self):
         self.candidateModeBool = False
-
-        

@@ -1,28 +1,42 @@
 {
     "cells": {
         "0000": {
-            "text": "B",
-            "wordNumber": null
-        },
-        "0001": {
-            "text": "B",
-            "wordNumber": null
-        },
-        "0002": {
-            "text": "B",
-            "wordNumber": null
-        },
-        "0003": {
-            "text": "B",
-            "wordNumber": null
-        },
-        "0004": {
             "text": 1,
             "wordNumber": [
                 [
                     1
                 ],
                 1
+            ]
+        },
+        "0001": {
+            "text": "--",
+            "wordNumber": [
+                1
+            ]
+        },
+        "0002": {
+            "text": 2,
+            "wordNumber": [
+                [
+                    1
+                ],
+                2
+            ]
+        },
+        "0003": {
+            "text": "--",
+            "wordNumber": [
+                1
+            ]
+        },
+        "0004": {
+            "text": 3,
+            "wordNumber": [
+                [
+                    1
+                ],
+                3
             ]
         },
         "0005": {
@@ -32,63 +46,58 @@
             ]
         },
         "0006": {
-            "text": 2,
-            "wordNumber": [
-                [
-                    1
-                ],
-                2
-            ]
+            "text": "B",
+            "wordNumber": null
         },
         "0007": {
-            "text": "--",
+            "text": 4,
             "wordNumber": [
-                1
+                4
             ]
         },
         "0008": {
-            "text": 3,
+            "text": 5,
             "wordNumber": [
                 [
-                    1
+                    4
                 ],
-                3
+                5
             ]
         },
         "0009": {
             "text": "--",
             "wordNumber": [
-                1
+                4
             ]
         },
         "0010": {
-            "text": 4,
+            "text": 6,
             "wordNumber": [
                 [
-                    1
+                    4
                 ],
-                4
+                6
             ]
         },
         "0011": {
             "text": "--",
             "wordNumber": [
-                1
+                4
             ]
         },
         "0012": {
-            "text": 5,
+            "text": 7,
             "wordNumber": [
                 [
-                    1
+                    4
                 ],
-                5
+                7
             ]
         },
         "0100": {
-            "text": 6,
+            "text": "|",
             "wordNumber": [
-                6
+                1
             ]
         },
         "0101": {
@@ -96,9 +105,9 @@
             "wordNumber": null
         },
         "0102": {
-            "text": 7,
+            "text": "|",
             "wordNumber": [
-                7
+                2
             ]
         },
         "0103": {
@@ -108,7 +117,7 @@
         "0104": {
             "text": "|",
             "wordNumber": [
-                1
+                3
             ]
         },
         "0105": {
@@ -116,9 +125,9 @@
             "wordNumber": null
         },
         "0106": {
-            "text": "|",
+            "text": 8,
             "wordNumber": [
-                2
+                8
             ]
         },
         "0107": {
@@ -128,7 +137,7 @@
         "0108": {
             "text": "|",
             "wordNumber": [
-                3
+                5
             ]
         },
         "0109": {
@@ -138,7 +147,7 @@
         "0110": {
             "text": "|",
             "wordNumber": [
-                4
+                6
             ]
         },
         "0111": {
@@ -148,54 +157,26 @@
         "0112": {
             "text": "|",
             "wordNumber": [
-                5
+                7
             ]
         },
         "0200": {
-            "text": 8,
+            "text": 9,
             "wordNumber": [
                 [
-                    8
+                    9
                 ],
-                6
+                1
             ]
         },
         "0201": {
             "text": "--",
             "wordNumber": [
-                8
+                9
             ]
         },
         "0202": {
             "text": "W",
-            "wordNumber": [
-                [
-                    8
-                ],
-                7
-            ]
-        },
-        "0203": {
-            "text": "--",
-            "wordNumber": [
-                8
-            ]
-        },
-        "0204": {
-            "text": "W",
-            "wordNumber": [
-                [
-                    8
-                ],
-                1
-            ]
-        },
-        "0205": {
-            "text": "B",
-            "wordNumber": null
-        },
-        "0206": {
-            "text": 9,
             "wordNumber": [
                 [
                     9
@@ -203,13 +184,13 @@
                 2
             ]
         },
-        "0207": {
+        "0203": {
             "text": "--",
             "wordNumber": [
                 9
             ]
         },
-        "0208": {
+        "0204": {
             "text": "W",
             "wordNumber": [
                 [
@@ -218,40 +199,68 @@
                 3
             ]
         },
-        "0209": {
+        "0205": {
             "text": "--",
             "wordNumber": [
                 9
+            ]
+        },
+        "0206": {
+            "text": "W",
+            "wordNumber": [
+                [
+                    9
+                ],
+                8
+            ]
+        },
+        "0207": {
+            "text": "B",
+            "wordNumber": null
+        },
+        "0208": {
+            "text": 10,
+            "wordNumber": [
+                [
+                    10
+                ],
+                5
+            ]
+        },
+        "0209": {
+            "text": "--",
+            "wordNumber": [
+                10
             ]
         },
         "0210": {
             "text": "W",
             "wordNumber": [
                 [
-                    9
+                    10
                 ],
-                4
+                6
             ]
         },
         "0211": {
             "text": "--",
             "wordNumber": [
-                9
+                10
             ]
         },
         "0212": {
             "text": "W",
             "wordNumber": [
                 [
-                    9
+                    10
                 ],
-                5
+                7
             ]
         },
         "0300": {
             "text": "|",
             "wordNumber": [
-                6
+                1
             ]
         },
         "0301": {
@@ -261,7 +270,7 @@
         "0302": {
             "text": "|",
             "wordNumber": [
-                7
+                2
             ]
         },
         "0303": {
@@ -271,7 +280,7 @@
         "0304": {
             "text": "|",
             "wordNumber": [
-                1
+                3
             ]
         },
         "0305": {
@@ -281,7 +290,7 @@
         "0306": {
             "text": "|",
             "wordNumber": [
-                2
+                8
             ]
         },
         "0307": {
@@ -291,7 +300,7 @@
         "0308": {
             "text": "|",
             "wordNumber": [
-                3
+                5
             ]
         },
         "0309": {
@@ -301,7 +310,7 @@
         "0310": {
             "text": "|",
             "wordNumber": [
-                4
+                6
             ]
         },
         "0311": {
@@ -311,107 +320,110 @@
         "0312": {
             "text": "|",
             "wordNumber": [
-                5
+                7
             ]
         },
         "0400": {
-            "text": 10,
+            "text": 11,
             "wordNumber": [
                 [
-                    10
+                    11
                 ],
-                6
+                1
             ]
         },
         "0401": {
             "text": "--",
             "wordNumber": [
-                10
+                11
             ]
         },
         "0402": {
             "text": "W",
             "wordNumber": [
                 [
-                    10
+                    11
                 ],
-                7
+                2
             ]
         },
         "0403": {
             "text": "--",
             "wordNumber": [
-                10
+                11
             ]
         },
         "0404": {
             "text": "W",
             "wordNumber": [
                 [
-                    10
+                    11
                 ],
-                1
+                3
             ]
         },
         "0405": {
-            "text": "--",
-            "wordNumber": [
-                10
-            ]
+            "text": "B",
+            "wordNumber": null
         },
         "0406": {
-            "text": "W",
+            "text": 12,
             "wordNumber": [
                 [
-                    10
+                    12
                 ],
-                2
+                8
             ]
         },
         "0407": {
             "text": "--",
             "wordNumber": [
-                10
+                12
             ]
         },
         "0408": {
-            "text": "B",
-            "wordNumber": null
+            "text": "W",
+            "wordNumber": [
+                [
+                    12
+                ],
+                5
+            ]
         },
         "0409": {
-            "text": 11,
+            "text": "--",
             "wordNumber": [
-                11
+                12
             ]
         },
         "0410": {
             "text": "W",
             "wordNumber": [
                 [
-                    11
+                    12
                 ],
-                4
+                6
             ]
         },
         "0411": {
             "text": "--",
             "wordNumber": [
-                11
+                12
             ]
         },
         "0412": {
             "text": "W",
             "wordNumber": [
                 [
-                    11
+                    12
                 ],
-                5
+                7
             ]
         },
         "0500": {
             "text": "|",
             "wordNumber": [
-                6
+                1
             ]
         },
         "0501": {
@@ -419,10 +431,8 @@
             "wordNumber": null
         },
         "0502": {
-            "text": "|",
-            "wordNumber": [
-                7
-            ]
+            "text": "B",
+            "wordNumber": null
         },
         "0503": {
             "text": "B",
@@ -431,7 +441,7 @@
         "0504": {
             "text": "|",
             "wordNumber": [
-                1
+                3
             ]
         },
         "0505": {
@@ -441,7 +451,7 @@
         "0506": {
             "text": "|",
             "wordNumber": [
-                2
+                8
             ]
         },
         "0507": {
@@ -449,10 +459,8 @@
             "wordNumber": null
         },
         "0508": {
-            "text": 12,
-            "wordNumber": [
-                12
-            ]
+            "text": "B",
+            "wordNumber": null
         },
         "0509": {
             "text": "B",
@@ -461,7 +469,7 @@
         "0510": {
             "text": "|",
             "wordNumber": [
-                4
+                6
             ]
         },
         "0511": {
@@ -471,31 +479,26 @@
         "0512": {
             "text": "|",
             "wordNumber": [
-                5
+                7
             ]
         },
         "0600": {
-            "text": 13,
-            "wordNumber": [
-                [
-                    13
-                ],
-                6
-            ]
+            "text": "B",
+            "wordNumber": null
         },
         "0601": {
-            "text": "--",
+            "text": 13,
             "wordNumber": [
                 13
             ]
         },
         "0602": {
-            "text": "W",
+            "text": 14,
             "wordNumber": [
                 [
                     13
                 ],
-                7
+                14
             ]
         },
         "0603": {
@@ -510,7 +513,7 @@
                 [
                     13
                 ],
-                1
+                3
             ]
         },
         "0605": {
@@ -520,58 +523,58 @@
             ]
         },
         "0606": {
-            "text": "B",
-            "wordNumber": null
-        },
-        "0607": {
-            "text": 14,
-            "wordNumber": [
-                14
-            ]
-        },
-        "0608": {
             "text": "W",
             "wordNumber": [
                 [
-                    14
+                    13
                 ],
-                12
+                8
+            ]
+        },
+        "0607": {
+            "text": "--",
+            "wordNumber": [
+                13
+            ]
+        },
+        "0608": {
+            "text": 15,
+            "wordNumber": [
+                [
+                    13
+                ],
+                15
             ]
         },
         "0609": {
             "text": "--",
             "wordNumber": [
-                14
+                13
             ]
         },
         "0610": {
             "text": "W",
             "wordNumber": [
                 [
-                    14
+                    13
                 ],
-                4
+                6
             ]
         },
         "0611": {
             "text": "--",
             "wordNumber": [
-                14
+                13
             ]
         },
         "0612": {
-            "text": "W",
-            "wordNumber": [
-                [
-                    14
-                ],
-                5
-            ]
+            "text": "B",
+            "wordNumber": null
         },
         "0700": {
-            "text": "|",
+            "text": 16,
             "wordNumber": [
-                6
+                16
             ]
         },
         "0701": {
@@ -581,7 +584,7 @@
         "0702": {
             "text": "|",
             "wordNumber": [
-                7
+                14
             ]
         },
         "0703": {
@@ -589,19 +592,17 @@
             "wordNumber": null
         },
         "0704": {
-            "text": "|",
-            "wordNumber": [
-                1
-            ]
+            "text": "B",
+            "wordNumber": null
         },
         "0705": {
             "text": "B",
             "wordNumber": null
         },
         "0706": {
-            "text": 15,
+            "text": "|",
             "wordNumber": [
-                15
+                8
             ]
         },
         "0707": {
@@ -611,7 +612,7 @@
         "0708": {
             "text": "|",
             "wordNumber": [
-                12
+                15
             ]
         },
         "0709": {
@@ -619,119 +620,120 @@
             "wordNumber": null
         },
         "0710": {
-            "text": "|",
-            "wordNumber": [
-                4
-            ]
+            "text": "B",
+            "wordNumber": null
         },
         "0711": {
             "text": "B",
             "wordNumber": null
         },
         "0712": {
-            "text": "|",
+            "text": 17,
             "wordNumber": [
-                5
+                17
             ]
         },
         "0800": {
-            "text": 16,
+            "text": 18,
             "wordNumber": [
                 [
-                    16
+                    18
                 ],
-                6
+                16
             ]
         },
         "0801": {
             "text": "--",
             "wordNumber": [
-                16
+                18
             ]
         },
         "0802": {
             "text": "W",
             "wordNumber": [
                 [
-                    16
+                    18
                 ],
-                7
+                14
             ]
         },
         "0803": {
             "text": "--",
             "wordNumber": [
-                16
+                18
             ]
         },
         "0804": {
-            "text": "B",
-            "wordNumber": null
+            "text": 19,
+            "wordNumber": [
+                [
+                    18
+                ],
+                19
+            ]
         },
         "0805": {
-            "text": 17,
+            "text": "--",
             "wordNumber": [
-                17
+                18
             ]
         },
         "0806": {
             "text": "W",
             "wordNumber": [
                 [
-                    17
+                    18
                 ],
-                15
+                8
             ]
         },
         "0807": {
-            "text": "--",
-            "wordNumber": [
-                17
-            ]
+            "text": "B",
+            "wordNumber": null
         },
         "0808": {
-            "text": "W",
+            "text": 20,
             "wordNumber": [
                 [
-                    17
+                    20
                 ],
-                12
+                15
             ]
         },
         "0809": {
             "text": "--",
             "wordNumber": [
-                17
+                20
             ]
         },
         "0810": {
-            "text": "W",
+            "text": 21,
             "wordNumber": [
                 [
-                    17
+                    20
                 ],
-                4
+                21
             ]
         },
         "0811": {
             "text": "--",
             "wordNumber": [
-                17
+                20
             ]
         },
         "0812": {
             "text": "W",
             "wordNumber": [
                 [
-                    17
+                    20
                 ],
-                5
+                17
             ]
         },
         "0900": {
             "text": "|",
             "wordNumber": [
-                6
+                16
             ]
         },
         "0901": {
@@ -741,7 +743,7 @@
         "0902": {
             "text": "|",
             "wordNumber": [
-                7
+                14
             ]
         },
         "0903": {
@@ -749,9 +751,9 @@
             "wordNumber": null
         },
         "0904": {
-            "text": 18,
+            "text": "|",
             "wordNumber": [
-                18
+                19
             ]
         },
         "0905": {
@@ -761,7 +763,7 @@
         "0906": {
             "text": "|",
             "wordNumber": [
-                15
+                8
             ]
         },
         "0907": {
@@ -771,7 +773,7 @@
         "0908": {
             "text": "|",
             "wordNumber": [
-                12
+                15
             ]
         },
         "0909": {
@@ -781,7 +783,7 @@
         "0910": {
             "text": "|",
             "wordNumber": [
-                4
+                21
             ]
         },
         "0911": {
@@ -791,110 +793,110 @@
         "0912": {
             "text": "|",
             "wordNumber": [
-                5
+                17
             ]
         },
         "1000": {
-            "text": 19,
+            "text": 22,
             "wordNumber": [
                 [
-                    19
+                    22
                 ],
-                6
+                16
             ]
         },
         "1001": {
             "text": "--",
             "wordNumber": [
-                19
+                22
             ]
         },
         "1002": {
             "text": "W",
             "wordNumber": [
                 [
-                    19
+                    22
                 ],
-                7
+                14
             ]
         },
         "1003": {
             "text": "--",
             "wordNumber": [
-                19
+                22
             ]
         },
         "1004": {
             "text": "W",
             "wordNumber": [
                 [
-                    19
+                    22
                 ],
-                18
-            ]
-        },
-        "1005": {
-            "text": "--",
-            "wordNumber": [
                 19
             ]
         },
-        "1006": {
-            "text": "W",
-            "wordNumber": [
-                [
-                    19
-                ],
-                15
-            ]
-        },
-        "1007": {
+        "1005": {
             "text": "B",
             "wordNumber": null
         },
-        "1008": {
-            "text": 20,
+        "1006": {
+            "text": 23,
             "wordNumber": [
                 [
-                    20
+                    23
                 ],
-                12
+                8
+            ]
+        },
+        "1007": {
+            "text": "--",
+            "wordNumber": [
+                23
+            ]
+        },
+        "1008": {
+            "text": "W",
+            "wordNumber": [
+                [
+                    23
+                ],
+                15
             ]
         },
         "1009": {
             "text": "--",
             "wordNumber": [
-                20
+                23
             ]
         },
         "1010": {
             "text": "W",
             "wordNumber": [
                 [
-                    20
+                    23
                 ],
-                4
+                21
             ]
         },
         "1011": {
             "text": "--",
             "wordNumber": [
-                20
+                23
             ]
         },
         "1012": {
             "text": "W",
             "wordNumber": [
                 [
-                    20
+                    23
                 ],
-                5
+                17
             ]
         },
         "1100": {
             "text": "|",
             "wordNumber": [
-                6
+                16
             ]
         },
         "1101": {
@@ -904,7 +906,7 @@
         "1102": {
             "text": "|",
             "wordNumber": [
-                7
+                14
             ]
         },
         "1103": {
@@ -914,7 +916,7 @@
         "1104": {
             "text": "|",
             "wordNumber": [
-                18
+                19
             ]
         },
         "1105": {
@@ -924,7 +926,7 @@
         "1106": {
             "text": "|",
             "wordNumber": [
-                15
+                8
             ]
         },
         "1107": {
@@ -934,7 +936,7 @@
         "1108": {
             "text": "|",
             "wordNumber": [
-                12
+                15
             ]
         },
         "1109": {
@@ -944,7 +946,7 @@
         "1110": {
             "text": "|",
             "wordNumber": [
-                4
+                21
             ]
         },
         "1111": {
@@ -954,402 +956,431 @@
         "1112": {
             "text": "|",
             "wordNumber": [
-                5
+                17
             ]
         },
         "1200": {
-            "text": 21,
+            "text": 24,
             "wordNumber": [
                 [
-                    21
+                    24
                 ],
-                6
+                16
             ]
         },
         "1201": {
             "text": "--",
             "wordNumber": [
-                21
+                24
             ]
         },
         "1202": {
             "text": "W",
             "wordNumber": [
                 [
-                    21
+                    24
                 ],
-                7
+                14
             ]
         },
         "1203": {
             "text": "--",
             "wordNumber": [
-                21
+                24
             ]
         },
         "1204": {
             "text": "W",
             "wordNumber": [
                 [
-                    21
+                    24
                 ],
-                18
+                19
             ]
         },
         "1205": {
             "text": "--",
             "wordNumber": [
-                21
+                24
             ]
         },
         "1206": {
-            "text": "W",
-            "wordNumber": [
-                [
-                    21
-                ],
-                15
-            ]
+            "text": "B",
+            "wordNumber": null
         },
         "1207": {
-            "text": "--",
+            "text": 25,
             "wordNumber": [
-                21
+                25
             ]
         },
         "1208": {
             "text": "W",
             "wordNumber": [
                 [
-                    21
+                    25
                 ],
-                12
+                15
             ]
         },
         "1209": {
-            "text": "B",
-            "wordNumber": null
+            "text": "--",
+            "wordNumber": [
+                25
+            ]
         },
         "1210": {
-            "text": "B",
-            "wordNumber": null
+            "text": "W",
+            "wordNumber": [
+                [
+                    25
+                ],
+                21
+            ]
         },
         "1211": {
-            "text": "B",
-            "wordNumber": null
+            "text": "--",
+            "wordNumber": [
+                25
+            ]
         },
         "1212": {
-            "text": "B",
-            "wordNumber": null
+            "text": "W",
+            "wordNumber": [
+                [
+                    25
+                ],
+                17
+            ]
         }
     },
     "clues": [
         [
-            "Prankster\u2019s call (5,4)",
+            "Harshly critical \u2013 or violent (6)",
             1,
             "across"
         ],
         [
-            "Session with crossword and granola? (3-2)",
-            8,
+            "Came back down to earth (6)",
+            4,
             "across"
         ],
         [
-            "Workplace filling station (7)",
+            "Warning to sailors (7)",
             9,
             "across"
         ],
         [
-            "Chardonnay and Perrier, perhaps (8)",
+            "Train or boat? (5)",
             10,
             "across"
         ],
         [
-            "Singer \u2013 ale \u2013 fish (4)",
+            "Periods of calm (5)",
             11,
             "across"
         ],
         [
-            "See 17",
-            17,
+            "Breathe (7)",
+            12,
             "across"
         ],
         [
-            "\u2018Beefy\u2019 cricketer Ian (6)",
-            14,
+            "Spread \u2013 seed in a mist (anag) (11)",
+            13,
             "across"
         ],
         [
-            "Pick a ____, any ____ (4)",
-            16,
+            "Get rougher (7)",
+            18,
             "across"
         ],
         [
-            "Orwell novel with Room 101 (8,6-4)",
-            17,
-            "across"
-        ],
-        [
-            "Fleabag and Frasier, e.g. (7)",
-            19,
-            "across"
-        ],
-        [
-            "Modern alternatives to cabs (5)",
+            "Soy sauce flavour (5)",
             20,
             "across"
         ],
         [
-            "Knocks down with a feather (9)",
-            21,
+            "Family (5)",
+            22,
             "across"
         ],
         [
-            "Add notes to (8)",
+            "It makes one lose interest (4-3)",
+            23,
+            "across"
+        ],
+        [
+            "Not liable (6)",
+            24,
+            "across"
+        ],
+        [
+            "Even though (6)",
+            25,
+            "across"
+        ],
+        [
+            "Without experiencing harm (6)",
             1,
             "down"
         ],
         [
-            "Din \u2013 con \u2013 sports kit (6)",
+            "Time to watch and wait (5)",
             2,
             "down"
         ],
         [
-            "Achieve \u2013 country \u2013 alight (4)",
+            "Interpretations (of a text) (7)",
             3,
             "down"
         ],
         [
-            "One who does better than necessary (12)",
-            4,
-            "down"
-        ],
-        [
-            "Solitude \u2013 seen moonless (anag) (12)",
+            "Old dog of Odysseus \u2013 shop once known for its catalogues (5)",
             5,
             "down"
         ],
         [
-            "Items of protection while broken bones knit (7,5)",
+            "Bridget Jones, say (7)",
             6,
             "down"
         ],
         [
-            "Item often atop a freezer (12)",
+            "Sleep, or sit, on it (6)",
             7,
             "down"
         ],
         [
-            "Smokescreens and fa\u00e7ades (5-3)",
-            12,
+            "Make (someone) look culpable (11)",
+            8,
             "down"
         ],
         [
-            "Booths for tickets and copies of the Guardian (6)",
+            "Suppose (7)",
+            14,
+            "down"
+        ],
+        [
+            "Non-partisan (7)",
             15,
             "down"
         ],
         [
-            "See 17 Across",
+            "Grim Reaper\u2019s implement (6)",
+            16,
+            "down"
+        ],
+        [
+            "One\u2019s out of place (6)",
             17,
+            "down"
+        ],
+        [
+            "Wool producer(s) (5)",
+            19,
+            "down"
+        ],
+        [
+            "Solitary (5)",
+            21,
             "down"
         ]
     ],
     "solutionGrid": [
         [
-            null,
-            null,
-            null,
-            null,
+            "S",
             "A",
-            "P",
-            "R",
-            "I",
+            "V",
+            "A",
+            "G",
+            "E",
+            null,
             "L",
+            "A",
+            "N",
+            "D",
+            "E",
+            "D"
+        ],
+        [
+            "A",
+            null,
+            "I",
+            null,
+            "L",
+            null,
+            "I",
+            null,
+            "R",
+            null,
+            "I",
+            null,
+            "A"
+        ],
+        [
             "F",
             "O",
+            "G",
+            "H",
             "O",
-            "L"
-        ],
-        [
-            "P",
-            null,
             "R",
-            null,
             "N",
             null,
+            "G",
+            "R",
             "A",
-            null,
-            "A",
-            null,
             "V",
-            null,
-            "O"
+            "Y"
         ],
         [
-            "L",
-            "I",
             "E",
+            null,
             "I",
-            "N",
+            null,
+            "S",
             null,
             "C",
-            "A",
-            "N",
-            "T",
-            "E",
-            "E",
-            "N"
-        ],
-        [
-            "A",
-            null,
-            "F",
             null,
             "O",
             null,
-            "K",
-            null,
-            "D",
-            null,
             "R",
             null,
+            "B"
+        ],
+        [
+            "L",
+            "U",
+            "L",
+            "L",
+            "S",
+            null,
+            "R",
+            "E",
+            "S",
+            "P",
+            "I",
+            "R",
             "E"
         ],
         [
-            "S",
-            "P",
-            "R",
-            "I",
-            "T",
-            "Z",
-            "E",
-            "R",
-            null,
-            "B",
-            "A",
-            "S",
-            "S"
-        ],
-        [
-            "T",
-            null,
-            "I",
-            null,
-            "A",
-            null,
-            "T",
-            null,
-            "C",
-            null,
-            "C",
-            null,
-            "O"
-        ],
-        [
-            "E",
-            "I",
-            "G",
-            "H",
-            "T",
             "Y",
             null,
-            "B",
-            "O",
-            "T",
-            "H",
+            null,
+            null,
+            "E",
+            null,
+            "I",
+            null,
+            null,
+            null,
+            "S",
+            null,
+            "D"
+        ],
+        [
+            null,
+            "D",
+            "I",
+            "S",
+            "S",
+            "E",
+            "M",
+            "I",
+            "N",
             "A",
+            "T",
+            "E",
+            null
+        ],
+        [
+            "S",
+            null,
+            "M",
+            null,
+            null,
+            null,
+            "I",
+            null,
+            "E",
+            null,
+            null,
+            null,
             "M"
         ],
         [
-            "R",
-            null,
-            "E",
-            null,
-            "E",
-            null,
-            "K",
-            null,
-            "V",
-            null,
-            "I",
-            null,
-            "E"
-        ],
-        [
-            "C",
-            "A",
-            "R",
-            "D",
-            null,
-            "N",
-            "I",
-            "N",
-            "E",
-            "T",
-            "E",
-            "E",
-            "N"
-        ],
-        [
-            "A",
-            null,
-            "A",
-            null,
-            "F",
-            null,
-            "O",
-            null,
-            "R",
-            null,
-            "V",
-            null,
-            "E"
-        ],
-        [
-            "S",
-            "I",
-            "T",
             "C",
             "O",
-            "M",
+            "A",
+            "R",
             "S",
+            "E",
+            "N",
             null,
             "U",
+            "M",
+            "A",
+            "M",
+            "I"
+        ],
+        [
+            "Y",
+            null,
+            "G",
+            null,
+            "H",
+            null,
+            "A",
+            null,
+            "T",
+            null,
+            "L",
+            null,
+            "S"
+        ],
+        [
+            "T",
+            "R",
+            "I",
             "B",
             "E",
+            null,
+            "T",
+            "U",
             "R",
-            "S"
+            "N",
+            "O",
+            "F",
+            "F"
         ],
         [
+            "H",
+            null,
+            "N",
+            null,
+            "E",
+            null,
+            "E",
+            null,
+            "A",
+            null,
+            "N",
+            null,
+            "I"
+        ],
+        [
+            "E",
+            "X",
+            "E",
+            "M",
+            "P",
             "T",
             null,
-            "O",
-            null,
-            "U",
-            null,
-            "K",
-            null,
-            "P",
-            null,
-            "R",
-            null,
-            "S"
-        ],
-        [
-            "S",
-            "U",
-            "R",
-            "P",
-            "R",
-            "I",
-            "S",
+            "A",
+            "L",
+            "B",
             "E",
-            "S",
-            null,
-            null,
-            null,
-            null
+            "I",
+            "T"
         ]
     ]
 }

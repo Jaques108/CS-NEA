@@ -38,12 +38,3 @@ class successFrame(Frame):
         afile = open('/Users/jake/main/NEA/Main Code/Timer.txt', 'w')
         afile.write('')
         afile.close()
-
-
-
-
-
-
-
-
-

@@ -36,16 +36,6 @@ class mainMenuFrame(tk.Frame):
         self.secretKey = 'idkwhattoputforthis'
 
 
-
-
-
-
-
-
-
-
-
-
     def checkIfToken(self):
         afile = open('/Users/jake/main/NEA/Token.txt','r')
         encryptedToken = afile.read()

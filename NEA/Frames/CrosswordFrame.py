@@ -49,7 +49,8 @@ class crosswordFrame(ttk.Frame):
         # Find how many days it's been since startDay
         difference = (today - startDay).days
 
-        # This bit is because the Guardian does not release a new crossword on Sundays so check how many weeks its been since the start and minus that number to the code to account for that
+        # This bit is because the Guardian does not release a new crossword on Sundays so check how many weeks
+        # its been since the start and minus that number to the code to account for that
         change = int(difference / 7)
         difference -= change
 
@@ -244,7 +245,8 @@ class crosswordFrame(ttk.Frame):
                         #Ensure the canvas is still usable because clicking the button 'unfocuses' the canvas meaning that user inputs are not registered
                         canvas.focus_set()
 
-                    #This function is used for changing text input direction but we also need the arrow keys for navigating the grid and we can't have 2 functions for the same key so simply just combine them
+                    #This function is used for changing text input direction but we also need
+                    #the arrow keys for navigating the grid and we can't have 2 functions for the same key so simply just combine them
                     def combinedFunction(canvas,direction,rectangleID,event):
                         enterText(canvas,rectangleID,event)
                         changeTextDirection(canvas,direction,event)
@@ -257,7 +259,8 @@ class crosswordFrame(ttk.Frame):
                         posX = int(cellID[2:])
                         posY = int(cellID[:2])
 
-                        #Multiply the coordinates by cellSize to get the pixel values of where to place the rectangles (this finds the top left corner of the rectangle)
+                        #Multiply the coordinates by cellSize to get the pixel values of where to
+                        #place the rectangles (this finds the top left corner of the rectangle)
                         x1 = posX * cellSize
                         y1 = posY * cellSize
 
@@ -400,7 +403,8 @@ class crosswordFrame(ttk.Frame):
 
 
 
-        #Function called when cursor enters the area of a rectangle - provides the user with feedback makes it feel more responsive
+        #Function called when cursor enters the area of a rectangle -
+        #provides the user with feedback makes it feel more responsive
         def mouseEnter(canvas,rectangleID,event):
             #Get the current tags of the rectangle
             itemTags = canvas.gettags(rectangleID)
@@ -515,7 +519,8 @@ class crosswordFrame(ttk.Frame):
 
 
 
-        #Complicated function used to enter text in rectangles - the issue is these rectangles don't have a text attribute unlike labels which do, so it gets a little trickier
+        #Complicated function used to enter text in rectangles - the issue is these
+        #rectangles don't have a text attribute unlike labels which do, so it gets a little trickier
         def enterText(canvas,rectangleID,event):
             safe = False
             #List of key directions - avoids the repetitive if/else statements
@@ -568,7 +573,8 @@ class crosswordFrame(ttk.Frame):
                     textChars[rectangleID] = char
                     #Create new text and store the reference in the textItems dictionary
 
-                    #Make sure the text has the same attributes as the rectangle because tkinter is goofy like that - the text creates a dead zone where the normal functions of the rectangle do not work
+                    #Make sure the text has the same attributes as the rectangle because tkinter is goofy like that - the
+                    #text creates a dead zone where the normal functions of the rectangle do not work
                     canvas.tag_bind(textID, "<Enter>", partial(mouseEnter, canvas, rectangleID))
                     canvas.tag_bind(textID, "<Leave>", partial(mouseExit, canvas, rectangleID))
                     canvas.tag_bind(textID, "<Button-1>", partial(onClick, canvas, rectangleID))
@@ -638,7 +644,9 @@ class crosswordFrame(ttk.Frame):
                     if nextRectangleID in nonTextRectangles:
                         return False
 
-                    #This is an error because text ID takes the place of a rectangle so its not as simple as adding 1 because it goes to the little number in the top right - so we have to add 2 to skip it - so we multiply the value of offset by 2
+                    #This is an error because text ID takes the place of a rectangle so its not as simple as
+                    #adding 1 because it goes to the little number in the top right - so we have to add 2 to
+                    #skip it - so we multiply the value of offset by 2
                     elif nextRectangleID in startPositions and (char != 'UP' or char != 'DOWN'):
                         nextRectangleID = rectangleID + (offset * 2)
 
@@ -679,7 +687,8 @@ class crosswordFrame(ttk.Frame):
 
 
         def changeTextDirection(canvas,direction,event):
-            #If this function is called by the up or down key update the Boolean so the program knows we want to go up and down
+            #If this function is called by the up or down key update the
+            #Boolean so the program knows we want to go up and down
             if direction == 'Up' or direction == 'Down':
                 self.upDownText = True
                 self.directionUpdateLabel.config(text = 'Down')
