@@ -68,8 +68,8 @@ class crosswordFrame(ttk.Frame):
 
             #Check if the user wants to do the daily crossword
             if self.dailyCrossword:
-                #The code for startDay crossword is 17034 so just add difference to find the crossword code for today
-                code = 17032 + int(difference)
+                #The code for startDay crossword is 17031 so just add difference to find the crossword code for today
+                code = 17031 + int(difference)
 
             else:
                 #Get the code entered
@@ -82,7 +82,7 @@ class crosswordFrame(ttk.Frame):
 
 
             #Create the whole URL by appending the code to the main URL
-            url = f'http://127.0.0.1:5000/GenerateCells/{code}'
+            url = f'http://127.0.0.1:5001/GenerateCells/{code}'
 
             #Variable to see if we get returned crossword data
             dictData = None
@@ -311,13 +311,10 @@ class crosswordFrame(ttk.Frame):
 
                                 #Append the start ID to the array startPositions to keep track of them
                                 startPositions.append(startID)
-
+                                canvas.tag_raise(startID)
 
                             else:
                                 rectangleID = canvas.create_rectangle(x1, y1, x2, y2, fill="white", outline="black",tags = wordNumberTag)
-
-
-                            canvas.tag_raise(startID)
 
                             #Bind events to the rectangle
                             canvas.tag_bind(rectangleID, "<Enter>", partial(mouseEnter, canvas, rectangleID))

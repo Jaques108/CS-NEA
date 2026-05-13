@@ -110,7 +110,7 @@ class sudokuFrame(Frame):
 
 
 
-        self.API_URL = f'http://127.0.0.1:5000/GenerateGrid/{int(self.B)}'
+        self.API_URL = f'http://127.0.0.1:5001/GenerateGrid/{int(self.B)}'
         try:
             # Make a GET request to the API
             response = requests.get(self.API_URL)
@@ -460,3 +460,5 @@ class sudokuFrame(Frame):
 
     def normalMode(self):
         self.candidateModeBool = False
+
+        

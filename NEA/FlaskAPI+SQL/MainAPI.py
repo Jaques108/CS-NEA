@@ -169,7 +169,7 @@ def crossword(code):
     startPositions = []
 
     #Get the response from our url
-    response = requests.get(url)
+    response = requests.get(url, headers={'User-Agent': 'Mozilla/5.0'}, timeout=10)
     #Parse it with BeautifulSoup
     soup = BeautifulSoup(response.text, 'html.parser')
 
@@ -178,7 +178,7 @@ def crossword(code):
 
 
     #If the program was not able to get any data return this instead of breaking the program
-    if len(fullData) == 0:
+    if fullData is None:
         return 'No data was returned'
 
     # Return our data in the variable 'data'
@@ -437,4 +437,4 @@ def isValid(number, row, col,grid):
 
 
 #Run the API
-API.run(debug=False)
+API.run(debug=False, port=5002)

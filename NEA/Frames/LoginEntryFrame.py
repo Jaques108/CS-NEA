@@ -16,7 +16,7 @@ class loginEntryFrame(tk.Frame):
         self.stars = True
         self.showPassVar = tk.BooleanVar(value=False)
 
-        self.API_URL = 'http://127.0.0.1:5000/'
+        self.API_URL = 'http://127.0.0.1:5001/'
 
         self.userNameEntry = ttk.Entry(self)
         self.userNameEntry.grid(row=1,column=1,sticky = 'news')
